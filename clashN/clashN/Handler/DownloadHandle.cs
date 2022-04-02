@@ -51,7 +51,7 @@ namespace clashN.Handler
                     if (UpdateCompleted != null)
                     {
                         string msg = string.Format("...{0}%", value);
-                        UpdateCompleted(this, new ResultEventArgs(value == 100 ? true : false, msg));
+                        UpdateCompleted(this, new ResultEventArgs(value > 100 ? true : false, msg));
                     }
                 };
 

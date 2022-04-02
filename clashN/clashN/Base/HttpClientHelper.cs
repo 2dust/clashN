@@ -152,6 +152,12 @@ namespace clashN.Base
                             }
                         }
                     } while (isMoreToRead);
+                    file.Close();
+                    if (canReportProgress)
+                    {
+                        progress.Report(101);
+
+                    }
                 }
             }
         }
