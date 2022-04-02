@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BatchExportSuccessfully" xml:space="preserve">
+    <value>导出配置文件至剪贴板成功</value>
+  </data>
+  <data name="CheckProfileSettings" xml:space="preserve">
+    <value>请先检查配置文件设置</value>
+  </data>
+  <data name="ConfigurationFormatIncorrect" xml:space="preserve">
+    <value>配置格式不正确</value>
+  </data>
+  <data name="CustomProfileTips" xml:space="preserve">
+    <value>注意,自定义配置完全依赖您自己的配置，不能使用所有设置功能。如需使用系统代理请手工修改监听端口。</value>
+  </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>下载开始...</value>
+  </data>
+  <data name="downloadSpeed" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="DownloadYesNo" xml:space="preserve">
+    <value>是否下载? {0}</value>
+  </data>
+  <data name="FailedConversionConfiguration" xml:space="preserve">
+    <value>转换配置文件失败</value>
+  </data>
+  <data name="FailedGenDefaultConfiguration" xml:space="preserve">
+    <value>生成默认配置文件失败</value>
+  </data>
+  <data name="FailedGetDefaultConfiguration" xml:space="preserve">
+    <value>取得默认配置失败</value>
+  </data>
+  <data name="FailedImportedCustomProfile" xml:space="preserve">
+    <value>导入配置文件失败</value>
+  </data>
+  <data name="FailedReadConfiguration" xml:space="preserve">
+    <value>读取配置文件失败</value>
+  </data>
+  <data name="FillCorrectProfilePort" xml:space="preserve">
+    <value>请填写正确格式配置文件端口</value>
+  </data>
+  <data name="FillLocalListeningPort" xml:space="preserve">
+    <value>请填写本地监听端口</value>
+  </data>
+  <data name="FillPassword" xml:space="preserve">
+    <value>请填写密码</value>
+  </data>
+  <data name="FillProfileAddress" xml:space="preserve">
+    <value>请填写配置文件地址</value>
+  </data>
+  <data name="FillUUID" xml:space="preserve">
+    <value>请填写用户ID</value>
+  </data>
+  <data name="IncorrectClientConfiguration" xml:space="preserve">
+    <value>不是正确的客户端配置文件，请检查</value>
+  </data>
+  <data name="Incorrectconfiguration" xml:space="preserve">
+    <value>不是正确的配置，请检查</value>
+  </data>
+  <data name="IncorrectProfileConfiguration" xml:space="preserve">
+    <value>不是正确的服务端配置文件，请检查</value>
+  </data>
+  <data name="InitialConfiguration" xml:space="preserve">
+    <value>初始化配置</value>
+  </data>
+  <data name="IsLatestCore" xml:space="preserve">
+    <value>{0} 已是最新版本。</value>
+  </data>
+  <data name="IsLatestN" xml:space="preserve">
+    <value>{0} 已是最新版本。</value>
+  </data>
+  <data name="LvAddress" xml:space="preserve">
+    <value>本地文件</value>
+  </data>
+  <data name="LvAlias" xml:space="preserve">
+    <value>别名</value>
+  </data>
+  <data name="LvEncryptionMethod" xml:space="preserve">
+    <value>加密方式</value>
+  </data>
+  <data name="LvPort" xml:space="preserve">
+    <value>端口</value>
+  </data>
+  <data name="LvServiceType" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="LvSubscription" xml:space="preserve">
+    <value>订阅</value>
+  </data>
+  <data name="LvTestResults" xml:space="preserve">
+    <value>测试结果</value>
+  </data>
+  <data name="LvTodayDownloadDataAmount" xml:space="preserve">
+    <value>今日下载</value>
+  </data>
+  <data name="LvTodayUploadDataAmount" xml:space="preserve">
+    <value>今日上传</value>
+  </data>
+  <data name="LvTotalDownloadDataAmount" xml:space="preserve">
+    <value>总下载</value>
+  </data>
+  <data name="LvTotalUploadDataAmount" xml:space="preserve">
+    <value>总上传</value>
+  </data>
+  <data name="LvActivity" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="MediumFresh" xml:space="preserve">
+    <value>中等</value>
+  </data>
+  <data name="MsgClearSubscription" xml:space="preserve">
+    <value>清除原订阅内容</value>
+  </data>
+  <data name="MsgDownloadCoreSuccessfully" xml:space="preserve">
+    <value>下载Core成功</value>
+  </data>
+  <data name="MsgFailedImportSubscription" xml:space="preserve">
+    <value>导入订阅内容失败</value>
+  </data>
+  <data name="MsgGetSubscriptionSuccessfully" xml:space="preserve">
+    <value>获取订阅内容成功</value>
+  </data>
+  <data name="MsgNoValidSubscription" xml:space="preserve">
+    <value>未设置有效的订阅</value>
+  </data>
+  <data name="MsgParsingSuccessfully" xml:space="preserve">
+    <value>解析{0}成功</value>
+  </data>
+  <data name="MsgStartGettingSubscriptions" xml:space="preserve">
+    <value>开始获取订阅内容</value>
+  </data>
+  <data name="MsgStartUpdating" xml:space="preserve">
+    <value>开始更新 {0}...</value>
+  </data>
+  <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
+    <value>订阅内容获取失败</value>
+  </data>
+  <data name="MsgUnpacking" xml:space="preserve">
+    <value>正在解压......</value>
+  </data>
+  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
+    <value>更新订阅结束</value>
+  </data>
+  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
+    <value>更新订阅开始</value>
+  </data>
+  <data name="MsgUpdateCoreCoreSuccessfully" xml:space="preserve">
+    <value>更新Core成功</value>
+  </data>
+  <data name="MsgUpdateCoreCoreSuccessfullyMore" xml:space="preserve">
+    <value>更新Core成功！正在重启服务...</value>
+  </data>
+  <data name="NeedHttpGlobalProxy" xml:space="preserve">
+    <value>此功能依赖Http全局代理,请先设置正确。</value>
+  </data>
+  <data name="NotFoundCore" xml:space="preserve">
+    <value>找不到Core，下载地址: {0}</value>
+  </data>
+  <data name="NoValidQRcodeFound" xml:space="preserve">
+    <value>扫描完成,未发现有效二维码</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>操作失败，请检查重试</value>
+  </data>
+  <data name="PleaseFillRemarks" xml:space="preserve">
+    <value>请填写备注</value>
+  </data>
+  <data name="PleaseSelectEncryption" xml:space="preserve">
+    <value>请选择加密方式</value>
+  </data>
+  <data name="PleaseSelectProtocol" xml:space="preserve">
+    <value>请选择协议</value>
+  </data>
+  <data name="PleaseSelectProfile" xml:space="preserve">
+    <value>请先选择配置文件</value>
+  </data>
+  <data name="QuickFresh" xml:space="preserve">
+    <value>快</value>
+  </data>
+  <data name="RemoveDuplicateProfileResult" xml:space="preserve">
+    <value>配置文件去重完成。原数量: {0}，现数量: {1}</value>
+  </data>
+  <data name="RemoveProfile" xml:space="preserve">
+    <value>是否确定移除配置文件?</value>
+  </data>
+  <data name="SlowFresh" xml:space="preserve">
+    <value>慢</value>
+  </data>
+  <data name="SpeedProfileTips" xml:space="preserve">
+    <value>注意：此功能依赖Http全局代理!测试完成后,请手工调整Http全局代理和活动节点。</value>
+  </data>
+  <data name="StartService" xml:space="preserve">
+    <value>启动服务({0})...</value>
+  </data>
+  <data name="SuccessfulConfiguration" xml:space="preserve">
+    <value>配置成功
+{0}</value>
+  </data>
+  <data name="SuccessfullyImportedCustomProfile" xml:space="preserve">
+    <value>成功导入配置文件</value>
+  </data>
+  <data name="SuccessfullyImportedProfileViaClipboard" xml:space="preserve">
+    <value>成功从剪贴板导入配置文件</value>
+  </data>
+  <data name="SuccessfullyImportedProfileViaScan" xml:space="preserve">
+    <value>扫描导入成功</value>
+  </data>
+  <data name="TestMeOutput" xml:space="preserve">
+    <value>当前服务的真连接延迟: {0}</value>
+  </data>
+  <data name="OperationSuccess" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="PleaseSelectRules" xml:space="preserve">
+    <value>请先选择规则</value>
+  </data>
+  <data name="LvRemarks" xml:space="preserve">
+    <value>别名</value>
+  </data>
+  <data name="LvUrl" xml:space="preserve">
+    <value>订阅网址(Url)</value>
+  </data>
+  <data name="LvCount" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="MsgNeedUrl" xml:space="preserve">
+    <value>请填写地址(Url)</value>
+  </data>
+  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
+    <value>下载 GeoFile: {0} 成功</value>
+  </data>
+  <data name="MsgInformationTitle" xml:space="preserve">
+    <value>信息 (过滤器 : {0})</value>
+  </data>
+  <data name="LvCustomIcon" xml:space="preserve">
+    <value>自定义图标</value>
+  </data>
+  <data name="FillCorrectDNSText" xml:space="preserve">
+    <value>请填写正确的自定义DNS</value>
+  </data>
+  <data name="LvTLS" xml:space="preserve">
+    <value>传输层安全</value>
+  </data>
+  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
+    <value>注册全局热键 {0} 失败,原因 {1}</value>
+  </data>
+  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
+    <value>注册全局热键 {0} 成功</value>
+  </data>
+  <data name="AllGroupProfiles" xml:space="preserve">
+    <value>所有配置文件</value>
+  </data>
+  <data name="FillProfileAddressCustom" xml:space="preserve">
+    <value>请浏览导入配置文件配置</value>
+  </data>
+</root>

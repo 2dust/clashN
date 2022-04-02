@@ -1,0 +1,252 @@
+﻿using clashN.Mode;
+using System;
+using System.Collections.Generic;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace clashN.Handler
+{
+    class StatisticsHandler
+    {
+        private Config config_;
+        private ServerStatistics serverStatistics_;
+        private bool exitFlag_;
+        private ClientWebSocket webSocket = null;
+        string url = string.Empty;
+
+        Action<ulong, ulong, List<ProfileStatItem>> updateFunc_;
+
+        public bool Enable
+        {
+            get; set;
+        }
+
+        public List<ProfileStatItem> Statistic
+        {
+            get
+            {
+                return serverStatistics_.profileStat;
+            }
+        }
+
+        public StatisticsHandler(Config config, Action<ulong, ulong, List<ProfileStatItem>> update)
+        {
+            config_ = config;
+            Enable = config.enableStatistics;
+            updateFunc_ = update;
+            exitFlag_ = false;
+
+            LoadFromFile();
+
+            Task.Run(() => Run());
+        }
+
+        private async void Init()
+        {
+            Thread.Sleep(5000);
+
+            try
+            {
+
+                url = $"ws://{Global.Loopback}:{config_.APIPort}/traffic";
+
+                if (webSocket == null)
+                {
+                    webSocket = new ClientWebSocket();
+                    await webSocket.ConnectAsync(new Uri(url), CancellationToken.None);
+
+                }
+            }
+            catch { }
+
+        }
+
+        public void Close()
+        {
+            try
+            {
+                exitFlag_ = true;
+                if (webSocket != null)
+                {
+                    webSocket.Abort();
+                    webSocket = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+        }
+
+        public async void Run()
+        {
+            Init();
+
+            while (!exitFlag_)
+            {
+                try
+                {
+                    if (Enable)
+                    {
+                        if (webSocket.State == WebSocketState.Aborted
+                            || webSocket.State == WebSocketState.Closed)
+                        {
+                            webSocket.Abort();
+                            webSocket = null;
+                            Init();
+                        }
+
+                        if (webSocket.State != WebSocketState.Open)
+                        {
+                            continue;
+                        }
+
+                        var buffer = new byte[1024];
+                        var res = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                        while (!res.CloseStatus.HasValue)
+                        {
+                            var result = Encoding.UTF8.GetString(buffer, 0, res.Count);
+                            if (!Utils.IsNullOrEmpty(result))
+                            {
+                                string itemId = config_.indexId;
+                                ProfileStatItem serverStatItem = GetServerStatItem(itemId);
+
+                                ParseOutput(result, out ulong up, out ulong down);
+                                if (up + down > 0)
+                                {
+                                    serverStatItem.todayUp += up;
+                                    serverStatItem.todayDown += down;
+                                    serverStatItem.totalUp += up;
+                                    serverStatItem.totalDown += down;
+                                }
+                                updateFunc_(up, down, new List<ProfileStatItem> { serverStatItem });
+                            }
+                            res = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                        }
+                    }
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        public void LoadFromFile()
+        {
+            try
+            {
+                string result = Utils.LoadResource(Utils.GetPath(Global.StatisticLogOverall));
+                if (!Utils.IsNullOrEmpty(result))
+                {
+                    serverStatistics_ = Utils.FromJson<ServerStatistics>(result);
+                }
+
+                if (serverStatistics_ == null)
+                {
+                    serverStatistics_ = new ServerStatistics();
+                }
+                if (serverStatistics_.profileStat == null)
+                {
+                    serverStatistics_.profileStat = new List<ProfileStatItem>();
+                }
+
+                long ticks = DateTime.Now.Date.Ticks;
+                foreach (ProfileStatItem item in serverStatistics_.profileStat)
+                {
+                    if (item.dateNow != ticks)
+                    {
+                        item.todayUp = 0;
+                        item.todayDown = 0;
+                        item.dateNow = ticks;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+        }
+
+        public void SaveToFile()
+        {
+            try
+            {
+                Utils.ToJsonFile(serverStatistics_, Utils.GetPath(Global.StatisticLogOverall));
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+        }
+
+        public void ClearAllServerStatistics()
+        {
+            if (serverStatistics_ != null)
+            {
+                foreach (var item in serverStatistics_.profileStat)
+                {
+                    item.todayUp = 0;
+                    item.todayDown = 0;
+                    item.totalUp = 0;
+                    item.totalDown = 0;
+                    // update ui display to zero
+                    updateFunc_(0, 0, new List<ProfileStatItem> { item });
+                }
+
+                // update statistic json file
+                SaveToFile();
+            }
+        }
+
+        private ProfileStatItem GetServerStatItem(string itemId)
+        {
+            long ticks = DateTime.Now.Date.Ticks;
+            int cur = Statistic.FindIndex(item => item.indexId == itemId);
+            if (cur < 0)
+            {
+                Statistic.Add(new ProfileStatItem
+                {
+                    indexId = itemId,
+                    totalUp = 0,
+                    totalDown = 0,
+                    todayUp = 0,
+                    todayDown = 0,
+                    dateNow = ticks
+                });
+                cur = Statistic.Count - 1;
+            }
+            if (Statistic[cur].dateNow != ticks)
+            {
+                Statistic[cur].todayUp = 0;
+                Statistic[cur].todayDown = 0;
+                Statistic[cur].dateNow = ticks;
+            }
+            return Statistic[cur];
+        }
+
+        private void ParseOutput(string source, out ulong up, out ulong down)
+        {
+            up = 0; down = 0;
+            try
+            {
+                var trafficItem = Utils.FromJson<TrafficItem>(source);
+                if (trafficItem != null)
+                {
+                    up = trafficItem.up;
+                    down = trafficItem.down;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Utils.SaveLog(ex.Message, ex);
+            }
+        }
+
+    }
+}

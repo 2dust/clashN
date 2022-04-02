@@ -1,0 +1,21 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+`
+/clashN/.vs/
+/clashN/clashN/bin/Debug/app.publish
+/clashN/clashN/bin/Debug
+/clashN/clashN/bin/Release
+/clashN/clashN/obj/
+/clashN/.vs/clashN/DesignTimeBuild
+/clashN/packages
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+/clashN/clashUpgrade/bin/Debug
+/clashN/clashUpgrade/obj/Debug 
+/clashN/clashUpgrade/bin/Release
+/clashN/clashUpgrade/obj/Release
+/clashN/clashUpgrade/obj
+/clashN/clashUpgrade/Properties/PublishProfiles
+/clashN/clashN/Properties/PublishProfiles
