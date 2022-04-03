@@ -14,6 +14,5 @@
     <StartupObject>clashUpgrade.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 </Project>
