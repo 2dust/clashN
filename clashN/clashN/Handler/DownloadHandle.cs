@@ -3,6 +3,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace clashN.Handler
 
                 var client = new HttpClient(new SocketsHttpHandler()
                 {
-                    Proxy = blProxy ? new WebProxy($"socks5://{Global.Loopback}:{LazyConfig.Instance.GetConfig().socksPort}") : null
+                    Proxy = GetWebProxy(blProxy)
                 });
 
                 var progress = new Progress<double>();
@@ -81,7 +82,7 @@ namespace clashN.Handler
                 Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
                 var client = new HttpClient(new SocketsHttpHandler()
                 {
-                    Proxy = blProxy ? new WebProxy($"socks5://{Global.Loopback}:{LazyConfig.Instance.GetConfig().socksPort}") : null
+                    Proxy = GetWebProxy(blProxy)
                 });
 
                 if (Utils.IsNullOrEmpty(userAgent))
@@ -106,5 +107,64 @@ namespace clashN.Handler
             return null;
         }
 
+        public async Task<string> UrlRedirectAsync(string url, bool blProxy)
+        {
+            Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
+            SocketsHttpHandler webRequestHandler = new SocketsHttpHandler
+            {
+                AllowAutoRedirect = false,
+                Proxy = GetWebProxy(blProxy)
+            };
+            HttpClient client = new HttpClient(webRequestHandler);
+
+            HttpResponseMessage response = await client.GetAsync(url);
+            if (response.StatusCode.ToString() == "Redirect")
+            {
+                return response.Headers.Location.ToString();
+            }
+            else
+            {
+                Utils.SaveLog("StatusCode error: " + url);
+                return null;
+            }
+        }
+
+        private WebProxy GetWebProxy(bool blProxy)
+        {
+            if (!blProxy)
+            {
+                return null;
+            }
+            var socksPort = LazyConfig.Instance.GetConfig().socksPort;
+            if (!SocketCheck(Global.Loopback, socksPort))
+            {
+                return null;
+            }
+
+            return new WebProxy($"socks5://{Global.Loopback}:{socksPort}");
+        }
+
+        private bool SocketCheck(string ip, int port)
+        {
+            Socket sock = null;
+            try
+            {
+                IPAddress ipa = IPAddress.Parse(ip);
+                IPEndPoint point = new IPEndPoint(ipa, port);
+                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sock.Connect(point);
+                return true;
+            }
+            catch { }
+            finally
+            {
+                if (sock != null)
+                {
+                    sock.Close();
+                    sock.Dispose();
+                }
+            }
+            return false;
+        }
     }
 }

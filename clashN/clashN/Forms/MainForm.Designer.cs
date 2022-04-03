@@ -192,6 +192,7 @@
             this.toolStripSeparator9,
             this.menuClearProfileStatistics});
             this.cmsLv.Name = "cmsLv";
+            this.cmsLv.OwnerItem = this.tsbProfile;
             resources.ApplyResources(this.cmsLv, "cmsLv");
             // 
             // menuAddProfile

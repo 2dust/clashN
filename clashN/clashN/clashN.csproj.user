@@ -47,6 +47,9 @@
     <EmbeddedResource Update="Forms\AddProfileForm.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Update="Forms\MainForm.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Update="Forms\MainForm.zh-Hans.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

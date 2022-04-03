@@ -68,8 +68,8 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
-                coreType = ECoreType.clash,
-                coreExes = new List<string> { "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "clash" },
+                coreType = ECoreType.clash_meta,
+                coreExes = new List<string> { "Clash.Meta-windows-amd64v1", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashMetaCoreUrl
             });

@@ -38,8 +38,8 @@ namespace clashN.Handler
         private const string clashCoreUrl32 = Global.clashCoreUrl + "/download/{0}/clash-windows-386-{0}.zip";
         private const string clashCoreUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip";
         private readonly string clashMetaCoreLatestUrl = Global.clashMetaCoreUrl + "/latest";
-        private const string clashMetaCoreUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip";
-        private const string clashMetaCoreUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64-{0}.zip";
+        private const string clashMetaCoreUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386.zip";
+        private const string clashMetaCoreUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1.zip";
         private const string geoUrl = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/{0}.dat";
 
         public void CheckUpdateGuiN(Config config, Action<bool, string> update)
@@ -280,14 +280,6 @@ namespace clashN.Handler
         {
             try
             {
-                Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
-                SocketsHttpHandler webRequestHandler = new SocketsHttpHandler
-                {
-                    AllowAutoRedirect = false,
-                    Proxy = new WebProxy($"socks5://{Global.Loopback}:{LazyConfig.Instance.GetConfig().socksPort}")
-                };
-                HttpClient httpClient = new HttpClient(webRequestHandler);
-
                 string url;
                 if (type == ECoreType.clash)
                 {
@@ -305,10 +297,11 @@ namespace clashN.Handler
                 {
                     throw new ArgumentException("Type");
                 }
-                HttpResponseMessage response = await httpClient.GetAsync(url);
-                if (response.StatusCode.ToString() == "Redirect")
+
+                var result = await (new DownloadHandle()).UrlRedirectAsync(url, true);
+                if (!Utils.IsNullOrEmpty(result))
                 {
-                    responseHandler(type, response.Headers.Location.ToString());
+                    responseHandler(type, result);
                 }
                 else
                 {
