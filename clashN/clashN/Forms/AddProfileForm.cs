@@ -89,7 +89,15 @@ namespace clashN.Forms
             profileItem.userAgent = txtUserAgent.Text.TrimEx();
             profileItem.enableTun = chkEnableTun.Checked;
 
-            if (Utils.IsNullOrEmpty(cmbCoreType.Text))
+            if (profileItem.enableTun)
+            {
+                profileItem.coreType = ECoreType.clash_meta;
+                if (!Utils.IsAdministrator())
+                {
+                    UI.Show(ResUI.RunAsAdmin);
+                }
+            }
+            else if (Utils.IsNullOrEmpty(cmbCoreType.Text))
             {
                 profileItem.coreType = null;
             }

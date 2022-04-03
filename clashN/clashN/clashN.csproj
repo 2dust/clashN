@@ -62,6 +62,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+	  <Compile Update="Resx\ResUI.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ResUI.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resx\ResUI.zh-Hans.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ResUI.zh-Hans.resx</DependentUpon>
+	  </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

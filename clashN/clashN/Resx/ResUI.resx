@@ -370,4 +370,10 @@
   <data name="TestMeOutput" xml:space="preserve">
     <value>The ping of current service: {0}</value>
   </data>
+  <data name="NotRunAsAdmin" xml:space="preserve">
+    <value>Not Run As Admin</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Run As Admin</value>
+  </data>
 </root>

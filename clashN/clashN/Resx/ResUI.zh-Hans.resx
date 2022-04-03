@@ -370,4 +370,10 @@
   <data name="FillProfileAddressCustom" xml:space="preserve">
     <value>请浏览导入配置文件配置</value>
   </data>
+  <data name="NotRunAsAdmin" xml:space="preserve">
+    <value>非以管理员身份运行</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>以管理员身份运行</value>
+  </data>
 </root>
