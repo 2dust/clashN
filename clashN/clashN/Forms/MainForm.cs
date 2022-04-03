@@ -35,7 +35,7 @@ namespace clashN.Forms
             this.ShowInTaskbar = false;
             this.WindowState = FormWindowState.Minimized;
             HideForm();
-            this.Text = Utils.GetVersion();
+            this.Text = Utils.GetVersion(); //Utils.IsAdministrator();
             Global.processJob = new Job();
 
             Application.ApplicationExit += (sender, args) =>

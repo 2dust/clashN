@@ -67,7 +67,7 @@ namespace clashN.Mode
         #endregion
 
         #region function         
-         
+
         public int FindIndexId(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -113,6 +113,7 @@ namespace clashN.Mode
             remarks = string.Empty;
             testResult = string.Empty;
             groupId = string.Empty;
+            enableTun = false;
         }
 
         #region function
@@ -173,6 +174,8 @@ namespace clashN.Mode
         {
             get; set;
         } = string.Empty;
+
+        public bool enableTun { get; set; }
     }
 
     [Serializable]

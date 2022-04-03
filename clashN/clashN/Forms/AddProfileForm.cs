@@ -48,6 +48,7 @@ namespace clashN.Forms
             txtUrl.Text = profileItem.url;
             chkEnabled.Checked = profileItem.enabled;
             txtUserAgent.Text = profileItem.userAgent;
+            chkEnableTun.Checked = profileItem.enableTun;
 
             if (profileItem.coreType == null)
             {
@@ -86,6 +87,7 @@ namespace clashN.Forms
             profileItem.url = txtUrl.Text.TrimEx();
             profileItem.enabled = chkEnabled.Checked;
             profileItem.userAgent = txtUserAgent.Text.TrimEx();
+            profileItem.enableTun = chkEnableTun.Checked;
 
             if (Utils.IsNullOrEmpty(cmbCoreType.Text))
             {

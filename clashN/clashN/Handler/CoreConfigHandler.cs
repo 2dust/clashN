@@ -16,6 +16,8 @@ namespace clashN.Handler
     /// </summary>
     class CoreConfigHandler
     {
+        private static string SampleTun = "clashN.Sample.SampleTun.yaml";
+
         /// <summary>
         /// 生成配置文件
         /// </summary>
@@ -74,6 +76,11 @@ namespace clashN.Handler
 
                 var config = LazyConfig.Instance.GetConfig();
                 var fileContent = Utils.FromYaml<Dictionary<string, object>>(File.ReadAllText(fileName));
+                if (fileContent == null)
+                {
+                    msg = ResUI.FailedGenDefaultConfiguration;
+                    return -1;
+                }
                 //port
                 ModifyContent(fileContent, "port", config.httpPort);
                 //socks-port
@@ -91,6 +98,17 @@ namespace clashN.Handler
                 else
                 {
                     ModifyContent(fileContent, "allow-lan", "false");
+                }
+
+                //enable tun mode
+                if (node.enableTun)
+                {
+                    string tun = Utils.GetEmbedText(SampleTun);
+                    if (!Utils.IsNullOrEmpty(tun))
+                    {
+                        var tunContent = Utils.FromYaml<Dictionary<string, object>>(tun);
+                        ModifyContent(fileContent, "tun", tunContent["tun"]);
+                    }
                 }
 
                 File.WriteAllText(fileName, Utils.ToYaml(fileContent));

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProfileForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkEnableTun = new System.Windows.Forms.CheckBox();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.txtUserAgent = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,6 +63,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkEnableTun);
             this.groupBox1.Controls.Add(this.chkEnabled);
             this.groupBox1.Controls.Add(this.txtUserAgent);
             this.groupBox1.Controls.Add(this.label2);
@@ -79,6 +81,12 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // chkEnableTun
+            // 
+            resources.ApplyResources(this.chkEnableTun, "chkEnableTun");
+            this.chkEnableTun.Name = "chkEnableTun";
+            this.chkEnableTun.UseVisualStyleBackColor = true;
             // 
             // chkEnabled
             // 
@@ -217,5 +225,6 @@
         private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkEnabled;
+        private System.Windows.Forms.CheckBox chkEnableTun;
     }
 }

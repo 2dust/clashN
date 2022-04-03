@@ -48,7 +48,7 @@ namespace clashN.Handler
                 else
                 {
                     ShowMsg(true, msg);
-                    CoreRestart();
+                    CoreRestart(item);
                 }
             }
         }
@@ -57,10 +57,10 @@ namespace clashN.Handler
         /// <summary>
         /// Core重启
         /// </summary>
-        private void CoreRestart()
+        private void CoreRestart(ProfileItem item)
         {
             CoreStop();
-            CoreStart();
+            CoreStart(item);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace clashN.Handler
         /// <summary>
         /// Core启动
         /// </summary>
-        private void CoreStart()
+        private void CoreStart(ProfileItem item)
         {
             ShowMsg(false, string.Format(ResUI.StartService, DateTime.Now.ToString()));
 
@@ -182,6 +182,10 @@ namespace clashN.Handler
                         StandardOutputEncoding = Encoding.UTF8
                     }
                 };
+                if (item.enableTun)
+                {
+                    p.StartInfo.Verb = "runas";
+                }
                 p.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     if (!String.IsNullOrEmpty(e.Data))
