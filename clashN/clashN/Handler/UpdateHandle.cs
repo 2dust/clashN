@@ -323,23 +323,21 @@ namespace clashN.Handler
         {
             try
             {
-                var core = string.Empty;
-                var match = string.Empty;
-                if (type == ECoreType.clash)
+                var coreInfo = LazyConfig.Instance.GetCoreInfo(type);
+                string filePath = string.Empty;
+                foreach (string name in coreInfo.coreExes)
                 {
-                    core = "clash-windows-amd64.exe";
-                    match = "Clash";
+                    string vName = string.Format("{0}.exe", name);
+                    vName = Utils.GetPath(vName);
+                    if (File.Exists(vName))
+                    {
+                        filePath = vName;
+                        break;
+                    }
                 }
-                else if (type == ECoreType.clash_meta)
-                {
-                    core = "Clash.Meta-windows-amd64.exe";
-                    match = "Clash Meta";
-                }
-                string filePath = Utils.GetPath(core);
-                if (!File.Exists(filePath))
+                if (Utils.IsNullOrEmpty(filePath))
                 {
                     string msg = string.Format(ResUI.NotFoundCore, @"");
-                    //ShowMsg(true, msg);
                     return "";
                 }
 

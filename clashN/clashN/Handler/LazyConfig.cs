@@ -63,15 +63,17 @@ namespace clashN.Handler
                 coreType = ECoreType.clash,
                 coreExes = new List<string> { "clash-windows-amd64", "clash-windows-386", "clash" },
                 arguments = "-f config.yaml",
-                coreUrl = Global.clashCoreUrl
+                coreUrl = Global.clashCoreUrl,
+                match = "Clash"
             });
 
             coreInfos.Add(new CoreInfo
             {
                 coreType = ECoreType.clash_meta,
-                coreExes = new List<string> { "Clash.Meta-windows-amd64v1", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "clash" },
+                coreExes = new List<string> { "Clash.Meta-windows-amd64v1", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "Clash.Meta", "clash" },
                 arguments = "-f config.yaml",
-                coreUrl = Global.clashMetaCoreUrl
+                coreUrl = Global.clashMetaCoreUrl,
+                match = "Clash Meta"
             });
 
         }

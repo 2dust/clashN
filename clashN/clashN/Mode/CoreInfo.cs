@@ -13,5 +13,7 @@ namespace clashN.Mode
         public string arguments { get; set; }
 
         public string coreUrl { get; set; }
+
+        public string match { get; set; }
     }
 }
