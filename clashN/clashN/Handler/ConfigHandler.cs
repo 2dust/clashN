@@ -404,7 +404,6 @@ namespace clashN.Handler
                 profileItem.remarks = string.Format("import custom@{0}", DateTime.Now.ToShortDateString());
             }
 
-
             AddProfileCommon(ref config, profileItem);
 
             ToJsonFile(config);
@@ -542,6 +541,21 @@ namespace clashN.Handler
                 };
 
                 return EditProfile(ref config, item);
+            }
+
+            //maybe file
+            if (File.Exists(clipboardData))
+            {
+                ProfileItem item = new ProfileItem()
+                {
+                    groupId = groupId,
+                    url = "",
+                    coreType = ECoreType.clash,
+                    address = string.Empty,
+                    enabled = false,
+                    remarks = "clash_local_file"
+                };
+                return AddProfileViaPath(ref config, item, clipboardData);
             }
 
             //Is Clash configuration

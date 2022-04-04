@@ -837,11 +837,21 @@ namespace clashN
             string strData = string.Empty;
             try
             {
+
                 IDataObject data = Clipboard.GetDataObject();
                 if (data.GetDataPresent(DataFormats.UnicodeText))
                 {
                     strData = data.GetData(DataFormats.UnicodeText).ToString();
                 }
+                if (Utils.IsNullOrEmpty(strData))
+                {
+                    var file = Clipboard.GetFileDropList();
+                    if (file.Count > 0)
+                    {
+                        strData = file[0];
+                    }
+                }
+
                 return strData;
             }
             catch (Exception ex)
