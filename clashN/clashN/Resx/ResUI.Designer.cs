@@ -1010,5 +1010,12 @@ namespace clashN.Resx
                 return ResourceManager.GetString("NotRunAsAdmin", resourceCulture);
             }
         }
+        internal static string EnableTunModeFailed
+        {
+            get
+            {
+                return ResourceManager.GetString("EnableTunModeFailed", resourceCulture);
+            }
+        }
     }
 }

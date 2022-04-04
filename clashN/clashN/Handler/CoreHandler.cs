@@ -38,6 +38,12 @@ namespace clashN.Handler
                     return;
                 }
 
+                if (item.enableTun && !Utils.IsAdministrator())
+                {
+                    ShowMsg(false, ResUI.EnableTunModeFailed); 
+                    return;
+                }
+
                 SetCore(config, item);
                 string fileName = Utils.GetPath(coreConfigRes);
                 if (CoreConfigHandler.GenerateClientConfig(item, fileName, false, out string msg) != 0)

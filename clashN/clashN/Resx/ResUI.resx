@@ -376,4 +376,7 @@
   <data name="RunAsAdmin" xml:space="preserve">
     <value>Run As Admin</value>
   </data>
+  <data name="EnableTunModeFailed" xml:space="preserve">
+    <value>Failed to enable tun mode, please run as administrator</value>
+  </data>
 </root>
