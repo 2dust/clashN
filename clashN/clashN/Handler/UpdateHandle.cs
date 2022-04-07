@@ -38,8 +38,8 @@ namespace clashN.Handler
         private const string clashCoreUrl32 = Global.clashCoreUrl + "/download/{0}/clash-windows-386-{0}.zip";
         private const string clashCoreUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip";
         private readonly string clashMetaCoreLatestUrl = Global.clashMetaCoreUrl + "/latest";
-        private const string clashMetaCoreUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386.zip";
-        private const string clashMetaCoreUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1.zip";
+        private const string clashMetaCoreUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip";
+        private const string clashMetaCoreUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1-{0}.zip";
         private const string geoUrl = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/{0}.dat";
 
         public void CheckUpdateGuiN(Config config, Action<bool, string> update)
@@ -180,26 +180,31 @@ namespace clashN.Handler
                 return;
             }
 
-            foreach (var item in config.profileItems)
+            Task.Run(async () =>
             {
-                if (item.enabled == false)
+                foreach (var item in config.profileItems)
                 {
-                    continue;
-                }
-                string indexId = item.indexId.TrimEx();
-                string url = item.url.TrimEx();
-                string userAgent = item.userAgent.TrimEx();
-                string groupId = item.groupId.TrimEx();
-                string hashCode = $"{item.remarks}->";
-                if (Utils.IsNullOrEmpty(indexId) || Utils.IsNullOrEmpty(url))
-                {
-                    //_updateFunc(false, $"{hashCode}{ResUI.MsgNoValidSubscription}");
-                    continue;
-                }
+                    if (item.enabled == false)
+                    {
+                        continue;
+                    }
+                    string indexId = item.indexId.TrimEx();
+                    string url = item.url.TrimEx();
+                    string userAgent = item.userAgent.TrimEx();
+                    string groupId = item.groupId.TrimEx();
+                    string hashCode = $"{item.remarks}->";
+                    if (Utils.IsNullOrEmpty(indexId) || Utils.IsNullOrEmpty(url))
+                    {
+                        //_updateFunc(false, $"{hashCode}{ResUI.MsgNoValidSubscription}");
+                        continue;
+                    }
 
-                Task.Run(async () =>
-                {
                     _updateFunc(false, $"{hashCode}{ResUI.MsgStartGettingSubscriptions}");
+
+                    if (item.enableConvert)
+                    {
+                        url = String.Format(config.constItem.subConvertUrl, Utils.UrlEncode(url));
+                    }
                     var result = await (new DownloadHandle()).DownloadStringAsync(url, blProxy, userAgent);
 
                     _updateFunc(false, $"{hashCode}{ResUI.MsgGetSubscriptionSuccessfully}");
@@ -213,14 +218,16 @@ namespace clashN.Handler
                     int ret = ConfigHandler.AddBatchProfiles(ref config, result, indexId, groupId);
                     if (ret == 0)
                     {
+                        _updateFunc(false, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
                     }
                     else
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgFailedImportSubscription}");
                     }
-                    _updateFunc(true, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
-                });
-            }
+                    _updateFunc(true, $"-------------------------------------------------------");
+                }
+                _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
+            });
         }
 
 

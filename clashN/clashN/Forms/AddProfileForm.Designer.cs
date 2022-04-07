@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddProfileForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkEnableConvert = new System.Windows.Forms.CheckBox();
             this.chkEnableTun = new System.Windows.Forms.CheckBox();
             this.chkEnabled = new System.Windows.Forms.CheckBox();
             this.txtUserAgent = new System.Windows.Forms.TextBox();
@@ -63,6 +64,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkEnableConvert);
             this.groupBox1.Controls.Add(this.chkEnableTun);
             this.groupBox1.Controls.Add(this.chkEnabled);
             this.groupBox1.Controls.Add(this.txtUserAgent);
@@ -81,6 +83,12 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // chkEnableConvert
+            // 
+            resources.ApplyResources(this.chkEnableConvert, "chkEnableConvert");
+            this.chkEnableConvert.Name = "chkEnableConvert";
+            this.chkEnableConvert.UseVisualStyleBackColor = true;
             // 
             // chkEnableTun
             // 
@@ -226,5 +234,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkEnabled;
         private System.Windows.Forms.CheckBox chkEnableTun;
+        private System.Windows.Forms.CheckBox chkEnableConvert;
     }
 }

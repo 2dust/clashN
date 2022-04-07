@@ -18,7 +18,8 @@ namespace clashN
         /// </summary>
         public const string SpeedTestUrl = @"http://cachefly.cachefly.net/10mb.test";
         public const string SpeedPingTestUrl = @"https://www.google.com/generate_204";
-        
+        public const string SubConvertUrl = @"https://sub.xeton.dev/sub?target=clash&url={0}";
+
         /// <summary>
         /// PromotionUrl
         /// </summary>

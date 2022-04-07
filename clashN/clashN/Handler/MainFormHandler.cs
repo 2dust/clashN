@@ -211,7 +211,7 @@ namespace clashN.Handler
                   return;
               }
               var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
-              urlBase += @"/{0}/delay?timeout=10000&url=" + Global.SpeedPingTestUrl;
+              urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
 
               foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
               {

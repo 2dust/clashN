@@ -107,7 +107,7 @@ namespace clashN.Handler
                     {
                         WebProxy webProxy = new WebProxy(Global.Loopback, httpPort);
                         int responseTime = -1;
-                        string status = GetRealPingTime(Global.SpeedPingTestUrl, webProxy, out responseTime);
+                        string status = GetRealPingTime(LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl, webProxy, out responseTime);
                         bool noError = Utils.IsNullOrEmpty(status);
                         return noError ? responseTime : -1;
                     }

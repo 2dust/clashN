@@ -176,6 +176,8 @@ namespace clashN.Mode
         } = string.Empty;
 
         public bool enableTun { get; set; }
+
+        public bool enableConvert { get; set; }
     }
 
     [Serializable]
@@ -197,16 +199,14 @@ namespace clashN.Mode
     [Serializable]
     public class ConstItem
     {
-        /// <summary>
-        /// 自定义配置文件下载测速url
-        /// </summary>
+        public string subConvertUrl
+        {
+            get; set;
+        }
         public string speedTestUrl
         {
             get; set;
         }
-        /// <summary>
-        /// 自定义“配置文件真连接延迟”测试url
-        /// </summary>
         public string speedPingTestUrl
         {
             get; set;

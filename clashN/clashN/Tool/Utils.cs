@@ -373,7 +373,7 @@ namespace clashN
 
         public static string UrlEncode(string url)
         {
-            return HttpUtility.UrlEncode(url);
+            return Uri.EscapeDataString(url);
         }
         public static string UrlDecode(string url)
         {
@@ -735,16 +735,12 @@ namespace clashN
         {
             if (enableSecurityProtocolTls13)
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                                           | SecurityProtocolType.Tls11
-                                           | SecurityProtocolType.Tls12
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
                                            | SecurityProtocolType.Tls13;
             }
             else
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
-                                           | SecurityProtocolType.Tls11
-                                           | SecurityProtocolType.Tls12;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             }
             ServicePointManager.DefaultConnectionLimit = 256;
         }

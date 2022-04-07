@@ -175,4 +175,7 @@
   <data name="chkEnableTun.Text" xml:space="preserve">
     <value>启用 tun 模式 (以管理员身份运行)</value>
   </data>
+  <data name="chkEnableConvert.Text" xml:space="preserve">
+    <value>启用订阅转换</value>
+  </data>
 </root>

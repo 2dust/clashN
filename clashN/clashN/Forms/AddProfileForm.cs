@@ -34,7 +34,6 @@ namespace clashN.Forms
                 profileItem = new ProfileItem();
                 profileItem.groupId = groupId;
                 profileItem.enabled = true;
-                ClearProfile();
             }
         }
 
@@ -49,6 +48,7 @@ namespace clashN.Forms
             chkEnabled.Checked = profileItem.enabled;
             txtUserAgent.Text = profileItem.userAgent;
             chkEnableTun.Checked = profileItem.enableTun;
+            chkEnableConvert.Checked = profileItem.enableConvert;
 
             if (profileItem.coreType == null)
             {
@@ -58,16 +58,6 @@ namespace clashN.Forms
             {
                 cmbCoreType.Text = profileItem.coreType.ToString();
             }
-        }
-
-
-        /// <summary>
-        /// 清除设置
-        /// </summary>
-        private void ClearProfile()
-        {
-            txtRemarks.Text = "";
-            chkEnabled.Enabled = true;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -88,6 +78,7 @@ namespace clashN.Forms
             profileItem.enabled = chkEnabled.Checked;
             profileItem.userAgent = txtUserAgent.Text.TrimEx();
             profileItem.enableTun = chkEnableTun.Checked;
+            profileItem.enableConvert = chkEnableConvert.Checked;
 
             if (profileItem.enableTun)
             {
