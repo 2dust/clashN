@@ -243,18 +243,14 @@ namespace clashN.Forms
         /// </summary>
         private void RefreshProfilesView()
         {
-            int index = lvProfiles.SelectedIndices.Count > 0 ? lvProfiles.SelectedIndices[0] : -1;
+            int index = GetLvSelectedIndex(false);
 
-            lvProfiles.BeginUpdate();
+            //lvProfiles.BeginUpdate();
             lvProfiles.Items.Clear();
 
             for (int k = 0; k < lstProfile.Count; k++)
             {
                 string def = string.Empty;
-                string totalUp = string.Empty,
-                        totalDown = string.Empty,
-                        todayUp = string.Empty,
-                        todayDown = string.Empty;
 
                 ProfileItem item = lstProfile[k];
                 if (config.IsActiveNode(item))
@@ -262,9 +258,16 @@ namespace clashN.Forms
                     def = "√";
                 }
 
-                bool stats = statistics != null && statistics.Enable;
-                if (stats)
+                ListViewItem lvItem = new ListViewItem(def);
+                Utils.AddSubItem(lvItem, EProfileColName.remarks.ToString(), item.remarks);
+                Utils.AddSubItem(lvItem, EProfileColName.url.ToString(), item.url);
+                Utils.AddSubItem(lvItem, EProfileColName.address.ToString(), item.address.IsNullOrWhiteSpace() ? "" : "√");
+                if (statistics != null && statistics.Enable)
                 {
+                    string totalUp = string.Empty,
+                          totalDown = string.Empty,
+                          todayUp = string.Empty,
+                          todayDown = string.Empty;
                     ProfileStatItem sItem = statistics.Statistic.Find(item_ => item_.indexId == item.indexId);
                     if (sItem != null)
                     {
@@ -273,13 +276,6 @@ namespace clashN.Forms
                         todayUp = Utils.HumanFy(sItem.todayUp);
                         todayDown = Utils.HumanFy(sItem.todayDown);
                     }
-                }
-                ListViewItem lvItem = new ListViewItem(def);
-                Utils.AddSubItem(lvItem, EProfileColName.remarks.ToString(), item.remarks);
-                Utils.AddSubItem(lvItem, EProfileColName.url.ToString(), item.url);
-                Utils.AddSubItem(lvItem, EProfileColName.address.ToString(), item.address.IsNullOrWhiteSpace() ? "" : "√");
-                if (stats)
-                {
                     Utils.AddSubItem(lvItem, EProfileColName.todayDown.ToString(), todayDown);
                     Utils.AddSubItem(lvItem, EProfileColName.todayUp.ToString(), todayUp);
                     Utils.AddSubItem(lvItem, EProfileColName.totalDown.ToString(), totalDown);
@@ -299,7 +295,7 @@ namespace clashN.Forms
 
                 if (lvItem != null) lvProfiles.Items.Add(lvItem);
             }
-            lvProfiles.EndUpdate();
+            //lvProfiles.EndUpdate();
 
             if (index >= 0 && index < lvProfiles.Items.Count && lvProfiles.Items.Count > 0)
             {
@@ -381,22 +377,6 @@ namespace clashN.Forms
 
         private void lvProfiles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = -1;
-            try
-            {
-                if (lvProfiles.SelectedIndices.Count > 0)
-                {
-                    index = lvProfiles.SelectedIndices[0];
-                }
-            }
-            catch
-            {
-            }
-            if (index < 0)
-            {
-                return;
-            }
-            //qrCodeControl.showQRCode(index, config);
         }
 
         private void DisplayToolStatus()
@@ -499,17 +479,7 @@ namespace clashN.Forms
 
         private void lvProfiles_Click(object sender, EventArgs e)
         {
-            int index = -1;
-            try
-            {
-                if (lvProfiles.SelectedIndices.Count > 0)
-                {
-                    index = lvProfiles.SelectedIndices[0];
-                }
-            }
-            catch
-            {
-            }
+            int index = GetLvSelectedIndex(false);
             if (index < 0)
             {
                 return;
@@ -655,7 +625,7 @@ namespace clashN.Forms
             OptionSettingForm fm = new OptionSettingForm();
             if (fm.ShowDialog() == DialogResult.OK)
             {
-                RefreshProfiles();
+                //RefreshProfiles();
                 _ = LoadCore();
             }
         }
@@ -666,7 +636,7 @@ namespace clashN.Forms
             if (fm.ShowDialog() == DialogResult.OK)
             {
                 RefreshRoutingsMenu();
-                RefreshProfiles();
+                //RefreshProfiles();
                 _ = LoadCore();
             }
 
@@ -709,7 +679,7 @@ namespace clashN.Forms
         /// 取得ListView选中的行
         /// </summary>
         /// <returns></returns>
-        private int GetLvSelectedIndex()
+        private int GetLvSelectedIndex(bool show = true)
         {
             int index = -1;
             lstSelecteds.Clear();
@@ -717,7 +687,10 @@ namespace clashN.Forms
             {
                 if (lvProfiles.SelectedIndices.Count <= 0)
                 {
-                    UI.Show(ResUI.PleaseSelectProfile);
+                    if (show)
+                    {
+                        UI.Show(ResUI.PleaseSelectProfile);
+                    }
                     return index;
                 }
 
@@ -927,11 +900,13 @@ namespace clashN.Forms
             this.ShowInTaskbar = true;
             //this.notifyIcon1.Visible = false;
             this.txtMsgBox.ScrollToCaret();
-            //if (config.index >= 0 && config.index < lvProfiles.Items.Count)
-            //{
-            //    lvProfiles.Items[config.index].Selected = true;
-            //    lvProfiles.EnsureVisible(config.index); // workaround
-            //}
+
+            int index = GetLvSelectedIndex(false);
+            if (index >= 0 && index < lvProfiles.Items.Count && lvProfiles.Items.Count > 0)
+            {
+                lvProfiles.Items[index].Selected = true;
+                lvProfiles.EnsureVisible(index); // workaround
+            }
 
             SetVisibleCore(true);
         }
@@ -1199,7 +1174,7 @@ namespace clashN.Forms
                 AppendText(false, msg);
                 if (success)
                 {
-                    RefreshProfiles();
+                    //RefreshProfiles();
                 }
             };
 

@@ -40,7 +40,7 @@ namespace clashN.Handler
 
                 if (item.enableTun && !Utils.IsAdministrator())
                 {
-                    ShowMsg(false, ResUI.EnableTunModeFailed); 
+                    ShowMsg(false, ResUI.EnableTunModeFailed);
                     return;
                 }
 
@@ -81,9 +81,14 @@ namespace clashN.Handler
                     KillProcess(_process);
                     _process.Dispose();
                     _process = null;
-                }
+                }                 
                 else
                 {
+                    if (coreInfo == null || coreInfo.coreExes == null)
+                    {
+                        return;
+                    }
+
                     foreach (string vName in coreInfo.coreExes)
                     {
                         Process[] existing = Process.GetProcessesByName(vName);

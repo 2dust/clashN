@@ -62,7 +62,7 @@ namespace clashN.Handler
                 }
                 if (!File.Exists(addressFileName))
                 {
-                    msg = ResUI.FailedGenDefaultConfiguration;
+                    msg = ResUI.FailedReadConfiguration + "1";
                     return -1;
                 }
                 File.Copy(addressFileName, fileName);
@@ -70,7 +70,7 @@ namespace clashN.Handler
                 //check again
                 if (!File.Exists(fileName))
                 {
-                    msg = ResUI.FailedGenDefaultConfiguration;
+                    msg = ResUI.FailedReadConfiguration + "2";
                     return -1;
                 }
 
@@ -78,7 +78,7 @@ namespace clashN.Handler
                 var fileContent = Utils.FromYaml<Dictionary<string, object>>(File.ReadAllText(fileName));
                 if (fileContent == null)
                 {
-                    msg = ResUI.FailedGenDefaultConfiguration;
+                    msg = ResUI.FailedConversionConfiguration;
                     return -1;
                 }
                 //port
