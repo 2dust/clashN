@@ -29,6 +29,7 @@ namespace clashN
             {
                 Logging.Setup();
                 Utils.SaveLog($"clashN start up | {Utils.GetVersion()} | {Utils.GetExePath()}");
+                Logging.ClearLogs();
 
                 string lang = Utils.RegReadValue(Global.MyRegPath, Global.MyRegKeyLanguage, "zh-Hans");
                 Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
