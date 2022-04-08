@@ -7,6 +7,8 @@ namespace clashN.Mode
         remarks,
         url,
         address,
+        enableTun,
+        enableUpdateSub,
         testResult,
 
         todayDown,

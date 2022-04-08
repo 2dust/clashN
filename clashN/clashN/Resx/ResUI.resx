@@ -250,7 +250,7 @@
     <value>Start updating {0}...</value>
   </data>
   <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
-    <value>Failed to get subscription content</value>
+    <value>Invalid subscription content</value>
   </data>
   <data name="MsgUnpacking" xml:space="preserve">
     <value>is unpacking...</value>
@@ -378,5 +378,11 @@
   </data>
   <data name="EnableTunModeFailed" xml:space="preserve">
     <value>Failed to enable tun mode, please run as administrator</value>
+  </data>
+  <data name="LvEnableTun" xml:space="preserve">
+    <value>Enable tun</value>
+  </data>
+  <data name="LvEnableUpdateSub" xml:space="preserve">
+    <value>Enable update Sub (Convert)</value>
   </data>
 </root>

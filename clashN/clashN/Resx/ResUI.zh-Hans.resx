@@ -250,7 +250,7 @@
     <value>开始更新 {0}...</value>
   </data>
   <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
-    <value>订阅内容获取失败</value>
+    <value>无效的订阅内容</value>
   </data>
   <data name="MsgUnpacking" xml:space="preserve">
     <value>正在解压......</value>
@@ -378,5 +378,11 @@
   </data>
   <data name="EnableTunModeFailed" xml:space="preserve">
     <value>启用 tun 模式失败, 请以管理员身份运行</value>
+  </data>
+  <data name="LvEnableTun" xml:space="preserve">
+    <value>tun 模式</value>
+  </data>
+  <data name="LvEnableUpdateSub" xml:space="preserve">
+    <value>更新订阅(转换)</value>
   </data>
 </root>

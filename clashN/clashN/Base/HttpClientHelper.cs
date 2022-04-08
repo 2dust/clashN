@@ -71,8 +71,9 @@ namespace clashN.Base
                 HttpResponseMessage response = await client.GetAsync(url, cts.Token);
                 return await response.Content.ReadAsStringAsync();
             }
-            catch
+            catch(Exception ex)
             {
+                Utils.SaveLog("GetAsync", ex);
             }
             return null;
         }

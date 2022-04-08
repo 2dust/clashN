@@ -72,7 +72,6 @@ namespace clashN.Forms
             _ = LoadCore();
 
             HideForm();
-            ShowForm();
 
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
@@ -215,6 +214,8 @@ namespace clashN.Forms
             lvProfiles.Columns.Add(ResUI.LvAlias, 150);
             lvProfiles.Columns.Add(ResUI.LvUrl, 150);
             lvProfiles.Columns.Add(ResUI.LvAddress, 60, HorizontalAlignment.Center);
+            lvProfiles.Columns.Add(ResUI.LvEnableTun, 60, HorizontalAlignment.Center);
+            lvProfiles.Columns.Add(ResUI.LvEnableUpdateSub, 60, HorizontalAlignment.Center);
 
             if (statistics != null && statistics.Enable)
             {
@@ -255,13 +256,16 @@ namespace clashN.Forms
                 ProfileItem item = lstProfile[k];
                 if (config.IsActiveNode(item))
                 {
-                    def = "√";
+                    def = Global.CheckMark;
                 }
 
                 ListViewItem lvItem = new ListViewItem(def);
                 Utils.AddSubItem(lvItem, EProfileColName.remarks.ToString(), item.remarks);
                 Utils.AddSubItem(lvItem, EProfileColName.url.ToString(), item.url);
-                Utils.AddSubItem(lvItem, EProfileColName.address.ToString(), item.address.IsNullOrWhiteSpace() ? "" : "√");
+                Utils.AddSubItem(lvItem, EProfileColName.address.ToString(), item.address.IsNullOrWhiteSpace() ? "" : Global.CheckMark);
+                Utils.AddSubItem(lvItem, EProfileColName.enableTun.ToString(), item.enableTun ? Global.CheckMark : "");
+                Utils.AddSubItem(lvItem, EProfileColName.enableUpdateSub.ToString(), (item.enabled ? Global.CheckMark : "") + (item.enableConvert ? $"({Global.CheckMark})" : ""));
+
                 if (statistics != null && statistics.Enable)
                 {
                     string totalUp = string.Empty,

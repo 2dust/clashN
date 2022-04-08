@@ -119,13 +119,13 @@
     <value>解除Windows10 UWP应用回环代理限制</value>
   </data>
   <data name="txtautoUpdateInterval.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 124</value>
+    <value>276, 124</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 17</value>
+    <value>232, 17</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>自动更新Geo文件的间隔(单位小时)</value>
+    <value>自动更新订阅和Geo文件的间隔(单位小时)</value>
   </data>
   <data name="chkIgnoreGeoUpdateCore.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 21</value>

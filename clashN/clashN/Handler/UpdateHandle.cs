@@ -212,19 +212,21 @@ namespace clashN.Handler
                     if (Utils.IsNullOrEmpty(result))
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgSubscriptionDecodingFailed}");
-                        return;
-                    }
-
-                    int ret = ConfigHandler.AddBatchProfiles(ref config, result, indexId, groupId);
-                    if (ret == 0)
-                    {
-                        _updateFunc(false, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
                     }
                     else
                     {
-                        _updateFunc(false, $"{hashCode}{ResUI.MsgFailedImportSubscription}");
+                        int ret = ConfigHandler.AddBatchProfiles(ref config, result, indexId, groupId);
+                        if (ret == 0)
+                        {
+                            _updateFunc(false, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
+                        }
+                        else
+                        {
+                            _updateFunc(false, $"{hashCode}{ResUI.MsgFailedImportSubscription}");
+                        }
                     }
-                    _updateFunc(true, $"-------------------------------------------------------");
+                    _updateFunc(false, $"-------------------------------------------------------");
+
                 }
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
             });

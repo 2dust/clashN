@@ -448,7 +448,7 @@ namespace clashN.Handler
             switch (name)
             {
                 case EProfileColName.remarks:
-                case EProfileColName.address:
+                case EProfileColName.url:
                 case EProfileColName.testResult:
                     propertyName = name.ToString();
                     break;

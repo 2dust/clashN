@@ -164,7 +164,7 @@ namespace clashN.Forms
                     testResult = proxy2.history[proxy2.history.Count - 1].delay.ToString() + "ms";
                 }
 
-                ListViewItem lvItem = new ListViewItem(isActive ? "√" : "");
+                ListViewItem lvItem = new ListViewItem(isActive ? Global.CheckMark : "");
                 Utils.AddSubItem(lvItem, "Name", item);
                 Utils.AddSubItem(lvItem, "Type", proxy2.type);
                 Utils.AddSubItem(lvItem, "testResult", testResult);

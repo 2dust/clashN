@@ -123,6 +123,15 @@ namespace clashN.Handler
                 }
                 Utils.SaveLog("UpdateTaskRun");
 
+                updateHandle.UpdateSubscriptionProcess(config, true, (bool success, string msg) =>
+                {
+                    update(false, msg);
+                    if (success)
+                        Utils.SaveLog("subscription" + msg);
+                });
+
+                Thread.Sleep(60000);
+
                 updateHandle.UpdateGeoFile("geosite", config, (bool success, string msg) =>
                 {
                     update(false, msg);

@@ -1017,5 +1017,19 @@ namespace clashN.Resx
                 return ResourceManager.GetString("EnableTunModeFailed", resourceCulture);
             }
         }
+        internal static string LvEnableTun
+        {
+            get
+            {
+                return ResourceManager.GetString("LvEnableTun", resourceCulture);
+            }
+        }
+        internal static string LvEnableUpdateSub
+        {
+            get
+            {
+                return ResourceManager.GetString("LvEnableUpdateSub", resourceCulture);
+            }
+        }
     }
 }
