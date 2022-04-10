@@ -865,7 +865,15 @@ namespace clashN
         {
             try
             {
-                Clipboard.SetText(strData);
+                if (IsNullOrEmpty(strData))
+                {
+
+                    Clipboard.Clear();
+                }
+                else
+                {
+                    Clipboard.SetText(strData);
+                }
             }
             catch
             {

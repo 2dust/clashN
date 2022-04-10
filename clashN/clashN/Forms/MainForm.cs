@@ -51,7 +51,7 @@ namespace clashN.Forms
             {
                 ShowForm();
 
-                AddProfilesViaClipboard();
+                AddProfilesViaClipboard(true);
             }));
         }
 
@@ -91,8 +91,8 @@ namespace clashN.Forms
 
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
-            
-            AddProfilesViaClipboard();
+
+            AddProfilesViaClipboard(true);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -544,7 +544,7 @@ namespace clashN.Forms
                         menuExport2ShareUrl_Click(null, null);
                         break;
                     case Keys.V:
-                        AddProfilesViaClipboard();
+                        AddProfilesViaClipboard(false);
                         break;
                     case Keys.S:
                         menuScanScreen_Click(null, null);
@@ -736,15 +736,19 @@ namespace clashN.Forms
 
         private void menuAddProfiles_Click(object sender, EventArgs e)
         {
-            AddProfilesViaClipboard();
+            AddProfilesViaClipboard(false);
         }
 
-        private void AddProfilesViaClipboard()
+        private void AddProfilesViaClipboard(bool bClear)
         {
             string clipboardData = Utils.GetClipboardData();
             int ret = ConfigHandler.AddBatchProfiles(ref config, clipboardData, "", groupId);
             if (ret == 0)
             {
+                if (bClear)
+                {
+                    Utils.SetClipboardData(String.Empty);
+                }
                 RefreshProfiles();
                 UI.Show(ResUI.SuccessfullyImportedProfileViaClipboard);
             }
