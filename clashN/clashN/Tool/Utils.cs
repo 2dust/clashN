@@ -538,7 +538,7 @@ namespace clashN
             try
             {
                 string exePath = GetExePath();
-                RegWriteValue(autoRunRegPath, autoRunName, run ? $"\"{exePath}\"" : "");
+                RegWriteValue(autoRunRegPath, autoRunName, run ? $"\"{exePath}\"" : null);
             }
             catch (Exception ex)
             {
@@ -629,7 +629,7 @@ namespace clashN
             try
             {
                 regKey = Registry.CurrentUser.CreateSubKey(path);
-                if (IsNullOrEmpty(value.ToString()))
+                if (value == null)
                 {
                     regKey?.DeleteValue(name, false);
                 }

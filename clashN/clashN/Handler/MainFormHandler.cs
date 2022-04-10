@@ -238,5 +238,17 @@ namespace clashN.Handler
               }
           });
         }
+
+        public void InitRegister(Config config)
+        {
+            Task.Run(() =>
+            {
+                //URL Schemes
+                Utils.RegWriteValue(Global.MyRegPathClasses, "", "URL:clash");
+                Utils.RegWriteValue(Global.MyRegPathClasses, "URL Protocol", "");
+                Utils.RegWriteValue($"{Global.MyRegPathClasses}\\shell\\open\\command", "", $"\"{Utils.GetExePath()}\" \"%1\"");
+
+            });
+        }
     }
 }

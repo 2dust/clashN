@@ -32,11 +32,7 @@ namespace clashN.Forms
         public MainForm()
         {
             InitializeComponent();
-            this.ShowInTaskbar = false;
-            this.WindowState = FormWindowState.Minimized;
-            HideForm();
-            this.Text = $"{Utils.GetVersion()} - {(Utils.IsAdministrator() ? ResUI.RunAsAdmin : ResUI.NotRunAsAdmin)}";
-            Global.processJob = new Job();
+            ThreadPool.RegisterWaitForSingleObject(Program.ProgramStarted, OnProgramStarted, null, -1, false);
 
             Application.ApplicationExit += (sender, args) =>
             {
@@ -44,8 +40,26 @@ namespace clashN.Forms
             };
         }
 
+        /// <summary>
+        /// Show the form when a notification from the second process is received
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="timeout"></param>
+        void OnProgramStarted(object state, bool timeout)
+        {
+            this.Invoke(new Action(() =>
+            {
+                ShowForm();
+
+                AddProfilesViaClipboard();
+            }));
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
+            HideForm();
+            this.Text = $"{Utils.GetVersion()} - {(Utils.IsAdministrator() ? ResUI.RunAsAdmin : ResUI.NotRunAsAdmin)}";
+
             if (ConfigHandler.LoadConfig(ref config) != 0)
             {
                 UI.ShowWarning($"Loading GUI configuration file is abnormal,please restart the application{Environment.NewLine}加载GUI配置文件异常,请重启应用");
@@ -54,6 +68,8 @@ namespace clashN.Forms
             }
 
             MainFormHandler.Instance.BackupGuiNConfig(config, true);
+            MainFormHandler.Instance.InitRegister(config);
+
             coreHandler = new CoreHandler(UpdateCoreHandler);
 
             if (config.enableStatistics)
@@ -75,6 +91,8 @@ namespace clashN.Forms
 
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
+            
+            AddProfilesViaClipboard();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -215,7 +233,7 @@ namespace clashN.Forms
             lvProfiles.Columns.Add(ResUI.LvUrl, 150);
             lvProfiles.Columns.Add(ResUI.LvAddress, 60, HorizontalAlignment.Center);
             lvProfiles.Columns.Add(ResUI.LvEnableTun, 60, HorizontalAlignment.Center);
-            lvProfiles.Columns.Add(ResUI.LvEnableUpdateSub, 60, HorizontalAlignment.Center);
+            lvProfiles.Columns.Add(ResUI.LvEnableUpdateSub, 100, HorizontalAlignment.Center);
 
             if (statistics != null && statistics.Enable)
             {
@@ -526,7 +544,7 @@ namespace clashN.Forms
                         menuExport2ShareUrl_Click(null, null);
                         break;
                     case Keys.V:
-                        menuAddProfiles_Click(null, null);
+                        AddProfilesViaClipboard();
                         break;
                     case Keys.S:
                         menuScanScreen_Click(null, null);
@@ -718,6 +736,11 @@ namespace clashN.Forms
 
         private void menuAddProfiles_Click(object sender, EventArgs e)
         {
+            AddProfilesViaClipboard();
+        }
+
+        private void AddProfilesViaClipboard()
+        {
             string clipboardData = Utils.GetClipboardData();
             int ret = ConfigHandler.AddBatchProfiles(ref config, clipboardData, "", groupId);
             if (ret == 0)
@@ -726,7 +749,6 @@ namespace clashN.Forms
                 UI.Show(ResUI.SuccessfullyImportedProfileViaClipboard);
             }
         }
-
         private void menuScanScreen_Click(object sender, EventArgs e)
         {
             _ = ScanScreenTaskAsync();
@@ -917,7 +939,7 @@ namespace clashN.Forms
 
         private void HideForm()
         {
-            //this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Minimized;
             this.Hide();
             //this.notifyMain.Icon = this.Icon;
             this.notifyMain.Visible = true;
@@ -1178,7 +1200,7 @@ namespace clashN.Forms
                 AppendText(false, msg);
                 if (success)
                 {
-                    //RefreshProfiles();
+                    RefreshProfiles();
                 }
             };
 

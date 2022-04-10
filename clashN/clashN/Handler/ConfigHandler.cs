@@ -8,6 +8,7 @@ using System.Linq;
 using clashN.Tool;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace clashN.Handler
 {
@@ -545,6 +546,30 @@ namespace clashN.Handler
                 };
 
                 return EditProfile(ref config, item);
+            }
+
+            //maybe clashProtocol
+            if (Utils.IsNullOrEmpty(indexId) && (clipboardData.StartsWith(Global.clashProtocol)))
+            {
+                Uri url = new Uri(clipboardData);
+                if (url.Host == "install-config")
+                {
+                    var query = HttpUtility.ParseQueryString(url.Query);
+                    if (!Utils.IsNullOrEmpty(query["url"] ?? ""))
+                    {
+                        ProfileItem item = new ProfileItem()
+                        {
+                            groupId = groupId,
+                            url = query["url"],
+                            coreType = ECoreType.clash,
+                            address = string.Empty,
+                            enabled = true,
+                            remarks = "clash_subscription"
+                        };
+
+                        return EditProfile(ref config, item);
+                    }
+                }
             }
 
             //maybe file

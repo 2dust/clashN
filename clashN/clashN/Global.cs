@@ -48,6 +48,8 @@ namespace clashN
         /// </summary>
         public const string httpsProtocol = "https://";
 
+        public const string clashProtocol = "clash://";                
+
         /// <summary>
         /// MyRegPath
         /// </summary>
@@ -64,6 +66,11 @@ namespace clashN
         public const string MyRegKeyFont = "CurrentFont";
 
         /// <summary>
+        /// URL Schemes
+        /// </summary>
+        public const string MyRegPathClasses = "SOFTWARE\\Classes\\clash";
+
+        /// <summary>
         /// Icon
         /// </summary>
         public const string CustomIconName = "clashN.ico";
@@ -77,6 +84,7 @@ namespace clashN
         public static readonly List<string> coreTypes = new List<string> { "clash", "clash_meta" };
 
         public const string CheckMark = "√";
+
 
         #endregion
 
