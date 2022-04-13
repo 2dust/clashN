@@ -81,7 +81,7 @@ namespace clashN.Handler
                     KillProcess(_process);
                     _process.Dispose();
                     _process = null;
-                }                 
+                }
                 else
                 {
                     if (coreInfo == null || coreInfo.coreExes == null)
@@ -179,12 +179,19 @@ namespace clashN.Handler
                 string fileName = FindCoreExe(coreInfo.coreExes);
                 if (fileName == "") return;
 
+                //Portable Mode
+                var arguments = coreInfo.arguments;
+                if (Directory.Exists(Utils.GetPath("data")))
+                {
+                    arguments += $" -d {Utils.GetPath("")}";
+                }
+
                 Process p = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = fileName,
-                        Arguments = coreInfo.arguments,
+                        Arguments = arguments,
                         WorkingDirectory = Utils.StartupPath(),
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
