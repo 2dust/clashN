@@ -210,33 +210,41 @@ namespace clashN.Handler
             update(clashProxies);
         }
 
-        public void ClashProxiesDelayTest()
+        public void ClashProxiesDelayTest(Action<string> update)
         {
             Task.Run(() =>
-          {
-              var proxies = LazyConfig.Instance.GetProxies();
-              if (proxies == null)
-              {
-                  return;
-              }
-              var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
-              urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
+            {
+                var proxies = LazyConfig.Instance.GetProxies();
+                if (proxies == null)
+                {
+                    return;
+                }
+                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
+                urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
 
-              foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
-              {
-                  if (kv.Value.type == "Selector"
-                      || kv.Value.type == "URLTest"
-                      || kv.Value.type == "Direct"
-                      || kv.Value.type == "Reject"
-                  )
-                  {
-                      continue;
-                  }
-                  var name = kv.Value.name;
-                  var url = string.Format(urlBase, name);
-                  _ = HttpClientHelper.GetInstance().GetAsync(url);
-              }
-          });
+                List<Task> tasks = new List<Task>();
+                foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
+                {
+                    if (kv.Value.type == "Selector"
+                        || kv.Value.type == "URLTest"
+                        || kv.Value.type == "Direct"
+                        || kv.Value.type == "Reject"
+                    )
+                    {
+                        continue;
+                    }
+                    var name = kv.Value.name;
+                    var url = string.Format(urlBase, name);
+                    tasks.Add(Task.Run(() =>
+                    {
+                        var tt = HttpClientHelper.GetInstance().GetAsync(url);
+                    }));
+                }
+                Task.WaitAll(tasks.ToArray());
+
+                Thread.Sleep(5000); 
+                update("");
+            });
         }
 
         public void InitRegister(Config config)

@@ -82,17 +82,15 @@ namespace clashN.Forms
         {
             InitProfilesView();
             RefreshProfiles();
-            RefreshRoutingsMenu();
             RestoreUI();
-
-            _ = LoadCore();
-
             HideForm();
 
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
 
             AddProfilesViaClipboard(true);
+
+            _ = LoadCore();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -657,9 +655,6 @@ namespace clashN.Forms
             var fm = new GlobalHotkeySettingForm();
             if (fm.ShowDialog() == DialogResult.OK)
             {
-                RefreshRoutingsMenu();
-                //RefreshProfiles();
-                _ = LoadCore();
             }
 
         }
@@ -992,13 +987,13 @@ namespace clashN.Forms
             }
         }
 
-        private void UpdateTaskHandler(bool success, string msg)
+        private async void UpdateTaskHandler(bool success, string msg)
         {
             AppendText(false, msg);
             if (success)
             {
                 Global.reloadCore = true;
-                _ = LoadCore();
+                await LoadCore();
             }
         }
         #endregion
@@ -1099,7 +1094,10 @@ namespace clashN.Forms
                     menuExit_Click(null, null);
                 }
             };
-            (new UpdateHandle()).CheckUpdateGuiN(config, _updateUI);
+            Task.Run(() =>
+            {
+                (new UpdateHandle()).CheckUpdateGuiN(config, _updateUI);
+            });
         }
 
         private void tsbCheckUpdateCore_Click(object sender, EventArgs e)
@@ -1132,34 +1130,23 @@ namespace clashN.Forms
                     AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfully);
                 }
             };
-            (new UpdateHandle()).CheckUpdateCore(type, config, _updateUI);
+            Task.Run(() =>
+            {
+                (new UpdateHandle()).CheckUpdateCore(type, config, _updateUI);
+            });
+
         }
 
-        private void tsbCheckUpdateGeoSite_Click(object sender, EventArgs e)
+        private void tsbCheckUpdateGeo_Click(object sender, EventArgs e)
         {
-            (new UpdateHandle()).UpdateGeoFile("geosite", config, (bool success, string msg) =>
+            Task.Run(() =>
             {
-                AppendText(false, msg);
-                if (success)
-                {
-                    Global.reloadCore = true;
-                    _ = LoadCore();
-                }
+                var updateHandle = new UpdateHandle();
+                updateHandle.UpdateGeoFile("geosite", config, UpdateTaskHandler);
+                updateHandle.UpdateGeoFile("geoip", config, UpdateTaskHandler);
             });
         }
 
-        private void tsbCheckUpdateGeoIP_Click(object sender, EventArgs e)
-        {
-            (new UpdateHandle()).UpdateGeoFile("geoip", config, (bool success, string msg) =>
-            {
-                AppendText(false, msg);
-                if (success)
-                {
-                    Global.reloadCore = true;
-                    _ = LoadCore();
-                }
-            });
-        }
         #endregion
 
         #region Help
@@ -1237,22 +1224,6 @@ namespace clashN.Forms
 
         #endregion
 
-
-        #region RoutingsMenu
-
-        /// <summary>
-        ///  
-        /// </summary>
-        private void RefreshRoutingsMenu()
-        {
-            menuRoutings.DropDownItems.Clear();
-
-            List<ToolStripMenuItem> lst = new List<ToolStripMenuItem>();
-
-            menuRoutings.DropDownItems.AddRange(lst.ToArray());
-        }
-
-        #endregion
 
         #region MsgBoxMenu
         private void menuMsgBoxSelectAll_Click(object sender, EventArgs e)

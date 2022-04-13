@@ -52,8 +52,8 @@
             this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClearProfileStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.qrCodeControl = new clashN.Forms.QRCodeControl();
             this.tsbProfile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.qrCodeControl = new clashN.Forms.QRCodeControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbMsgTitle = new System.Windows.Forms.GroupBox();
@@ -106,8 +106,7 @@
             this.tsbCheckUpdateCore = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCheckUpdateMetaCore = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbCheckUpdateGeoSite = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbCheckUpdateGeoIP = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbCheckUpdateGeo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsbAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -305,17 +304,17 @@
             resources.ApplyResources(this.menuClearProfileStatistics, "menuClearProfileStatistics");
             this.menuClearProfileStatistics.Click += new System.EventHandler(this.menuClearStatistic_Click);
             // 
-            // qrCodeControl
-            // 
-            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
-            this.qrCodeControl.Name = "qrCodeControl";
-            // 
             // tsbProfile
             // 
             this.tsbProfile.DropDown = this.cmsLv;
             this.tsbProfile.Image = global::clashN.Properties.Resources.server;
             resources.ApplyResources(this.tsbProfile, "tsbProfile");
             this.tsbProfile.Name = "tsbProfile";
+            // 
+            // qrCodeControl
+            // 
+            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
+            this.qrCodeControl.Name = "qrCodeControl";
             // 
             // splitContainer1
             // 
@@ -668,8 +667,7 @@
             this.tsbCheckUpdateCore,
             this.tsbCheckUpdateMetaCore,
             this.toolStripSeparator15,
-            this.tsbCheckUpdateGeoSite,
-            this.tsbCheckUpdateGeoIP});
+            this.tsbCheckUpdateGeo});
             this.tsbCheckUpdate.Image = global::clashN.Properties.Resources.checkupdate;
             resources.ApplyResources(this.tsbCheckUpdate, "tsbCheckUpdate");
             this.tsbCheckUpdate.Name = "tsbCheckUpdate";
@@ -697,17 +695,11 @@
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             resources.ApplyResources(this.toolStripSeparator15, "toolStripSeparator15");
             // 
-            // tsbCheckUpdateGeoSite
+            // tsbCheckUpdateGeo
             // 
-            this.tsbCheckUpdateGeoSite.Name = "tsbCheckUpdateGeoSite";
-            resources.ApplyResources(this.tsbCheckUpdateGeoSite, "tsbCheckUpdateGeoSite");
-            this.tsbCheckUpdateGeoSite.Click += new System.EventHandler(this.tsbCheckUpdateGeoSite_Click);
-            // 
-            // tsbCheckUpdateGeoIP
-            // 
-            this.tsbCheckUpdateGeoIP.Name = "tsbCheckUpdateGeoIP";
-            resources.ApplyResources(this.tsbCheckUpdateGeoIP, "tsbCheckUpdateGeoIP");
-            this.tsbCheckUpdateGeoIP.Click += new System.EventHandler(this.tsbCheckUpdateGeoIP_Click);
+            this.tsbCheckUpdateGeo.Name = "tsbCheckUpdateGeo";
+            resources.ApplyResources(this.tsbCheckUpdateGeo, "tsbCheckUpdateGeo");
+            this.tsbCheckUpdateGeo.Click += new System.EventHandler(this.tsbCheckUpdateGeo_Click);
             // 
             // toolStripSeparator10
             // 
@@ -880,8 +872,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem tsbBackupGuiNConfig;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
-        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeoSite;
-        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeoIP;
+        private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeo;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem menuMsgBoxFilter;
         private System.Windows.Forms.ToolStripStatusLabel toolSslInboundInfo;

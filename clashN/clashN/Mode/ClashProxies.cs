@@ -15,6 +15,7 @@ namespace clashN.Mode
             public string type { get; set; }
             public bool udp { get; set; }
             public string now { get; set; }
+            public int delay { get; set; }
         }
         public class HistoryItem
         { 

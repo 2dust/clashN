@@ -85,14 +85,22 @@ namespace clashN.Forms
                 if (refreshUI)
                 {
                     RefreshProxies();
+
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        tsbSpeedtest.Enabled = true;
+                    }));
                 }
             });
         }
 
         private void RefreshProxies()
         {
+            var index = -1;
+
             lvProxies.BeginInvoke(new Action(() =>
             {
+                index = GetLvSelectedIndex();
                 lvProxies.BeginUpdate();
                 lvProxies.Items.Clear();
 
@@ -112,15 +120,13 @@ namespace clashN.Forms
                 lvProxies.EndUpdate();
 
             }));
-            selectedProxy = null;
+
             lvDetail.BeginInvoke(new Action(() =>
             {
-                lvDetail.BeginUpdate();
-                lvDetail.Items.Clear();
-                lvDetail.EndUpdate();
+                RefreshDetail(index);
             }));
         }
-        private void RefreshDetail()
+        private void RefreshDetail(int index)
         {
             selectedProxy = null;
 
@@ -128,8 +134,7 @@ namespace clashN.Forms
             lvDetail.Items.Clear();
             lvDetail.EndUpdate();
 
-            int index = GetLvSelectedIndex();
-            if (index < 0)
+            if (index < 0 || index >= lvProxies.Items.Count)
             {
                 return;
             }
@@ -150,6 +155,7 @@ namespace clashN.Forms
             lvDetail.BeginUpdate();
             lvDetail.Items.Clear();
 
+            List<ProxiesItem> lstDetail = new List<ProxiesItem>();
             foreach (var item in proxy.all)
             {
                 var isActive = item == proxy.now;
@@ -158,18 +164,28 @@ namespace clashN.Forms
                 {
                     continue;
                 }
-                var testResult = string.Empty;
+                int delay = -1;
                 if (proxy2.history.Count > 0)
                 {
-                    testResult = proxy2.history[proxy2.history.Count - 1].delay.ToString() + "ms";
+                    delay = proxy2.history[proxy2.history.Count - 1].delay;
                 }
+                lstDetail.Add(new ProxiesItem()
+                {
+                    now = isActive ? Global.CheckMark : "",
+                    name = item,
+                    type = proxy2.type,
+                    delay = delay <= 0 ? 99999999 : delay
+                });
+            }
 
-                ListViewItem lvItem = new ListViewItem(isActive ? Global.CheckMark : "");
-                Utils.AddSubItem(lvItem, "Name", item);
-                Utils.AddSubItem(lvItem, "Type", proxy2.type);
-                Utils.AddSubItem(lvItem, "testResult", testResult);
-                lvItem.Tag = item;
-                if (isActive)
+            foreach (var item in lstDetail.OrderBy(t => t.delay))
+            {
+                ListViewItem lvItem = new ListViewItem(item.now);
+                Utils.AddSubItem(lvItem, "Name", item.name);
+                Utils.AddSubItem(lvItem, "Type", item.type);
+                Utils.AddSubItem(lvItem, "testResult", item.delay >= 99999999 ? "" : item.delay.ToString("#ms"));
+                lvItem.Tag = item.name;
+                if (item.now == Global.CheckMark)
                 {
                     lvItem.ForeColor = Color.DodgerBlue;
                     lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
@@ -177,12 +193,13 @@ namespace clashN.Forms
 
                 lvDetail.Items.Add(lvItem);
             }
+
             lvDetail.EndUpdate();
         }
 
         private void lvProxies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RefreshDetail();
+            RefreshDetail(GetLvSelectedIndex());
         }
         private void lvDetail_KeyDown(object sender, KeyEventArgs e)
         {
@@ -226,7 +243,7 @@ namespace clashN.Forms
             _ = HttpClientHelper.GetInstance().PutAsync(url, headers);
 
             selectedProxy.now = nameNode;
-            RefreshDetail();
+            RefreshDetail(GetLvSelectedIndex());
         }
 
         private void tsbReload_Click(object sender, EventArgs e)
@@ -240,12 +257,12 @@ namespace clashN.Forms
             {
                 return;
             }
-            MainFormHandler.Instance.ClashProxiesDelayTest();
+            tsbSpeedtest.Enabled = false;
 
-            UI.Show(ResUI.OperationSuccess);
-
-            GetClashProxies(false);
-
+            MainFormHandler.Instance.ClashProxiesDelayTest(it =>
+            {
+                GetClashProxies(true);
+            });
         }
         private void tsbSelectActivity_Click(object sender, EventArgs e)
         {
