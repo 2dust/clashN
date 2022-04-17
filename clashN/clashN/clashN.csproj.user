@@ -33,6 +33,9 @@
     <Compile Update="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\MainMsgControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Forms\MsgFilterSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +57,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Forms\MainForm.zh-Hans.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Forms\OptionSettingForm.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Resx\ResUI.resx">

@@ -399,13 +399,6 @@ namespace clashN.Forms
         {
         }
 
-        private void DisplayToolStatus()
-        {
-            toolSslInboundInfo.Text = $"{Global.InboundSocks} {Global.Loopback}:{config.socksPort} | "
-             + $"{ Global.InboundHttp} { Global.Loopback}:{config.httpPort}";
-
-            notifyMain.Icon = MainFormHandler.Instance.GetNotifyIcon(config, this.Icon);
-        }
         private void ssMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (!Utils.IsNullOrEmpty(e.ClickedItem.Text))
@@ -466,7 +459,7 @@ namespace clashN.Forms
 
             if (Global.reloadCore)
             {
-                ClearMsg();
+                mainMsgControl.ClearMsg();
             }
             await Task.Run(() =>
             {
@@ -807,80 +800,17 @@ namespace clashN.Forms
             AppendText(notify, msg);
         }
 
-        // delegate void AppendTextDelegate(string text);
         void AppendText(bool notify, string msg)
         {
             try
             {
-                AppendText(msg);
+                mainMsgControl.AppendText(msg);
                 if (notify)
                 {
                     notifyMsg(msg);
                 }
             }
-            catch
-            {
-            }
-        }
-
-        void AppendText(string text)
-        {
-            txtMsgBox.BeginInvoke(new Action(() =>
-            {
-                if (!Utils.IsNullOrEmpty(MsgFilter))
-                {
-                    if (!Regex.IsMatch(text, MsgFilter))
-                    {
-                        return;
-                    }
-                }
-                ShowMsg(text);
-            }));
-
-            //if (this.txtMsgBox.InvokeRequired)
-            //{
-            //    Invoke(new AppendTextDelegate(AppendText), new object[] { text });
-            //}
-            //else
-            //{
-            //    if (!Utils.IsNullOrEmpty(MsgFilter))
-            //    {
-            //        if (!Regex.IsMatch(text, MsgFilter))
-            //        {
-            //            return;
-            //        }
-            //    }
-            //    //this.txtMsgBox.AppendText(text);
-            //    ShowMsg(text);
-            //}
-        }
-
-        /// <summary>
-        /// 提示信息
-        /// </summary>
-        /// <param name="msg"></param>
-        private void ShowMsg(string msg)
-        {
-            if (txtMsgBox.Lines.Length > 999)
-            {
-                ClearMsg();
-            }
-            this.txtMsgBox.AppendText(msg);
-            if (!msg.EndsWith(Environment.NewLine))
-            {
-                this.txtMsgBox.AppendText(Environment.NewLine);
-            }
-        }
-
-        /// <summary>
-        /// 清除信息
-        /// </summary>
-        private void ClearMsg()
-        {
-            txtMsgBox.BeginInvoke(new Action(() =>
-            {
-                txtMsgBox.Clear();
-            }));
+            catch { }
         }
 
         /// <summary>
@@ -924,7 +854,7 @@ namespace clashN.Forms
             this.Activate();
             this.ShowInTaskbar = true;
             //this.notifyIcon1.Visible = false;
-            this.txtMsgBox.ScrollToCaret();
+            mainMsgControl.ScrollToCaret();
 
             int index = GetLvSelectedIndex(false);
             if (index >= 0 && index < lvProfiles.Items.Count && lvProfiles.Items.Count > 0)
@@ -959,7 +889,7 @@ namespace clashN.Forms
             }
             try
             {
-                toolSslProfileSpeed.Text = string.Format("{0}/s↑ | {1}/s↓", Utils.HumanFy(up), Utils.HumanFy(down));
+                mainMsgControl.SetToolSslInfo("speed", string.Format("{0}/s↑ | {1}/s↓", Utils.HumanFy(up), Utils.HumanFy(down)));
 
                 foreach (var it in statistics)
                 {
@@ -1076,7 +1006,10 @@ namespace clashN.Forms
             }
 
             ConfigHandler.SaveConfig(ref config, false);
-            DisplayToolStatus();
+
+            mainMsgControl.DisplayToolStatus(config);
+
+            notifyMain.Icon = MainFormHandler.Instance.GetNotifyIcon(config, this.Icon);
         }
 
         #endregion
@@ -1224,57 +1157,5 @@ namespace clashN.Forms
 
         #endregion
 
-
-        #region MsgBoxMenu
-        private void menuMsgBoxSelectAll_Click(object sender, EventArgs e)
-        {
-            this.txtMsgBox.Focus();
-            this.txtMsgBox.SelectAll();
-        }
-
-        private void menuMsgBoxCopy_Click(object sender, EventArgs e)
-        {
-            var data = this.txtMsgBox.SelectedText.TrimEx();
-            Utils.SetClipboardData(data);
-        }
-
-        private void menuMsgBoxCopyAll_Click(object sender, EventArgs e)
-        {
-            var data = this.txtMsgBox.Text;
-            Utils.SetClipboardData(data);
-        }
-        private void menuMsgBoxClear_Click(object sender, EventArgs e)
-        {
-            this.txtMsgBox.Clear();
-        }
-
-        private void txtMsgBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control)
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.A:
-                        menuMsgBoxSelectAll_Click(null, null);
-                        break;
-                    case Keys.C:
-                        menuMsgBoxCopy_Click(null, null);
-                        break;
-
-                }
-            }
-
-        }
-        private void menuMsgBoxFilter_Click(object sender, EventArgs e)
-        {
-            var fm = new MsgFilterSetForm();
-            fm.MsgFilter = MsgFilter;
-            if (fm.ShowDialog() == DialogResult.OK)
-            {
-                MsgFilter = fm.MsgFilter;
-                gbMsgTitle.Text = string.Format(ResUI.MsgInformationTitle, MsgFilter);
-            }
-        }
-        #endregion     
     }
 }
