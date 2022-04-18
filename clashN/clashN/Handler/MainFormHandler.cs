@@ -113,42 +113,54 @@ namespace clashN.Handler
 
         private void UpdateTaskRun(Config config, Action<bool, string> update)
         {
+            var autoUpdateSubTime = DateTime.Now;
+            var autoUpdateGeoTime = DateTime.Now;
+
+            Thread.Sleep(60000);
+            Utils.SaveLog("UpdateTaskRun");
+
             var updateHandle = new UpdateHandle();
             while (true)
             {
-                Thread.Sleep(60000);
-                if (config.autoUpdateInterval <= 0)
+                var dtNow = DateTime.Now;
+
+                if (config.autoUpdateSubInterval > 0)
                 {
-                    continue;
+                    if ((dtNow - autoUpdateSubTime).Hours % config.autoUpdateSubInterval == 0)
+                    {
+                        updateHandle.UpdateSubscriptionProcess(config, true, (bool success, string msg) =>
+                        {
+                            update(success, msg);
+                            if (success)
+                                Utils.SaveLog("subscription" + msg);
+                        });
+                        autoUpdateSubTime = dtNow;
+                    }
+                    Thread.Sleep(60000);
                 }
-                Utils.SaveLog("UpdateTaskRun");
 
-                updateHandle.UpdateSubscriptionProcess(config, true, (bool success, string msg) =>
+                if (config.autoUpdateInterval > 0)
                 {
-                    update(false, msg);
-                    if (success)
-                        Utils.SaveLog("subscription" + msg);
-                });
+                    if ((dtNow - autoUpdateGeoTime).Hours % config.autoUpdateInterval == 0)
+                    {
+                        updateHandle.UpdateGeoFile("geosite", config, (bool success, string msg) =>
+                        {
+                            update(false, msg);
+                            if (success)
+                                Utils.SaveLog("geosite" + msg);
+                        });
 
-                Thread.Sleep(60000);
+                        updateHandle.UpdateGeoFile("geoip", config, (bool success, string msg) =>
+                        {
+                            update(false, msg);
+                            if (success)
+                                Utils.SaveLog("geoip" + msg);
+                        });
+                        autoUpdateGeoTime = dtNow;
+                    }
+                }
 
-                updateHandle.UpdateGeoFile("geosite", config, (bool success, string msg) =>
-                {
-                    update(false, msg);
-                    if (success)
-                        Utils.SaveLog("geosite" + msg);
-                });
-
-                Thread.Sleep(60000);
-
-                updateHandle.UpdateGeoFile("geoip", config, (bool success, string msg) =>
-                {
-                    update(false, msg);
-                    if (success)
-                        Utils.SaveLog("geoip" + msg);
-                });
-
-                Thread.Sleep(1000 * 3600 * config.autoUpdateInterval);
+                Thread.Sleep(1000 * 3600);
             }
         }
 

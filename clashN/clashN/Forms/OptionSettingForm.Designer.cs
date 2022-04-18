@@ -43,6 +43,8 @@
             this.txthttpPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.txtautoUpdateSubInterval = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.btnFontSetting = new System.Windows.Forms.Button();
             this.chkEnableSecurityProtocolTls13 = new System.Windows.Forms.CheckBox();
             this.btnSetLoopback = new System.Windows.Forms.Button();
@@ -166,6 +168,8 @@
             // tabPage7
             // 
             resources.ApplyResources(this.tabPage7, "tabPage7");
+            this.tabPage7.Controls.Add(this.txtautoUpdateSubInterval);
+            this.tabPage7.Controls.Add(this.label4);
             this.tabPage7.Controls.Add(this.btnFontSetting);
             this.tabPage7.Controls.Add(this.chkEnableSecurityProtocolTls13);
             this.tabPage7.Controls.Add(this.btnSetLoopback);
@@ -177,6 +181,16 @@
             this.tabPage7.Controls.Add(this.chkAutoRun);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // txtautoUpdateSubInterval
+            // 
+            resources.ApplyResources(this.txtautoUpdateSubInterval, "txtautoUpdateSubInterval");
+            this.txtautoUpdateSubInterval.Name = "txtautoUpdateSubInterval";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
             // 
             // btnFontSetting
             // 
@@ -341,5 +355,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnFontSetting;
         private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.TextBox txtautoUpdateSubInterval;
+        private System.Windows.Forms.Label label4;
     }
 }
