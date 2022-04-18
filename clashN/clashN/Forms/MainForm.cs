@@ -49,6 +49,11 @@ namespace clashN.Forms
         {
             this.Invoke(new Action(() =>
             {
+                string clipboardData = Utils.GetClipboardData();
+                if (Utils.IsNullOrEmpty(clipboardData) || !clipboardData.StartsWith(Global.clashProtocol))
+                {
+                    return;
+                }
                 ShowForm();
 
                 AddProfilesViaClipboard(true);
@@ -88,7 +93,7 @@ namespace clashN.Forms
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
 
-            AddProfilesViaClipboard(true);
+            OnProgramStarted(null, true);
 
             _ = LoadCore();
         }
@@ -705,6 +710,10 @@ namespace clashN.Forms
         private void AddProfilesViaClipboard(bool bClear)
         {
             string clipboardData = Utils.GetClipboardData();
+            if (Utils.IsNullOrEmpty(clipboardData))
+            {
+                return;
+            }
             int ret = ConfigHandler.AddBatchProfiles(ref config, clipboardData, "", groupId);
             if (ret == 0)
             {
