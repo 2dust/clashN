@@ -330,56 +330,25 @@ namespace clashN.Forms
         private void RefreshProfilesMenu()
         {
             menuProfiles.DropDownItems.Clear();
-            menuProfiles2.SelectedIndexChanged -= MenuProfiles2_SelectedIndexChanged;
-            menuProfiles2.Items.Clear();
-            menuProfiles.Visible = false;
-            menuProfiles2.Visible = false;
 
-            if (lstProfile.Count > 20)
+            List<ToolStripMenuItem> lst = new List<ToolStripMenuItem>();
+            for (int k = 0; k < lstProfile.Count; k++)
             {
-                for (int k = 0; k < lstProfile.Count; k++)
+                ProfileItem item = lstProfile[k];
+                string name = item.GetSummary();
+
+                ToolStripMenuItem ts = new ToolStripMenuItem(name)
                 {
-                    ProfileItem item = lstProfile[k];
-                    string name = item.GetSummary();
-
-                    if (config.IsActiveNode(item))
-                    {
-                        name = $"√ {name}";
-                    }
-                    menuProfiles2.Items.Add(name);
-
-                }
-                menuProfiles2.SelectedIndex = lstProfile.FindIndex(it => it.indexId == config.indexId);
-                menuProfiles2.SelectedIndexChanged += MenuProfiles2_SelectedIndexChanged;
-                menuProfiles2.Visible = true;
-            }
-            else
-            {
-                List<ToolStripMenuItem> lst = new List<ToolStripMenuItem>();
-                for (int k = 0; k < lstProfile.Count; k++)
+                    Tag = k
+                };
+                if (config.IsActiveNode(item))
                 {
-                    ProfileItem item = lstProfile[k];
-                    string name = item.GetSummary();
-
-                    ToolStripMenuItem ts = new ToolStripMenuItem(name)
-                    {
-                        Tag = k
-                    };
-                    if (config.IsActiveNode(item))
-                    {
-                        ts.Checked = true;
-                    }
-                    ts.Click += new EventHandler(ts_Click);
-                    lst.Add(ts);
+                    ts.Checked = true;
                 }
-                menuProfiles.DropDownItems.AddRange(lst.ToArray());
-                menuProfiles.Visible = true;
+                ts.Click += new EventHandler(ts_Click);
+                lst.Add(ts);
             }
-        }
-
-        private void MenuProfiles2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SetDefaultProfile(((ToolStripComboBox)sender).SelectedIndex);
+            menuProfiles.DropDownItems.AddRange(lst.ToArray());
         }
 
         private void ts_Click(object sender, EventArgs e)

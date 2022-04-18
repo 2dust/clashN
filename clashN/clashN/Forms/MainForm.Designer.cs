@@ -52,8 +52,8 @@
             this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClearProfileStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbProfile = new System.Windows.Forms.ToolStripDropDownButton();
             this.qrCodeControl = new clashN.Forms.QRCodeControl();
+            this.tsbProfile = new System.Windows.Forms.ToolStripDropDownButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mainMsgControl = new clashN.Forms.MainMsgControl();
@@ -65,9 +65,7 @@
             this.menuKeepNothing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRoutings = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuProfiles2 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuAddProfiles2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuScanScreen2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUpdateSubscriptions = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUpdateSubViaProxy = new System.Windows.Forms.ToolStripMenuItem();
@@ -286,17 +284,17 @@
             resources.ApplyResources(this.menuClearProfileStatistics, "menuClearProfileStatistics");
             this.menuClearProfileStatistics.Click += new System.EventHandler(this.menuClearStatistic_Click);
             // 
+            // qrCodeControl
+            // 
+            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
+            this.qrCodeControl.Name = "qrCodeControl";
+            // 
             // tsbProfile
             // 
             this.tsbProfile.DropDown = this.cmsLv;
             this.tsbProfile.Image = global::clashN.Properties.Resources.server;
             resources.ApplyResources(this.tsbProfile, "tsbProfile");
             this.tsbProfile.Name = "tsbProfile";
-            // 
-            // qrCodeControl
-            // 
-            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
-            this.qrCodeControl.Name = "qrCodeControl";
             // 
             // splitContainer1
             // 
@@ -337,9 +335,7 @@
             this.menuSysAgentMode,
             this.menuRoutings,
             this.menuProfiles,
-            this.menuProfiles2,
             this.toolStripSeparator13,
-            this.menuAddProfiles2,
             this.menuScanScreen2,
             this.menuUpdateSubscriptions,
             this.menuUpdateSubViaProxy,
@@ -387,24 +383,10 @@
             this.menuProfiles.Name = "menuProfiles";
             resources.ApplyResources(this.menuProfiles, "menuProfiles");
             // 
-            // menuProfiles2
-            // 
-            this.menuProfiles2.BackColor = System.Drawing.SystemColors.Window;
-            this.menuProfiles2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.menuProfiles2.DropDownWidth = 500;
-            resources.ApplyResources(this.menuProfiles2, "menuProfiles2");
-            this.menuProfiles2.Name = "menuProfiles2";
-            // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
             resources.ApplyResources(this.toolStripSeparator13, "toolStripSeparator13");
-            // 
-            // menuAddProfiles2
-            // 
-            this.menuAddProfiles2.Name = "menuAddProfiles2";
-            resources.ApplyResources(this.menuAddProfiles2, "menuAddProfiles2");
-            this.menuAddProfiles2.Click += new System.EventHandler(this.menuAddProfiles_Click);
             // 
             // menuScanScreen2
             // 
@@ -713,7 +695,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripDropDownButton tsbHelp;
         private System.Windows.Forms.ToolStripMenuItem tsbAbout;
-        private System.Windows.Forms.ToolStripMenuItem menuAddProfiles2;
         private System.Windows.Forms.ToolStripMenuItem menuScanScreen;
         private System.Windows.Forms.ToolStripMenuItem menuScanScreen2;
         private System.Windows.Forms.ToolStripDropDownButton tsbSub;
@@ -739,7 +720,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
         private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateGeo;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripComboBox menuProfiles2;
         private System.Windows.Forms.ToolStripMenuItem menuUpdateSubViaProxy;
         private System.Windows.Forms.ToolStripMenuItem tsbGlobalHotkeySetting;
         private System.Windows.Forms.ToolStripMenuItem tsbSubUpdate;
