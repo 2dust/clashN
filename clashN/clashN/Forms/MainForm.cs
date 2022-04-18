@@ -423,8 +423,11 @@ namespace clashN.Forms
 
         async Task LoadCore()
         {
-            tsbReload.Enabled = false;
-            tsbCurrentProxies.Enabled = false;
+            this.BeginInvoke(new Action(() =>
+            {
+                tsbReload.Enabled = false;
+                tsbCurrentProxies.Enabled = false;
+            }));
 
             if (Global.reloadCore)
             {
@@ -441,8 +444,11 @@ namespace clashN.Forms
 
             ChangePACButtonStatus(config.sysProxyType);
 
-            tsbReload.Enabled = true;
-            tsbCurrentProxies.Enabled = true;
+            this.BeginInvoke(new Action(() =>
+            {
+                tsbReload.Enabled = true;
+                tsbCurrentProxies.Enabled = true;
+            }));
         }
 
         private void CloseCore()

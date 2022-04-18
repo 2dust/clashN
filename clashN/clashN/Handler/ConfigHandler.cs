@@ -202,7 +202,17 @@ namespace clashN.Handler
                 profileItem.indexId = string.Empty;
                 profileItem.remarks = string.Format("{0}-clone", item.remarks);
 
-                AddProfileCommon(ref config, profileItem);
+                if (string.IsNullOrEmpty(profileItem.address) || !File.Exists(Utils.GetConfigPath(profileItem.address)))
+                {
+                    profileItem.address = string.Empty;
+                    AddProfileCommon(ref config, profileItem);
+                }
+                else
+                {
+                    var fileName = Utils.GetConfigPath(profileItem.address);
+                    profileItem.address = string.Empty;
+                    AddProfileViaPath(ref config, profileItem, fileName);
+                }
             }
 
             ToJsonFile(config);
