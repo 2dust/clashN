@@ -26,37 +26,25 @@ namespace clashN.Handler
         {
             try
             {
-                Color color = ColorTranslator.FromHtml("#3399CC");
                 int index = (int)config.sysProxyType;
-                if (index > 0)
+
+                //Load from local file
+                var fileName = Utils.GetPath($"NotifyIcon{index + 1}.ico");
+                if (File.Exists(fileName))
                 {
-                    color = (new Color[] { Color.Red, Color.Purple, Color.DarkGreen, Color.Orange, Color.DarkSlateBlue, Color.RoyalBlue })[index - 1];
-                    //color = ColorTranslator.FromHtml(new string[] { "#CC0066", "#CC6600", "#99CC99", "#666699" }[index - 1]);
+                    return new Icon(fileName);
+                }
+                switch (index)
+                {
+                    case 0:
+                        return Properties.Resources.NotifyIcon1;
+                    case 1:
+                        return Properties.Resources.NotifyIcon2;
+                    case 2:
+                        return Properties.Resources.NotifyIcon3;
                 }
 
-                int width = 128;
-                int height = 128;
-
-                Bitmap bitmap = new Bitmap(width, height);
-                Graphics graphics = Graphics.FromImage(bitmap);
-                SolidBrush drawBrush = new SolidBrush(color);
-
-                var customIcon = false;
-
-                if (!customIcon)
-                {
-                    graphics.FillEllipse(drawBrush, new Rectangle(0, 0, width, height));
-                    int zoom = 16;
-                    graphics.DrawImage(new Bitmap(Properties.Resources.notify, width - zoom, width - zoom), zoom / 2, zoom / 2);
-                }
-
-                Icon createdIcon = Icon.FromHandle(bitmap.GetHicon());
-
-                drawBrush.Dispose();
-                graphics.Dispose();
-                bitmap.Dispose();
-
-                return createdIcon;
+                return Properties.Resources.NotifyIcon1;
             }
             catch (Exception ex)
             {
@@ -254,7 +242,7 @@ namespace clashN.Handler
                 }
                 Task.WaitAll(tasks.ToArray());
 
-                Thread.Sleep(5000); 
+                Thread.Sleep(5000);
                 update("");
             });
         }
