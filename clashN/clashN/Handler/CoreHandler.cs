@@ -183,7 +183,7 @@ namespace clashN.Handler
                 var arguments = coreInfo.arguments;
                 if (Directory.Exists(Utils.GetPath("data")))
                 {
-                    arguments += $" -d {Utils.GetPath("data")}";
+                    arguments += $" -d \"{ Utils.GetPath("data")}\"";
                 }
 
                 Process p = new Process
