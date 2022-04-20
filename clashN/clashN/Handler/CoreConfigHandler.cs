@@ -100,6 +100,12 @@ namespace clashN.Handler
                     ModifyContent(fileContent, "allow-lan", "false");
                 }
 
+                //mode
+                if (!fileContent.ContainsKey("mode"))
+                {
+                    ModifyContent(fileContent, "mode", "Rule");
+                }
+
                 //enable tun mode
                 if (node.enableTun)
                 {

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static clashN.Mode.ClashProviders;
 using static clashN.Mode.ClashProxies;
 
 namespace clashN.Forms
@@ -18,6 +19,7 @@ namespace clashN.Forms
     public partial class ProxiesForm : BaseForm
     {
         Dictionary<String, ProxiesItem> proxies;
+        Dictionary<String, ProvidersItem> providers;
         ProxiesItem selectedProxy;
 
         public ProxiesForm()
@@ -78,9 +80,11 @@ namespace clashN.Forms
 
         private void GetClashProxies(bool refreshUI)
         {
-            MainFormHandler.Instance.GetClashProxies(config, it =>
+            MainFormHandler.Instance.GetClashProxies(config, (it, it2) =>
             {
                 proxies = it.proxies;
+                providers = it2.providers;
+
                 LazyConfig.Instance.SetProxies(proxies);
                 if (refreshUI)
                 {
@@ -106,7 +110,7 @@ namespace clashN.Forms
 
                 foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
                 {
-                    if (kv.Value.type != "Selector" && kv.Value.type != "URLTest")
+                    if (!Global.allowSelectType.Contains(kv.Value.type.ToLower()))
                     {
                         continue;
                     }
@@ -159,7 +163,8 @@ namespace clashN.Forms
             foreach (var item in proxy.all)
             {
                 var isActive = item == proxy.now;
-                proxies.TryGetValue(item, out ProxiesItem proxy2);
+
+                var proxy2 = TryGetProxy(item);
                 if (proxy2 == null)
                 {
                     continue;
@@ -195,6 +200,28 @@ namespace clashN.Forms
             }
 
             lvDetail.EndUpdate();
+        }
+
+        private ProxiesItem TryGetProxy(string name)
+        {
+            proxies.TryGetValue(name, out ProxiesItem proxy2);
+            if (proxy2 != null)
+            {
+                return proxy2;
+            }
+            //from providers
+            foreach (KeyValuePair<string, ProvidersItem> kv in providers)
+            {
+                if (Global.proxyVehicleType.Contains(kv.Value.vehicleType.ToLower()))
+                {
+                    var proxy3 = kv.Value.proxies.FirstOrDefault(t => t.name == name);
+                    if (proxy3 != null)
+                    {
+                        return proxy3;
+                    }
+                }
+            }
+            return null;
         }
 
         private void lvProxies_SelectedIndexChanged(object sender, EventArgs e)

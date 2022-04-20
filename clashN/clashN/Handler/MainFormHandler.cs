@@ -12,6 +12,7 @@ using System.Linq;
 using clashN.Resx;
 using static clashN.Mode.ClashProxies;
 using clashN.Base;
+using static clashN.Mode.ClashProviders;
 
 namespace clashN.Handler
 {
@@ -195,19 +196,22 @@ namespace clashN.Handler
             }
         }
 
-        public void GetClashProxies(Config config, Action<ClashProxies> update)
+        public void GetClashProxies(Config config, Action<ClashProxies, ClashProviders> update)
         {
             Task.Run(() => GetClashProxiesAsync(config, update));
         }
 
-        private async Task GetClashProxiesAsync(Config config, Action<ClashProxies> update)
+        private async Task GetClashProxiesAsync(Config config, Action<ClashProxies, ClashProviders> update)
         {
             var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/proxies";
-            var result = await Base.HttpClientHelper.GetInstance().GetAsync(url);
-
+            var result = await HttpClientHelper.GetInstance().GetAsync(url);
             var clashProxies = Utils.FromJson<ClashProxies>(result);
 
-            update(clashProxies);
+            var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/providers/proxies";
+            var result2 = await HttpClientHelper.GetInstance().GetAsync(url2);
+            var clashProviders = Utils.FromJson<ClashProviders>(result2);
+
+            update(clashProxies, clashProviders);
         }
 
         public void ClashProxiesDelayTest(Action<string> update)
@@ -225,11 +229,7 @@ namespace clashN.Handler
                 List<Task> tasks = new List<Task>();
                 foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
                 {
-                    if (kv.Value.type == "Selector"
-                        || kv.Value.type == "URLTest"
-                        || kv.Value.type == "Direct"
-                        || kv.Value.type == "Reject"
-                    )
+                    if (Global.notAllowTestType.Contains(kv.Value.type.ToLower()))
                     {
                         continue;
                     }

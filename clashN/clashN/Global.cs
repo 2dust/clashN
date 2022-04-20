@@ -48,7 +48,7 @@ namespace clashN
         /// </summary>
         public const string httpsProtocol = "https://";
 
-        public const string clashProtocol = "clash://";                
+        public const string clashProtocol = "clash://";
 
         /// <summary>
         /// MyRegPath
@@ -82,6 +82,12 @@ namespace clashN
 
 
         public static readonly List<string> coreTypes = new List<string> { "clash", "clash_meta" };
+
+        public static readonly List<string> allowSelectType = new List<string> { "selector", "urltest" };
+
+        public static readonly List<string> notAllowTestType = new List<string> { "selector", "urltest", "direct", "reject", "compatible", "pass" };
+       
+        public static readonly List<string> proxyVehicleType = new List<string> { "file", "http" };
 
         public const string CheckMark = "√";
 
