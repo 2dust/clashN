@@ -259,4 +259,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>参数设置</value>
   </data>
+  <data name="btnFontReset.Text" xml:space="preserve">
+    <value>字体重置</value>
+  </data>
 </root>

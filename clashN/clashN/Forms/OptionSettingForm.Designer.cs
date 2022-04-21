@@ -43,6 +43,7 @@
             this.txthttpPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnFontReset = new System.Windows.Forms.Button();
             this.txtautoUpdateSubInterval = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnFontSetting = new System.Windows.Forms.Button();
@@ -74,31 +75,30 @@
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.txtAPIPort);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.chkAllowLANConn);
@@ -108,6 +108,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txthttpPort);
             this.groupBox1.Controls.Add(this.label2);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -139,7 +140,6 @@
             // 
             // cmbloglevel
             // 
-            resources.ApplyResources(this.cmbloglevel, "cmbloglevel");
             this.cmbloglevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbloglevel.FormattingEnabled = true;
             this.cmbloglevel.Items.AddRange(new object[] {
@@ -148,6 +148,7 @@
             resources.GetString("cmbloglevel.Items2"),
             resources.GetString("cmbloglevel.Items3"),
             resources.GetString("cmbloglevel.Items4")});
+            resources.ApplyResources(this.cmbloglevel, "cmbloglevel");
             this.cmbloglevel.Name = "cmbloglevel";
             // 
             // label5
@@ -167,7 +168,7 @@
             // 
             // tabPage7
             // 
-            resources.ApplyResources(this.tabPage7, "tabPage7");
+            this.tabPage7.Controls.Add(this.btnFontReset);
             this.tabPage7.Controls.Add(this.txtautoUpdateSubInterval);
             this.tabPage7.Controls.Add(this.label4);
             this.tabPage7.Controls.Add(this.btnFontSetting);
@@ -179,8 +180,16 @@
             this.tabPage7.Controls.Add(this.chkKeepOlderDedupl);
             this.tabPage7.Controls.Add(this.chkEnableStatistics);
             this.tabPage7.Controls.Add(this.chkAutoRun);
+            resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // btnFontReset
+            // 
+            resources.ApplyResources(this.btnFontReset, "btnFontReset");
+            this.btnFontReset.Name = "btnFontReset";
+            this.btnFontReset.UseVisualStyleBackColor = true;
+            this.btnFontReset.Click += new System.EventHandler(this.btnFontReset_Click);
             // 
             // txtautoUpdateSubInterval
             // 
@@ -248,17 +257,17 @@
             // 
             // tabPage3
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.txtsystemProxyExceptions);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -279,9 +288,9 @@
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnOK);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // btnOK
@@ -357,5 +366,6 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.TextBox txtautoUpdateSubInterval;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnFontReset;
     }
 }

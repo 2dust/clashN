@@ -166,5 +166,12 @@ namespace clashN.Forms
                 Utils.RegWriteValue(Global.MyRegPath, Global.MyRegKeyFont, Utils.ToJson(fontDialog.Font));
             }
         }
+
+        private void btnFontReset_Click(object sender, EventArgs e)
+        {
+            Utils.RegWriteValue(Global.MyRegPath, Global.MyRegKeyFont, null);
+            UI.Show(ResUI.OperationSuccess);
+
+        }
     }
 }
