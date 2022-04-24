@@ -18,10 +18,14 @@ namespace clashN.Forms
 {
     public partial class ProxiesForm : BaseForm
     {
-        Dictionary<String, ProxiesItem> proxies;
-        Dictionary<String, ProvidersItem> providers;
-        ProxiesItem selectedProxy;
+        private Dictionary<String, ProxiesItem> proxies;
+        private Dictionary<String, ProvidersItem> providers;
+        private List<ProxiesItem> lstDetail;
+        private int sortColumn = 0;
 
+        //    ProxiesItem selectedProxy;
+
+        #region Init
         public ProxiesForm()
         {
             InitializeComponent();
@@ -39,6 +43,10 @@ namespace clashN.Forms
         {
             lvProxies.Focus();
         }
+
+        #endregion
+
+        #region listview
         private void InitProxiesView()
         {
             lvProxies.BeginUpdate();
@@ -51,6 +59,7 @@ namespace clashN.Forms
             lvProxies.MultiSelect = false;
             lvProxies.HeaderStyle = ColumnHeaderStyle.Clickable;
 
+            lvProxies.Columns.Add("", 30);
             lvProxies.Columns.Add(ResUI.LvAlias, 130);
             lvProxies.Columns.Add(ResUI.LvServiceType, 80);
             lvProxies.Columns.Add(ResUI.LvActivity, 130);
@@ -77,6 +86,51 @@ namespace clashN.Forms
 
             lvDetail.EndUpdate();
         }
+
+        private void lvProxies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDetail(GetLvSelectedIndex());
+        }
+
+        private void lvProxies_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column < 0)
+            {
+                return;
+            }
+
+            if (e.Column == 0)
+            {
+                foreach (ColumnHeader it in lvProxies.Columns)
+                {
+                    it.Width = -2;
+                }
+                return;
+            }
+        }
+
+        private void lvDetail_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column < 0)
+            {
+                return;
+            }
+
+            if (e.Column == 0)
+            {
+                foreach (ColumnHeader it in lvDetail.Columns)
+                {
+                    it.Width = -2;
+                }
+                return;
+            }
+
+            RefreshDetailSub(e.Column);
+        }
+        #endregion
+
+
+        #region  proxy function
 
         private void GetClashProxies(bool refreshUI)
         {
@@ -114,7 +168,8 @@ namespace clashN.Forms
                     {
                         continue;
                     }
-                    ListViewItem lvItem = new ListViewItem(kv.Key);
+                    ListViewItem lvItem = new ListViewItem("");
+                    Utils.AddSubItem(lvItem, "Name", kv.Key);
                     Utils.AddSubItem(lvItem, "Type", kv.Value.type);
                     Utils.AddSubItem(lvItem, "Activity", kv.Value.now);
 
@@ -132,7 +187,7 @@ namespace clashN.Forms
         }
         private void RefreshDetail(int index)
         {
-            selectedProxy = null;
+            //selectedProxy = null;
 
             lvDetail.BeginUpdate();
             lvDetail.Items.Clear();
@@ -154,12 +209,9 @@ namespace clashN.Forms
             {
                 return;
             }
-            selectedProxy = proxy;
+            //selectedProxy = proxy;
 
-            lvDetail.BeginUpdate();
-            lvDetail.Items.Clear();
-
-            List<ProxiesItem> lstDetail = new List<ProxiesItem>();
+            lstDetail = new List<ProxiesItem>();
             foreach (var item in proxy.all)
             {
                 var isActive = item == proxy.now;
@@ -183,7 +235,40 @@ namespace clashN.Forms
                 });
             }
 
-            foreach (var item in lstDetail.OrderBy(t => t.delay))
+            RefreshDetailSub(-1);
+        }
+
+        private void RefreshDetailSub(int column)
+        {
+            if (lstDetail == null)
+            {
+                return;
+            }
+            if (column < 0)
+            {
+                column = sortColumn;
+            }
+            else
+            {
+                sortColumn = column;
+            }
+            lvDetail.BeginUpdate();
+            lvDetail.Items.Clear();
+
+            switch (column)
+            {
+                case 1:
+                    lstDetail = lstDetail.OrderBy(x => x.name).ToList();
+                    break;
+                case 2:
+                    lstDetail = lstDetail.OrderBy(x => x.type).ToList();
+                    break;
+                case 3:
+                    lstDetail = lstDetail.OrderBy(x => x.delay).ToList();
+                    break;
+            }
+
+            foreach (var item in lstDetail)
             {
                 ListViewItem lvItem = new ListViewItem(item.now);
                 Utils.AddSubItem(lvItem, "Name", item.name);
@@ -224,10 +309,6 @@ namespace clashN.Forms
             return null;
         }
 
-        private void lvProxies_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            RefreshDetail(GetLvSelectedIndex());
-        }
         private void lvDetail_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -258,7 +339,8 @@ namespace clashN.Forms
             {
                 return;
             }
-            if (selectedProxy.type != "Selector")
+            var selectedProxy = TryGetProxy(name);
+            if (selectedProxy == null || selectedProxy.type != "Selector")
             {
                 UI.Show(ResUI.OperationFailed);
                 return;
@@ -272,6 +354,10 @@ namespace clashN.Forms
             selectedProxy.now = nameNode;
             RefreshDetail(GetLvSelectedIndex());
         }
+
+        #endregion
+
+        #region toolbar
 
         private void tsbReload_Click(object sender, EventArgs e)
         {
@@ -317,6 +403,8 @@ namespace clashN.Forms
                 return index;
             }
         }
+
+        #endregion
 
     }
 }

@@ -89,7 +89,7 @@
     <value>0, 0</value>
   </data>
   <data name="lvProxies.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 446</value>
+    <value>399, 446</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lvProxies.TabIndex" type="System.Int32, mscorlib">
@@ -143,7 +143,7 @@
     <value>0, 0</value>
   </data>
   <data name="lvDetail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 446</value>
+    <value>427, 446</value>
   </data>
   <data name="lvDetail.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -176,7 +176,7 @@
     <value>830, 446</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>400</value>
+    <value>399</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>

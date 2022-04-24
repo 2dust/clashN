@@ -72,6 +72,7 @@
             this.lvProxies.Name = "lvProxies";
             this.lvProxies.UseCompatibleStateImageBehavior = false;
             this.lvProxies.View = System.Windows.Forms.View.Details;
+            this.lvProxies.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvProxies_ColumnClick);
             this.lvProxies.SelectedIndexChanged += new System.EventHandler(this.lvProxies_SelectedIndexChanged);
             // 
             // lvDetail
@@ -86,6 +87,7 @@
             this.lvDetail.Name = "lvDetail";
             this.lvDetail.UseCompatibleStateImageBehavior = false;
             this.lvDetail.View = System.Windows.Forms.View.Details;
+            this.lvDetail.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvDetail_ColumnClick);
             this.lvDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvDetail_KeyDown);
             // 
             // tsMain
