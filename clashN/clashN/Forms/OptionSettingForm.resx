@@ -656,7 +656,7 @@
     <value>29</value>
   </data>
   <data name="chkEnableStatistics.Text" xml:space="preserve">
-    <value>Enable Statistics (Realtime netspeed and traffic records. Require restart the clashN client)</value>
+    <value>Enable Statistics (Realtime netspeed and traffic records. Require restart)</value>
   </data>
   <data name="&gt;&gt;chkEnableStatistics.Name" xml:space="preserve">
     <value>chkEnableStatistics</value>

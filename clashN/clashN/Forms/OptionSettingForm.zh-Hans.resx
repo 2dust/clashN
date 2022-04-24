@@ -203,7 +203,7 @@
     <value>374, 21</value>
   </data>
   <data name="chkEnableStatistics.Text" xml:space="preserve">
-    <value>启用统计(实时网速显示和使用流量显示，需要重启clashN客户端)</value>
+    <value>启用统计(实时网速显示和使用流量显示，需要重启)</value>
   </data>
   <data name="chkAutoRun.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 21</value>

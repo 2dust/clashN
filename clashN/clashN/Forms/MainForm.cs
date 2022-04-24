@@ -50,9 +50,12 @@ namespace clashN.Forms
             this.Invoke(new Action(() =>
             {
                 string clipboardData = Utils.GetClipboardData();
-                if (Utils.IsNullOrEmpty(clipboardData) || !clipboardData.StartsWith(Global.clashProtocol))
+                if (state != null)
                 {
-                    return;
+                    if (Utils.IsNullOrEmpty(clipboardData) || !clipboardData.StartsWith(Global.clashProtocol))
+                    {
+                        return;
+                    }
                 }
                 ShowForm();
 
@@ -93,7 +96,7 @@ namespace clashN.Forms
             MainFormHandler.Instance.UpdateTask(config, UpdateTaskHandler);
             MainFormHandler.Instance.RegisterGlobalHotkey(config, OnHotkeyHandler, UpdateTaskHandler);
 
-            OnProgramStarted(null, true);
+            OnProgramStarted("shown", true);
 
             _ = LoadCore();
         }
