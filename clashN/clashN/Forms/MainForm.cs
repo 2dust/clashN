@@ -996,7 +996,7 @@ namespace clashN.Forms
 
             mainMsgControl.DisplayToolStatus(config);
 
-            notifyMain.Icon = MainFormHandler.Instance.GetNotifyIcon(config, this.Icon);
+            notifyMain.Icon = this.Icon = MainFormHandler.Instance.GetNotifyIcon(config, this.Icon);
         }
 
         #endregion
