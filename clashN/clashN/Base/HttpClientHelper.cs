@@ -57,7 +57,7 @@ namespace clashN.Base
             }
             return null;
         }
-        public async Task<string> GetAsync(HttpClient client, string url)
+        public async Task<string> GetAsync(HttpClient client, string url, CancellationToken token)
         {
             if (string.IsNullOrEmpty(url))
             {
@@ -65,18 +65,16 @@ namespace clashN.Base
             }
             try
             {
-                var cts = new CancellationTokenSource();
-                cts.CancelAfter(5000);
-
-                HttpResponseMessage response = await client.GetAsync(url, cts.Token);
+                HttpResponseMessage response = await client.GetAsync(url, token);
                 return await response.Content.ReadAsStringAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Utils.SaveLog("GetAsync", ex);
             }
             return null;
         }
+
 
         public async Task PutAsync(string url, Dictionary<string, string> headers)
         {
