@@ -158,7 +158,26 @@ namespace clashN.Handler
         {
             lock (objLock)
             {
-                Utils.ToJsonFile(config, Utils.GetPath(configRes));
+                try
+                {
+                    //save temp file
+                    var temp = $"{configRes}_temp";
+                    if (Utils.ToJsonFile(config, Utils.GetPath(temp)) != 0)
+                    {
+                        return;
+                    }
+
+                    if (File.Exists(configRes))
+                    {
+                        File.Delete(configRes);
+                    }
+                    //rename
+                    File.Move(temp, configRes);
+                }
+                catch (Exception ex)
+                {
+                    Utils.SaveLog("ToJsonFile", ex);
+                }
             }
         }
 
