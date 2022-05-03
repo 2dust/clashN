@@ -14,9 +14,11 @@ namespace clashN.Mode
     public class Config
     {
         #region property
+        public int mixedPort { get; set; }
+
         public int httpPort { get; set; }
 
-        public int socksPort { get; set; }
+        public int socksPort { get; set; }     
 
         public int APIPort { get; set; }
 

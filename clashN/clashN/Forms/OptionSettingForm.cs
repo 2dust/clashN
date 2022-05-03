@@ -33,6 +33,7 @@ namespace clashN.Forms
             cmbloglevel.Text = config.logLevel;
 
             //本地监听
+            txtmixedPort.Text = config.mixedPort.ToString();
             txthttpPort.Text = config.httpPort.ToString();
             txtsocksPort.Text = config.socksPort.ToString();
             txtAPIPort.Text = config.APIPort.ToString();
@@ -90,9 +91,15 @@ namespace clashN.Forms
             string loglevel = cmbloglevel.Text.TrimEx();
 
             //本地监听
+            string mixedPort = txtmixedPort.Text.TrimEx();
             string httpPort = txthttpPort.Text.TrimEx();
             string socksPort = txtsocksPort.Text.TrimEx();
             string APIPort = txtAPIPort.Text.TrimEx();
+            if (Utils.IsNullOrEmpty(mixedPort) || !Utils.IsNumberic(mixedPort))
+            {
+                UI.Show(ResUI.FillLocalListeningPort);
+                return -1;
+            }
             if (Utils.IsNullOrEmpty(httpPort) || !Utils.IsNumberic(httpPort))
             {
                 UI.Show(ResUI.FillLocalListeningPort);
@@ -109,6 +116,7 @@ namespace clashN.Forms
                 return -1;
             }
 
+            config.mixedPort = Utils.ToInt(mixedPort);
             config.httpPort = Utils.ToInt(httpPort);
             config.socksPort = Utils.ToInt(socksPort);
             config.APIPort = Utils.ToInt(APIPort);

@@ -58,6 +58,10 @@ namespace clashN.Handler
             }
 
             //本地监听
+            if (config.mixedPort == 0)
+            {
+                config.mixedPort = 7888;
+            }
             if (config.httpPort == 0)
             {
                 config.httpPort = 7890;

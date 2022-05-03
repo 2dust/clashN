@@ -81,6 +81,8 @@ namespace clashN.Handler
                     msg = ResUI.FailedConversionConfiguration;
                     return -1;
                 }
+                //mixed-port
+                ModifyContent(fileContent, "mixed-port", config.mixedPort);
                 //port
                 ModifyContent(fileContent, "port", config.httpPort);
                 //socks-port

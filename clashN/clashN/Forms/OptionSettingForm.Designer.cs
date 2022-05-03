@@ -64,6 +64,8 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.txtmixedPort = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,6 +101,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtmixedPort);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtAPIPort);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.chkAllowLANConn);
@@ -305,6 +309,16 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // txtmixedPort
+            // 
+            resources.ApplyResources(this.txtmixedPort, "txtmixedPort");
+            this.txtmixedPort.Name = "txtmixedPort";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
             // OptionSettingForm
             // 
             resources.ApplyResources(this, "$this");
@@ -367,5 +381,7 @@
         private System.Windows.Forms.TextBox txtautoUpdateSubInterval;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnFontReset;
+        private System.Windows.Forms.TextBox txtmixedPort;
+        private System.Windows.Forms.Label label6;
     }
 }

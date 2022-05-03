@@ -77,6 +77,8 @@ namespace clashN.Forms
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.Append($"mixed {Global.Loopback}:{config.mixedPort}");
+            sb.Append(" | ");
             sb.Append($"{Global.InboundSocks} {Global.Loopback}:{config.socksPort}");
             sb.Append(" | ");
             sb.Append($"{ Global.InboundHttp} { Global.Loopback}:{config.httpPort}");
