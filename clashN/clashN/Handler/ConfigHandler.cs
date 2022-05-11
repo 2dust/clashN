@@ -165,18 +165,19 @@ namespace clashN.Handler
                 try
                 {
                     //save temp file
-                    var temp = $"{configRes}_temp";
-                    if (Utils.ToJsonFile(config, Utils.GetPath(temp)) != 0)
+                    var resPath = Utils.GetPath(configRes);
+                    var tempPath = $"{resPath}_temp";
+                    if (Utils.ToJsonFile(config, tempPath) != 0)
                     {
                         return;
                     }
 
-                    if (File.Exists(configRes))
+                    if (File.Exists(resPath))
                     {
-                        File.Delete(configRes);
+                        File.Delete(resPath);
                     }
                     //rename
-                    File.Move(temp, configRes);
+                    File.Move(tempPath, resPath);
                 }
                 catch (Exception ex)
                 {
