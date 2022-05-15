@@ -111,10 +111,6 @@ namespace clashN.Handler
             {
                 config.constItem.defIEProxyExceptions = Global.IEProxyExceptions;
             }
-            //if (Utils.IsNullOrEmpty(config.remoteDNS))
-            //{
-            //    config.remoteDNS = "1.1.1.1";
-            //}
 
             if (config == null
                 || config.profileItems.Count <= 0

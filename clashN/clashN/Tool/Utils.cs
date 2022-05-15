@@ -1114,8 +1114,9 @@ namespace clashN
                 T obj = deserializer.Deserialize<T>(str);
                 return obj;
             }
-            catch
+            catch(Exception ex)
             {
+                SaveLog("FromYaml", ex);
                 return deserializer.Deserialize<T>("");
             }
         }
