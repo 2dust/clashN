@@ -265,4 +265,7 @@
   <data name="label6.Text" xml:space="preserve">
     <value>本地混合监听端口</value>
   </data>
+  <data name="chkEnableIpv6.Text" xml:space="preserve">
+    <value>启用Ipv6</value>
+  </data>
 </root>

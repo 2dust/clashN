@@ -75,7 +75,10 @@ namespace clashN.Handler
                 }
 
                 var config = LazyConfig.Instance.GetConfig();
-                var fileContent = Utils.FromYaml<Dictionary<string, object>>(File.ReadAllText(fileName));
+                var txtFile = File.ReadAllText(fileName);
+                txtFile = txtFile.Replace("!<str>", "");
+
+                var fileContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
                 if (fileContent == null)
                 {
                     msg = ResUI.FailedConversionConfiguration;
@@ -101,6 +104,9 @@ namespace clashN.Handler
                 {
                     ModifyContent(fileContent, "allow-lan", "false");
                 }
+
+                //ipv6
+                ModifyContent(fileContent, "ipv6", config.enableIpv6);
 
                 //mode
                 if (!fileContent.ContainsKey("mode"))

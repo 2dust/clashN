@@ -38,6 +38,9 @@ namespace clashN.Forms
             txtsocksPort.Text = config.socksPort.ToString();
             txtAPIPort.Text = config.APIPort.ToString();
 
+            chkAllowLANConn.Checked = config.allowLANConn;
+            chkEnableIpv6.Checked = config.enableIpv6;
+
             txtsystemProxyExceptions.Text = config.systemProxyExceptions;
         }
 
@@ -49,7 +52,6 @@ namespace clashN.Forms
             //开机自动启动
             chkAutoRun.Checked = Utils.IsAutoRun();
 
-            chkAllowLANConn.Checked = config.allowLANConn;
             chkEnableStatistics.Checked = config.enableStatistics;
             chkKeepOlderDedupl.Checked = config.keepOlderDedupl;
 
@@ -123,6 +125,10 @@ namespace clashN.Forms
 
             config.logLevel = loglevel;
 
+
+            config.allowLANConn = chkAllowLANConn.Checked;
+            config.enableIpv6 = chkEnableIpv6.Checked;
+
             config.systemProxyExceptions = txtsystemProxyExceptions.Text.TrimEx();
 
             return 0;
@@ -137,7 +143,6 @@ namespace clashN.Forms
             //开机自动启动
             Utils.SetAutoRun(chkAutoRun.Checked);
 
-            config.allowLANConn = chkAllowLANConn.Checked;
 
             bool lastEnableStatistics = config.enableStatistics;
             config.enableStatistics = chkEnableStatistics.Checked;

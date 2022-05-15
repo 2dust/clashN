@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtmixedPort = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtAPIPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.chkAllowLANConn = new System.Windows.Forms.CheckBox();
@@ -64,8 +66,7 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.txtmixedPort = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.chkEnableIpv6 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkEnableIpv6);
             this.groupBox1.Controls.Add(this.txtmixedPort);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtAPIPort);
@@ -115,6 +117,16 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // txtmixedPort
+            // 
+            resources.ApplyResources(this.txtmixedPort, "txtmixedPort");
+            this.txtmixedPort.Name = "txtmixedPort";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
             // 
             // txtAPIPort
             // 
@@ -309,15 +321,11 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
-            // txtmixedPort
+            // chkEnableIpv6
             // 
-            resources.ApplyResources(this.txtmixedPort, "txtmixedPort");
-            this.txtmixedPort.Name = "txtmixedPort";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.chkEnableIpv6, "chkEnableIpv6");
+            this.chkEnableIpv6.Name = "chkEnableIpv6";
+            this.chkEnableIpv6.UseVisualStyleBackColor = true;
             // 
             // OptionSettingForm
             // 
@@ -383,5 +391,6 @@
         private System.Windows.Forms.Button btnFontReset;
         private System.Windows.Forms.TextBox txtmixedPort;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkEnableIpv6;
     }
 }

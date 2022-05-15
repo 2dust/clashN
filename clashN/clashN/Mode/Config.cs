@@ -24,6 +24,8 @@ namespace clashN.Mode
 
         public string logLevel { get; set; }
 
+        public bool enableIpv6 { get; set; }
+
         public string indexId { get; set; }
 
         public ESysProxyType sysProxyType { get; set; }
