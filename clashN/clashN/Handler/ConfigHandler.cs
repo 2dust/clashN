@@ -95,10 +95,10 @@ namespace clashN.Handler
             {
                 config.constItem = new ConstItem();
             }
-            if (Utils.IsNullOrEmpty(config.constItem.subConvertUrl))
-            {
-                config.constItem.subConvertUrl = Global.SubConvertUrl;
-            }
+            //if (Utils.IsNullOrEmpty(config.constItem.subConvertUrl))
+            //{
+            //    config.constItem.subConvertUrl = Global.SubConvertUrl;
+            //}
             if (Utils.IsNullOrEmpty(config.constItem.speedTestUrl))
             {
                 config.constItem.speedTestUrl = Global.SpeedTestUrl;

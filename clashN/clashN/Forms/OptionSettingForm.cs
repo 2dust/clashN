@@ -18,6 +18,8 @@ namespace clashN.Forms
 
         private void OptionSettingForm_Load(object sender, EventArgs e)
         {
+            cmbSubConvertUrl.Items.AddRange(Global.SubConvertUrls.ToArray());
+
             InitBase();
 
             InitGUI();
@@ -59,6 +61,8 @@ namespace clashN.Forms
             txtautoUpdateInterval.Text = config.autoUpdateInterval.ToString();
             txtautoUpdateSubInterval.Text = config.autoUpdateSubInterval.ToString();
             chkEnableSecurityProtocolTls13.Checked = config.enableSecurityProtocolTls13;
+
+            cmbSubConvertUrl.Text = config.constItem.subConvertUrl;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -153,6 +157,7 @@ namespace clashN.Forms
             config.autoUpdateSubInterval = Utils.ToInt(txtautoUpdateSubInterval.Text);
             config.enableSecurityProtocolTls13 = chkEnableSecurityProtocolTls13.Checked;
 
+            config.constItem.subConvertUrl = cmbSubConvertUrl.Text.TrimEx();
             return 0;
         }
 

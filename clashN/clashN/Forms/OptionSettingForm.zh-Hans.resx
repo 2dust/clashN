@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -121,6 +61,18 @@
     <value>取消(&amp;C)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkEnableIpv6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
+  </data>
+  <data name="chkEnableIpv6.Text" xml:space="preserve">
+    <value>启用Ipv6</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 17</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>本地混合监听端口</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 17</value>
   </data>
@@ -160,6 +112,21 @@
   <data name="tabPage1.Text" xml:space="preserve">
     <value>  Core:基础设置  </value>
   </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 17</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>订阅转换网址(可选可输入)</value>
+  </data>
+  <data name="cmbSubConvertUrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>450, 25</value>
+  </data>
+  <data name="btnFontReset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 297</value>
+  </data>
+  <data name="btnFontReset.Text" xml:space="preserve">
+    <value>字体重置</value>
+  </data>
   <data name="txtautoUpdateSubInterval.Location" type="System.Drawing.Point, System.Drawing">
     <value>276, 153</value>
   </data>
@@ -169,11 +136,17 @@
   <data name="label4.Text" xml:space="preserve">
     <value>自动更新订阅的间隔(单位小时)</value>
   </data>
+  <data name="btnFontSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 297</value>
+  </data>
   <data name="btnFontSetting.Text" xml:space="preserve">
     <value>字体设置 (需要重启)</value>
   </data>
   <data name="chkEnableSecurityProtocolTls13.Text" xml:space="preserve">
     <value>启用安全协议TLS v1.3 (订阅/检查更新)</value>
+  </data>
+  <data name="btnSetLoopback.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 335</value>
   </data>
   <data name="btnSetLoopback.Text" xml:space="preserve">
     <value>解除Windows10 UWP应用回环代理限制</value>
@@ -200,7 +173,7 @@
     <value>去重时保留序号较小的项</value>
   </data>
   <data name="chkEnableStatistics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 21</value>
+    <value>299, 21</value>
   </data>
   <data name="chkEnableStatistics.Text" xml:space="preserve">
     <value>启用统计(实时网速显示和使用流量显示，需要重启)</value>
@@ -212,7 +185,7 @@
     <value>开机自动启动(可能会不成功)</value>
   </data>
   <data name="tabPage7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 361</value>
+    <value>654, 398</value>
   </data>
   <data name="tabPage7.Text" xml:space="preserve">
     <value>  clashN设置  </value>
@@ -242,10 +215,13 @@
     <value>  系统代理设置  </value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>662, 391</value>
+    <value>662, 428</value>
   </data>
   <data name="btnOK.Text" xml:space="preserve">
     <value>确定(&amp;O)</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 438</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>662, 60</value>
@@ -254,18 +230,9 @@
     <value>662, 10</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>662, 461</value>
+    <value>662, 498</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>参数设置</value>
-  </data>
-  <data name="btnFontReset.Text" xml:space="preserve">
-    <value>字体重置</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>本地混合监听端口</value>
-  </data>
-  <data name="chkEnableIpv6.Text" xml:space="preserve">
-    <value>启用Ipv6</value>
   </data>
 </root>

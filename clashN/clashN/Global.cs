@@ -18,7 +18,14 @@ namespace clashN
         /// </summary>
         public const string SpeedTestUrl = @"http://cachefly.cachefly.net/10mb.test";
         public const string SpeedPingTestUrl = @"https://www.google.com/generate_204";
-        public const string SubConvertUrl = @"https://sub.xeton.dev/sub?target=clash&url={0}";
+        //public const string SubConvertUrl = @"https://sub.xeton.dev/sub?target=clash&url={0}";
+        public static readonly List<string> SubConvertUrls = new List<string> {
+                @"https://sub.xeton.dev/sub?target=clash&url={0}",
+                @"https://api.dler.io/sub?target=clash&url={0}",
+                @"http://127.0.0.1:25500/sub?target=clash&url={0}",
+                ""
+            };
+
 
         /// <summary>
         /// PromotionUrl
@@ -86,7 +93,7 @@ namespace clashN
         public static readonly List<string> allowSelectType = new List<string> { "selector", "urltest" };
 
         public static readonly List<string> notAllowTestType = new List<string> { "selector", "urltest", "direct", "reject", "compatible", "pass" };
-       
+
         public static readonly List<string> proxyVehicleType = new List<string> { "file", "http" };
 
         public const string CheckMark = "√";

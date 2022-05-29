@@ -203,6 +203,10 @@ namespace clashN.Handler
 
                     if (item.enableConvert)
                     {
+                        if (Utils.IsNullOrEmpty(config.constItem.subConvertUrl))
+                        {
+                            config.constItem.subConvertUrl = Global.SubConvertUrls[0];
+                        }
                         url = String.Format(config.constItem.subConvertUrl, Utils.UrlEncode(url));
                     }
                     var result = await (new DownloadHandle()).DownloadStringAsync(url, blProxy, userAgent);
