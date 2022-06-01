@@ -4,3 +4,4 @@ tun:
   dns-hijack:
   - 0.0.0.0:53
   auto-route: true
+  auto-detect-interface: true
