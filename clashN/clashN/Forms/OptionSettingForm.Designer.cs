@@ -57,7 +57,6 @@
             this.txtautoUpdateInterval = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.chkIgnoreGeoUpdateCore = new System.Windows.Forms.CheckBox();
-            this.chkKeepOlderDedupl = new System.Windows.Forms.CheckBox();
             this.chkEnableStatistics = new System.Windows.Forms.CheckBox();
             this.chkAutoRun = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -204,7 +203,6 @@
             this.tabPage7.Controls.Add(this.txtautoUpdateInterval);
             this.tabPage7.Controls.Add(this.label15);
             this.tabPage7.Controls.Add(this.chkIgnoreGeoUpdateCore);
-            this.tabPage7.Controls.Add(this.chkKeepOlderDedupl);
             this.tabPage7.Controls.Add(this.chkEnableStatistics);
             this.tabPage7.Controls.Add(this.chkAutoRun);
             this.tabPage7.Name = "tabPage7";
@@ -273,12 +271,6 @@
             resources.ApplyResources(this.chkIgnoreGeoUpdateCore, "chkIgnoreGeoUpdateCore");
             this.chkIgnoreGeoUpdateCore.Name = "chkIgnoreGeoUpdateCore";
             this.chkIgnoreGeoUpdateCore.UseVisualStyleBackColor = true;
-            // 
-            // chkKeepOlderDedupl
-            // 
-            resources.ApplyResources(this.chkKeepOlderDedupl, "chkKeepOlderDedupl");
-            this.chkKeepOlderDedupl.Name = "chkKeepOlderDedupl";
-            this.chkKeepOlderDedupl.UseVisualStyleBackColor = true;
             // 
             // chkEnableStatistics
             // 
@@ -384,7 +376,6 @@
         private System.Windows.Forms.CheckBox chkAutoRun;
         private System.Windows.Forms.CheckBox chkAllowLANConn;
         private System.Windows.Forms.CheckBox chkEnableStatistics;
-        private System.Windows.Forms.CheckBox chkKeepOlderDedupl;
         private System.Windows.Forms.CheckBox chkIgnoreGeoUpdateCore;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox txtsystemProxyExceptions;

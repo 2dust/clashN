@@ -34,8 +34,6 @@ namespace clashN.Mode
 
         public bool enableStatistics { get; set; }
 
-        public bool keepOlderDedupl { get; set; }
-
         public bool ignoreGeoUpdateCore { get; set; }
 
         public string systemProxyExceptions { get; set; }

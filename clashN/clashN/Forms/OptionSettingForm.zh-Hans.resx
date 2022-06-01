@@ -104,10 +104,10 @@
     <value>本地http监听端口</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>648, 355</value>
+    <value>648, 392</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 361</value>
+    <value>654, 398</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>  Core:基础设置  </value>
@@ -166,12 +166,6 @@
   <data name="chkIgnoreGeoUpdateCore.Text" xml:space="preserve">
     <value>更新Core时忽略Geo文件</value>
   </data>
-  <data name="chkKeepOlderDedupl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 21</value>
-  </data>
-  <data name="chkKeepOlderDedupl.Text" xml:space="preserve">
-    <value>去重时保留序号较小的项</value>
-  </data>
   <data name="chkEnableStatistics.Size" type="System.Drawing.Size, System.Drawing">
     <value>299, 21</value>
   </data>
@@ -203,13 +197,13 @@
     <value>对于下列字符开头的地址不使用代理配置文件:</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 361</value>
+    <value>654, 398</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>例外</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>654, 361</value>
+    <value>654, 398</value>
   </data>
   <data name="tabPage3.Text" xml:space="preserve">
     <value>  系统代理设置  </value>

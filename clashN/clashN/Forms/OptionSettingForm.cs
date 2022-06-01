@@ -55,7 +55,6 @@ namespace clashN.Forms
             chkAutoRun.Checked = Utils.IsAutoRun();
 
             chkEnableStatistics.Checked = config.enableStatistics;
-            chkKeepOlderDedupl.Checked = config.keepOlderDedupl;
 
             chkIgnoreGeoUpdateCore.Checked = config.ignoreGeoUpdateCore;
             txtautoUpdateInterval.Text = config.autoUpdateInterval.ToString();
@@ -150,7 +149,6 @@ namespace clashN.Forms
 
             bool lastEnableStatistics = config.enableStatistics;
             config.enableStatistics = chkEnableStatistics.Checked;
-            config.keepOlderDedupl = chkKeepOlderDedupl.Checked;
 
             config.ignoreGeoUpdateCore = chkIgnoreGeoUpdateCore.Checked;
             config.autoUpdateInterval = Utils.ToInt(txtautoUpdateInterval.Text);
