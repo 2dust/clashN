@@ -30,6 +30,8 @@ namespace clashN.Mode
 
         public ESysProxyType sysProxyType { get; set; }
 
+        public ERuleMode ruleMode { get; set; }
+
         public bool allowLANConn { get; set; }
 
         public bool enableStatistics { get; set; }

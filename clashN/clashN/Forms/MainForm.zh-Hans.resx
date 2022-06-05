@@ -324,8 +324,8 @@
   <data name="menuRoutings.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 22</value>
   </data>
-  <data name="menuRoutings.Text" xml:space="preserve">
-    <value>路由</value>
+  <data name="menuRuleMode.Text" xml:space="preserve">
+    <value>规则模式</value>
   </data>
   <data name="menuProfiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 22</value>
@@ -476,5 +476,17 @@
   </data>
   <data name="tsbSubUpdateViaProxySelected.Text" xml:space="preserve">
     <value>多选更新订阅(通过代理)</value>
+  </data>
+  <data name="menuModeDirect.Text" xml:space="preserve">
+    <value>直连</value>
+  </data>
+  <data name="menuModeGlobal.Text" xml:space="preserve">
+    <value>全局</value>
+  </data>
+  <data name="menuModeKeep.Text" xml:space="preserve">
+    <value>不变(随原配置)</value>
+  </data>
+  <data name="menuModeRule.Text" xml:space="preserve">
+    <value>规则</value>
   </data>
 </root>

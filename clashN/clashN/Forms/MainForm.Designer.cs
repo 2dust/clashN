@@ -38,10 +38,10 @@
             this.menuScanScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExport2Clipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbSubUpdateSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSubUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbSubUpdateViaProxySelected = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSubUpdateSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSubUpdateViaProxy = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSubUpdateViaProxySelected = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRemoveProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopyProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,8 +54,8 @@
             this.menuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClearProfileStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.qrCodeControl = new clashN.Forms.QRCodeControl();
             this.tsbProfile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.qrCodeControl = new clashN.Forms.QRCodeControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mainMsgControl = new clashN.Forms.MainMsgControl();
@@ -65,7 +65,11 @@
             this.menuKeepClear = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGlobal = new System.Windows.Forms.ToolStripMenuItem();
             this.menuKeepNothing = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRoutings = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRuleMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModeRule = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModeGlobal = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModeDirect = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuModeKeep = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProfiles = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.menuScanScreen2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,29 +212,29 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
-            // tsbSubUpdateSelected
-            // 
-            this.tsbSubUpdateSelected.Name = "tsbSubUpdateSelected";
-            resources.ApplyResources(this.tsbSubUpdateSelected, "tsbSubUpdateSelected");
-            this.tsbSubUpdateSelected.Click += new System.EventHandler(this.tsbSubUpdateSelected_Click);
-            // 
             // tsbSubUpdate
             // 
             this.tsbSubUpdate.Name = "tsbSubUpdate";
             resources.ApplyResources(this.tsbSubUpdate, "tsbSubUpdate");
             this.tsbSubUpdate.Click += new System.EventHandler(this.tsbSubUpdate_Click);
             // 
-            // tsbSubUpdateViaProxySelected
+            // tsbSubUpdateSelected
             // 
-            this.tsbSubUpdateViaProxySelected.Name = "tsbSubUpdateViaProxySelected";
-            resources.ApplyResources(this.tsbSubUpdateViaProxySelected, "tsbSubUpdateViaProxySelected");
-            this.tsbSubUpdateViaProxySelected.Click += new System.EventHandler(this.tsbSubUpdateViaProxySelected_Click);
+            this.tsbSubUpdateSelected.Name = "tsbSubUpdateSelected";
+            resources.ApplyResources(this.tsbSubUpdateSelected, "tsbSubUpdateSelected");
+            this.tsbSubUpdateSelected.Click += new System.EventHandler(this.tsbSubUpdateSelected_Click);
             // 
             // tsbSubUpdateViaProxy
             // 
             this.tsbSubUpdateViaProxy.Name = "tsbSubUpdateViaProxy";
             resources.ApplyResources(this.tsbSubUpdateViaProxy, "tsbSubUpdateViaProxy");
             this.tsbSubUpdateViaProxy.Click += new System.EventHandler(this.tsbSubUpdateViaProxy_Click);
+            // 
+            // tsbSubUpdateViaProxySelected
+            // 
+            this.tsbSubUpdateViaProxySelected.Name = "tsbSubUpdateViaProxySelected";
+            resources.ApplyResources(this.tsbSubUpdateViaProxySelected, "tsbSubUpdateViaProxySelected");
+            this.tsbSubUpdateViaProxySelected.Click += new System.EventHandler(this.tsbSubUpdateViaProxySelected_Click);
             // 
             // toolStripSeparator1
             // 
@@ -301,17 +305,17 @@
             resources.ApplyResources(this.menuClearProfileStatistics, "menuClearProfileStatistics");
             this.menuClearProfileStatistics.Click += new System.EventHandler(this.menuClearStatistic_Click);
             // 
-            // qrCodeControl
-            // 
-            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
-            this.qrCodeControl.Name = "qrCodeControl";
-            // 
             // tsbProfile
             // 
             this.tsbProfile.DropDown = this.cmsLv;
             this.tsbProfile.Image = global::clashN.Properties.Resources.server;
             resources.ApplyResources(this.tsbProfile, "tsbProfile");
             this.tsbProfile.Name = "tsbProfile";
+            // 
+            // qrCodeControl
+            // 
+            resources.ApplyResources(this.qrCodeControl, "qrCodeControl");
+            this.qrCodeControl.Name = "qrCodeControl";
             // 
             // splitContainer1
             // 
@@ -350,7 +354,7 @@
             resources.ApplyResources(this.cmsMain, "cmsMain");
             this.cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuSysAgentMode,
-            this.menuRoutings,
+            this.menuRuleMode,
             this.menuProfiles,
             this.toolStripSeparator13,
             this.menuScanScreen2,
@@ -390,10 +394,39 @@
             resources.ApplyResources(this.menuKeepNothing, "menuKeepNothing");
             this.menuKeepNothing.Click += new System.EventHandler(this.menuKeepNothing_Click);
             // 
-            // menuRoutings
+            // menuRuleMode
             // 
-            this.menuRoutings.Name = "menuRoutings";
-            resources.ApplyResources(this.menuRoutings, "menuRoutings");
+            this.menuRuleMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuModeRule,
+            this.menuModeGlobal,
+            this.menuModeDirect,
+            this.menuModeKeep});
+            this.menuRuleMode.Name = "menuRuleMode";
+            resources.ApplyResources(this.menuRuleMode, "menuRuleMode");
+            // 
+            // menuModeRule
+            // 
+            this.menuModeRule.Name = "menuModeRule";
+            resources.ApplyResources(this.menuModeRule, "menuModeRule");
+            this.menuModeRule.Click += new System.EventHandler(this.menuModeRule_Click);
+            // 
+            // menuModeGlobal
+            // 
+            this.menuModeGlobal.Name = "menuModeGlobal";
+            resources.ApplyResources(this.menuModeGlobal, "menuModeGlobal");
+            this.menuModeGlobal.Click += new System.EventHandler(this.menuModeGlobal_Click);
+            // 
+            // menuModeDirect
+            // 
+            this.menuModeDirect.Name = "menuModeDirect";
+            resources.ApplyResources(this.menuModeDirect, "menuModeDirect");
+            this.menuModeDirect.Click += new System.EventHandler(this.menuModeDirect_Click);
+            // 
+            // menuModeKeep
+            // 
+            this.menuModeKeep.Name = "menuModeKeep";
+            resources.ApplyResources(this.menuModeKeep, "menuModeKeep");
+            this.menuModeKeep.Click += new System.EventHandler(this.menuModeKeep_Click);
             // 
             // menuProfiles
             // 
@@ -730,7 +763,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbOptionSetting;
         private System.Windows.Forms.ToolStripMenuItem tsbCheckUpdateMetaCore;
         private System.Windows.Forms.ToolStripMenuItem menuClearProfileStatistics;
-        private System.Windows.Forms.ToolStripMenuItem menuRoutings;
+        private System.Windows.Forms.ToolStripMenuItem menuRuleMode;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem tsbBackupGuiNConfig;
@@ -746,6 +779,10 @@
         private MainMsgControl mainMsgControl;
         private System.Windows.Forms.ToolStripMenuItem tsbSubUpdateSelected;
         private System.Windows.Forms.ToolStripMenuItem tsbSubUpdateViaProxySelected;
+        private System.Windows.Forms.ToolStripMenuItem menuModeKeep;
+        private System.Windows.Forms.ToolStripMenuItem menuModeRule;
+        private System.Windows.Forms.ToolStripMenuItem menuModeGlobal;
+        private System.Windows.Forms.ToolStripMenuItem menuModeDirect;
     }
 }
 

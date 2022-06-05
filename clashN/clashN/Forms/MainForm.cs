@@ -451,6 +451,7 @@ namespace clashN.Forms
             statistics?.SaveToFile();
 
             ChangePACButtonStatus(config.sysProxyType);
+            SetRuleMode(config.ruleMode);
 
             this.BeginInvoke(new Action(() =>
             {
@@ -1166,5 +1167,48 @@ namespace clashN.Forms
 
         #endregion
 
+        #region Rule mode
+
+        private void menuModeRule_Click(object sender, EventArgs e)
+        {
+            SetRuleMode(ERuleMode.Rule);
+        }
+
+        private void menuModeGlobal_Click(object sender, EventArgs e)
+        {
+            SetRuleMode(ERuleMode.Global);
+        }
+
+        private void menuModeDirect_Click(object sender, EventArgs e)
+        {
+            SetRuleMode(ERuleMode.Direct);
+        }
+
+        private void menuModeKeep_Click(object sender, EventArgs e)
+        {
+            SetRuleMode(ERuleMode.Unchanged);
+        }
+        private void SetRuleMode(ERuleMode mode)
+        {
+            for (int k = 0; k < menuRuleMode.DropDownItems.Count; k++)
+            {
+                ToolStripMenuItem item = ((ToolStripMenuItem)menuRuleMode.DropDownItems[k]);
+                item.Checked = ((int)mode == k);
+            }
+            mainMsgControl.SetToolSslInfo("routing", mode.ToString());
+
+            if (config.ruleMode == mode)
+            {
+                return;
+            }
+            config.ruleMode = mode;
+
+            Global.reloadCore = true;
+            _ = LoadCore();
+
+            ConfigHandler.SaveConfig(ref config, false);
+        }
+
+        #endregion
     }
 }

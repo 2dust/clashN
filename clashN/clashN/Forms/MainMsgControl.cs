@@ -97,7 +97,7 @@ namespace clashN.Forms
                     toolSslInboundInfo.Text = value;
                     break;
                 case "routing":
-                    toolSslRoutingRule.Text = value;
+                    toolSslRuleMode.Text = value;
                     break;
             }
 

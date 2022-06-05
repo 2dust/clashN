@@ -42,7 +42,7 @@ namespace clashN.Forms
             this.ssMain = new System.Windows.Forms.StatusStrip();
             this.toolSslInboundInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslBlank1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolSslRoutingRule = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolSslRuleMode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslBlank2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslServerSpeed = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolSslBlank4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -117,7 +117,7 @@ namespace clashN.Forms
             this.ssMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolSslInboundInfo,
             this.toolSslBlank1,
-            this.toolSslRoutingRule,
+            this.toolSslRuleMode,
             this.toolSslBlank2,
             this.toolSslServerSpeed,
             this.toolSslBlank4});
@@ -136,10 +136,10 @@ namespace clashN.Forms
             this.toolSslBlank1.Name = "toolSslBlank1";
             this.toolSslBlank1.Spring = true;
             // 
-            // toolSslRoutingRule
+            // toolSslRuleMode
             // 
-            this.toolSslRoutingRule.Name = "toolSslRoutingRule";
-            resources.ApplyResources(this.toolSslRoutingRule, "toolSslRoutingRule");
+            this.toolSslRuleMode.Name = "toolSslRuleMode";
+            resources.ApplyResources(this.toolSslRuleMode, "toolSslRuleMode");
             // 
             // toolSslBlank2
             // 
@@ -187,7 +187,7 @@ namespace clashN.Forms
         private System.Windows.Forms.StatusStrip ssMain;
         private System.Windows.Forms.ToolStripStatusLabel toolSslInboundInfo;
         private System.Windows.Forms.ToolStripStatusLabel toolSslBlank1;
-        private System.Windows.Forms.ToolStripStatusLabel toolSslRoutingRule;
+        private System.Windows.Forms.ToolStripStatusLabel toolSslRuleMode;
         private System.Windows.Forms.ToolStripStatusLabel toolSslBlank2;
         private System.Windows.Forms.ToolStripStatusLabel toolSslServerSpeed;
         private System.Windows.Forms.ToolStripStatusLabel toolSslBlank4;

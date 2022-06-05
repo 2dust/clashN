@@ -111,7 +111,14 @@ namespace clashN.Handler
                 //mode
                 if (!fileContent.ContainsKey("mode"))
                 {
-                    ModifyContent(fileContent, "mode", "Rule");
+                    ModifyContent(fileContent, "mode", ERuleMode.Rule.ToString().ToLower());
+                }
+                else
+                {
+                    if(config.ruleMode != ERuleMode.Unchanged)
+                    {
+                        ModifyContent(fileContent, "mode", config.ruleMode.ToString().ToLower());
+                    }
                 }
 
                 //enable tun mode
