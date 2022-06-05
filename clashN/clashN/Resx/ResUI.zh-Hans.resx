@@ -222,9 +222,6 @@
   <data name="LvActivity" xml:space="preserve">
     <value>活动</value>
   </data>
-  <data name="MediumFresh" xml:space="preserve">
-    <value>中等</value>
-  </data>
   <data name="MsgClearSubscription" xml:space="preserve">
     <value>清除原订阅内容</value>
   </data>
@@ -291,17 +288,8 @@
   <data name="PleaseSelectProfile" xml:space="preserve">
     <value>请先选择配置文件</value>
   </data>
-  <data name="QuickFresh" xml:space="preserve">
-    <value>快</value>
-  </data>
-  <data name="RemoveDuplicateProfileResult" xml:space="preserve">
-    <value>配置文件去重完成。原数量: {0}，现数量: {1}</value>
-  </data>
   <data name="RemoveProfile" xml:space="preserve">
     <value>是否确定移除配置文件?</value>
-  </data>
-  <data name="SlowFresh" xml:space="preserve">
-    <value>慢</value>
   </data>
   <data name="SpeedProfileTips" xml:space="preserve">
     <value>注意：此功能依赖Http全局代理!测试完成后,请手工调整Http全局代理和活动节点。</value>

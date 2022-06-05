@@ -761,11 +761,11 @@ namespace clashN.Forms
 
         private void menuUpdateSubscriptions_Click(object sender, EventArgs e)
         {
-            UpdateSubscriptionProcess(false);
+            UpdateSubscriptionProcess(false, false);
         }
         private void menuUpdateSubViaProxy_Click(object sender, EventArgs e)
         {
-            UpdateSubscriptionProcess(true);
+            UpdateSubscriptionProcess(true, false);
         }
 
         private void tsbBackupGuiNConfig_Click(object sender, EventArgs e)
@@ -1096,19 +1096,38 @@ namespace clashN.Forms
 
         private void tsbSubUpdate_Click(object sender, EventArgs e)
         {
-            UpdateSubscriptionProcess(false);
+            UpdateSubscriptionProcess(false, false);
+        }
+        private void tsbSubUpdateSelected_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriptionProcess(false, true);
         }
 
         private void tsbSubUpdateViaProxy_Click(object sender, EventArgs e)
         {
-            UpdateSubscriptionProcess(true);
+            UpdateSubscriptionProcess(true, false);
+        }
+        private void tsbSubUpdateViaProxySelected_Click(object sender, EventArgs e)
+        {
+            UpdateSubscriptionProcess(true, true);
         }
 
         /// <summary>
         /// the subscription update process
         /// </summary>
-        private void UpdateSubscriptionProcess(bool blProxy)
+        private void UpdateSubscriptionProcess(bool blProxy, bool blSelected)
         {
+            List<ProfileItem> profileItems = null;
+            if (blSelected)
+            {
+                int index = GetLvSelectedIndex();
+                if (index < 0)
+                {
+                    return;
+                }
+                profileItems = lstSelecteds;
+            }
+
             void _updateUI(bool success, string msg)
             {
                 AppendText(false, msg);
@@ -1118,7 +1137,7 @@ namespace clashN.Forms
                 }
             };
 
-            (new UpdateHandle()).UpdateSubscriptionProcess(config, blProxy, _updateUI);
+            (new UpdateHandle()).UpdateSubscriptionProcess(config, blProxy, profileItems, _updateUI);
         }
 
         private void tsbQRCodeSwitch_CheckedChanged(object sender, EventArgs e)

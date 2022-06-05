@@ -222,9 +222,6 @@
   <data name="LvActivity" xml:space="preserve">
     <value>Activity</value>
   </data>
-  <data name="MediumFresh" xml:space="preserve">
-    <value>MediumFresh</value>
-  </data>
   <data name="MsgClearSubscription" xml:space="preserve">
     <value>Clear original subscription content</value>
   </data>
@@ -291,17 +288,8 @@
   <data name="PleaseSelectProfile" xml:space="preserve">
     <value>Please select the configuration file first</value>
   </data>
-  <data name="QuickFresh" xml:space="preserve">
-    <value>QuickFresh</value>
-  </data>
-  <data name="RemoveDuplicateProfileResult" xml:space="preserve">
-    <value>Profiles deduplication completed. Old: {0}, New: {1}.</value>
-  </data>
   <data name="RemoveProfile" xml:space="preserve">
     <value>Are you sure to remove the configuration file?</value>
-  </data>
-  <data name="SlowFresh" xml:space="preserve">
-    <value>SlowFresh</value>
   </data>
   <data name="SpeedProfileTips" xml:space="preserve">
     <value>Note: After this function relies on the Http global proxy test, please manually adjust the Http global proxy and active node!</value>

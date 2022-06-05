@@ -38,7 +38,9 @@
             this.menuScanScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExport2Clipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbSubUpdateSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSubUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSubUpdateViaProxySelected = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSubUpdateViaProxy = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRemoveProfile = new System.Windows.Forms.ToolStripMenuItem();
@@ -158,7 +160,9 @@
             this.menuExport2Clipboard,
             this.toolStripSeparator4,
             this.tsbSubUpdate,
+            this.tsbSubUpdateSelected,
             this.tsbSubUpdateViaProxy,
+            this.tsbSubUpdateViaProxySelected,
             this.toolStripSeparator1,
             this.menuRemoveProfile,
             this.menuCopyProfile,
@@ -172,6 +176,7 @@
             this.toolStripSeparator9,
             this.menuClearProfileStatistics});
             this.cmsLv.Name = "cmsLv";
+            this.cmsLv.OwnerItem = this.tsbProfile;
             resources.ApplyResources(this.cmsLv, "cmsLv");
             // 
             // menuAddProfile
@@ -203,11 +208,23 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
+            // tsbSubUpdateSelected
+            // 
+            this.tsbSubUpdateSelected.Name = "tsbSubUpdateSelected";
+            resources.ApplyResources(this.tsbSubUpdateSelected, "tsbSubUpdateSelected");
+            this.tsbSubUpdateSelected.Click += new System.EventHandler(this.tsbSubUpdateSelected_Click);
+            // 
             // tsbSubUpdate
             // 
             this.tsbSubUpdate.Name = "tsbSubUpdate";
             resources.ApplyResources(this.tsbSubUpdate, "tsbSubUpdate");
             this.tsbSubUpdate.Click += new System.EventHandler(this.tsbSubUpdate_Click);
+            // 
+            // tsbSubUpdateViaProxySelected
+            // 
+            this.tsbSubUpdateViaProxySelected.Name = "tsbSubUpdateViaProxySelected";
+            resources.ApplyResources(this.tsbSubUpdateViaProxySelected, "tsbSubUpdateViaProxySelected");
+            this.tsbSubUpdateViaProxySelected.Click += new System.EventHandler(this.tsbSubUpdateViaProxySelected_Click);
             // 
             // tsbSubUpdateViaProxy
             // 
@@ -727,6 +744,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton tsbCurrentProxies;
         private MainMsgControl mainMsgControl;
+        private System.Windows.Forms.ToolStripMenuItem tsbSubUpdateSelected;
+        private System.Windows.Forms.ToolStripMenuItem tsbSubUpdateViaProxySelected;
     }
 }
 

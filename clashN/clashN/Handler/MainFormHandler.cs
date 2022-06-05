@@ -117,7 +117,7 @@ namespace clashN.Handler
                 {
                     if ((dtNow - autoUpdateSubTime).Hours % config.autoUpdateSubInterval == 0)
                     {
-                        updateHandle.UpdateSubscriptionProcess(config, true, (bool success, string msg) =>
+                        updateHandle.UpdateSubscriptionProcess(config, true, null, (bool success, string msg) =>
                         {
                             update(success, msg);
                             if (success)

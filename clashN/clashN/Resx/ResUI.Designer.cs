@@ -544,17 +544,6 @@ namespace clashN.Resx
         }
 
         /// <summary>
-        ///   查找类似 MediumFresh 的本地化字符串。
-        /// </summary>
-        internal static string MediumFresh
-        {
-            get
-            {
-                return ResourceManager.GetString("MediumFresh", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   查找类似 Clear original subscription content 的本地化字符串。
         /// </summary>
         internal static string MsgClearSubscription
@@ -852,17 +841,6 @@ namespace clashN.Resx
         }
 
         /// <summary>
-        ///   查找类似 QuickFresh 的本地化字符串。
-        /// </summary>
-        internal static string QuickFresh
-        {
-            get
-            {
-                return ResourceManager.GetString("QuickFresh", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   查找类似 Global hotkey {0} registered failed, reason {1} 的本地化字符串。
         /// </summary>
         internal static string RegisterGlobalHotkeyFailed
@@ -884,17 +862,6 @@ namespace clashN.Resx
             }
         }
 
-        /// <summary>
-        ///   查找类似 Profiles deduplication completed. Old: {0}, New: {1}. 的本地化字符串。
-        /// </summary>
-        internal static string RemoveDuplicateProfileResult
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveDuplicateProfileResult", resourceCulture);
-            }
-        }
-
 
         /// <summary>
         ///   查找类似 Are you sure to remove the server? 的本地化字符串。
@@ -904,17 +871,6 @@ namespace clashN.Resx
             get
             {
                 return ResourceManager.GetString("RemoveProfile", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   查找类似 SlowFresh 的本地化字符串。
-        /// </summary>
-        internal static string SlowFresh
-        {
-            get
-            {
-                return ResourceManager.GetString("SlowFresh", resourceCulture);
             }
         }
 

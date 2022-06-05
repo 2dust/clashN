@@ -471,4 +471,10 @@
   <data name="tsbClose.Text" xml:space="preserve">
     <value>  关闭窗口  </value>
   </data>
+  <data name="tsbSubUpdateSelected.Text" xml:space="preserve">
+    <value>多选更新订阅(不通过代理)</value>
+  </data>
+  <data name="tsbSubUpdateViaProxySelected.Text" xml:space="preserve">
+    <value>多选更新订阅(通过代理)</value>
+  </data>
 </root>
