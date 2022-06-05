@@ -189,18 +189,14 @@ namespace clashN.Handler
                 }
                 foreach (var item in profileItems)
                 {
-                    if (item.enabled == false)
-                    {
-                        continue;
-                    }
                     string indexId = item.indexId.TrimEx();
                     string url = item.url.TrimEx();
                     string userAgent = item.userAgent.TrimEx();
                     string groupId = item.groupId.TrimEx();
                     string hashCode = $"{item.remarks}->";
-                    if (Utils.IsNullOrEmpty(indexId) || Utils.IsNullOrEmpty(url))
+                    if (item.enabled == false || Utils.IsNullOrEmpty(indexId) || Utils.IsNullOrEmpty(url))
                     {
-                        //_updateFunc(false, $"{hashCode}{ResUI.MsgNoValidSubscription}");
+                        _updateFunc(false, $"{hashCode}{ResUI.MsgSkipSubscriptionUpdate}");
                         continue;
                     }
 

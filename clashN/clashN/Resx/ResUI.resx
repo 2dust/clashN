@@ -373,4 +373,7 @@
   <data name="LvEnableUpdateSub" xml:space="preserve">
     <value>Enable update Sub (Convert)</value>
   </data>
+  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
+    <value>Skip this subscription update</value>
+  </data>
 </root>

@@ -373,4 +373,7 @@
   <data name="LvEnableUpdateSub" xml:space="preserve">
     <value>更新订阅(转换)</value>
   </data>
+  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
+    <value>跳过此订阅更新</value>
+  </data>
 </root>
