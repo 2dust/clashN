@@ -60,10 +60,22 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
+                coreType = ECoreType.clashN,
+                coreUrl = Global.NUrl,
+                coreLatestUrl = Global.NUrl + "/latest",
+                coreDownloadUrl32 = Global.NUrl + "/download/{0}/clashN-32.zip",
+                coreDownloadUrl64 = Global.NUrl + "/download/{0}/clashN.zip",
+            });
+
+            coreInfos.Add(new CoreInfo
+            {
                 coreType = ECoreType.clash,
                 coreExes = new List<string> { "clash-windows-amd64-v3", "clash-windows-amd64", "clash-windows-386", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashCoreUrl,
+                coreLatestUrl = Global.clashCoreUrl + "/latest",
+                coreDownloadUrl32 = Global.clashCoreUrl + "/download/{0}/clash-windows-386-{0}.zip",
+                coreDownloadUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip",
                 match = "Clash"
             });
 
@@ -73,6 +85,9 @@ namespace clashN.Handler
                 coreExes = new List<string> { "Clash.Meta-windows-amd64v1", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "Clash.Meta", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashMetaCoreUrl,
+                coreLatestUrl = Global.clashMetaCoreUrl + "/latest",
+                coreDownloadUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip",
+                coreDownloadUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1-{0}.zip",
                 match = "Clash Meta"
             });
 

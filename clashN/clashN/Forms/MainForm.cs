@@ -1018,10 +1018,7 @@ namespace clashN.Forms
                     menuExit_Click(null, null);
                 }
             };
-            Task.Run(() =>
-            {
-                (new UpdateHandle()).CheckUpdateGuiN(config, _updateUI);
-            });
+            (new UpdateHandle()).CheckUpdateGuiN(config, _updateUI);
         }
 
         private void tsbCheckUpdateCore_Click(object sender, EventArgs e)
@@ -1054,10 +1051,7 @@ namespace clashN.Forms
                     AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfully);
                 }
             };
-            Task.Run(() =>
-            {
-                (new UpdateHandle()).CheckUpdateCore(type, config, _updateUI);
-            });
+            (new UpdateHandle()).CheckUpdateCore(type, config, _updateUI);
 
         }
 

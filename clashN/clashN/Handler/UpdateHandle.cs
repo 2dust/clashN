@@ -33,16 +33,6 @@ namespace clashN.Handler
             }
         }
 
-        private readonly string nLatestUrl = Global.NUrl + "/latest";
-        private const string nUrl = Global.NUrl + "/download/{0}/clashN.zip";
-        private readonly string clashCoreLatestUrl = Global.clashCoreUrl + "/latest";
-        private const string clashCoreUrl32 = Global.clashCoreUrl + "/download/{0}/clash-windows-386-{0}.zip";
-        private const string clashCoreUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip";
-        private readonly string clashMetaCoreLatestUrl = Global.clashMetaCoreUrl + "/latest";
-        private const string clashMetaCoreUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip";
-        private const string clashMetaCoreUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1-{0}.zip";
-        private const string geoUrl = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/{0}.dat";
-
         public void CheckUpdateGuiN(Config config, Action<bool, string> update)
         {
             _config = config;
@@ -242,7 +232,7 @@ namespace clashN.Handler
         {
             _config = config;
             _updateFunc = update;
-            var url = string.Format(geoUrl, geoName);
+            var url = string.Format(Global.geoUrl, geoName);
 
             DownloadHandle downloadHandle = null;
             if (downloadHandle == null)
@@ -294,23 +284,8 @@ namespace clashN.Handler
         {
             try
             {
-                string url;
-                if (type == ECoreType.clash)
-                {
-                    url = clashCoreLatestUrl;
-                }
-                else if (type == ECoreType.clash_meta)
-                {
-                    url = clashMetaCoreLatestUrl;
-                }
-                else if (type == ECoreType.clashN)
-                {
-                    url = nLatestUrl;
-                }
-                else
-                {
-                    throw new ArgumentException("Type");
-                }
+                var coreInfo = LazyConfig.Instance.GetCoreInfo(type);
+                string url = coreInfo.coreLatestUrl;             
 
                 var result = await (new DownloadHandle()).UrlRedirectAsync(url, true);
                 if (!Utils.IsNullOrEmpty(result))
@@ -381,7 +356,8 @@ namespace clashN.Handler
             try
             {
                 string version = redirectUrl.Substring(redirectUrl.LastIndexOf("/", StringComparison.Ordinal) + 1);
-
+                var coreInfo = LazyConfig.Instance.GetCoreInfo(type);
+                
                 string curVersion;
                 string message;
                 string url;
@@ -391,11 +367,11 @@ namespace clashN.Handler
                     message = string.Format(ResUI.IsLatestCore, curVersion);
                     if (Environment.Is64BitProcess)
                     {
-                        url = string.Format(clashCoreUrl64, version);
+                        url = string.Format(coreInfo.coreDownloadUrl64, version);
                     }
                     else
                     {
-                        url = string.Format(clashCoreUrl32, version);
+                        url = string.Format(coreInfo.coreDownloadUrl32, version);
                     }
                 }
                 else if (type == ECoreType.clash_meta)
@@ -404,18 +380,18 @@ namespace clashN.Handler
                     message = string.Format(ResUI.IsLatestCore, curVersion);
                     if (Environment.Is64BitProcess)
                     {
-                        url = string.Format(clashMetaCoreUrl64, version);
+                        url = string.Format(coreInfo.coreDownloadUrl64, version);
                     }
                     else
                     {
-                        url = string.Format(clashMetaCoreUrl32, version);
+                        url = string.Format(coreInfo.coreDownloadUrl32, version);
                     }
                 }
                 else if (type == ECoreType.clashN)
                 {
                     curVersion = FileVersionInfo.GetVersionInfo(Utils.GetExePath()).FileVersion.ToString();
                     message = string.Format(ResUI.IsLatestN, curVersion);
-                    url = string.Format(nUrl, version);
+                    url = string.Format(coreInfo.coreDownloadUrl64, version);
                 }
                 else
                 {
