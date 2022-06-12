@@ -376,4 +376,7 @@
   <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
     <value>跳过此订阅更新</value>
   </data>
+  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
+    <value>更新Core失败，详情见日志</value>
+  </data>
 </root>

@@ -601,6 +601,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Update Core failed, see the log for details 的本地化字符串。
+        /// </summary>
+        internal static string MsgUpdateCoreCoreFailed {
+            get {
+                return ResourceManager.GetString("MsgUpdateCoreCoreFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Update Core successfully 的本地化字符串。
         /// </summary>
         internal static string MsgUpdateCoreCoreSuccessfully {

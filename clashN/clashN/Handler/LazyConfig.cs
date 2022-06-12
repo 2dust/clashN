@@ -82,12 +82,12 @@ namespace clashN.Handler
             coreInfos.Add(new CoreInfo
             {
                 coreType = ECoreType.clash_meta,
-                coreExes = new List<string> { "Clash.Meta-windows-amd64v1", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "Clash.Meta", "clash" },
+                coreExes = new List<string> { "Clash.Meta-windows-amd64-compatible", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "Clash.Meta", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashMetaCoreUrl,
                 coreLatestUrl = Global.clashMetaCoreUrl + "/latest",
                 coreDownloadUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip",
-                coreDownloadUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64V1-{0}.zip",
+                coreDownloadUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64-compatible-{0}.zip",
                 match = "Clash Meta"
             });
 

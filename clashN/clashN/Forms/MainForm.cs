@@ -1041,14 +1041,20 @@ namespace clashN.Forms
                     CloseCore();
 
                     string fileName = Utils.GetPath(Utils.GetDownloadFileName(msg));
-                    FileManager.ZipExtractToFile(fileName, config.ignoreGeoUpdateCore ? "geo" : "");
+                    if (FileManager.ZipExtractToFile(fileName, config.ignoreGeoUpdateCore ? "geo" : "") == false)
+                    {
+                        Global.reloadCore = true;
+                        _ = LoadCore();
+                        AppendText(false, ResUI.MsgUpdateCoreCoreFailed);
+                    }
+                    else
+                    {
+                        AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfullyMore);
 
-                    AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfullyMore);
-
-                    Global.reloadCore = true;
-                    _ = LoadCore();
-
-                    AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfully);
+                        Global.reloadCore = true;
+                        _ = LoadCore();
+                        AppendText(false, ResUI.MsgUpdateCoreCoreSuccessfully);
+                    }
                 }
             };
             (new UpdateHandle()).CheckUpdateCore(type, config, _updateUI);
