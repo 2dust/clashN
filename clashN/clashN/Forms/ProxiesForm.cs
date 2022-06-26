@@ -146,7 +146,9 @@ namespace clashN.Forms
 
                     this.BeginInvoke(new Action(() =>
                     {
-                        tsbSpeedtest.Enabled = true;
+                        tsbReload.Enabled =
+                        tsbSpeedtest.Enabled =
+                        tsbSelectActivity.Enabled = true;
                     }));
                 }
             });
@@ -177,6 +179,12 @@ namespace clashN.Forms
                     lvItem.Tag = kv.Key;
                 }
                 lvProxies.EndUpdate();
+
+                if (index >= 0 && index < lvProxies.Items.Count && lvProxies.Items.Count > 0)
+                {
+                    lvProxies.Items[index].Selected = true;
+                    lvProxies.EnsureVisible(index);
+                }
 
             }));
 
@@ -370,7 +378,9 @@ namespace clashN.Forms
             {
                 return;
             }
-            tsbSpeedtest.Enabled = false;
+            tsbReload.Enabled =
+            tsbSpeedtest.Enabled =
+            tsbSelectActivity.Enabled = false;
 
             MainFormHandler.Instance.ClashProxiesDelayTest(it =>
             {
