@@ -240,6 +240,7 @@ namespace clashN.Forms
             lvProfiles.Columns.Add(ResUI.LvAddress, 60, HorizontalAlignment.Center);
             lvProfiles.Columns.Add(ResUI.LvEnableTun, 60, HorizontalAlignment.Center);
             lvProfiles.Columns.Add(ResUI.LvEnableUpdateSub, 100, HorizontalAlignment.Center);
+            lvProfiles.Columns.Add(ResUI.LvUpdateTime, 80, HorizontalAlignment.Center);
 
             if (statistics != null && statistics.Enable)
             {
@@ -289,7 +290,8 @@ namespace clashN.Forms
                 Utils.AddSubItem(lvItem, EProfileColName.address.ToString(), item.address.IsNullOrWhiteSpace() ? "" : Global.CheckMark);
                 Utils.AddSubItem(lvItem, EProfileColName.enableTun.ToString(), item.enableTun ? Global.CheckMark : "");
                 Utils.AddSubItem(lvItem, EProfileColName.enableUpdateSub.ToString(), (item.enabled ? Global.CheckMark : "") + (item.enableConvert ? $"({Global.CheckMark})" : ""));
-
+                Utils.AddSubItem(lvItem, EProfileColName.updateTime.ToString(), item.GetUpdateTime());
+                
                 if (statistics != null && statistics.Enable)
                 {
                     string totalUp = string.Empty,

@@ -379,4 +379,7 @@
   <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
     <value>Update Core failed, see the log for details</value>
   </data>
+  <data name="LvUpdateTime" xml:space="preserve">
+    <value>UpdateTime</value>
+  </data>
 </root>

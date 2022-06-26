@@ -466,6 +466,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 UpdateTime 的本地化字符串。
+        /// </summary>
+        internal static string LvUpdateTime {
+            get {
+                return ResourceManager.GetString("LvUpdateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Url 的本地化字符串。
         /// </summary>
         internal static string LvUrl {

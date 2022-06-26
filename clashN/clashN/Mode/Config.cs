@@ -18,7 +18,7 @@ namespace clashN.Mode
 
         public int httpPort { get; set; }
 
-        public int socksPort { get; set; }     
+        public int socksPort { get; set; }
 
         public int APIPort { get; set; }
 
@@ -42,7 +42,7 @@ namespace clashN.Mode
 
         public int autoUpdateInterval { get; set; } = 0;
         public int autoUpdateSubInterval { get; set; } = 0;
-        
+
         public bool enableSecurityProtocolTls13 { get; set; }
 
         #endregion
@@ -119,6 +119,7 @@ namespace clashN.Mode
             testResult = string.Empty;
             groupId = string.Empty;
             enableTun = false;
+            enableConvert = false;
         }
 
         #region function
@@ -131,6 +132,15 @@ namespace clashN.Mode
         public void SetTestResult(string value)
         {
             testResult = value;
+        }
+        public string GetUpdateTime()
+        {
+            if (updateTime <= 0)
+            {
+                return String.Empty;
+            }
+            var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM/dd HH:mm");
         }
         #endregion
 
@@ -183,6 +193,8 @@ namespace clashN.Mode
         public bool enableTun { get; set; }
 
         public bool enableConvert { get; set; }
+
+        public long updateTime { get; set; }
     }
 
     [Serializable]

@@ -481,6 +481,7 @@ namespace clashN.Handler
                 case EProfileColName.remarks:
                 case EProfileColName.url:
                 case EProfileColName.testResult:
+                case EProfileColName.updateTime:
                     propertyName = name.ToString();
                     break;
                 default:

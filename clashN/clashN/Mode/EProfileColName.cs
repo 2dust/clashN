@@ -10,6 +10,7 @@ namespace clashN.Mode
         enableTun,
         enableUpdateSub,
         testResult,
+        updateTime,
 
         todayDown,
         todayUp,

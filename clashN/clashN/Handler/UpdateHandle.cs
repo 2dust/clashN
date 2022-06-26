@@ -228,6 +228,7 @@ namespace clashN.Handler
                         int ret = ConfigHandler.AddBatchProfiles(ref config, result, indexId, groupId);
                         if (ret == 0)
                         {
+                            item.updateTime = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
                             _updateFunc(false, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
                         }
                         else
@@ -237,7 +238,7 @@ namespace clashN.Handler
                     }
                     _updateFunc(false, $"-------------------------------------------------------");
 
-                } 
+                }
                 //restore system proxy
                 if (bSysProxyType)
                 {
@@ -306,7 +307,7 @@ namespace clashN.Handler
             try
             {
                 var coreInfo = LazyConfig.Instance.GetCoreInfo(type);
-                string url = coreInfo.coreLatestUrl;             
+                string url = coreInfo.coreLatestUrl;
 
                 var result = await (new DownloadHandle()).UrlRedirectAsync(url, true);
                 if (!Utils.IsNullOrEmpty(result))
@@ -378,7 +379,7 @@ namespace clashN.Handler
             {
                 string version = redirectUrl.Substring(redirectUrl.LastIndexOf("/", StringComparison.Ordinal) + 1);
                 var coreInfo = LazyConfig.Instance.GetCoreInfo(type);
-                
+
                 string curVersion;
                 string message;
                 string url;
