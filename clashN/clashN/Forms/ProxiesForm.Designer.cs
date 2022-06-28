@@ -154,6 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.tsMain);
+            this.MaximizeBox = true;
             this.Name = "ProxiesForm";
             this.Load += new System.EventHandler(this.ProxiesForm_Load);
             this.Shown += new System.EventHandler(this.ProxiesForm_Shown);

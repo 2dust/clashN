@@ -161,6 +161,10 @@ namespace clashN.Forms
             lvProxies.BeginInvoke(new Action(() =>
             {
                 index = GetLvSelectedIndex();
+                if (index < 0)
+                {
+                    index = 0;
+                }
                 lvProxies.BeginUpdate();
                 lvProxies.Items.Clear();
 
