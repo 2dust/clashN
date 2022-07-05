@@ -1,6 +1,6 @@
 ﻿namespace clashN.Forms
 {
-    partial class ProxiesForm
+    partial class ProxiesControl
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProxiesForm));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProxiesControl));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lvProxies = new clashN.Base.ListViewFlickerFree();
+            this.cmsProxies = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsbProxiesReload = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbProxiesSpeedtest = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbProxiesSelectActivity = new System.Windows.Forms.ToolStripMenuItem();
             this.lvDetail = new clashN.Base.ListViewFlickerFree();
-            this.tsMain = new System.Windows.Forms.ToolStrip();
-            this.tsbReload = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbSpeedtest = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbSelectActivity = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbClose = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tsMain.SuspendLayout();
+            this.cmsProxies.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -54,15 +51,18 @@
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.lvProxies);
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.lvDetail);
             // 
             // lvProxies
             // 
             resources.ApplyResources(this.lvProxies, "lvProxies");
+            this.lvProxies.ContextMenuStrip = this.cmsProxies;
             this.lvProxies.FullRowSelect = true;
             this.lvProxies.GridLines = true;
             this.lvProxies.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -75,9 +75,41 @@
             this.lvProxies.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvProxies_ColumnClick);
             this.lvProxies.SelectedIndexChanged += new System.EventHandler(this.lvProxies_SelectedIndexChanged);
             // 
+            // cmsProxies
+            // 
+            resources.ApplyResources(this.cmsProxies, "cmsProxies");
+            this.cmsProxies.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsProxies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbProxiesReload,
+            this.tsbProxiesSpeedtest,
+            this.tsbProxiesSelectActivity});
+            this.cmsProxies.Name = "contextMenuStrip1";
+            this.cmsProxies.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cmsProxies.ShowCheckMargin = true;
+            this.cmsProxies.ShowImageMargin = false;
+            // 
+            // tsbProxiesReload
+            // 
+            resources.ApplyResources(this.tsbProxiesReload, "tsbProxiesReload");
+            this.tsbProxiesReload.Name = "tsbProxiesReload";
+            this.tsbProxiesReload.Click += new System.EventHandler(this.tsbProxiesReload_Click);
+            // 
+            // tsbProxiesSpeedtest
+            // 
+            resources.ApplyResources(this.tsbProxiesSpeedtest, "tsbProxiesSpeedtest");
+            this.tsbProxiesSpeedtest.Name = "tsbProxiesSpeedtest";
+            this.tsbProxiesSpeedtest.Click += new System.EventHandler(this.tsbProxiesSpeedtest_Click);
+            // 
+            // tsbProxiesSelectActivity
+            // 
+            resources.ApplyResources(this.tsbProxiesSelectActivity, "tsbProxiesSelectActivity");
+            this.tsbProxiesSelectActivity.Name = "tsbProxiesSelectActivity";
+            this.tsbProxiesSelectActivity.Click += new System.EventHandler(this.tsbProxiesSelectActivity_Click);
+            // 
             // lvDetail
             // 
             resources.ApplyResources(this.lvDetail, "lvDetail");
+            this.lvDetail.ContextMenuStrip = this.cmsProxies;
             this.lvDetail.FullRowSelect = true;
             this.lvDetail.GridLines = true;
             this.lvDetail.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -90,82 +122,19 @@
             this.lvDetail.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvDetail_ColumnClick);
             this.lvDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvDetail_KeyDown);
             // 
-            // tsMain
-            // 
-            this.tsMain.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbReload,
-            this.toolStripSeparator2,
-            this.tsbSpeedtest,
-            this.toolStripSeparator3,
-            this.tsbSelectActivity,
-            this.toolStripSeparator1,
-            this.tsbClose});
-            resources.ApplyResources(this.tsMain, "tsMain");
-            this.tsMain.Name = "tsMain";
-            this.tsMain.TabStop = true;
-            // 
-            // tsbReload
-            // 
-            this.tsbReload.Image = global::clashN.Properties.Resources.restart;
-            resources.ApplyResources(this.tsbReload, "tsbReload");
-            this.tsbReload.Name = "tsbReload";
-            this.tsbReload.Click += new System.EventHandler(this.tsbReload_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // tsbSpeedtest
-            // 
-            this.tsbSpeedtest.Image = global::clashN.Properties.Resources.speedtest;
-            resources.ApplyResources(this.tsbSpeedtest, "tsbSpeedtest");
-            this.tsbSpeedtest.Name = "tsbSpeedtest";
-            this.tsbSpeedtest.Click += new System.EventHandler(this.tsbSpeedtest_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // tsbSelectActivity
-            // 
-            this.tsbSelectActivity.Image = global::clashN.Properties.Resources.active;
-            resources.ApplyResources(this.tsbSelectActivity, "tsbSelectActivity");
-            this.tsbSelectActivity.Name = "tsbSelectActivity";
-            this.tsbSelectActivity.Click += new System.EventHandler(this.tsbSelectActivity_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // tsbClose
-            // 
-            this.tsbClose.Image = global::clashN.Properties.Resources.minimize;
-            resources.ApplyResources(this.tsbClose, "tsbClose");
-            this.tsbClose.Name = "tsbClose";
-            this.tsbClose.Click += new System.EventHandler(this.tsbClose_Click);
-            // 
-            // ProxiesForm
+            // ProxiesControl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.tsMain);
-            this.MaximizeBox = true;
-            this.Name = "ProxiesForm";
-            this.Load += new System.EventHandler(this.ProxiesForm_Load);
-            this.Shown += new System.EventHandler(this.ProxiesForm_Shown);
+            this.Name = "ProxiesControl";
+            this.Load += new System.EventHandler(this.ProxiesControl_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tsMain.ResumeLayout(false);
-            this.tsMain.PerformLayout();
+            this.cmsProxies.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -173,14 +142,10 @@
 
         private Base.ListViewFlickerFree lvProxies;
         private Base.ListViewFlickerFree lvDetail;
-        private System.Windows.Forms.ToolStrip tsMain;
-        private System.Windows.Forms.ToolStripButton tsbReload;
-        private System.Windows.Forms.ToolStripButton tsbClose;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripButton tsbSpeedtest;
-        private System.Windows.Forms.ToolStripButton tsbSelectActivity;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ContextMenuStrip cmsProxies;
+        private System.Windows.Forms.ToolStripMenuItem tsbProxiesReload;
+        private System.Windows.Forms.ToolStripMenuItem tsbProxiesSpeedtest;
+        private System.Windows.Forms.ToolStripMenuItem tsbProxiesSelectActivity;
     }
 }

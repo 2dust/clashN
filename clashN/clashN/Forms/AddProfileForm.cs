@@ -159,7 +159,14 @@ namespace clashN.Forms
             }
 
             address = Path.Combine(Utils.GetConfigPath(), address);
-            Utils.ProcessStart(address);
+            if (File.Exists(address))
+            {
+                Utils.ProcessStart(address);
+            }
+            else
+            {
+                UI.Show(ResUI.FailedReadConfiguration);
+            }
         }
     }
 }

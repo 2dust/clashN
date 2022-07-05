@@ -42,8 +42,8 @@
     <Compile Update="Forms\OptionSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\ProxiesForm.cs">
-      <SubType>Form</SubType>
+    <Compile Update="Forms\ProxiesControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

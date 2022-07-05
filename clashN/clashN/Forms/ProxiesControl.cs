@@ -4,20 +4,18 @@ using clashN.Mode;
 using clashN.Resx;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static clashN.Mode.ClashProviders;
 using static clashN.Mode.ClashProxies;
 
 namespace clashN.Forms
 {
-    public partial class ProxiesForm : BaseForm
+    public partial class ProxiesControl : UserControl
     {
+        private Config config;
         private Dictionary<String, ProxiesItem> proxies;
         private Dictionary<String, ProvidersItem> providers;
         private List<ProxiesItem> lstDetail;
@@ -26,22 +24,23 @@ namespace clashN.Forms
         //    ProxiesItem selectedProxy;
 
         #region Init
-        public ProxiesForm()
+        public ProxiesControl()
         {
             InitializeComponent();
         }
 
-        private void ProxiesForm_Load(object sender, EventArgs e)
+        private void ProxiesControl_Load(object sender, EventArgs e)
         {
+
+        }
+
+        public void Init(Config _config)
+        {
+            config = _config;
             InitProxiesView();
             InitDetailView();
 
-            GetClashProxies(true);
-        }
-
-        private void ProxiesForm_Shown(object sender, EventArgs e)
-        {
-            lvProxies.Focus();
+            //GetClashProxies(true);
         }
 
         #endregion
@@ -82,7 +81,7 @@ namespace clashN.Forms
             lvDetail.Columns.Add("", 30);
             lvDetail.Columns.Add(ResUI.LvAlias, 130);
             lvDetail.Columns.Add(ResUI.LvServiceType, 80);
-            lvDetail.Columns.Add(ResUI.LvTestResults, 60, HorizontalAlignment.Right);
+            lvDetail.Columns.Add(ResUI.LvTestResults, 100, HorizontalAlignment.Right);
 
             lvDetail.EndUpdate();
         }
@@ -136,20 +135,17 @@ namespace clashN.Forms
         {
             MainFormHandler.Instance.GetClashProxies(config, (it, it2) =>
             {
-                proxies = it.proxies;
-                providers = it2.providers;
+                proxies = it?.proxies;
+                providers = it2?.providers;
 
                 LazyConfig.Instance.SetProxies(proxies);
+                if (proxies == null)
+                {
+                    return;
+                }
                 if (refreshUI)
                 {
                     RefreshProxies();
-
-                    this.BeginInvoke(new Action(() =>
-                    {
-                        tsbReload.Enabled =
-                        tsbSpeedtest.Enabled =
-                        tsbSelectActivity.Enabled = true;
-                    }));
                 }
             });
         }
@@ -307,14 +303,17 @@ namespace clashN.Forms
                 return proxy2;
             }
             //from providers
-            foreach (KeyValuePair<string, ProvidersItem> kv in providers)
+            if (providers != null)
             {
-                if (Global.proxyVehicleType.Contains(kv.Value.vehicleType.ToLower()))
+                foreach (KeyValuePair<string, ProvidersItem> kv in providers)
                 {
-                    var proxy3 = kv.Value.proxies.FirstOrDefault(t => t.name == name);
-                    if (proxy3 != null)
+                    if (Global.proxyVehicleType.Contains(kv.Value.vehicleType.ToLower()))
                     {
-                        return proxy3;
+                        var proxy3 = kv.Value.proxies.FirstOrDefault(t => t.name == name);
+                        if (proxy3 != null)
+                        {
+                            return proxy3;
+                        }
                     }
                 }
             }
@@ -365,40 +364,52 @@ namespace clashN.Forms
 
             selectedProxy.now = nameNode;
             RefreshDetail(GetLvSelectedIndex());
+
+            GetClashProxies(true);
         }
 
         #endregion
 
         #region toolbar
 
-        private void tsbReload_Click(object sender, EventArgs e)
+        public void ProxiesClear()
+        {
+            proxies = null;
+            providers = null;
+            lstDetail = null;
+
+            lvProxies.BeginInvoke(new Action(() =>
+            {
+                lvProxies.Items.Clear();
+            }));
+            lvDetail.BeginInvoke(new Action(() =>
+            {
+                lvDetail.Items.Clear();
+            }));
+        }
+
+        public void ProxiesReload()
         {
             GetClashProxies(true);
         }
 
-        private void tsbSpeedtest_Click(object sender, EventArgs e)
+        public void ProxiesSpeedtest()
         {
             if (proxies == null)
             {
                 return;
             }
-            tsbReload.Enabled =
-            tsbSpeedtest.Enabled =
-            tsbSelectActivity.Enabled = false;
 
             MainFormHandler.Instance.ClashProxiesDelayTest(it =>
             {
                 GetClashProxies(true);
             });
         }
-        private void tsbSelectActivity_Click(object sender, EventArgs e)
+        public void ProxiesSelectActivity()
         {
             SetActiveProxy();
         }
-        private void tsbClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private int GetLvSelectedIndex()
         {
             int index = -1;
@@ -416,6 +427,22 @@ namespace clashN.Forms
             {
                 return index;
             }
+        }
+
+
+        private void tsbProxiesReload_Click(object sender, EventArgs e)
+        {
+            ProxiesReload();
+        }
+
+        private void tsbProxiesSpeedtest_Click(object sender, EventArgs e)
+        {
+            ProxiesSpeedtest();
+        }
+
+        private void tsbProxiesSelectActivity_Click(object sender, EventArgs e)
+        {
+            ProxiesSelectActivity();
         }
 
         #endregion

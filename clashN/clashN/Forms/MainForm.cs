@@ -99,6 +99,8 @@ namespace clashN.Forms
             OnProgramStarted("shown", true);
 
             _ = LoadCore();
+
+            proxiesControl.Init(config);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -147,7 +149,7 @@ namespace clashN.Forms
 
         private void RestoreUI()
         {
-            scMain.Panel2Collapsed = true;
+            scServers.Panel2Collapsed = true;
 
             if (!config.uiItem.mainLocation.IsEmpty)
             {
@@ -291,7 +293,7 @@ namespace clashN.Forms
                 Utils.AddSubItem(lvItem, EProfileColName.enableTun.ToString(), item.enableTun ? Global.CheckMark : "");
                 Utils.AddSubItem(lvItem, EProfileColName.enableUpdateSub.ToString(), (item.enabled ? Global.CheckMark : "") + (item.enableConvert ? $"({Global.CheckMark})" : ""));
                 Utils.AddSubItem(lvItem, EProfileColName.updateTime.ToString(), item.GetUpdateTime());
-                
+
                 if (statistics != null && statistics.Enable)
                 {
                     string totalUp = string.Empty,
@@ -433,11 +435,8 @@ namespace clashN.Forms
 
         async Task LoadCore()
         {
-            this.BeginInvoke(new Action(() =>
-            {
-                tsbReload.Enabled = false;
-                tsbCurrentProxies.Enabled = false;
-            }));
+            SwitchUI(false);
+            proxiesControl.ProxiesClear();
 
             if (Global.reloadCore)
             {
@@ -455,11 +454,9 @@ namespace clashN.Forms
             ChangePACButtonStatus(config.sysProxyType);
             SetRuleMode(config.ruleMode);
 
-            this.BeginInvoke(new Action(() =>
-            {
-                tsbReload.Enabled = true;
-                tsbCurrentProxies.Enabled = true;
-            }));
+            SwitchUI(true);
+            proxiesControl.ProxiesReload();
+
         }
 
         private void CloseCore()
@@ -1088,11 +1085,8 @@ namespace clashN.Forms
         {
             Utils.ProcessStart($"{Utils.Base64Decode(Global.PromotionUrl)}?t={DateTime.Now.Ticks}");
         }
-        private void tsbCurrentProxies_Click(object sender, EventArgs e)
-        {
-            ProxiesForm fm = new ProxiesForm();
-            fm.ShowDialog();
-        }
+
+
         #endregion
 
         #region 订阅 
@@ -1146,7 +1140,7 @@ namespace clashN.Forms
         private void tsbQRCodeSwitch_CheckedChanged(object sender, EventArgs e)
         {
             bool bShow = tsbQRCodeSwitch.Checked;
-            scMain.Panel2Collapsed = !bShow;
+            scServers.Panel2Collapsed = !bShow;
         }
         #endregion
 
@@ -1212,5 +1206,57 @@ namespace clashN.Forms
         }
 
         #endregion
+
+
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SwitchUI(true);
+        }
+
+        private void SwitchUI(bool enabled)
+        {
+            this.BeginInvoke(new Action(() =>
+            {
+
+                if (enabled)
+                {
+                    if (tabMain.SelectedIndex == 0)
+                    {
+                        tsbCurrentProxies.Enabled = true;
+                        tsbProfile.Enabled = false;
+                    }
+                    else
+                    {
+                        tsbCurrentProxies.Enabled = false;
+                        tsbProfile.Enabled = true;
+                    }
+
+                    tsbReload.Enabled = true;
+                }
+                else
+                {
+                    tsbReload.Enabled = false;
+                    tsbCurrentProxies.Enabled = false;
+                    tsbProfile.Enabled = false;
+                }
+            }));
+        }
+
+
+        private void tsbProxiesReload_Click(object sender, EventArgs e)
+        {
+            proxiesControl.ProxiesReload();
+        }
+
+        private void tsbProxiesSpeedtest_Click(object sender, EventArgs e)
+        {
+            proxiesControl.ProxiesSpeedtest();
+        }
+
+        private void tsbProxiesSelectActivity_Click(object sender, EventArgs e)
+        {
+            proxiesControl.ProxiesSelectActivity();
+        }
     }
 }
