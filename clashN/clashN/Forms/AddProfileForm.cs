@@ -124,7 +124,7 @@ namespace clashN.Forms
             OpenFileDialog fileDialog = new OpenFileDialog
             {
                 Multiselect = false,
-                Filter = "YAML|*.yaml|All|*.*"
+                Filter = "YAML|*.yaml;*.yml|All|*.*"
             };
             if (fileDialog.ShowDialog() != DialogResult.OK)
             {
