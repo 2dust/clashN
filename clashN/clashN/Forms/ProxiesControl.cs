@@ -197,9 +197,9 @@ namespace clashN.Forms
         {
             //selectedProxy = null;
 
-            lvDetail.BeginUpdate();
-            lvDetail.Items.Clear();
-            lvDetail.EndUpdate();
+            //lvDetail.BeginUpdate();
+            //lvDetail.Items.Clear();
+            //lvDetail.EndUpdate();
 
             if (index < 0 || index >= lvProxies.Items.Count)
             {
@@ -261,7 +261,7 @@ namespace clashN.Forms
                 sortColumn = column;
             }
             lvDetail.BeginUpdate();
-            lvDetail.Items.Clear();
+            //lvDetail.Items.Clear();
 
             switch (column)
             {
@@ -278,20 +278,55 @@ namespace clashN.Forms
 
             foreach (var item in lstDetail)
             {
-                ListViewItem lvItem = new ListViewItem(item.now);
-                Utils.AddSubItem(lvItem, "Name", item.name);
-                Utils.AddSubItem(lvItem, "Type", item.type);
-                Utils.AddSubItem(lvItem, "testResult", item.delay >= 99999999 ? "" : item.delay.ToString("#ms"));
-                lvItem.Tag = item.name;
-                if (item.now == Global.CheckMark)
+                ListViewItem lvItem = null;
+                foreach (ListViewItem v in lvDetail.Items)
                 {
-                    lvItem.ForeColor = Color.DodgerBlue;
-                    lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
+                    if (v.Tag.ToString() == item.name)
+                    {
+                        lvItem = v;
+                        break;
+                    }
+                }
+                if (lvItem == null)
+                {
+                    lvItem = new ListViewItem(item.now);
+                    Utils.AddSubItem(lvItem, "Name", item.name);
+                    Utils.AddSubItem(lvItem, "Type", item.type);
+                    Utils.AddSubItem(lvItem, "testResult", item.delay >= 99999999 ? "" : item.delay.ToString("#ms"));
+                    lvItem.Tag = item.name;
+                    if (item.now == Global.CheckMark)
+                    {
+                        lvItem.ForeColor = Color.DodgerBlue;
+                        lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
+                    }
+
+                    lvDetail.Items.Add(lvItem);
+                }
+                else
+                {
+                    lvItem.Text = item.now;
+                    lvItem.SubItems["testResult"].Text = item.delay >= 99999999 ? "" : item.delay.ToString("#ms");
+                    if (item.now == Global.CheckMark)
+                    {
+                        lvItem.ForeColor = Color.DodgerBlue;
+                        lvItem.Font = new Font(lvItem.Font, FontStyle.Bold);
+                    }
+                    else
+                    {
+                        lvItem.ForeColor = Color.Black;
+                        lvItem.Font = new Font(lvItem.Font, FontStyle.Regular);
+                    }
                 }
 
-                lvDetail.Items.Add(lvItem);
-            }
 
+            }
+            for (int i = 0; i < lvDetail.Items.Count; i++)
+            {
+                if (lstDetail.AsEnumerable().Where(x => x.name == lvDetail.Items[i].Tag.ToString()).Count() <= 0)
+                {
+                    lvDetail.Items.RemoveAt(i);
+                }
+            }
             lvDetail.EndUpdate();
         }
 
@@ -447,5 +482,9 @@ namespace clashN.Forms
 
         #endregion
 
+        private void lvDetail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ProxiesSelectActivity();
+        }
     }
 }

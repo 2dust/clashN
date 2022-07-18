@@ -51,18 +51,16 @@
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.lvProxies);
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.lvDetail);
             // 
             // lvProxies
             // 
-            resources.ApplyResources(this.lvProxies, "lvProxies");
             this.lvProxies.ContextMenuStrip = this.cmsProxies;
+            resources.ApplyResources(this.lvProxies, "lvProxies");
             this.lvProxies.FullRowSelect = true;
             this.lvProxies.GridLines = true;
             this.lvProxies.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -77,8 +75,8 @@
             // 
             // cmsProxies
             // 
-            resources.ApplyResources(this.cmsProxies, "cmsProxies");
             this.cmsProxies.ImageScalingSize = new System.Drawing.Size(20, 20);
+            resources.ApplyResources(this.cmsProxies, "cmsProxies");
             this.cmsProxies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbProxiesReload,
             this.tsbProxiesSpeedtest,
@@ -90,26 +88,26 @@
             // 
             // tsbProxiesReload
             // 
-            resources.ApplyResources(this.tsbProxiesReload, "tsbProxiesReload");
             this.tsbProxiesReload.Name = "tsbProxiesReload";
+            resources.ApplyResources(this.tsbProxiesReload, "tsbProxiesReload");
             this.tsbProxiesReload.Click += new System.EventHandler(this.tsbProxiesReload_Click);
             // 
             // tsbProxiesSpeedtest
             // 
-            resources.ApplyResources(this.tsbProxiesSpeedtest, "tsbProxiesSpeedtest");
             this.tsbProxiesSpeedtest.Name = "tsbProxiesSpeedtest";
+            resources.ApplyResources(this.tsbProxiesSpeedtest, "tsbProxiesSpeedtest");
             this.tsbProxiesSpeedtest.Click += new System.EventHandler(this.tsbProxiesSpeedtest_Click);
             // 
             // tsbProxiesSelectActivity
             // 
-            resources.ApplyResources(this.tsbProxiesSelectActivity, "tsbProxiesSelectActivity");
             this.tsbProxiesSelectActivity.Name = "tsbProxiesSelectActivity";
+            resources.ApplyResources(this.tsbProxiesSelectActivity, "tsbProxiesSelectActivity");
             this.tsbProxiesSelectActivity.Click += new System.EventHandler(this.tsbProxiesSelectActivity_Click);
             // 
             // lvDetail
             // 
-            resources.ApplyResources(this.lvDetail, "lvDetail");
             this.lvDetail.ContextMenuStrip = this.cmsProxies;
+            resources.ApplyResources(this.lvDetail, "lvDetail");
             this.lvDetail.FullRowSelect = true;
             this.lvDetail.GridLines = true;
             this.lvDetail.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -120,6 +118,7 @@
             this.lvDetail.UseCompatibleStateImageBehavior = false;
             this.lvDetail.View = System.Windows.Forms.View.Details;
             this.lvDetail.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvDetail_ColumnClick);
+            this.lvDetail.SelectedIndexChanged += new System.EventHandler(this.lvDetail_SelectedIndexChanged);
             this.lvDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvDetail_KeyDown);
             // 
             // ProxiesControl
