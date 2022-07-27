@@ -35,6 +35,8 @@ namespace clashN.Handler
             return _proxies;
         }
 
+        public Dictionary<string, object> ProfileContent { get; set; }
+
         public ECoreType GetCoreType(ProfileItem profileItem)
         {
             if (profileItem != null && profileItem.coreType != null)

@@ -1251,7 +1251,7 @@ namespace clashN.Forms
 
         private void tsbProxiesSpeedtest_Click(object sender, EventArgs e)
         {
-            proxiesControl.ProxiesSpeedtest();
+            proxiesControl.ProxiesDelayTest();
         }
 
         private void tsbProxiesSelectActivity_Click(object sender, EventArgs e)

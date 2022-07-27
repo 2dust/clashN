@@ -209,7 +209,7 @@ namespace clashN.Handler
 
             var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/providers/proxies";
             var result2 = await HttpClientHelper.GetInstance().GetAsync(url2);
-            var clashProviders = Utils.FromJson<ClashProviders>(result2);
+            var clashProviders = Utils.FromJson<ClashProviders>(result2);         
 
             update(clashProxies, clashProviders);
         }
@@ -257,6 +257,24 @@ namespace clashN.Handler
                 Utils.RegWriteValue($"{Global.MyRegPathClasses}\\shell\\open\\command", "", $"\"{Utils.GetExePath()}\" \"%1\"");
 
             });
+        }
+
+        public List<ProxiesItem> GetClashProxyGroups()
+        {
+            try
+            {
+                var fileContent = LazyConfig.Instance.ProfileContent;
+                if (!fileContent.ContainsKey("proxy-groups"))
+                {
+                    return null;
+                }
+                return Utils.FromJson<List<ProxiesItem>>(Utils.ToJson(fileContent["proxy-groups"]));
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog("GetClashProxyGroups", ex);
+                return null;
+            }
         }
     }
 }

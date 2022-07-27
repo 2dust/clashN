@@ -133,6 +133,8 @@ namespace clashN.Handler
                 }
 
                 File.WriteAllText(fileName, Utils.ToYaml(fileContent));
+                
+                LazyConfig.Instance.ProfileContent = fileContent;
 
                 msg = string.Format(ResUI.SuccessfulConfiguration, $"{node.GetSummary()}");
             }

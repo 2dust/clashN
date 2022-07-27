@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static clashN.Mode.ClashProviders;
 using static clashN.Mode.ClashProxies;
@@ -18,6 +20,7 @@ namespace clashN.Forms
         private Config config;
         private Dictionary<String, ProxiesItem> proxies;
         private Dictionary<String, ProvidersItem> providers;
+        private List<ProxiesItem> lstProxies;
         private List<ProxiesItem> lstDetail;
         private int sortColumn = 0;
 
@@ -41,6 +44,7 @@ namespace clashN.Forms
             InitDetailView();
 
             //GetClashProxies(true);
+            DelayTestTask();
         }
 
         #endregion
@@ -59,8 +63,8 @@ namespace clashN.Forms
             lvProxies.HeaderStyle = ColumnHeaderStyle.Clickable;
 
             lvProxies.Columns.Add("", 30);
-            lvProxies.Columns.Add(ResUI.LvAlias, 130);
-            lvProxies.Columns.Add(ResUI.LvServiceType, 80);
+            lvProxies.Columns.Add(ResUI.LvAlias, 150);
+            lvProxies.Columns.Add(ResUI.LvServiceType, 100);
             lvProxies.Columns.Add(ResUI.LvActivity, 130);
 
             lvProxies.EndUpdate();
@@ -79,8 +83,8 @@ namespace clashN.Forms
             lvDetail.HeaderStyle = ColumnHeaderStyle.Clickable;
 
             lvDetail.Columns.Add("", 30);
-            lvDetail.Columns.Add(ResUI.LvAlias, 130);
-            lvDetail.Columns.Add(ResUI.LvServiceType, 80);
+            lvDetail.Columns.Add(ResUI.LvAlias, 150);
+            lvDetail.Columns.Add(ResUI.LvServiceType, 120);
             lvDetail.Columns.Add(ResUI.LvTestResults, 100, HorizontalAlignment.Right);
 
             lvDetail.EndUpdate();
@@ -152,8 +156,48 @@ namespace clashN.Forms
 
         private void RefreshProxies()
         {
-            var index = -1;
+            lstProxies = new List<ProxiesItem>();
 
+            var proxyGroups = MainFormHandler.Instance.GetClashProxyGroups();
+            if (proxyGroups != null && proxyGroups.Count > 0)
+            {
+                foreach (var it in proxyGroups)
+                {
+                    if (Utils.IsNullOrEmpty(it.name) || !proxies.ContainsKey(it.name))
+                    {
+                        continue;
+                    }
+                    var item = proxies[it.name];
+                    if (!Global.allowSelectType.Contains(item.type.ToLower()))
+                    {
+                        continue;
+                    }
+                    lstProxies.Add(new ProxiesItem()
+                    {
+                        now = item.now,
+                        name = item.name,
+                        type = item.type
+                    });
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
+                {
+                    if (!Global.allowSelectType.Contains(kv.Value.type.ToLower()))
+                    {
+                        continue;
+                    }
+                    lstProxies.Add(new ProxiesItem()
+                    {
+                        now = kv.Value.now,
+                        name = kv.Key,
+                        type = kv.Value.type
+                    });
+                }
+            }
+
+            var index = -1;
             lvProxies.BeginInvoke(new Action(() =>
             {
                 index = GetLvSelectedIndex();
@@ -161,22 +205,19 @@ namespace clashN.Forms
                 {
                     index = 0;
                 }
+
                 lvProxies.BeginUpdate();
                 lvProxies.Items.Clear();
 
-                foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
+                foreach (var item in lstProxies)
                 {
-                    if (!Global.allowSelectType.Contains(kv.Value.type.ToLower()))
-                    {
-                        continue;
-                    }
                     ListViewItem lvItem = new ListViewItem("");
-                    Utils.AddSubItem(lvItem, "Name", kv.Key);
-                    Utils.AddSubItem(lvItem, "Type", kv.Value.type);
-                    Utils.AddSubItem(lvItem, "Activity", kv.Value.now);
+                    Utils.AddSubItem(lvItem, "Name", item.name);
+                    Utils.AddSubItem(lvItem, "Type", item.type);
+                    Utils.AddSubItem(lvItem, "Activity", item.now);
 
                     lvProxies.Items.Add(lvItem);
-                    lvItem.Tag = kv.Key;
+                    lvItem.Tag = item.name;
                 }
                 lvProxies.EndUpdate();
 
@@ -185,7 +226,6 @@ namespace clashN.Forms
                     lvProxies.Items[index].Selected = true;
                     lvProxies.EnsureVisible(index);
                 }
-
             }));
 
             lvDetail.BeginInvoke(new Action(() =>
@@ -376,7 +416,9 @@ namespace clashN.Forms
         {
             proxies = null;
             providers = null;
+            lstProxies = null;
             lstDetail = null;
+            LazyConfig.Instance.SetProxies(proxies);
 
             lvProxies.BeginInvoke(new Action(() =>
             {
@@ -393,7 +435,7 @@ namespace clashN.Forms
             GetClashProxies(true);
         }
 
-        public void ProxiesSpeedtest()
+        public void ProxiesDelayTest()
         {
             if (proxies == null)
             {
@@ -437,7 +479,7 @@ namespace clashN.Forms
 
         private void tsbProxiesSpeedtest_Click(object sender, EventArgs e)
         {
-            ProxiesSpeedtest();
+            ProxiesDelayTest();
         }
 
         private void tsbProxiesSelectActivity_Click(object sender, EventArgs e)
@@ -447,5 +489,37 @@ namespace clashN.Forms
 
         #endregion
 
+        #region task
+
+        public void DelayTestTask()
+        {
+            Task.Run(() =>
+            {
+                var autoDelayTestTime = DateTime.Now;
+
+                Thread.Sleep(1000);
+
+                while (true)
+                {
+                    var dtNow = DateTime.Now;
+
+                    if (config.autoDelayTestInterval > 0)
+                    {
+                        if ((dtNow - autoDelayTestTime).Minutes % config.autoDelayTestInterval == 0)
+                        {
+                            ProxiesDelayTest();
+                            autoDelayTestTime = dtNow;
+                        }
+                        Thread.Sleep(1000);
+                    }
+
+                    Thread.Sleep(1000 * 60);
+                }
+            }
+
+            );
+        }
+
+        #endregion
     }
 }
