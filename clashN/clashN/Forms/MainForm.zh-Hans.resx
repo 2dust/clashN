@@ -89,25 +89,25 @@
     <value>253, 22</value>
   </data>
   <data name="tsbSubUpdate.Text" xml:space="preserve">
-    <value>更新订阅(不通过代理)</value>
+    <value>更新全部订阅(不通过代理)</value>
   </data>
   <data name="tsbSubUpdateSelected.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
   </data>
   <data name="tsbSubUpdateSelected.Text" xml:space="preserve">
-    <value>多选更新订阅(不通过代理)</value>
+    <value>更新所选订阅(不通过代理)</value>
   </data>
   <data name="tsbSubUpdateViaProxy.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
   </data>
   <data name="tsbSubUpdateViaProxy.Text" xml:space="preserve">
-    <value>更新订阅(通过代理)</value>
+    <value>更新全部订阅(通过代理)</value>
   </data>
   <data name="tsbSubUpdateViaProxySelected.Size" type="System.Drawing.Size, System.Drawing">
     <value>253, 22</value>
   </data>
   <data name="tsbSubUpdateViaProxySelected.Text" xml:space="preserve">
-    <value>多选更新订阅(通过代理)</value>
+    <value>更新所选订阅(通过代理)</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 6</value>
@@ -280,13 +280,13 @@
     <value>192, 22</value>
   </data>
   <data name="menuUpdateSubscriptions.Text" xml:space="preserve">
-    <value>更新订阅(不通过代理)</value>
+    <value>更新全部订阅(不通过代理)</value>
   </data>
   <data name="menuUpdateSubViaProxy.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 22</value>
   </data>
   <data name="menuUpdateSubViaProxy.Text" xml:space="preserve">
-    <value>更新订阅(通过代理)</value>
+    <value>更新全部订阅(通过代理)</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 6</value>
