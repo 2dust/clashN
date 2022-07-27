@@ -619,9 +619,10 @@ namespace clashN.Handler
             }
 
             //Is Clash configuration
-            if (clipboardData.IndexOf("port") >= 0
-              && clipboardData.IndexOf("socks-port") >= 0
-              && clipboardData.IndexOf("proxies") >= 0)
+            if (((clipboardData.IndexOf("port") >= 0 && clipboardData.IndexOf("socks-port") >= 0) 
+                    || clipboardData.IndexOf("mixed-port") >= 0)
+              && clipboardData.IndexOf("proxies") >= 0
+              && clipboardData.IndexOf("rules") >= 0)
             { }
             else { return -1; }
 
