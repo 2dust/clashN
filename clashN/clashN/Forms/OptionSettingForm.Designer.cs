@@ -46,6 +46,8 @@
             this.txthttpPort = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.txtautoDelayTestInterval = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbSubConvertUrl = new System.Windows.Forms.ComboBox();
             this.btnFontReset = new System.Windows.Forms.Button();
@@ -192,6 +194,8 @@
             // tabPage7
             // 
             resources.ApplyResources(this.tabPage7, "tabPage7");
+            this.tabPage7.Controls.Add(this.txtautoDelayTestInterval);
+            this.tabPage7.Controls.Add(this.label8);
             this.tabPage7.Controls.Add(this.label7);
             this.tabPage7.Controls.Add(this.cmbSubConvertUrl);
             this.tabPage7.Controls.Add(this.btnFontReset);
@@ -207,6 +211,16 @@
             this.tabPage7.Controls.Add(this.chkAutoRun);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // txtautoDelayTestInterval
+            // 
+            resources.ApplyResources(this.txtautoDelayTestInterval, "txtautoDelayTestInterval");
+            this.txtautoDelayTestInterval.Name = "txtautoDelayTestInterval";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
             // 
             // label7
             // 
@@ -400,5 +414,7 @@
         private System.Windows.Forms.CheckBox chkEnableIpv6;
         private System.Windows.Forms.ComboBox cmbSubConvertUrl;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtautoDelayTestInterval;
+        private System.Windows.Forms.Label label8;
     }
 }

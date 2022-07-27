@@ -59,6 +59,7 @@ namespace clashN.Forms
             chkIgnoreGeoUpdateCore.Checked = config.ignoreGeoUpdateCore;
             txtautoUpdateInterval.Text = config.autoUpdateInterval.ToString();
             txtautoUpdateSubInterval.Text = config.autoUpdateSubInterval.ToString();
+            txtautoDelayTestInterval.Text = config.autoDelayTestInterval.ToString();
             chkEnableSecurityProtocolTls13.Checked = config.enableSecurityProtocolTls13;
 
             cmbSubConvertUrl.Text = config.constItem.subConvertUrl;
@@ -153,6 +154,7 @@ namespace clashN.Forms
             config.ignoreGeoUpdateCore = chkIgnoreGeoUpdateCore.Checked;
             config.autoUpdateInterval = Utils.ToInt(txtautoUpdateInterval.Text);
             config.autoUpdateSubInterval = Utils.ToInt(txtautoUpdateSubInterval.Text);
+            config.autoDelayTestInterval = Utils.ToInt(txtautoDelayTestInterval.Text);
             config.enableSecurityProtocolTls13 = chkEnableSecurityProtocolTls13.Checked;
 
             config.constItem.subConvertUrl = cmbSubConvertUrl.Text.TrimEx();

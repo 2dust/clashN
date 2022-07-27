@@ -42,6 +42,7 @@ namespace clashN.Mode
 
         public int autoUpdateInterval { get; set; } = 0;
         public int autoUpdateSubInterval { get; set; } = 0;
+        public int autoDelayTestInterval { get; set; } = 0;
 
         public bool enableSecurityProtocolTls13 { get; set; }
 
