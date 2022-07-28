@@ -17,7 +17,8 @@ namespace clashN.Forms
 {
     public partial class ProxiesControl : UserControl
     {
-        private Config config;
+        private Config _config;
+        Action<bool, string> _updateFunc;
         private Dictionary<String, ProxiesItem> proxies;
         private Dictionary<String, ProvidersItem> providers;
         private List<ProxiesItem> lstProxies;
@@ -37,9 +38,10 @@ namespace clashN.Forms
 
         }
 
-        public void Init(Config _config)
+        public void Init(Config config, Action<bool, string> update)
         {
-            config = _config;
+            _config = config;
+            _updateFunc = update;
             InitProxiesView();
             InitDetailView();
 
@@ -137,8 +139,9 @@ namespace clashN.Forms
 
         private void GetClashProxies(bool refreshUI)
         {
-            MainFormHandler.Instance.GetClashProxies(config, (it, it2) =>
+            MainFormHandler.Instance.GetClashProxies(_config, (it, it2) =>
             {
+                _updateFunc(false, "Refresh proxies");
                 proxies = it?.proxies;
                 providers = it2?.providers;
 
@@ -224,7 +227,8 @@ namespace clashN.Forms
                 if (index >= 0 && index < lvProxies.Items.Count && lvProxies.Items.Count > 0)
                 {
                     lvProxies.Items[index].Selected = true;
-                    lvProxies.EnsureVisible(index);
+                    lvProxies.SetScrollPosition(index);
+
                 }
             }));
 
@@ -393,17 +397,19 @@ namespace clashN.Forms
             var selectedProxy = TryGetProxy(name);
             if (selectedProxy == null || selectedProxy.type != "Selector")
             {
-                UI.Show(ResUI.OperationFailed);
+                _updateFunc(false, ResUI.OperationFailed);
                 return;
             }
 
-            var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/proxies/{name}";
+            var url = $"{Global.httpProtocol}{Global.Loopback}:{_config.APIPort}/proxies/{name}";
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("name", nameNode);
             _ = HttpClientHelper.GetInstance().PutAsync(url, headers);
 
             selectedProxy.now = nameNode;
             RefreshDetail(GetLvSelectedIndex());
+
+            _updateFunc(false, ResUI.OperationSuccess);
 
             GetClashProxies(true);
         }
@@ -433,17 +439,14 @@ namespace clashN.Forms
         public void ProxiesReload()
         {
             GetClashProxies(true);
+            lvProxies.Focus();
         }
 
         public void ProxiesDelayTest()
         {
-            if (proxies == null)
-            {
-                return;
-            }
-
             MainFormHandler.Instance.ClashProxiesDelayTest(it =>
             {
+                _updateFunc(false, "Clash Proxies Delay Test");
                 GetClashProxies(true);
             });
         }
@@ -503,9 +506,9 @@ namespace clashN.Forms
                 {
                     var dtNow = DateTime.Now;
 
-                    if (config.autoDelayTestInterval > 0)
+                    if (_config.autoDelayTestInterval > 0)
                     {
-                        if ((dtNow - autoDelayTestTime).Minutes % config.autoDelayTestInterval == 0)
+                        if ((dtNow - autoDelayTestTime).Minutes % _config.autoDelayTestInterval == 0)
                         {
                             ProxiesDelayTest();
                             autoDelayTestTime = dtNow;

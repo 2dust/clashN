@@ -93,5 +93,21 @@ namespace clashN.Base
             this.DoDragDrop(e.Item, DragDropEffects.Move);
             this.InsertionMark.Index = -1;
         }
+
+        public void SetScrollPosition(int pos)
+        {
+            pos = Math.Min(Items.Count - 1, pos);
+
+            if (pos < 0 || pos >= Items.Count)
+                return;
+
+            EnsureVisible(pos);
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (TopItem != null && TopItem.Index != pos)
+                    TopItem = Items[pos];
+            }
+        }
     }
 }

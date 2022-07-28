@@ -100,7 +100,7 @@ namespace clashN.Forms
 
             _ = LoadCore();
 
-            proxiesControl.Init(config);
+            proxiesControl.Init(config, UpdateTaskHandler);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -332,7 +332,7 @@ namespace clashN.Forms
             if (index >= 0 && index < lvProfiles.Items.Count && lvProfiles.Items.Count > 0)
             {
                 lvProfiles.Items[index].Selected = true;
-                lvProfiles.EnsureVisible(index); // workaround
+                lvProfiles.SetScrollPosition(index); // workaround
             }
         }
 
@@ -456,6 +456,7 @@ namespace clashN.Forms
 
             SwitchUI(true);
             proxiesControl.ProxiesReload();
+            proxiesControl.ProxiesDelayTest();
 
         }
 
@@ -847,7 +848,7 @@ namespace clashN.Forms
             if (index >= 0 && index < lvProfiles.Items.Count && lvProfiles.Items.Count > 0)
             {
                 lvProfiles.Items[index].Selected = true;
-                lvProfiles.EnsureVisible(index); // workaround
+                lvProfiles.SetScrollPosition(index); // workaround
             }
 
             SetVisibleCore(true);
@@ -1225,11 +1226,13 @@ namespace clashN.Forms
                     {
                         tsbCurrentProxies.Enabled = true;
                         tsbProfile.Enabled = false;
+                        proxiesControl.Focus();
                     }
                     else
                     {
                         tsbCurrentProxies.Enabled = false;
                         tsbProfile.Enabled = true;
+                        lvProfiles.Focus();
                     }
 
                     tsbReload.Enabled = true;

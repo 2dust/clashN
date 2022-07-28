@@ -203,21 +203,38 @@ namespace clashN.Handler
 
         private async Task GetClashProxiesAsync(Config config, Action<ClashProxies, ClashProviders> update)
         {
-            var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/proxies";
-            var result = await HttpClientHelper.GetInstance().GetAsync(url);
-            var clashProxies = Utils.FromJson<ClashProxies>(result);
+            for (var i = 0; i < 5; i++)
+            {
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/proxies";
+                var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                var clashProxies = Utils.FromJson<ClashProxies>(result);
 
-            var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/providers/proxies";
-            var result2 = await HttpClientHelper.GetInstance().GetAsync(url2);
-            var clashProviders = Utils.FromJson<ClashProviders>(result2);         
+                var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/providers/proxies";
+                var result2 = await HttpClientHelper.GetInstance().GetAsync(url2);
+                var clashProviders = Utils.FromJson<ClashProviders>(result2);
 
-            update(clashProxies, clashProviders);
+                if (clashProxies != null || clashProviders != null)
+                {
+                    update(clashProxies, clashProviders);
+                    return;
+                }
+                Thread.Sleep(5000);
+            }
+            update(null, null);
         }
 
         public void ClashProxiesDelayTest(Action<string> update)
         {
             Task.Run(() =>
             {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (LazyConfig.Instance.GetProxies() == null)
+                    {
+                        Thread.Sleep(5000);
+                        continue;
+                    }
+                }
                 var proxies = LazyConfig.Instance.GetProxies();
                 if (proxies == null)
                 {
