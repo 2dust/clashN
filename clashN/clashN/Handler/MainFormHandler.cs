@@ -128,26 +128,26 @@ namespace clashN.Handler
                     Thread.Sleep(60000);
                 }
 
-                if (config.autoUpdateInterval > 0)
-                {
-                    if ((dtNow - autoUpdateGeoTime).Hours % config.autoUpdateInterval == 0)
-                    {
-                        updateHandle.UpdateGeoFile("geosite", config, (bool success, string msg) =>
-                        {
-                            update(false, msg);
-                            if (success)
-                                Utils.SaveLog("geosite" + msg);
-                        });
+                //if (config.autoUpdateInterval > 0)
+                //{
+                //    if ((dtNow - autoUpdateGeoTime).Hours % config.autoUpdateInterval == 0)
+                //    {
+                //        updateHandle.UpdateGeoFile("geosite", config, (bool success, string msg) =>
+                //        {
+                //            update(false, msg);
+                //            if (success)
+                //                Utils.SaveLog("geosite" + msg);
+                //        });
 
-                        updateHandle.UpdateGeoFile("geoip", config, (bool success, string msg) =>
-                        {
-                            update(false, msg);
-                            if (success)
-                                Utils.SaveLog("geoip" + msg);
-                        });
-                        autoUpdateGeoTime = dtNow;
-                    }
-                }
+                //        updateHandle.UpdateGeoFile("geoip", config, (bool success, string msg) =>
+                //        {
+                //            update(false, msg);
+                //            if (success)
+                //                Utils.SaveLog("geoip" + msg);
+                //        });
+                //        autoUpdateGeoTime = dtNow;
+                //    }
+                //}
 
                 Thread.Sleep(1000 * 3600);
             }
@@ -261,6 +261,45 @@ namespace clashN.Handler
 
                 Thread.Sleep(5000);
                 update("");
+            });
+        }
+
+        public void ClashProxiesDelayTestPart(List<ProxiesItem> lstProxy, Action<ProxiesItem, string> update)
+        {
+            Task.Run(() =>
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (LazyConfig.Instance.GetProxies() == null)
+                    {
+                        Thread.Sleep(5000);
+                        continue;
+                    }
+                }
+                var proxies = LazyConfig.Instance.GetProxies();
+                if (proxies == null || lstProxy == null)
+                {
+                    return;
+                }
+                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
+                urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
+
+                List<Task> tasks = new List<Task>();
+                foreach (var it in lstProxy)
+                {
+                    if (Global.notAllowTestType.Contains(it.type.ToLower()))
+                    {
+                        continue;
+                    }
+                    var name = it.name;
+                    var url = string.Format(urlBase, name);
+                    tasks.Add(Task.Run(async () =>
+                    {
+                        var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                        update(it, result);
+                    }));
+                }
+                Task.WaitAll(tasks.ToArray());
             });
         }
 

@@ -132,6 +132,11 @@ namespace clashN.Forms
 
             RefreshDetailSub(e.Column);
         }
+
+        private void lvDetail_DoubleClick(object sender, EventArgs e)
+        {
+            SetActiveProxy();
+        }
         #endregion
 
 
@@ -442,13 +447,42 @@ namespace clashN.Forms
             lvProxies.Focus();
         }
 
-        public void ProxiesDelayTest()
+        public void ProxiesDelayTest(bool blAll = true)
         {
-            MainFormHandler.Instance.ClashProxiesDelayTest(it =>
+            if (blAll)
             {
-                _updateFunc(false, "Clash Proxies Delay Test");
-                GetClashProxies(true);
-            });
+                MainFormHandler.Instance.ClashProxiesDelayTest(it =>
+                {
+                    _updateFunc(false, "Clash Proxies Latency Test");
+                    GetClashProxies(true);
+                });
+            }
+            else
+            {
+                if (lstDetail == null)
+                {
+                    return;
+                }
+                _updateFunc(false, "Clash Proxies Part Latency Test");
+
+                MainFormHandler.Instance.ClashProxiesDelayTestPart(lstDetail, (item, result) =>
+                {
+                    _updateFunc(false, $"{item.name}={result}");
+
+                    var dicResult = Utils.FromJson<Dictionary<string, object>>(result);
+                    if (dicResult.ContainsKey("delay"))
+                    {
+                        int k = lstDetail.FindIndex(it => it.name == item.name);
+                        if (k >= 0 && k < lvDetail.Items.Count)
+                        {
+                            lvDetail.BeginInvoke(new Action(() =>
+                            {
+                                lvDetail.Items[k].SubItems["testResult"].Text = $"{dicResult["delay"]}ms";
+                            }));
+                        }
+                    }
+                });
+            }
         }
         public void ProxiesSelectActivity()
         {
@@ -490,6 +524,11 @@ namespace clashN.Forms
             ProxiesSelectActivity();
         }
 
+        private void tsbProxiesSpeedtestPart_Click(object sender, EventArgs e)
+        {
+            ProxiesDelayTest(false);
+        }
+
         #endregion
 
         #region task
@@ -524,5 +563,6 @@ namespace clashN.Forms
         }
 
         #endregion
+
     }
 }
