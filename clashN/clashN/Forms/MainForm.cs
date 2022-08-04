@@ -1257,9 +1257,5 @@ namespace clashN.Forms
             proxiesControl.ProxiesDelayTest();
         }
 
-        private void tsbProxiesSelectActivity_Click(object sender, EventArgs e)
-        {
-            proxiesControl.ProxiesSelectActivity();
-        }
     }
 }
