@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEditMixinContent = new System.Windows.Forms.Button();
+            this.chkEnableMixinContent = new System.Windows.Forms.CheckBox();
             this.chkEnableIpv6 = new System.Windows.Forms.CheckBox();
             this.txtmixedPort = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -105,6 +107,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEditMixinContent);
+            this.groupBox1.Controls.Add(this.chkEnableMixinContent);
             this.groupBox1.Controls.Add(this.chkEnableIpv6);
             this.groupBox1.Controls.Add(this.txtmixedPort);
             this.groupBox1.Controls.Add(this.label6);
@@ -120,6 +124,19 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // btnEditMixinContent
+            // 
+            resources.ApplyResources(this.btnEditMixinContent, "btnEditMixinContent");
+            this.btnEditMixinContent.Name = "btnEditMixinContent";
+            this.btnEditMixinContent.UseVisualStyleBackColor = true;
+            this.btnEditMixinContent.Click += new System.EventHandler(this.btnEditMixinContent_Click);
+            // 
+            // chkEnableMixinContent
+            // 
+            resources.ApplyResources(this.chkEnableMixinContent, "chkEnableMixinContent");
+            this.chkEnableMixinContent.Name = "chkEnableMixinContent";
+            this.chkEnableMixinContent.UseVisualStyleBackColor = true;
             // 
             // chkEnableIpv6
             // 
@@ -416,5 +433,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtautoDelayTestInterval;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox chkEnableMixinContent;
+        private System.Windows.Forms.Button btnEditMixinContent;
     }
 }

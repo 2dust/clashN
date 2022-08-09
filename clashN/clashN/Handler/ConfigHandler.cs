@@ -18,7 +18,7 @@ namespace clashN.Handler
     class ConfigHandler
     {
         private static string configRes = Global.ConfigFileName;
-        private static object objLock = new object();
+        private static readonly object objLock = new object();
 
         #region ConfigHandler
 
@@ -619,7 +619,7 @@ namespace clashN.Handler
             }
 
             //Is Clash configuration
-            if (((clipboardData.IndexOf("port") >= 0 && clipboardData.IndexOf("socks-port") >= 0) 
+            if (((clipboardData.IndexOf("port") >= 0 && clipboardData.IndexOf("socks-port") >= 0)
                     || clipboardData.IndexOf("mixed-port") >= 0)
               && clipboardData.IndexOf("proxies") >= 0
               && clipboardData.IndexOf("rules") >= 0)

@@ -83,10 +83,64 @@
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnEditMixinContent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEditMixinContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 321</value>
+  </data>
+  <data name="btnEditMixinContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 32</value>
+  </data>
+  <data name="btnEditMixinContent.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="btnEditMixinContent.Text" xml:space="preserve">
+    <value>Edit Mixin</value>
+  </data>
+  <data name="&gt;&gt;btnEditMixinContent.Name" xml:space="preserve">
+    <value>btnEditMixinContent</value>
+  </data>
+  <data name="&gt;&gt;btnEditMixinContent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEditMixinContent.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnEditMixinContent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkEnableMixinContent.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chkEnableMixinContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 324</value>
+  </data>
+  <data name="chkEnableMixinContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 27</value>
+  </data>
+  <data name="chkEnableMixinContent.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="chkEnableMixinContent.Text" xml:space="preserve">
+    <value>Enable Mixin configuration content</value>
+  </data>
+  <data name="&gt;&gt;chkEnableMixinContent.Name" xml:space="preserve">
+    <value>chkEnableMixinContent</value>
+  </data>
+  <data name="&gt;&gt;chkEnableMixinContent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkEnableMixinContent.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;chkEnableMixinContent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="chkEnableIpv6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkEnableIpv6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -112,7 +166,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;chkEnableIpv6.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="txtmixedPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 30</value>
@@ -133,7 +187,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txtmixedPort.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -163,7 +217,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="txtAPIPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 150</value>
@@ -184,7 +238,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txtAPIPort.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -214,7 +268,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="chkAllowLANConn.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -241,7 +295,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;chkAllowLANConn.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="txtsocksPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 70</value>
@@ -262,7 +316,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txtsocksPort.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,7 +346,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="cmbloglevel.Items" xml:space="preserve">
     <value>debug</value>
@@ -328,7 +382,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cmbloglevel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -355,7 +409,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="txthttpPort.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 109</value>
@@ -376,7 +430,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txthttpPort.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -403,7 +457,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

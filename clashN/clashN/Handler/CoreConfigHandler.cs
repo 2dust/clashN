@@ -65,17 +65,9 @@ namespace clashN.Handler
                     msg = ResUI.FailedReadConfiguration + "1";
                     return -1;
                 }
-                File.Copy(addressFileName, fileName);
-
-                //check again
-                if (!File.Exists(fileName))
-                {
-                    msg = ResUI.FailedReadConfiguration + "2";
-                    return -1;
-                }
 
                 var config = LazyConfig.Instance.GetConfig();
-                var txtFile = File.ReadAllText(fileName);
+                var txtFile = File.ReadAllText(addressFileName);
                 txtFile = txtFile.Replace("!<str>", "");
 
                 var fileContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
@@ -115,7 +107,7 @@ namespace clashN.Handler
                 }
                 else
                 {
-                    if(config.ruleMode != ERuleMode.Unchanged)
+                    if (config.ruleMode != ERuleMode.Unchanged)
                     {
                         ModifyContent(fileContent, "mode", config.ruleMode.ToString().ToLower());
                     }
@@ -132,8 +124,17 @@ namespace clashN.Handler
                     }
                 }
 
+                //Mixin
+                MixinContent(fileContent, config);
+
                 File.WriteAllText(fileName, Utils.ToYaml(fileContent));
-                
+                //check again
+                if (!File.Exists(fileName))
+                {
+                    msg = ResUI.FailedReadConfiguration + "2";
+                    return -1;
+                }
+
                 LazyConfig.Instance.ProfileContent = fileContent;
 
                 msg = string.Format(ResUI.SuccessfulConfiguration, $"{node.GetSummary()}");
@@ -145,6 +146,28 @@ namespace clashN.Handler
                 return -1;
             }
             return 0;
+        }
+
+        private static void MixinContent(Dictionary<string, object> fileContent, Config config)
+        {
+            if (!config.enableMixinContent)
+            {
+                return;
+            }
+
+            var txtFile = File.ReadAllText(Utils.GetPath(Global.mixinConfigFileName));
+            txtFile = txtFile.Replace("!<str>", "");
+
+            var mixinContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
+            if (mixinContent == null)
+            {
+                return;
+            }
+            foreach (var item in mixinContent)
+            {
+                ModifyContent(fileContent, item.Key, item.Value);
+            }
+            return;
         }
 
         private static void ModifyContent(Dictionary<string, object> fileContent, string key, object value)

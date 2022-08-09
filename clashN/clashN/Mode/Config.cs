@@ -46,6 +46,8 @@ namespace clashN.Mode
 
         public bool enableSecurityProtocolTls13 { get; set; }
 
+        public bool enableMixinContent { get; set; }
+
         #endregion
 
         #region other entities
