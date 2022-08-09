@@ -99,6 +99,7 @@ namespace clashN.Forms
             OnProgramStarted("shown", true);
 
             _ = LoadCore();
+            SetRuleMode(config.ruleMode, false);
 
             proxiesControl.Init(config, UpdateTaskHandler);
         }
@@ -216,7 +217,10 @@ namespace clashN.Forms
                 .ToList();
 
             ConfigHandler.SetDefaultProfile(config, lstProfile);
-            RefreshProfilesView();
+            BeginInvoke(new Action(() =>
+            {
+                RefreshProfilesView();
+            }));
             RefreshProfilesMenu();
         }
 
@@ -452,7 +456,7 @@ namespace clashN.Forms
             statistics?.SaveToFile();
 
             ChangePACButtonStatus(config.sysProxyType);
-            SetRuleMode(config.ruleMode);
+            //SetRuleMode(config.ruleMode, false);
 
             SwitchUI(true);
             proxiesControl.ProxiesReload();
@@ -1168,24 +1172,24 @@ namespace clashN.Forms
 
         private void menuModeRule_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Rule);
+            SetRuleMode(ERuleMode.Rule, true);
         }
 
         private void menuModeGlobal_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Global);
+            SetRuleMode(ERuleMode.Global, true);
         }
 
         private void menuModeDirect_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Direct);
+            SetRuleMode(ERuleMode.Direct, true);
         }
 
         private void menuModeKeep_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Unchanged);
+            SetRuleMode(ERuleMode.Unchanged, true);
         }
-        private void SetRuleMode(ERuleMode mode)
+        private void SetRuleMode(ERuleMode mode, bool reloadCore)
         {
             for (int k = 0; k < menuRuleMode.DropDownItems.Count; k++)
             {
@@ -1194,16 +1198,19 @@ namespace clashN.Forms
             }
             mainMsgControl.SetToolSslInfo("routing", mode.ToString());
 
-            if (config.ruleMode == mode)
+            //if (config.ruleMode == mode)
+            //{
+            //    return;
+            //}
+
+            if (reloadCore)
             {
-                return;
+                config.ruleMode = mode;
+
+                Global.reloadCore = true;
+                _ = LoadCore();
+                ConfigHandler.SaveConfig(ref config, false);
             }
-            config.ruleMode = mode;
-
-            Global.reloadCore = true;
-            _ = LoadCore();
-
-            ConfigHandler.SaveConfig(ref config, false);
         }
 
         #endregion
