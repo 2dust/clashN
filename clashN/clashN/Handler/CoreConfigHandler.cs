@@ -125,7 +125,7 @@ namespace clashN.Handler
                 }
 
                 //Mixin
-                MixinContent(fileContent, config);
+                MixinContent(fileContent, config, node);
 
                 File.WriteAllText(fileName, Utils.ToYaml(fileContent));
                 //check again
@@ -148,7 +148,7 @@ namespace clashN.Handler
             return 0;
         }
 
-        private static void MixinContent(Dictionary<string, object> fileContent, Config config)
+        private static void MixinContent(Dictionary<string, object> fileContent, Config config, ProfileItem node)
         {
             if (!config.enableMixinContent)
             {
@@ -165,6 +165,11 @@ namespace clashN.Handler
             }
             foreach (var item in mixinContent)
             {
+                if (!node.enableTun && item.Key == "tun")
+                {
+                    continue;
+                }
+
                 ModifyContent(fileContent, item.Key, item.Value);
             }
             return;
