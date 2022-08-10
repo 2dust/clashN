@@ -99,7 +99,6 @@ namespace clashN.Forms
             OnProgramStarted("shown", true);
 
             _ = LoadCore();
-            SetRuleMode(config.ruleMode, false);
 
             proxiesControl.Init(config, UpdateTaskHandler);
         }
@@ -456,7 +455,7 @@ namespace clashN.Forms
             statistics?.SaveToFile();
 
             ChangePACButtonStatus(config.sysProxyType);
-            //SetRuleMode(config.ruleMode, false);
+            SetRuleMode(config.ruleMode);
 
             SwitchUI(true);
             proxiesControl.ProxiesReload();
@@ -1172,24 +1171,24 @@ namespace clashN.Forms
 
         private void menuModeRule_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Rule, true);
+            SetRuleMode(ERuleMode.Rule);
         }
 
         private void menuModeGlobal_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Global, true);
+            SetRuleMode(ERuleMode.Global);
         }
 
         private void menuModeDirect_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Direct, true);
+            SetRuleMode(ERuleMode.Direct);
         }
 
         private void menuModeKeep_Click(object sender, EventArgs e)
         {
-            SetRuleMode(ERuleMode.Unchanged, true);
+            SetRuleMode(ERuleMode.Unchanged);
         }
-        private void SetRuleMode(ERuleMode mode, bool reloadCore)
+        private void SetRuleMode(ERuleMode mode)
         {
             for (int k = 0; k < menuRuleMode.DropDownItems.Count; k++)
             {
@@ -1198,18 +1197,15 @@ namespace clashN.Forms
             }
             mainMsgControl.SetToolSslInfo("routing", mode.ToString());
 
-            //if (config.ruleMode == mode)
-            //{
-            //    return;
-            //}
+            AppendText(false, $"{config.ruleMode.ToString()}->{mode.ToString()}");
+            config.ruleMode = mode;
+            ConfigHandler.SaveConfig(ref config, false);
 
-            if (reloadCore)
+            if (mode != ERuleMode.Unchanged)
             {
-                config.ruleMode = mode;
-
-                Global.reloadCore = true;
-                _ = LoadCore();
-                ConfigHandler.SaveConfig(ref config, false);
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                headers.Add("mode", config.ruleMode.ToString().ToLower());
+                MainFormHandler.Instance.ClashConfigUpdate(headers);
             }
         }
 

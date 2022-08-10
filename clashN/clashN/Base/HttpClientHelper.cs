@@ -83,7 +83,17 @@ namespace clashN.Base
             var byteContent = new ByteArrayContent(buffer);
             byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var result = await httpClient.PutAsync(url, byteContent);
+            await httpClient.PutAsync(url, byteContent);
+        }
+
+        public async Task PatchAsync(string url, Dictionary<string, string> headers)
+        {
+            var myContent = Utils.ToJson(headers);
+            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            await httpClient.PatchAsync(url, byteContent);
         }
 
         public async Task DownloadFileAsync(HttpClient client, string url, string fileName, IProgress<double> progress, CancellationToken token)

@@ -254,9 +254,12 @@ namespace clashN.Forms
             {
                 return;
             }
-
             var name = lvProxies.Items[index].Tag.ToString();
             if (Utils.IsNullOrEmpty(name))
+            {
+                return;
+            }
+            if (proxies == null)
             {
                 return;
             }
@@ -406,10 +409,7 @@ namespace clashN.Forms
                 return;
             }
 
-            var url = $"{Global.httpProtocol}{Global.Loopback}:{_config.APIPort}/proxies/{name}";
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("name", nameNode);
-            _ = HttpClientHelper.GetInstance().PutAsync(url, headers);
+            MainFormHandler.Instance.ClashSetActiveProxy(name, nameNode);
 
             selectedProxy.now = nameNode;
             RefreshDetail(GetLvSelectedIndex());

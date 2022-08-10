@@ -332,5 +332,30 @@ namespace clashN.Handler
                 return null;
             }
         }
+
+        public async void ClashSetActiveProxy(string name, string nameNode)
+        {
+            var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies/{name}";
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("name", nameNode);
+            await HttpClientHelper.GetInstance().PutAsync(url, headers);
+
+        }
+
+        public void ClashConfigUpdate(Dictionary<string, string> headers)
+        {
+            Task.Run(async () =>
+            {
+                var proxies = LazyConfig.Instance.GetProxies();
+                if (proxies == null)
+                {
+                    return;
+                }
+
+                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs";
+
+                await HttpClientHelper.GetInstance().PatchAsync(urlBase, headers);
+            });
+        }
     }
 }
