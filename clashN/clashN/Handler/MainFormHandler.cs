@@ -357,5 +357,15 @@ namespace clashN.Handler
                 await HttpClientHelper.GetInstance().PatchAsync(urlBase, headers);
             });
         }
+
+        public async void ClashConfigReload( string filePath)
+        {
+            var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs";
+            Dictionary<string, string> headers = new Dictionary<string, string>();
+            headers.Add("path", filePath);
+            await HttpClientHelper.GetInstance().PutAsync(url, headers);
+
+        }
+
     }
 }

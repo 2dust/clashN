@@ -44,7 +44,8 @@ namespace clashN.Handler
                     return;
                 }
 
-                SetCore(config, item);
+         
+                SetCore(config, item, out bool blChanged);
                 string fileName = Utils.GetPath(coreConfigRes);
                 if (CoreConfigHandler.GenerateClientConfig(item, fileName, false, out string msg) != 0)
                 {
@@ -54,7 +55,15 @@ namespace clashN.Handler
                 else
                 {
                     ShowMsg(true, msg);
-                    CoreRestart(item);
+
+                    if (_process != null && !blChanged)
+                    {
+                        MainFormHandler.Instance.ClashConfigReload(fileName);
+                    }
+                    else
+                    {
+                        CoreRestart(item);
+                    }
                 }
             }
         }
@@ -261,17 +270,21 @@ namespace clashN.Handler
             }
         }
 
-        private int SetCore(Config config, ProfileItem item)
+        private int SetCore(Config config, ProfileItem item, out bool blChanged)
         {
+            blChanged = true;
             if (item == null)
             {
                 return -1;
             }
             var coreType = LazyConfig.Instance.GetCoreType(item);
+            var tempInfo = LazyConfig.Instance.GetCoreInfo(coreType);
+            if (tempInfo != null && coreInfo != null && tempInfo.coreType == coreInfo.coreType)
+            {
+                blChanged = false;
+            }
 
-
-            coreInfo = LazyConfig.Instance.GetCoreInfo(coreType);
-
+            coreInfo = tempInfo;
             if (coreInfo == null)
             {
                 return -1;
