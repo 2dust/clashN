@@ -382,4 +382,7 @@
   <data name="LvUpdateTime" xml:space="preserve">
     <value>UpdateTime</value>
   </data>
+  <data name="TunModeCoreTip" xml:space="preserve">
+    <value>To enable tun mode, please use Clash.Meta Core first; if you must use Clash Core, you need to download Clash Premium Core overlay</value>
+  </data>
 </root>

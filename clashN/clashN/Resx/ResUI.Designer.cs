@@ -852,5 +852,14 @@ namespace clashN.Resx {
                 return ResourceManager.GetString("TestMeOutput", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 To enable tun mode, please use Clash.Meta Core first; if you must use Clash Core, you need to download Clash Premium Core overlay 的本地化字符串。
+        /// </summary>
+        internal static string TunModeCoreTip {
+            get {
+                return ResourceManager.GetString("TunModeCoreTip", resourceCulture);
+            }
+        }
     }
 }

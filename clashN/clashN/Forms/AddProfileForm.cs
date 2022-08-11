@@ -80,21 +80,25 @@ namespace clashN.Forms
             profileItem.enableTun = chkEnableTun.Checked;
             profileItem.enableConvert = chkEnableConvert.Checked;
 
-            if (profileItem.enableTun)
-            {
-                profileItem.coreType = ECoreType.clash_meta;
-                if (!Utils.IsAdministrator())
-                {
-                    UI.Show(ResUI.RunAsAdmin);
-                }
-            }
-            else if (Utils.IsNullOrEmpty(cmbCoreType.Text))
+            if (Utils.IsNullOrEmpty(cmbCoreType.Text))
             {
                 profileItem.coreType = null;
             }
             else
             {
                 profileItem.coreType = (ECoreType)Enum.Parse(typeof(ECoreType), cmbCoreType.Text);
+            }
+
+            if (profileItem.enableTun)
+            {
+                if (!Utils.IsAdministrator())
+                {
+                    UI.Show(ResUI.RunAsAdmin);
+                }
+                if (profileItem.coreType != ECoreType.clash_meta)
+                {
+                    UI.ShowWarning(ResUI.TunModeCoreTip);
+                }
             }
 
             if (ConfigHandler.EditProfile(ref config, profileItem) == 0)

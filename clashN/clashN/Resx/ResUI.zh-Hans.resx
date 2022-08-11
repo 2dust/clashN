@@ -382,4 +382,7 @@
   <data name="LvUpdateTime" xml:space="preserve">
     <value>更新时间</value>
   </data>
+  <data name="TunModeCoreTip" xml:space="preserve">
+    <value>开启tun模式请优先使用Clash.Meta Core; 如一定要使用Clash Core, 需要下载Clash Premium Core覆盖</value>
+  </data>
 </root>
