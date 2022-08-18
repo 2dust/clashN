@@ -45,6 +45,9 @@ namespace clashN
 
         public const string mixinConfigFileName = "Mixin.yaml";
 
+        public const string SampleMixin = "clashN.Sample.SampleMixin.yaml";
+        public const string SampleTun = "clashN.Sample.SampleTun.yaml";
+
         public const string InboundSocks = "socks";
         public const string InboundHttp = "http";
         public const string Loopback = "127.0.0.1";

@@ -16,8 +16,6 @@ namespace clashN.Handler
     /// </summary>
     class CoreConfigHandler
     {
-        private static string SampleTun = "clashN.Sample.SampleTun.yaml";
-
         /// <summary>
         /// 生成配置文件
         /// </summary>
@@ -116,7 +114,7 @@ namespace clashN.Handler
                 //enable tun mode
                 if (node.enableTun)
                 {
-                    string tun = Utils.GetEmbedText(SampleTun);
+                    string tun = Utils.GetEmbedText(Global.SampleTun);
                     if (!Utils.IsNullOrEmpty(tun))
                     {
                         var tunContent = Utils.FromYaml<Dictionary<string, object>>(tun);
@@ -151,6 +149,12 @@ namespace clashN.Handler
         private static void MixinContent(Dictionary<string, object> fileContent, Config config, ProfileItem node)
         {
             if (!config.enableMixinContent)
+            {
+                return;
+            }
+
+            var path = Utils.GetPath(Global.mixinConfigFileName);
+            if (!File.Exists(path))
             {
                 return;
             }

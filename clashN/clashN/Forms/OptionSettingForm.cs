@@ -198,8 +198,17 @@ namespace clashN.Forms
         }
 
         private void btnEditMixinContent_Click(object sender, EventArgs e)
-        {          
+        {
             var address = Utils.GetPath(Global.mixinConfigFileName);
+            if (!File.Exists(address))
+            {
+                string contents = Utils.GetEmbedText(Global.SampleMixin);
+                if (!Utils.IsNullOrEmpty(contents))
+                {
+                    File.WriteAllText(address, contents);
+                }
+            }
+
             if (File.Exists(address))
             {
                 Utils.ProcessStart(address);
