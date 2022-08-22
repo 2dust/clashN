@@ -107,6 +107,11 @@ namespace clashN.Handler
             catch (Exception ex)
             {
                 Utils.SaveLog(ex.Message, ex);
+                Error?.Invoke(this, new ErrorEventArgs(ex));
+                if (ex.InnerException != null)
+                {
+                    Error?.Invoke(this, new ErrorEventArgs(ex.InnerException));
+                }
             }
             return null;
         }

@@ -63,16 +63,12 @@ namespace clashN.Base
             {
                 return null;
             }
-            try
+            HttpResponseMessage response = await client.GetAsync(url, token);
+            if (!response.IsSuccessStatusCode)
             {
-                HttpResponseMessage response = await client.GetAsync(url, token);
-                return await response.Content.ReadAsStringAsync();
+                throw new Exception(string.Format("The request returned with HTTP status code {0}", response.StatusCode));
             }
-            catch (Exception ex)
-            {
-                Utils.SaveLog("GetAsync", ex);
-            }
-            return null;
+            return await response.Content.ReadAsStringAsync();
         }
 
 
