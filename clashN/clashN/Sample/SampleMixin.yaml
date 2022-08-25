@@ -3,6 +3,16 @@
 #
 # 注意下面缩进，请用支持yaml显示的编辑器打开
 #
+# 使用clash配置文件关键字则覆盖原配置
+#
+# append-rules    数组合并至原配置rules数组后
+# prepend-rules   数组合并至原配置rules数组前
+# append-proxies      数组合并至原配置proxies数组后
+# prepend-proxies     数组合并至原配置proxies数组前
+# append-proxy-groups     数组合并至原配置proxy-groups数组后
+# prepend-proxy-groups    数组合并至原配置proxy-groups数组前
+#
+
 dns:
   enable: true
   enhanced-mode: fake-ip

@@ -123,7 +123,14 @@ namespace clashN.Handler
                 }
 
                 //Mixin
-                MixinContent(fileContent, config, node);
+                try
+                {
+                    MixinContent(fileContent, config, node);
+                }
+                catch (Exception ex)
+                {
+                    Utils.SaveLog("GenerateClientCustomConfig-Mixin", ex);
+                }
 
                 File.WriteAllText(fileName, Utils.ToYaml(fileContent));
                 //check again
@@ -174,7 +181,14 @@ namespace clashN.Handler
                     continue;
                 }
 
-                ModifyContent(fileContent, item.Key, item.Value);
+                if (item.Key.StartsWith("prepend-") || item.Key.StartsWith("append-"))
+                {
+                    ModifyContentMerge(fileContent, item.Key, item.Value);
+                }
+                else
+                {
+                    ModifyContent(fileContent, item.Key, item.Value);
+                }
             }
             return;
         }
@@ -188,6 +202,46 @@ namespace clashN.Handler
             else
             {
                 fileContent.Add(key, value);
+            }
+        }
+        private static void ModifyContentMerge(Dictionary<string, object> fileContent, string key, object value)
+        {
+            bool blPrepend = false;
+            if (key.StartsWith("prepend-"))
+            {
+                blPrepend = true;
+                key = key.Replace("prepend-", "");
+            }
+            else if (key.StartsWith("append-"))
+            {
+                blPrepend = false;
+                key = key.Replace("append-", "");
+            }
+            else
+            {
+                return;
+            }
+            if (!fileContent.ContainsKey(key))
+            {
+                return;
+            }
+            var lstOri = (List<object>)fileContent[key];
+            var lstValue = (List<object>)value;
+
+            if (blPrepend)
+            {
+                lstValue.Reverse();
+                foreach (var item in lstValue)
+                {
+                    lstOri.Insert(0, item);
+                }
+            }
+            else
+            {
+                foreach (var item in lstValue)
+                {
+                    lstOri.Add(item);
+                }
             }
         }
     }
