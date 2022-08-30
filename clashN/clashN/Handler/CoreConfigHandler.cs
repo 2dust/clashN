@@ -181,7 +181,9 @@ namespace clashN.Handler
                     continue;
                 }
 
-                if (item.Key.StartsWith("prepend-") || item.Key.StartsWith("append-"))
+                if (item.Key.StartsWith("prepend-") 
+                    || item.Key.StartsWith("append-")
+                    || item.Key.StartsWith("removed-"))
                 {
                     ModifyContentMerge(fileContent, item.Key, item.Value);
                 }
@@ -207,6 +209,7 @@ namespace clashN.Handler
         private static void ModifyContentMerge(Dictionary<string, object> fileContent, string key, object value)
         {
             bool blPrepend = false;
+            bool blRemoved = false;
             if (key.StartsWith("prepend-"))
             {
                 blPrepend = true;
@@ -217,16 +220,32 @@ namespace clashN.Handler
                 blPrepend = false;
                 key = key.Replace("append-", "");
             }
-            else
+            else if (key.StartsWith("removed-"))
             {
-                return;
+                blRemoved = true;
+                key = key.Replace("removed-", "");
             }
-            if (!fileContent.ContainsKey(key))
+            else
             {
                 return;
             }
             var lstOri = (List<object>)fileContent[key];
             var lstValue = (List<object>)value;
+
+            if (blRemoved)
+            {
+                foreach (var item in lstValue)
+                {
+                    lstOri.RemoveAll(t => t.ToString().StartsWith(item.ToString()));
+                }
+                return;
+            }
+
+            if (!fileContent.ContainsKey(key))
+            {
+                fileContent.Add(key, value);
+                return;
+            }
 
             if (blPrepend)
             {

@@ -5,12 +5,16 @@
 #
 # 使用clash配置文件关键字则覆盖原配置
 #
+# removed-rules    循环匹配rules数组每行,符合则移除当前行 (此规则请放最前面)
+#
 # append-rules    数组合并至原配置rules数组后
 # prepend-rules   数组合并至原配置rules数组前
 # append-proxies      数组合并至原配置proxies数组后
 # prepend-proxies     数组合并至原配置proxies数组前
 # append-proxy-groups     数组合并至原配置proxy-groups数组后
 # prepend-proxy-groups    数组合并至原配置proxy-groups数组前
+# append-rule-providers     数组合并至原配置rule-providers数组后
+# prepend-rule-providers    数组合并至原配置rule-providers数组前
 #
 
 dns:
