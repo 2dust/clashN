@@ -335,11 +335,17 @@ namespace clashN.Handler
 
         public async void ClashSetActiveProxy(string name, string nameNode)
         {
-            var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies/{name}";
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("name", nameNode);
-            await HttpClientHelper.GetInstance().PutAsync(url, headers);
-
+            try
+            {
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies/{name}";
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                headers.Add("name", nameNode);
+                await HttpClientHelper.GetInstance().PutAsync(url, headers);
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
         }
 
         public void ClashConfigUpdate(Dictionary<string, string> headers)
@@ -358,13 +364,19 @@ namespace clashN.Handler
             });
         }
 
-        public async void ClashConfigReload( string filePath)
+        public async void ClashConfigReload(string filePath)
         {
-            var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs";
-            Dictionary<string, string> headers = new Dictionary<string, string>();
-            headers.Add("path", filePath);
-            await HttpClientHelper.GetInstance().PutAsync(url, headers);
-
+            try
+            {
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs";
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                headers.Add("path", filePath);
+                await HttpClientHelper.GetInstance().PutAsync(url, headers);
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
         }
 
     }

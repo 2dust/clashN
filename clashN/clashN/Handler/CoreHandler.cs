@@ -56,7 +56,7 @@ namespace clashN.Handler
                 {
                     ShowMsg(true, msg);
 
-                    if (_process != null && !blChanged)
+                    if (_process != null && !_process.HasExited && !blChanged)
                     {
                         MainFormHandler.Instance.ClashConfigReload(fileName);
                     }
