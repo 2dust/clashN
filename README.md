@@ -1,6 +1,10 @@
 # clashN
 A clash client for Windows, supports [Clash core](https://github.com/Dreamacro/clash) and [Clash.Meta core](https://github.com/MetaCubeX/Clash.Meta)
 
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/2dust/clashn)](https://github.com/2dust/clashn/commits/master)
+[![GitHub Releases](https://img.shields.io/github/downloads/2dust/clashn/latest/total?logo=github)](https://github.com/2dust/clashn/releases)
+
+
 ### How to use
 - If you are new to this, please download clashN-Core.zip from [releases](https://github.com/2dust/clashN/releases)
 - Otherwise, please download clashN.zip (you will also need to download Clash core into the same folder with clashN.exe)
