@@ -181,7 +181,7 @@ namespace clashN.Handler
                     continue;
                 }
 
-                if (item.Key.StartsWith("prepend-") 
+                if (item.Key.StartsWith("prepend-")
                     || item.Key.StartsWith("append-")
                     || item.Key.StartsWith("removed-"))
                 {
@@ -229,6 +229,12 @@ namespace clashN.Handler
             {
                 return;
             }
+
+            if (!blRemoved && !fileContent.ContainsKey(key))
+            {
+                fileContent.Add(key, value);
+                return;
+            }
             var lstOri = (List<object>)fileContent[key];
             var lstValue = (List<object>)value;
 
@@ -241,11 +247,6 @@ namespace clashN.Handler
                 return;
             }
 
-            if (!fileContent.ContainsKey(key))
-            {
-                fileContent.Add(key, value);
-                return;
-            }
 
             if (blPrepend)
             {
