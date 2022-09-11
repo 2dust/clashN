@@ -91,7 +91,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkEnableConvert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 338</value>
+    <value>357, 276</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkEnableConvert.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -125,7 +125,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkEnableTun.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 266</value>
+    <value>261, 233</value>
   </data>
   <data name="chkEnableTun.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -158,7 +158,7 @@
     <value>NoControl</value>
   </data>
   <data name="chkEnabled.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 309</value>
+    <value>143, 276</value>
   </data>
   <data name="chkEnabled.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -185,13 +185,13 @@
     <value>2</value>
   </data>
   <data name="txtUserAgent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 222</value>
+    <value>143, 186</value>
   </data>
   <data name="txtUserAgent.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
   <data name="txtUserAgent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 23</value>
+    <value>475, 23</value>
   </data>
   <data name="txtUserAgent.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -215,7 +215,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 228</value>
+    <value>12, 192</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -254,7 +254,7 @@
     <value>Vertical</value>
   </data>
   <data name="txtUrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 67</value>
+    <value>475, 67</value>
   </data>
   <data name="txtUrl.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -308,7 +308,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnEdit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>224, 179</value>
+    <value>543, 147</value>
   </data>
   <data name="btnEdit.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -332,7 +332,7 @@
     <value>7</value>
   </data>
   <data name="cmbCoreType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 264</value>
+    <value>143, 231</value>
   </data>
   <data name="cmbCoreType.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 25</value>
@@ -359,7 +359,7 @@
     <value>NoControl</value>
   </data>
   <data name="labCoreType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 268</value>
+    <value>12, 235</value>
   </data>
   <data name="labCoreType.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 17</value>
@@ -386,7 +386,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 179</value>
+    <value>462, 147</value>
   </data>
   <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -413,7 +413,7 @@
     <value>143, 147</value>
   </data>
   <data name="txtAddress.Size" type="System.Drawing.Size, System.Drawing">
-    <value>432, 23</value>
+    <value>313, 23</value>
   </data>
   <data name="txtAddress.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>

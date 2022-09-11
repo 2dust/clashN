@@ -172,5 +172,6 @@ namespace clashN.Forms
                 UI.Show(ResUI.FailedReadConfiguration);
             }
         }
+         
     }
 }
