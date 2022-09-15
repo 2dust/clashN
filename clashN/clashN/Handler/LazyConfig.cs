@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
 using clashN.Mode;
 using System.Linq;
 using static clashN.Mode.ClashProxies;
@@ -89,7 +90,7 @@ namespace clashN.Handler
                 coreUrl = Global.clashMetaCoreUrl,
                 coreLatestUrl = Global.clashMetaCoreUrl + "/latest",
                 coreDownloadUrl32 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-386-{0}.zip",
-                coreDownloadUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64-compatible-{0}.zip",
+                coreDownloadUrl64 = Global.clashMetaCoreUrl + "/download/{0}/Clash.Meta-windows-amd64" + (Avx2.X64.IsSupported ? "" : "-compatible") + -{0}.zip",
                 match = "Clash Meta"
             });
 
