@@ -1,14 +1,10 @@
-﻿using System;
+﻿using clashN.Base;
+using clashN.Resx;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using clashN.Base;
-using clashN.Resx;
 
 namespace clashN.Handler
 {
@@ -59,7 +55,7 @@ namespace clashN.Handler
                 var cancellationToken = new CancellationTokenSource();
                 _ = HttpClientHelper.GetInstance().DownloadFileAsync(client,
                        url,
-                       Utils.GetPath(Utils.GetDownloadFileName(url)),
+                       Utils.GetTempPath(Utils.GetDownloadFileName(url)),
                        progress,
                        cancellationToken.Token);
             }

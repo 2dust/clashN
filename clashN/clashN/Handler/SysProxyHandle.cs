@@ -1,12 +1,9 @@
-﻿
-using System;
+﻿using clashN.Mode;
+using clashN.Properties;
+using clashN.Tool;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using System.Threading;
-using clashN.Mode;
-using clashN.Properties;
-using clashN.Tool;
 
 namespace clashN.Handler
 {
@@ -48,6 +45,7 @@ namespace clashN.Handler
             try
             {
                 int port = config.httpPort;
+                int socksPort = config.socksPort;
                 if (port <= 0)
                 {
                     return false;
@@ -55,7 +53,20 @@ namespace clashN.Handler
                 if (type == ESysProxyType.ForcedChange)
                 {
                     var strExceptions = $"{config.constItem.defIEProxyExceptions};{config.systemProxyExceptions}";
-                    SetIEProxy(true, $"{Global.Loopback}:{port}", strExceptions);
+
+                    var strProxy = string.Empty;
+                    if (Utils.IsNullOrEmpty(config.systemProxyAdvancedProtocol))
+                    {
+                        strProxy = $"{Global.Loopback}:{port}";
+                    }
+                    else
+                    {
+                        strProxy = config.systemProxyAdvancedProtocol
+                            .Replace("{ip}", Global.Loopback)
+                            .Replace("{http_port}", port.ToString())
+                            .Replace("{socks_port}", socksPort.ToString());
+                    }
+                    SetIEProxy(true, strProxy, strExceptions);
                 }
                 else if (type == ESysProxyType.ForcedClear)
                 {

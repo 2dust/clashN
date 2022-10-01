@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.IO.Compression;
 using System.Text;
 
@@ -68,7 +67,7 @@ namespace clashN.Tool
                 throw ex;
             }
         }
-        public static bool ZipExtractToFile(string fileName, string ignoredName)
+        public static bool ZipExtractToFile(string fileName, string toPath, string ignoredName)
         {
             try
             {
@@ -86,7 +85,7 @@ namespace clashN.Tool
                             {
                                 continue;
                             }
-                            entry.ExtractToFile(Utils.GetPath(entry.Name), true);
+                            entry.ExtractToFile(Path.Combine(toPath, entry.Name), true);
                         }
                         catch (IOException ex)
                         {

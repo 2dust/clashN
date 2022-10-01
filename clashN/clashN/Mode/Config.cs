@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using clashN.Base;
-using System.Linq;
+﻿using clashN.Base;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace clashN.Mode
 {
@@ -36,9 +33,8 @@ namespace clashN.Mode
 
         public bool enableStatistics { get; set; }
 
-        public bool ignoreGeoUpdateCore { get; set; }
-
         public string systemProxyExceptions { get; set; }
+        public string systemProxyAdvancedProtocol { get; set; }
 
         public int autoUpdateInterval { get; set; } = 0;
         public int autoUpdateSubInterval { get; set; } = 0;
@@ -78,7 +74,7 @@ namespace clashN.Mode
 
         public int FindIndexId(string id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (Utils.IsNullOrEmpty(id))
             {
                 return -1;
             }
@@ -87,7 +83,7 @@ namespace clashN.Mode
 
         public ProfileItem GetProfileItem(string id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (Utils.IsNullOrEmpty(id))
             {
                 return null;
             }
@@ -145,6 +141,28 @@ namespace clashN.Mode
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM/dd HH:mm");
         }
+
+        public bool HasUrl
+        {
+            get { return !url.IsNullOrEmpty(); }
+        }
+        public bool HasAddress
+        {
+            get { return !address.IsNullOrEmpty(); }
+        }
+        public string HasUpdateTime
+        {
+            get
+            {
+                if (updateTime <= 0)
+                {
+                    return String.Empty;
+                }
+                var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM/dd HH:mm");
+            }
+        }
+
         #endregion
 
         public string indexId
@@ -198,6 +216,7 @@ namespace clashN.Mode
         public bool enableConvert { get; set; }
 
         public long updateTime { get; set; }
+
     }
 
     [Serializable]
@@ -205,15 +224,12 @@ namespace clashN.Mode
     {
         public Point mainLocation { get; set; }
 
-        public Size mainSize
-        {
-            get; set;
-        }
+        public double mainWidth { get; set; }
+        public double mainHeight { get; set; }
 
-        public Dictionary<string, int> mainLvColWidth
-        {
-            get; set;
-        }
+        public bool colorModeDark { get; set; }
+        public string? colorPrimaryName { get; set; }
+
     }
 
     [Serializable]

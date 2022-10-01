@@ -1,18 +1,14 @@
-﻿using NHotkey;
-using NHotkey.WindowsForms;
-using System;
-using System.Collections.Generic;
+﻿using clashN.Base;
+using clashN.Mode;
+using clashN.Resx;
+using NHotkey;
+using NHotkey.Wpf;
+using Splat;
 using System.Drawing;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using clashN.Mode;
-using System.Linq;
-using clashN.Resx;
+using System.Windows.Input;
 using static clashN.Mode.ClashProxies;
-using clashN.Base;
-using static clashN.Mode.ClashProviders;
 
 namespace clashN.Handler
 {
@@ -23,7 +19,7 @@ namespace clashN.Handler
         {
             get { return instance.Value; }
         }
-        public Icon GetNotifyIcon(Config config, Icon def)
+        public Icon GetNotifyIcon(Config config)
         {
             try
             {
@@ -50,7 +46,7 @@ namespace clashN.Handler
             catch (Exception ex)
             {
                 Utils.SaveLog(ex.Message, ex);
-                return def;
+                return Properties.Resources.NotifyIcon1;
             }
         }
 
@@ -85,12 +81,11 @@ namespace clashN.Handler
             {
                 if (ret == 0)
                 {
-
-                    UI.Show(ResUI.OperationSuccess);
+                    Locator.Current.GetService<NoticeHandler>()?.Enqueue(ResUI.OperationSuccess);
                 }
                 else
                 {
-                    UI.ShowWarning(ResUI.OperationFailed);
+                    Locator.Current.GetService<NoticeHandler>()?.Enqueue(ResUI.OperationFailed);
                 }
             }
         }
@@ -103,7 +98,7 @@ namespace clashN.Handler
         private void UpdateTaskRun(Config config, Action<bool, string> update)
         {
             var autoUpdateSubTime = DateTime.Now;
-            var autoUpdateGeoTime = DateTime.Now;
+            //var autoUpdateGeoTime = DateTime.Now;
 
             Thread.Sleep(60000);
             Utils.SaveLog("UpdateTaskRun");
@@ -167,29 +162,30 @@ namespace clashN.Handler
                     continue;
                 }
 
-                Keys keys = (Keys)item.KeyCode;
+                var modifiers = ModifierKeys.None;
                 if (item.Control)
                 {
-                    keys |= Keys.Control;
+                    modifiers |= ModifierKeys.Control;
                 }
                 if (item.Alt)
                 {
-                    keys |= Keys.Alt;
+                    modifiers |= ModifierKeys.Alt;
                 }
                 if (item.Shift)
                 {
-                    keys |= Keys.Shift;
+                    modifiers |= ModifierKeys.Shift;
                 }
 
+                var gesture = new KeyGesture(KeyInterop.KeyFromVirtualKey((int)item.KeyCode), modifiers);
                 try
                 {
-                    HotkeyManager.Current.AddOrReplace(((int)item.eGlobalHotkey).ToString(), keys, handler);
-                    var msg = string.Format(ResUI.RegisterGlobalHotkeySuccessfully, $"{item.eGlobalHotkey.ToString()} = {keys}");
+                    HotkeyManager.Current.AddOrReplace(((int)item.eGlobalHotkey).ToString(), gesture, handler);
+                    var msg = string.Format(ResUI.RegisterGlobalHotkeySuccessfully, $"{item.eGlobalHotkey.ToString()} = {Utils.ToJson(item)}");
                     update(false, msg);
                 }
                 catch (Exception ex)
                 {
-                    var msg = string.Format(ResUI.RegisterGlobalHotkeyFailed, $"{item.eGlobalHotkey.ToString()} = {keys}", ex.Message);
+                    var msg = string.Format(ResUI.RegisterGlobalHotkeyFailed, $"{item.eGlobalHotkey.ToString()} = {Utils.ToJson(item)}", ex.Message);
                     update(false, msg);
                     Utils.SaveLog(msg);
                 }
@@ -223,61 +219,41 @@ namespace clashN.Handler
             update(null, null);
         }
 
-        public void ClashProxiesDelayTest(Action<string> update)
+        public void ClashProxiesDelayTest(bool blAll, List<ProxyModel> lstProxy, Action<ProxyModel?, string> update)
         {
             Task.Run(() =>
             {
-                for (int i = 0; i < 5; i++)
+                if (blAll)
                 {
-                    if (LazyConfig.Instance.GetProxies() == null)
+                    for (int i = 0; i < 5; i++)
                     {
+                        if (LazyConfig.Instance.GetProxies() != null)
+                        {
+                            break;
+                        }
                         Thread.Sleep(5000);
-                        continue;
+                    }
+                    var proxies = LazyConfig.Instance.GetProxies();
+                    if (proxies == null)
+                    {
+                        return;
+                    }
+                    lstProxy = new List<ProxyModel>();
+                    foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
+                    {
+                        if (Global.notAllowTestType.Contains(kv.Value.type.ToLower()))
+                        {
+                            continue;
+                        }
+                        lstProxy.Add(new ProxyModel()
+                        {
+                            name = kv.Value.name,
+                            type = kv.Value.type.ToLower(),
+                        });
                     }
                 }
-                var proxies = LazyConfig.Instance.GetProxies();
-                if (proxies == null)
-                {
-                    return;
-                }
-                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
-                urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
 
-                List<Task> tasks = new List<Task>();
-                foreach (KeyValuePair<string, ProxiesItem> kv in proxies)
-                {
-                    if (Global.notAllowTestType.Contains(kv.Value.type.ToLower()))
-                    {
-                        continue;
-                    }
-                    var name = kv.Value.name;
-                    var url = string.Format(urlBase, name);
-                    tasks.Add(Task.Run(() =>
-                    {
-                        var tt = HttpClientHelper.GetInstance().GetAsync(url);
-                    }));
-                }
-                Task.WaitAll(tasks.ToArray());
-
-                Thread.Sleep(5000);
-                update("");
-            });
-        }
-
-        public void ClashProxiesDelayTestPart(List<ProxiesItem> lstProxy, Action<ProxiesItem, string> update)
-        {
-            Task.Run(() =>
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    if (LazyConfig.Instance.GetProxies() == null)
-                    {
-                        Thread.Sleep(5000);
-                        continue;
-                    }
-                }
-                var proxies = LazyConfig.Instance.GetProxies();
-                if (proxies == null || lstProxy == null)
+                if (lstProxy == null)
                 {
                     return;
                 }
@@ -300,6 +276,9 @@ namespace clashN.Handler
                     }));
                 }
                 Task.WaitAll(tasks.ToArray());
+
+                Thread.Sleep(1000);
+                update(null, "");
             });
         }
 
@@ -378,6 +357,38 @@ namespace clashN.Handler
                 Utils.SaveLog(ex.Message, ex);
             }
         }
+        public void GetClashConnections(Config config, Action<ClashConnections> update)
+        {
+            Task.Run(() => GetClashConnectionsAsync(config, update));
+        }
 
+        private async Task GetClashConnectionsAsync(Config config, Action<ClashConnections> update)
+        {
+            try
+            {
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/connections";
+                var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                var clashConnections = Utils.FromJson<ClashConnections>(result);
+
+                update(clashConnections);
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+        }
+
+        public async void ClashConnectionClose(string id)
+        {
+            try
+            {
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/connections/{id}";
+                await HttpClientHelper.GetInstance().DeleteAsync(url);
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog(ex.Message, ex);
+            }
+        }
     }
 }

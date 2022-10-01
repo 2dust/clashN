@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllGroupProfiles" xml:space="preserve">
+    <value>所有配置文件</value>
+  </data>
   <data name="BatchExportSuccessfully" xml:space="preserve">
     <value>导出配置文件至剪贴板成功</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="DownloadYesNo" xml:space="preserve">
     <value>是否下载? {0}</value>
   </data>
+  <data name="EnableTunModeFailed" xml:space="preserve">
+    <value>启用 tun 模式失败, 请以管理员身份运行</value>
+  </data>
   <data name="FailedConversionConfiguration" xml:space="preserve">
     <value>转换配置文件失败</value>
   </data>
@@ -153,20 +159,8 @@
   <data name="FailedReadConfiguration" xml:space="preserve">
     <value>读取配置文件失败</value>
   </data>
-  <data name="FillCorrectProfilePort" xml:space="preserve">
-    <value>请填写正确格式配置文件端口</value>
-  </data>
-  <data name="FillLocalListeningPort" xml:space="preserve">
-    <value>请填写本地监听端口</value>
-  </data>
-  <data name="FillPassword" xml:space="preserve">
-    <value>请填写密码</value>
-  </data>
-  <data name="FillProfileAddress" xml:space="preserve">
-    <value>请填写配置文件地址</value>
-  </data>
-  <data name="FillUUID" xml:space="preserve">
-    <value>请填写用户ID</value>
+  <data name="FillProfileAddressCustom" xml:space="preserve">
+    <value>请浏览导入配置文件配置</value>
   </data>
   <data name="IncorrectClientConfiguration" xml:space="preserve">
     <value>不是正确的客户端配置文件，请检查</value>
@@ -186,41 +180,101 @@
   <data name="IsLatestN" xml:space="preserve">
     <value>{0} 已是最新版本。</value>
   </data>
-  <data name="LvAddress" xml:space="preserve">
-    <value>本地文件</value>
+  <data name="menuAddProfile" xml:space="preserve">
+    <value>添加配置文件</value>
   </data>
-  <data name="LvAlias" xml:space="preserve">
-    <value>别名</value>
+  <data name="menuAddProfileViaClipboard" xml:space="preserve">
+    <value>从剪贴板导入配置文件 (Ctrl+V)</value>
   </data>
-  <data name="LvEncryptionMethod" xml:space="preserve">
-    <value>加密方式</value>
+  <data name="menuAddProfileViaScan" xml:space="preserve">
+    <value>扫描屏幕上的二维码</value>
   </data>
-  <data name="LvPort" xml:space="preserve">
-    <value>端口</value>
+  <data name="menuClearStatistic" xml:space="preserve">
+    <value>清除所有服务统计数据</value>
   </data>
-  <data name="LvServiceType" xml:space="preserve">
-    <value>类型</value>
+  <data name="menuCloneProfile" xml:space="preserve">
+    <value>克隆所选配置文件</value>
   </data>
-  <data name="LvSubscription" xml:space="preserve">
-    <value>订阅</value>
+  <data name="menuConnectionClose" xml:space="preserve">
+    <value>关闭连接</value>
   </data>
-  <data name="LvTestResults" xml:space="preserve">
-    <value>测试结果</value>
+  <data name="menuConnectionCloseAll" xml:space="preserve">
+    <value>关闭所有连接</value>
   </data>
-  <data name="LvTodayDownloadDataAmount" xml:space="preserve">
-    <value>今日下载</value>
+  <data name="menuEditLocalFile" xml:space="preserve">
+    <value>编辑本地文件</value>
   </data>
-  <data name="LvTodayUploadDataAmount" xml:space="preserve">
-    <value>今日上传</value>
+  <data name="menuEditProfile" xml:space="preserve">
+    <value>编辑配置文件</value>
   </data>
-  <data name="LvTotalDownloadDataAmount" xml:space="preserve">
-    <value>总下载</value>
+  <data name="menuExit" xml:space="preserve">
+    <value>退出</value>
   </data>
-  <data name="LvTotalUploadDataAmount" xml:space="preserve">
-    <value>总上传</value>
+  <data name="menuExportProfile" xml:space="preserve">
+    <value>导出配置文件至剪贴板 (Ctrl+C)</value>
   </data>
-  <data name="LvActivity" xml:space="preserve">
-    <value>活动</value>
+  <data name="menuModeDirect" xml:space="preserve">
+    <value>直连</value>
+  </data>
+  <data name="menuModeGlobal" xml:space="preserve">
+    <value>全局</value>
+  </data>
+  <data name="menuModeNothing" xml:space="preserve">
+    <value>随原配置</value>
+  </data>
+  <data name="menuModeRule" xml:space="preserve">
+    <value>规则</value>
+  </data>
+  <data name="menuProfile" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="menuProfileReload" xml:space="preserve">
+    <value>重新加载 (F5)</value>
+  </data>
+  <data name="menuProxiesReload" xml:space="preserve">
+    <value>重新加载 (F5)</value>
+  </data>
+  <data name="menuProxiesSelectActivity" xml:space="preserve">
+    <value>设为活动节点 (Enter)</value>
+  </data>
+  <data name="menuProxiesDelaytest" xml:space="preserve">
+    <value>全部节点延迟测试</value>
+  </data>
+  <data name="menuProxiesDelaytestPart" xml:space="preserve">
+    <value>当前部分节点延迟测试</value>
+  </data>
+  <data name="menuRemoveProfile" xml:space="preserve">
+    <value>移除所选配置文件 (Delete)</value>
+  </data>
+  <data name="menuRulemode" xml:space="preserve">
+    <value>规则模式</value>
+  </data>
+  <data name="menuSetDefaultProfile" xml:space="preserve">
+    <value>设为活动配置文件 (Enter)</value>
+  </data>
+  <data name="menuSubUpdate" xml:space="preserve">
+    <value>更新全部订阅(不通过代理)</value>
+  </data>
+  <data name="menuSubUpdateSelected" xml:space="preserve">
+    <value>更新所选订阅(不通过代理)</value>
+  </data>
+  <data name="menuSubUpdateSelectedViaProxy" xml:space="preserve">
+    <value>更新所选订阅(通过代理)</value>
+  </data>
+  <data name="menuSubUpdateViaProxy" xml:space="preserve">
+    <value>更新全部订阅(通过代理)</value>
+  </data>
+  <data name="menuSystemproxy" xml:space="preserve">
+    <value>系统代理</value>
+  </data>
+  <data name="menuSystemProxyClear" xml:space="preserve">
+    <value>清除系统代理</value>
+  </data>
+  <data name="menuSystemProxyNothing" xml:space="preserve">
+    <value>不改变系统代理</value>
+  </data>
+  <data name="menuSystemProxySet" xml:space="preserve">
+    <value>自动配置系统代理</value>
   </data>
   <data name="MsgClearSubscription" xml:space="preserve">
     <value>清除原订阅内容</value>
@@ -228,17 +282,29 @@
   <data name="MsgDownloadCoreSuccessfully" xml:space="preserve">
     <value>下载Core成功</value>
   </data>
+  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
+    <value>下载 GeoFile: {0} 成功</value>
+  </data>
   <data name="MsgFailedImportSubscription" xml:space="preserve">
     <value>导入订阅内容失败</value>
   </data>
   <data name="MsgGetSubscriptionSuccessfully" xml:space="preserve">
     <value>获取订阅内容成功</value>
   </data>
+  <data name="MsgInformationTitle" xml:space="preserve">
+    <value>信息 (过滤器 : {0})</value>
+  </data>
+  <data name="MsgNeedUrl" xml:space="preserve">
+    <value>请填写地址(Url)</value>
+  </data>
   <data name="MsgNoValidSubscription" xml:space="preserve">
     <value>未设置有效的订阅</value>
   </data>
   <data name="MsgParsingSuccessfully" xml:space="preserve">
     <value>解析{0}成功</value>
+  </data>
+  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
+    <value>跳过此订阅更新</value>
   </data>
   <data name="MsgStartGettingSubscriptions" xml:space="preserve">
     <value>开始获取订阅内容</value>
@@ -249,14 +315,14 @@
   <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
     <value>无效的订阅内容</value>
   </data>
+  <data name="MsgSureContinue" xml:space="preserve">
+    <value>是否确定继续操作?</value>
+  </data>
   <data name="MsgUnpacking" xml:space="preserve">
     <value>正在解压......</value>
   </data>
-  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
-    <value>更新订阅结束</value>
-  </data>
-  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
-    <value>更新订阅开始</value>
+  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
+    <value>更新Core失败，详情见日志</value>
   </data>
   <data name="MsgUpdateCoreCoreSuccessfully" xml:space="preserve">
     <value>更新Core成功</value>
@@ -264,11 +330,20 @@
   <data name="MsgUpdateCoreCoreSuccessfullyMore" xml:space="preserve">
     <value>更新Core成功！正在重启服务...</value>
   </data>
+  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
+    <value>更新订阅结束</value>
+  </data>
+  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
+    <value>更新订阅开始</value>
+  </data>
   <data name="NeedHttpGlobalProxy" xml:space="preserve">
     <value>此功能依赖Http全局代理,请先设置正确。</value>
   </data>
   <data name="NotFoundCore" xml:space="preserve">
     <value>找不到Core，下载地址: {0}</value>
+  </data>
+  <data name="NotRunAsAdmin" xml:space="preserve">
+    <value>非以管理员身份运行</value>
   </data>
   <data name="NoValidQRcodeFound" xml:space="preserve">
     <value>扫描完成,未发现有效二维码</value>
@@ -276,20 +351,35 @@
   <data name="OperationFailed" xml:space="preserve">
     <value>操作失败，请检查重试</value>
   </data>
+  <data name="OperationSuccess" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
   <data name="PleaseFillRemarks" xml:space="preserve">
     <value>请填写备注</value>
   </data>
   <data name="PleaseSelectEncryption" xml:space="preserve">
     <value>请选择加密方式</value>
   </data>
-  <data name="PleaseSelectProtocol" xml:space="preserve">
-    <value>请选择协议</value>
-  </data>
   <data name="PleaseSelectProfile" xml:space="preserve">
     <value>请先选择配置文件</value>
   </data>
+  <data name="PleaseSelectProtocol" xml:space="preserve">
+    <value>请选择协议</value>
+  </data>
+  <data name="PleaseSelectRules" xml:space="preserve">
+    <value>请先选择规则</value>
+  </data>
+  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
+    <value>注册全局热键 {0} 失败,原因 {1}</value>
+  </data>
+  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
+    <value>注册全局热键 {0} 成功</value>
+  </data>
   <data name="RemoveProfile" xml:space="preserve">
     <value>是否确定移除配置文件?</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>以管理员身份运行</value>
   </data>
   <data name="SpeedProfileTips" xml:space="preserve">
     <value>注意：此功能依赖Http全局代理!测试完成后,请手工调整Http全局代理和活动节点。</value>
@@ -310,79 +400,217 @@
   <data name="SuccessfullyImportedProfileViaScan" xml:space="preserve">
     <value>扫描导入成功</value>
   </data>
+  <data name="TbAddress" xml:space="preserve">
+    <value>本地</value>
+  </data>
+  <data name="TbAddressAs" xml:space="preserve">
+    <value>本地文件</value>
+  </data>
+  <data name="TbAlias" xml:space="preserve">
+    <value>别名(remarks)</value>
+  </data>
+  <data name="TbAutoRefresh" xml:space="preserve">
+    <value>自动刷新</value>
+  </data>
+  <data name="TbBrowse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="TbCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="TbClearSystemProxy" xml:space="preserve">
+    <value>清除系统代理</value>
+  </data>
+  <data name="TbConfirm" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="TbConnections" xml:space="preserve">
+    <value>当前连接</value>
+  </data>
+  <data name="TbCoreType" xml:space="preserve">
+    <value>Core类型</value>
+  </data>
+  <data name="TbDisplayGUI" xml:space="preserve">
+    <value>显示主界面</value>
+  </data>
+  <data name="TbEdit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="TbEnableConvert" xml:space="preserve">
+    <value>启用订阅转换</value>
+  </data>
+  <data name="TbEnableTun" xml:space="preserve">
+    <value>Tun</value>
+  </data>
+  <data name="TbEnableTunAs" xml:space="preserve">
+    <value>启用 tun 模式 (以管理员身份运行)</value>
+  </data>
+  <data name="TbEnableUpdate" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="TbEnableUpdateAs" xml:space="preserve">
+    <value>启用更新订阅</value>
+  </data>
+  <data name="TbGlobalHotkeySetting" xml:space="preserve">
+    <value>全局热键设置</value>
+  </data>
+  <data name="TbGlobalHotkeySettingTip" xml:space="preserve">
+    <value>直接按键盘进行设置, 重启后生效</value>
+  </data>
+  <data name="TbHelp" xml:space="preserve">
+    <value>帮助和更新</value>
+  </data>
+  <data name="TbHelpCheck" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="TbHelpProject" xml:space="preserve">
+    <value>clashN 项目</value>
+  </data>
+  <data name="TbHelpProjectGo" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="TbMsgTitle" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="TbNotChangeSystemProxy" xml:space="preserve">
+    <value>不改变系统代理</value>
+  </data>
+  <data name="TbProfiles" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="TbPromotion" xml:space="preserve">
+    <value>官方推广</value>
+  </data>
+  <data name="TbPromotionInformation" xml:space="preserve">
+    <value>单击下面的按钮以支持开发人员。</value>
+  </data>
+  <data name="TbProxies" xml:space="preserve">
+    <value>当前代理</value>
+  </data>
+  <data name="TbReset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="TbSetSystemProxy" xml:space="preserve">
+    <value>自动配置系统代理</value>
+  </data>
+  <data name="TbSettings" xml:space="preserve">
+    <value>参数设置</value>
+  </data>
+  <data name="TbSettingsAllowLAN" xml:space="preserve">
+    <value>允许来自局域网的连接</value>
+  </data>
+  <data name="TbSettingsAPIPort" xml:space="preserve">
+    <value>本地API监听端口</value>
+  </data>
+  <data name="TbSettingsAutoTest" xml:space="preserve">
+    <value>自动延迟测试的间隔 (单位分钟)</value>
+  </data>
+  <data name="TbSettingsAutoUpdate" xml:space="preserve">
+    <value>自动更新订阅的间隔(单位小时)</value>
+  </data>
+  <data name="TbSettingsClashN" xml:space="preserve">
+    <value>ClashN 设置</value>
+  </data>
+  <data name="TbSettingsColorMode" xml:space="preserve">
+    <value>暗黑模式</value>
+  </data>
+  <data name="TbSettingsCore" xml:space="preserve">
+    <value>Core 设置</value>
+  </data>
+  <data name="TbSettingsEditMixin" xml:space="preserve">
+    <value>编辑 Mixin</value>
+  </data>
+  <data name="TbSettingsException" xml:space="preserve">
+    <value>例外</value>
+  </data>
+  <data name="TbSettingsExceptionTip" xml:space="preserve">
+    <value>例外. 对于下列字符开头的地址不使用代理配置文件:使用分号(;)分隔</value>
+  </data>
+  <data name="TbSettingsHttpPort" xml:space="preserve">
+    <value>本地http监听端口</value>
+  </data>
+  <data name="TbSettingsIpv6" xml:space="preserve">
+    <value>启用Ipv6</value>
+  </data>
+  <data name="TbSettingsLanguage" xml:space="preserve">
+    <value>语言(需重启)</value>
+  </data>
+  <data name="TbSettingsLogLevel" xml:space="preserve">
+    <value>日志等级</value>
+  </data>
+  <data name="TbSettingsMixedPort" xml:space="preserve">
+    <value>本地混合监听端口</value>
+  </data>
+  <data name="TbSettingsMixin" xml:space="preserve">
+    <value>启用混合(Mixin)配置内容</value>
+  </data>
+  <data name="TbSettingsSetUWP" xml:space="preserve">
+    <value>解除Win10 UWP应用回环代理限制</value>
+  </data>
+  <data name="TbSettingsSocksPort" xml:space="preserve">
+    <value>本地socks监听端口</value>
+  </data>
+  <data name="TbSettingsStartBoot" xml:space="preserve">
+    <value>开机启动</value>
+  </data>
+  <data name="TbSettingsStatistics" xml:space="preserve">
+    <value>启用统计(实时网速显示，需要重启)</value>
+  </data>
+  <data name="TbSettingsSubConvert" xml:space="preserve">
+    <value>订阅转换网址(可选)</value>
+  </data>
+  <data name="TbSettingsSystemproxy" xml:space="preserve">
+    <value>系统代理设置</value>
+  </data>
+  <data name="TbSettingsTLS13" xml:space="preserve">
+    <value>启用安全协议TLS v1.3 (订阅/检查更新)</value>
+  </data>
+  <data name="TbSorting" xml:space="preserve">
+    <value>排序</value>
+  </data>
+  <data name="TbSortingDelay" xml:space="preserve">
+    <value>延迟</value>
+  </data>
+  <data name="TbSortingDownSpeed" xml:space="preserve">
+    <value>下载速度</value>
+  </data>
+  <data name="TbSortingDownTraffic" xml:space="preserve">
+    <value>下载流量</value>
+  </data>
+  <data name="TbSortingName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="TbSortingTime" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="TbSortingUpSpeed" xml:space="preserve">
+    <value>上传速度</value>
+  </data>
+  <data name="TbSortingUpTraffic" xml:space="preserve">
+    <value>上传流量</value>
+  </data>
+  <data name="TbUrl" xml:space="preserve">
+    <value>网址</value>
+  </data>
+  <data name="TbUrlAs" xml:space="preserve">
+    <value>订阅网址(Url)</value>
+  </data>
+  <data name="TbUserAgent" xml:space="preserve">
+    <value>User Agent(可选)</value>
+  </data>
   <data name="TestMeOutput" xml:space="preserve">
     <value>当前服务的真连接延迟: {0}</value>
   </data>
-  <data name="OperationSuccess" xml:space="preserve">
-    <value>操作成功</value>
-  </data>
-  <data name="PleaseSelectRules" xml:space="preserve">
-    <value>请先选择规则</value>
-  </data>
-  <data name="LvRemarks" xml:space="preserve">
-    <value>别名</value>
-  </data>
-  <data name="LvUrl" xml:space="preserve">
-    <value>订阅网址(Url)</value>
-  </data>
-  <data name="LvCount" xml:space="preserve">
-    <value>数量</value>
-  </data>
-  <data name="MsgNeedUrl" xml:space="preserve">
-    <value>请填写地址(Url)</value>
-  </data>
-  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
-    <value>下载 GeoFile: {0} 成功</value>
-  </data>
-  <data name="MsgInformationTitle" xml:space="preserve">
-    <value>信息 (过滤器 : {0})</value>
-  </data>
-  <data name="LvCustomIcon" xml:space="preserve">
-    <value>自定义图标</value>
-  </data>
-  <data name="FillCorrectDNSText" xml:space="preserve">
-    <value>请填写正确的自定义DNS</value>
-  </data>
-  <data name="LvTLS" xml:space="preserve">
-    <value>传输层安全</value>
-  </data>
-  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
-    <value>注册全局热键 {0} 失败,原因 {1}</value>
-  </data>
-  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
-    <value>注册全局热键 {0} 成功</value>
-  </data>
-  <data name="AllGroupProfiles" xml:space="preserve">
-    <value>所有配置文件</value>
-  </data>
-  <data name="FillProfileAddressCustom" xml:space="preserve">
-    <value>请浏览导入配置文件配置</value>
-  </data>
-  <data name="NotRunAsAdmin" xml:space="preserve">
-    <value>非以管理员身份运行</value>
-  </data>
-  <data name="RunAsAdmin" xml:space="preserve">
-    <value>以管理员身份运行</value>
-  </data>
-  <data name="EnableTunModeFailed" xml:space="preserve">
-    <value>启用 tun 模式失败, 请以管理员身份运行</value>
-  </data>
-  <data name="LvEnableTun" xml:space="preserve">
-    <value>tun 模式</value>
-  </data>
-  <data name="LvEnableUpdateSub" xml:space="preserve">
-    <value>更新订阅(转换)</value>
-  </data>
-  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
-    <value>跳过此订阅更新</value>
-  </data>
-  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
-    <value>更新Core失败，详情见日志</value>
-  </data>
-  <data name="LvUpdateTime" xml:space="preserve">
-    <value>更新时间</value>
-  </data>
   <data name="TunModeCoreTip" xml:space="preserve">
     <value>开启tun模式请优先使用Clash.Meta Core; 如一定要使用Clash Core, 需要下载Clash Premium Core覆盖</value>
+  </data>
+  <data name="TbSave" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="TbSettingsAdvancedProtocol" xml:space="preserve">
+    <value>高级代理设置, 协议选择(可选)</value>
+  </data>
+  <data name="menuProfileQrcode" xml:space="preserve">
+    <value>分享二维码</value>
   </data>
 </root>

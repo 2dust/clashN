@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using clashN.Mode;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using System.Threading.Tasks;
-using clashN.Mode;
 
 namespace clashN.Handler
 {
@@ -45,7 +41,7 @@ namespace clashN.Handler
             else if (actionType == ESpeedActionType.Tcping)
             {
                 Task.Run(() => RunTcping());
-            } 
+            }
         }
 
         private void RunPingSub(Action<ServerTestItem> updateFun)
@@ -54,7 +50,7 @@ namespace clashN.Handler
             {
                 foreach (var it in _selecteds)
                 {
-                 
+
                     try
                     {
                         updateFun(it);
@@ -93,7 +89,7 @@ namespace clashN.Handler
                 _updateFunc(it.indexId, FormatOut(time, "ms"));
             });
         }
-         
+
 
         public int RunAvailabilityCheck() // alias: isLive
         {
@@ -125,7 +121,7 @@ namespace clashN.Handler
                 return -1;
             }
         }
-         
+
         private int GetTcpingTime(string url, int port)
         {
             int responseTime = -1;

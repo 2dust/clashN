@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Threading.Tasks;
-using clashN.Base;
-using clashN.Mode;
+﻿using clashN.Mode;
 using clashN.Resx;
+using System.IO;
 
 namespace clashN.Handler
 {
@@ -160,13 +153,13 @@ namespace clashN.Handler
                 return;
             }
 
-            var path = Utils.GetPath(Global.mixinConfigFileName);
+            var path = Utils.GetConfigPath(Global.mixinConfigFileName);
             if (!File.Exists(path))
             {
                 return;
             }
 
-            var txtFile = File.ReadAllText(Utils.GetPath(Global.mixinConfigFileName));
+            var txtFile = File.ReadAllText(Utils.GetConfigPath(Global.mixinConfigFileName));
             txtFile = txtFile.Replace("!<str>", "");
 
             var mixinContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);

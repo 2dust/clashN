@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using clashN.Mode;
-using clashN.Base;
-using System.Linq;
+﻿using clashN.Mode;
 using clashN.Tool;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.IO;
 using System.Web;
 
 namespace clashN.Handler
@@ -30,7 +23,7 @@ namespace clashN.Handler
         public static int LoadConfig(ref Config config)
         {
             //载入配置文件 
-            string result = Utils.LoadResource(Utils.GetPath(configRes));
+            string result = Utils.LoadResource(Utils.GetConfigPath(configRes));
             if (!Utils.IsNullOrEmpty(result))
             {
                 //转成Json
@@ -38,7 +31,7 @@ namespace clashN.Handler
             }
             else
             {
-                if (File.Exists(Utils.GetPath(configRes)))
+                if (File.Exists(Utils.GetConfigPath(configRes)))
                 {
                     Utils.SaveLog("LoadConfig Exception");
                     return -1;
@@ -85,10 +78,6 @@ namespace clashN.Handler
                 config.uiItem = new UIItem()
                 {
                 };
-            }
-            if (config.uiItem.mainLvColWidth == null)
-            {
-                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
             }
 
             if (config.constItem == null)
@@ -161,7 +150,7 @@ namespace clashN.Handler
                 try
                 {
                     //save temp file
-                    var resPath = Utils.GetPath(configRes);
+                    var resPath = Utils.GetConfigPath(configRes);
                     var tempPath = $"{resPath}_temp";
                     if (Utils.ToJsonFile(config, tempPath) != 0)
                     {
@@ -222,7 +211,7 @@ namespace clashN.Handler
                 profileItem.indexId = string.Empty;
                 profileItem.remarks = string.Format("{0}-clone", item.remarks);
 
-                if (string.IsNullOrEmpty(profileItem.address) || !File.Exists(Utils.GetConfigPath(profileItem.address)))
+                if (Utils.IsNullOrEmpty(profileItem.address) || !File.Exists(Utils.GetConfigPath(profileItem.address)))
                 {
                     profileItem.address = string.Empty;
                     AddProfileCommon(ref config, profileItem);
@@ -648,46 +637,6 @@ namespace clashN.Handler
             }
         }
 
-
-        #endregion
-
-
-
-        #region UI
-
-        public static int AddformMainLvColWidth(ref Config config, string name, int width)
-        {
-            if (config.uiItem.mainLvColWidth == null)
-            {
-                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
-            }
-            if (config.uiItem.mainLvColWidth.ContainsKey(name))
-            {
-                config.uiItem.mainLvColWidth[name] = width;
-            }
-            else
-            {
-                config.uiItem.mainLvColWidth.Add(name, width);
-            }
-
-            ToJsonFile(config);
-            return 0;
-        }
-        public static int GetformMainLvColWidth(ref Config config, string name, int width)
-        {
-            if (config.uiItem.mainLvColWidth == null)
-            {
-                config.uiItem.mainLvColWidth = new Dictionary<string, int>();
-            }
-            if (config.uiItem.mainLvColWidth.ContainsKey(name))
-            {
-                return config.uiItem.mainLvColWidth[name];
-            }
-            else
-            {
-                return width;
-            }
-        }
 
         #endregion
 

@@ -1,0 +1,180 @@
+<reactiveui:ReactiveUserControl
+    x:Class="clashN.Views.ProxiesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:clashN.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:clashN.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveui="http://reactiveui.net"
+    xmlns:resx="clr-namespace:clashN.Resx"
+    xmlns:vms="clr-namespace:clashN.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:TypeArguments="vms:ProxiesViewModel"
+    KeyDown="ProxiesView_KeyDown"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+        <converters:DelayColorConverter x:Key="DelayColorConverter" />
+    </UserControl.Resources>
+
+    <DockPanel Margin="16">
+        <TextBlock
+            Margin="8,0,8,8"
+            DockPanel.Dock="Top"
+            Style="{StaticResource ModuleTitle}"
+            Text="{x:Static resx:ResUI.TbProxies}" />
+
+        <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
+            <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
+                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.menuSystemproxy}" />
+                <ComboBox
+                    x:Name="cmbSystemProxy"
+                    Width="120"
+                    Margin="8">
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyClear}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxySet}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyNothing}" />
+                </ComboBox>
+                <Separator />
+                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.menuRulemode}" />
+                <ComboBox
+                    x:Name="cmbRulemode"
+                    Width="80"
+                    Margin="8">
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuModeRule}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuModeGlobal}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuModeDirect}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.menuModeNothing}" />
+                </ComboBox>
+                <Separator />
+                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.TbSorting}" />
+                <ComboBox
+                    x:Name="cmbSorting"
+                    Width="60"
+                    Margin="8">
+                    <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDelay}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingName}" />
+                </ComboBox>
+                <Separator />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Text="{x:Static resx:ResUI.TbAutoRefresh}" />
+                <ToggleButton
+                    x:Name="togAutoRefresh"
+                    Margin="8"
+                    HorizontalAlignment="Left" />
+            </ToolBar>
+        </ToolBarTray>
+        <DockPanel>
+
+            <ListView
+                x:Name="lstProxyGroups"
+                BorderThickness="0"
+                DockPanel.Dock="Left"
+                ItemContainerStyle="{StaticResource lvItemSelected}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="menuProxiesReload" Header="{x:Static resx:ResUI.menuProxiesReload}" />
+                        <MenuItem x:Name="menuProxiesDelaytest" Header="{x:Static resx:ResUI.menuProxiesDelaytest}" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Card
+                            Width="210"
+                            Padding="0"
+                            materialDesign:UniformCornerRadius="8">
+                            <DockPanel>
+                                <Grid Grid.Column="0" Margin="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                        <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{Binding name}" />
+                                        <TextBlock
+                                            Margin="8,0,0,0"
+                                            Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                            Text="{Binding type}" />
+                                    </StackPanel>
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Text="{Binding now}" />
+                                </Grid>
+                            </DockPanel>
+                        </materialDesign:Card>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView
+                x:Name="lstProxyDetails"
+                BorderThickness="0"
+                ItemContainerStyle="{StaticResource lvItemSelected}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="menuProxiesDelaytestPart" Header="{x:Static resx:ResUI.menuProxiesDelaytestPart}" />
+                        <MenuItem x:Name="menuProxiesSelectActivity" Header="{x:Static resx:ResUI.menuProxiesSelectActivity}" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <materialDesign:Card
+                            Width="210"
+                            Padding="0"
+                            materialDesign:UniformCornerRadius="8">
+                            <DockPanel>
+                                <Border
+                                    Width="10"
+                                    Height="auto"
+                                    Background="{DynamicResource PrimaryHueLightBrush}"
+                                    CornerRadius="4"
+                                    DockPanel.Dock="Left"
+                                    Visibility="{Binding Path=isActive, Converter={StaticResource BoolToVisConverter}}" />
+                                <Grid Margin="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Text="{Binding name}" />
+                                    <DockPanel Grid.Row="1">
+                                        <TextBlock
+                                            DockPanel.Dock="Right"
+                                            Foreground="{Binding Path=delay, Converter={StaticResource DelayColorConverter}}"
+                                            Style="{StaticResource MaterialDesignOverlineTextBlock}"
+                                            Text="{Binding delayName}" />
+                                        <TextBlock Style="{StaticResource MaterialDesignOverlineTextBlock}" Text="{Binding type}" />
+                                    </DockPanel>
+                                </Grid>
+                            </DockPanel>
+                        </materialDesign:Card>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </DockPanel>
+    </DockPanel>
+
+</reactiveui:ReactiveUserControl>

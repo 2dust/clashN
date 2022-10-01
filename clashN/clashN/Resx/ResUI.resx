@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllGroupProfiles" xml:space="preserve">
+    <value>All servers</value>
+  </data>
   <data name="BatchExportSuccessfully" xml:space="preserve">
     <value>Export configuration file to clipboard successfully</value>
   </data>
@@ -138,6 +141,9 @@
   <data name="DownloadYesNo" xml:space="preserve">
     <value>Whether to download? {0}</value>
   </data>
+  <data name="EnableTunModeFailed" xml:space="preserve">
+    <value>Failed to enable tun mode, please run as administrator</value>
+  </data>
   <data name="FailedConversionConfiguration" xml:space="preserve">
     <value>Failed to convert configuration file</value>
   </data>
@@ -153,20 +159,8 @@
   <data name="FailedReadConfiguration" xml:space="preserve">
     <value>Failed to read configuration file</value>
   </data>
-  <data name="FillCorrectProfilePort" xml:space="preserve">
-    <value>Please fill in the correct format configuration file port</value>
-  </data>
-  <data name="FillLocalListeningPort" xml:space="preserve">
-    <value>Please fill in the local listening port</value>
-  </data>
-  <data name="FillPassword" xml:space="preserve">
-    <value>Please fill in the password</value>
-  </data>
-  <data name="FillProfileAddress" xml:space="preserve">
-    <value>Please fill in the configuration file address</value>
-  </data>
-  <data name="FillUUID" xml:space="preserve">
-    <value>Please fill in the user ID</value>
+  <data name="FillProfileAddressCustom" xml:space="preserve">
+    <value>Please browse to import configuration file configuration</value>
   </data>
   <data name="IncorrectClientConfiguration" xml:space="preserve">
     <value> is not the correct client configuration file, please check</value>
@@ -186,41 +180,101 @@
   <data name="IsLatestN" xml:space="preserve">
     <value>{0} already up to date.</value>
   </data>
-  <data name="LvAddress" xml:space="preserve">
-    <value>Local file</value>
+  <data name="menuAddProfile" xml:space="preserve">
+    <value>Add configuration file</value>
   </data>
-  <data name="LvAlias" xml:space="preserve">
-    <value>Alias</value>
+  <data name="menuAddProfileViaClipboard" xml:space="preserve">
+    <value>Add configuration file from clipboard (Ctrl+V)</value>
   </data>
-  <data name="LvEncryptionMethod" xml:space="preserve">
-    <value>Security</value>
+  <data name="menuAddProfileViaScan" xml:space="preserve">
+    <value>Scan QR code on the screen</value>
   </data>
-  <data name="LvPort" xml:space="preserve">
-    <value>Port</value>
+  <data name="menuClearStatistic" xml:space="preserve">
+    <value>Clear all service statistics</value>
   </data>
-  <data name="LvServiceType" xml:space="preserve">
-    <value>Type</value>
+  <data name="menuCloneProfile" xml:space="preserve">
+    <value>Clone selected configuration file</value>
   </data>
-  <data name="LvSubscription" xml:space="preserve">
-    <value>Subs</value>
+  <data name="menuConnectionClose" xml:space="preserve">
+    <value>Close Connection</value>
   </data>
-  <data name="LvTestResults" xml:space="preserve">
-    <value>Test Results</value>
+  <data name="menuConnectionCloseAll" xml:space="preserve">
+    <value>Close All Connection</value>
   </data>
-  <data name="LvTodayDownloadDataAmount" xml:space="preserve">
-    <value>Today download traffic</value>
+  <data name="menuEditLocalFile" xml:space="preserve">
+    <value>Edit Local File</value>
   </data>
-  <data name="LvTodayUploadDataAmount" xml:space="preserve">
-    <value>Today upload traffic</value>
+  <data name="menuEditProfile" xml:space="preserve">
+    <value>Edit configuration file</value>
   </data>
-  <data name="LvTotalDownloadDataAmount" xml:space="preserve">
-    <value>Total download traffic</value>
+  <data name="menuExit" xml:space="preserve">
+    <value>Exit</value>
   </data>
-  <data name="LvTotalUploadDataAmount" xml:space="preserve">
-    <value>Total upload traffic</value>
+  <data name="menuExportProfile" xml:space="preserve">
+    <value>Export configuration file to clipboard (Ctrl+C)</value>
   </data>
-  <data name="LvActivity" xml:space="preserve">
-    <value>Activity</value>
+  <data name="menuModeDirect" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="menuModeGlobal" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="menuModeNothing" xml:space="preserve">
+    <value>Do not change</value>
+  </data>
+  <data name="menuModeRule" xml:space="preserve">
+    <value>Rule</value>
+  </data>
+  <data name="menuProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="menuProfileReload" xml:space="preserve">
+    <value>Profile Reload (F5)</value>
+  </data>
+  <data name="menuProxiesReload" xml:space="preserve">
+    <value>Proxies reload (F5)</value>
+  </data>
+  <data name="menuProxiesSelectActivity" xml:space="preserve">
+    <value>Select active node (Enter)</value>
+  </data>
+  <data name="menuProxiesDelaytest" xml:space="preserve">
+    <value>All Node Latency Test</value>
+  </data>
+  <data name="menuProxiesDelaytestPart" xml:space="preserve">
+    <value>Part Node Latency Test</value>
+  </data>
+  <data name="menuRemoveProfile" xml:space="preserve">
+    <value>Remove selected configuration files (Delete)</value>
+  </data>
+  <data name="menuRulemode" xml:space="preserve">
+    <value>Rule mode</value>
+  </data>
+  <data name="menuSetDefaultProfile" xml:space="preserve">
+    <value>Set as active configuration file (Enter)</value>
+  </data>
+  <data name="menuSubUpdate" xml:space="preserve">
+    <value>Update subscription without proxy</value>
+  </data>
+  <data name="menuSubUpdateSelected" xml:space="preserve">
+    <value>Update selected subscription without proxy</value>
+  </data>
+  <data name="menuSubUpdateSelectedViaProxy" xml:space="preserve">
+    <value>Update selected subscription with proxy</value>
+  </data>
+  <data name="menuSubUpdateViaProxy" xml:space="preserve">
+    <value>Update subscription with proxy</value>
+  </data>
+  <data name="menuSystemproxy" xml:space="preserve">
+    <value>System proxy</value>
+  </data>
+  <data name="menuSystemProxyClear" xml:space="preserve">
+    <value>Clear system proxy</value>
+  </data>
+  <data name="menuSystemProxyNothing" xml:space="preserve">
+    <value>Do not change system proxy</value>
+  </data>
+  <data name="menuSystemProxySet" xml:space="preserve">
+    <value>Set system proxy</value>
   </data>
   <data name="MsgClearSubscription" xml:space="preserve">
     <value>Clear original subscription content</value>
@@ -228,17 +282,29 @@
   <data name="MsgDownloadCoreSuccessfully" xml:space="preserve">
     <value>Download Core successfully</value>
   </data>
+  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
+    <value>Download GeoFile: {0} successfully</value>
+  </data>
   <data name="MsgFailedImportSubscription" xml:space="preserve">
     <value>Failed to import subscription content</value>
   </data>
   <data name="MsgGetSubscriptionSuccessfully" xml:space="preserve">
     <value>Get the subscription content successfully</value>
   </data>
+  <data name="MsgInformationTitle" xml:space="preserve">
+    <value>Informations (Filter : {0})</value>
+  </data>
+  <data name="MsgNeedUrl" xml:space="preserve">
+    <value>Please fill in the address (Url)</value>
+  </data>
   <data name="MsgNoValidSubscription" xml:space="preserve">
     <value>No valid subscriptions set</value>
   </data>
   <data name="MsgParsingSuccessfully" xml:space="preserve">
     <value>Resolve {0} successfully</value>
+  </data>
+  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
+    <value>Skip this subscription update</value>
   </data>
   <data name="MsgStartGettingSubscriptions" xml:space="preserve">
     <value>Start getting subscriptions</value>
@@ -249,14 +315,14 @@
   <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
     <value>Invalid subscription content</value>
   </data>
+  <data name="MsgSureContinue" xml:space="preserve">
+    <value>Are you sure you want to continue?</value>
+  </data>
   <data name="MsgUnpacking" xml:space="preserve">
     <value>is unpacking...</value>
   </data>
-  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
-    <value>Update subscription end</value>
-  </data>
-  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
-    <value>Update subscription starts</value>
+  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
+    <value>Update Core failed, see the log for details</value>
   </data>
   <data name="MsgUpdateCoreCoreSuccessfully" xml:space="preserve">
     <value>Update Core successfully</value>
@@ -264,11 +330,20 @@
   <data name="MsgUpdateCoreCoreSuccessfullyMore" xml:space="preserve">
     <value>Update Core successfully! Restarting service...</value>
   </data>
+  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
+    <value>Update subscription end</value>
+  </data>
+  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
+    <value>Update subscription starts</value>
+  </data>
   <data name="NeedHttpGlobalProxy" xml:space="preserve">
     <value> This feature relies on the Http global proxy, please set it correctly first.</value>
   </data>
   <data name="NotFoundCore" xml:space="preserve">
     <value>Core not found, please download: {0}</value>
+  </data>
+  <data name="NotRunAsAdmin" xml:space="preserve">
+    <value>Not Run As Admin</value>
   </data>
   <data name="NoValidQRcodeFound" xml:space="preserve">
     <value>Scan completed, no valid QR code found</value>
@@ -276,20 +351,35 @@
   <data name="OperationFailed" xml:space="preserve">
     <value> operation failed, please check retry</value>
   </data>
+  <data name="OperationSuccess" xml:space="preserve">
+    <value>Operation success</value>
+  </data>
   <data name="PleaseFillRemarks" xml:space="preserve">
     <value>Please Fill Remarks</value>
   </data>
   <data name="PleaseSelectEncryption" xml:space="preserve">
     <value>Please select the encryption method</value>
   </data>
-  <data name="PleaseSelectProtocol" xml:space="preserve">
-    <value>Please select an agreement</value>
-  </data>
   <data name="PleaseSelectProfile" xml:space="preserve">
     <value>Please select the configuration file first</value>
   </data>
+  <data name="PleaseSelectProtocol" xml:space="preserve">
+    <value>Please select an agreement</value>
+  </data>
+  <data name="PleaseSelectRules" xml:space="preserve">
+    <value>Please select rules</value>
+  </data>
+  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
+    <value>Global hotkey {0} registered failed, reason {1}</value>
+  </data>
+  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
+    <value>Global hotkey {0} registered successfully</value>
+  </data>
   <data name="RemoveProfile" xml:space="preserve">
     <value>Are you sure to remove the configuration file?</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>Run As Admin</value>
   </data>
   <data name="SpeedProfileTips" xml:space="preserve">
     <value>Note: After this function relies on the Http global proxy test, please manually adjust the Http global proxy and active node!</value>
@@ -310,79 +400,217 @@
   <data name="SuccessfullyImportedProfileViaScan" xml:space="preserve">
     <value>Scan import successfully</value>
   </data>
-  <data name="OperationSuccess" xml:space="preserve">
-    <value>Operation success</value>
+  <data name="TbAddress" xml:space="preserve">
+    <value>Address</value>
   </data>
-  <data name="PleaseSelectRules" xml:space="preserve">
-    <value>Please select rules</value>
+  <data name="TbAddressAs" xml:space="preserve">
+    <value>Local file</value>
   </data>
-  <data name="LvRemarks" xml:space="preserve">
-    <value>remarks</value>
+  <data name="TbAlias" xml:space="preserve">
+    <value>Alias</value>
   </data>
-  <data name="LvUrl" xml:space="preserve">
+  <data name="TbAutoRefresh" xml:space="preserve">
+    <value>AutoRefresh</value>
+  </data>
+  <data name="TbBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="TbCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TbClearSystemProxy" xml:space="preserve">
+    <value>Clear system proxy</value>
+  </data>
+  <data name="TbConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="TbConnections" xml:space="preserve">
+    <value>Connections</value>
+  </data>
+  <data name="TbCoreType" xml:space="preserve">
+    <value>Core type</value>
+  </data>
+  <data name="TbDisplayGUI" xml:space="preserve">
+    <value>Display GUI</value>
+  </data>
+  <data name="TbEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TbEnableConvert" xml:space="preserve">
+    <value>Enable subscription conversion</value>
+  </data>
+  <data name="TbEnableTun" xml:space="preserve">
+    <value>Tun</value>
+  </data>
+  <data name="TbEnableTunAs" xml:space="preserve">
+    <value>Enable tun mode (Run As Admin)</value>
+  </data>
+  <data name="TbEnableUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="TbEnableUpdateAs" xml:space="preserve">
+    <value>Enable Update subscription</value>
+  </data>
+  <data name="TbGlobalHotkeySetting" xml:space="preserve">
+    <value>GlobalHotkey Setting</value>
+  </data>
+  <data name="TbGlobalHotkeySettingTip" xml:space="preserve">
+    <value>Set directly by pressing the keyboard, Take effect after restart</value>
+  </data>
+  <data name="TbHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="TbHelpCheck" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="TbHelpProject" xml:space="preserve">
+    <value>clashN Project</value>
+  </data>
+  <data name="TbHelpProjectGo" xml:space="preserve">
+    <value>Go to</value>
+  </data>
+  <data name="TbMsgTitle" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+  <data name="TbNotChangeSystemProxy" xml:space="preserve">
+    <value>Do not change system proxy</value>
+  </data>
+  <data name="TbProfiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="TbPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="TbPromotionInformation" xml:space="preserve">
+    <value>Click the button below to support the developer.</value>
+  </data>
+  <data name="TbProxies" xml:space="preserve">
+    <value>Proxies</value>
+  </data>
+  <data name="TbReset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="TbSetSystemProxy" xml:space="preserve">
+    <value>Set system proxy</value>
+  </data>
+  <data name="TbSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="TbSettingsAllowLAN" xml:space="preserve">
+    <value>Allow connections from the LAN</value>
+  </data>
+  <data name="TbSettingsAPIPort" xml:space="preserve">
+    <value>API Port</value>
+  </data>
+  <data name="TbSettingsAutoTest" xml:space="preserve">
+    <value>Automatic latency test interval (minutes)</value>
+  </data>
+  <data name="TbSettingsAutoUpdate" xml:space="preserve">
+    <value>Automatic update interval of subscriptions (hours)</value>
+  </data>
+  <data name="TbSettingsClashN" xml:space="preserve">
+    <value>ClashN settings</value>
+  </data>
+  <data name="TbSettingsColorMode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="TbSettingsCore" xml:space="preserve">
+    <value>Core settings</value>
+  </data>
+  <data name="TbSettingsEditMixin" xml:space="preserve">
+    <value>Edit Mixin</value>
+  </data>
+  <data name="TbSettingsException" xml:space="preserve">
+    <value>Exception</value>
+  </data>
+  <data name="TbSettingsExceptionTip" xml:space="preserve">
+    <value>Exception. Do not use proxy server for addresses beginning with,Use semicolon (;)</value>
+  </data>
+  <data name="TbSettingsHttpPort" xml:space="preserve">
+    <value>Http Port</value>
+  </data>
+  <data name="TbSettingsIpv6" xml:space="preserve">
+    <value>Enable Ipv6</value>
+  </data>
+  <data name="TbSettingsLanguage" xml:space="preserve">
+    <value>Language(restart)</value>
+  </data>
+  <data name="TbSettingsLogLevel" xml:space="preserve">
+    <value>Log Level</value>
+  </data>
+  <data name="TbSettingsMixedPort" xml:space="preserve">
+    <value>Mixed Port</value>
+  </data>
+  <data name="TbSettingsMixin" xml:space="preserve">
+    <value>Enable Mixin configuration content</value>
+  </data>
+  <data name="TbSettingsSetUWP" xml:space="preserve">
+    <value>Set Win10 UWP Loopback</value>
+  </data>
+  <data name="TbSettingsSocksPort" xml:space="preserve">
+    <value>Socks Port</value>
+  </data>
+  <data name="TbSettingsStartBoot" xml:space="preserve">
+    <value>Start on boot</value>
+  </data>
+  <data name="TbSettingsStatistics" xml:space="preserve">
+    <value>Enable Statistics (Require restart)</value>
+  </data>
+  <data name="TbSettingsSubConvert" xml:space="preserve">
+    <value>Subscription conversion Url</value>
+  </data>
+  <data name="TbSettingsSystemproxy" xml:space="preserve">
+    <value>System proxy settings</value>
+  </data>
+  <data name="TbSettingsTLS13" xml:space="preserve">
+    <value>Enable Security Protocol TLS v1.3 (subscription/update)</value>
+  </data>
+  <data name="TbSorting" xml:space="preserve">
+    <value>Sorting</value>
+  </data>
+  <data name="TbSortingDelay" xml:space="preserve">
+    <value>Delay</value>
+  </data>
+  <data name="TbSortingDownSpeed" xml:space="preserve">
+    <value>Download Speed</value>
+  </data>
+  <data name="TbSortingDownTraffic" xml:space="preserve">
+    <value>Download Traffic</value>
+  </data>
+  <data name="TbSortingName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="TbSortingTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="TbSortingUpSpeed" xml:space="preserve">
+    <value>Upload Speed</value>
+  </data>
+  <data name="TbSortingUpTraffic" xml:space="preserve">
+    <value>Upload Traffic</value>
+  </data>
+  <data name="TbUrl" xml:space="preserve">
     <value>Url</value>
   </data>
-  <data name="LvCount" xml:space="preserve">
-    <value>Count</value>
+  <data name="TbUrlAs" xml:space="preserve">
+    <value>Subscription url</value>
   </data>
-  <data name="MsgNeedUrl" xml:space="preserve">
-    <value>Please fill in the address (Url)</value>
-  </data>
-  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
-    <value>Download GeoFile: {0} successfully</value>
-  </data>
-  <data name="MsgInformationTitle" xml:space="preserve">
-    <value>Informations (Filter : {0})</value>
-  </data>
-  <data name="LvCustomIcon" xml:space="preserve">
-    <value>Custom Icon</value>
-  </data>
-  <data name="FillCorrectDNSText" xml:space="preserve">
-    <value>Please fill in the correct custom DNS</value>
-  </data>
-  <data name="LvTLS" xml:space="preserve">
-    <value>TLS</value>
-  </data>
-  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
-    <value>Global hotkey {0} registered failed, reason {1}</value>
-  </data>
-  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
-    <value>Global hotkey {0} registered successfully</value>
-  </data>
-  <data name="AllGroupProfiles" xml:space="preserve">
-    <value>All servers</value>
-  </data>
-  <data name="FillProfileAddressCustom" xml:space="preserve">
-    <value>Please browse to import configuration file configuration</value>
+  <data name="TbUserAgent" xml:space="preserve">
+    <value>User Agent(optional)</value>
   </data>
   <data name="TestMeOutput" xml:space="preserve">
     <value>The ping of current service: {0}</value>
   </data>
-  <data name="NotRunAsAdmin" xml:space="preserve">
-    <value>Not Run As Admin</value>
-  </data>
-  <data name="RunAsAdmin" xml:space="preserve">
-    <value>Run As Admin</value>
-  </data>
-  <data name="EnableTunModeFailed" xml:space="preserve">
-    <value>Failed to enable tun mode, please run as administrator</value>
-  </data>
-  <data name="LvEnableTun" xml:space="preserve">
-    <value>Enable tun</value>
-  </data>
-  <data name="LvEnableUpdateSub" xml:space="preserve">
-    <value>Enable update Sub (Convert)</value>
-  </data>
-  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
-    <value>Skip this subscription update</value>
-  </data>
-  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
-    <value>Update Core failed, see the log for details</value>
-  </data>
-  <data name="LvUpdateTime" xml:space="preserve">
-    <value>UpdateTime</value>
-  </data>
   <data name="TunModeCoreTip" xml:space="preserve">
     <value>To enable tun mode, please use Clash.Meta Core first; if you must use Clash Core, you need to download Clash Premium Core overlay</value>
+  </data>
+  <data name="TbSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TbSettingsAdvancedProtocol" xml:space="preserve">
+    <value>Advanced proxy settings, protocol selection (optional)</value>
+  </data>
+  <data name="menuProfileQrcode" xml:space="preserve">
+    <value>Share Qrcode</value>
   </data>
 </root>

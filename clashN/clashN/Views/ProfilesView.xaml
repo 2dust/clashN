@@ -1,0 +1,179 @@
+<reactiveui:ReactiveUserControl
+    x:Class="clashN.Views.ProfilesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:clashN.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveui="http://reactiveui.net"
+    xmlns:resx="clr-namespace:clashN.Resx"
+    xmlns:vms="clr-namespace:clashN.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:TypeArguments="vms:ProfilesViewModel"
+    KeyDown="ProfilesView_KeyDown"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    </UserControl.Resources>
+    <DockPanel Grid.Row="0" Margin="16">
+        <TextBlock
+            Margin="8,0,8,8"
+            DockPanel.Dock="Top"
+            Style="{StaticResource ModuleTitle}"
+            Text="{x:Static resx:ResUI.TbProfiles}" />
+        <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
+            <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
+                <Button x:Name="btnAddProfile" ToolTip="{x:Static resx:ResUI.menuAddProfile}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Plus" />
+                        <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{x:Static resx:ResUI.menuAddProfile}" />
+                    </StackPanel>
+                </Button>
+                <Separator />
+                <Button
+                    x:Name="btnAddProfileViaClipboard"
+                    Content="{materialDesign:PackIcon Kind=ContentPaste}"
+                    ToolTip="{x:Static resx:ResUI.menuAddProfileViaClipboard}" />
+                <Separator />
+                <Button
+                    x:Name="btnSubUpdateViaProxy"
+                    Content="{materialDesign:PackIcon Kind=Update}"
+                    ToolTip="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
+                <Separator />
+                <Button
+                    x:Name="btnProfileQrcode"
+                    Content="{materialDesign:PackIcon Kind=QrcodePlus}"
+                    ToolTip="{x:Static resx:ResUI.menuProfileQrcode}" />
+            </ToolBar>
+        </ToolBarTray>
+        <ListView
+            x:Name="lstProfiles"
+            BorderThickness="0"
+            ItemContainerStyle="{StaticResource lvItemSelected}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuEditLocalFile" Header="{x:Static resx:ResUI.menuEditLocalFile}" />
+                    <MenuItem x:Name="menuEditProfile" Header="{x:Static resx:ResUI.menuEditProfile}" />
+                    <MenuItem x:Name="menuAddProfile" Header="{x:Static resx:ResUI.menuAddProfile}" />
+                    <MenuItem x:Name="menuAddProfileViaScan" Header="{x:Static resx:ResUI.menuAddProfileViaScan}" />
+                    <MenuItem x:Name="menuAddProfileViaClipboard" Header="{x:Static resx:ResUI.menuAddProfileViaClipboard}" />
+                    <MenuItem x:Name="menuExportProfile" Header="{x:Static resx:ResUI.menuExportProfile}" />
+                    <MenuItem x:Name="menuProfileQrcode" Header="{x:Static resx:ResUI.menuProfileQrcode}" />
+                    <Separator />
+                    <MenuItem x:Name="menuSubUpdate" Header="{x:Static resx:ResUI.menuSubUpdate}" />
+                    <MenuItem x:Name="menuSubUpdateSelected" Header="{x:Static resx:ResUI.menuSubUpdateSelected}" />
+                    <MenuItem x:Name="menuSubUpdateViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
+                    <MenuItem x:Name="menuSubUpdateSelectedViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateSelectedViaProxy}" />
+                    <Separator />
+                    <MenuItem x:Name="menuRemoveProfile" Header="{x:Static resx:ResUI.menuRemoveProfile}" />
+                    <MenuItem x:Name="menuCloneProfile" Header="{x:Static resx:ResUI.menuCloneProfile}" />
+                    <MenuItem x:Name="menuSetDefaultProfile" Header="{x:Static resx:ResUI.menuSetDefaultProfile}" />
+                    <Separator />
+                    <MenuItem x:Name="menuClearStatistic" Header="{x:Static resx:ResUI.menuClearStatistic}" />
+                    <MenuItem x:Name="menuProfileReload" Header="{x:Static resx:ResUI.menuProfileReload}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <materialDesign:Card
+                        Width="320"
+                        Padding="0"
+                        materialDesign:UniformCornerRadius="8">
+                        <DockPanel>
+                            <Border
+                                Width="10"
+                                Height="auto"
+                                Background="{DynamicResource PrimaryHueLightBrush}"
+                                CornerRadius="4"
+                                DockPanel.Dock="Left"
+                                Visibility="{Binding Path=isActive, Converter={StaticResource BoolToVisConverter}}" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Margin="8,8,8,0"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Text="{Binding remarks}" />
+
+                                <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+
+                                <StackPanel
+                                    Grid.Row="2"
+                                    Margin="8,0,8,0"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                                    <CheckBox
+                                        Padding="0,0,8,0"
+                                        Content="{x:Static resx:ResUI.TbUrl}"
+                                        IsChecked="{Binding HasUrl, Mode=OneWay}"
+                                        IsHitTestVisible="False"
+                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                    <CheckBox
+                                        Padding="0,0,8,0"
+                                        Content="{x:Static resx:ResUI.TbAddress}"
+                                        IsChecked="{Binding HasAddress, Mode=OneWay}"
+                                        IsHitTestVisible="False"
+                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                    <CheckBox
+                                        Padding="0,0,8,0"
+                                        Content="{x:Static resx:ResUI.TbEnableUpdate}"
+                                        IsChecked="{Binding enabled}"
+                                        IsHitTestVisible="False"
+                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                    <CheckBox
+                                        Padding="0,0,8,0"
+                                        Content="{x:Static resx:ResUI.TbEnableTun}"
+                                        IsChecked="{Binding enableTun}"
+                                        IsHitTestVisible="False"
+                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}" Text="{Binding HasUpdateTime}" />
+
+                                </StackPanel>
+
+                                <Separator Grid.Row="3" Style="{StaticResource MaterialDesignLightSeparator}" />
+
+                                <StackPanel
+                                    Grid.Row="4"
+                                    Margin="8,0,8,8"
+                                    HorizontalAlignment="Left"
+                                    Orientation="Horizontal">
+                                    <materialDesign:PackIcon Padding="4,0,4,0" Kind="ArrowUpThin" />
+                                    <TextBlock
+                                        Padding="4,0,4,0"
+                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Text="{Binding totalUp}" />
+                                    <materialDesign:PackIcon
+                                        Margin="8,0,0,0"
+                                        Padding="4,0,4,0"
+                                        Kind="ArrowDownThin" />
+                                    <TextBlock
+                                        Padding="4,0,4,0"
+                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Text="{Binding totalDown}" />
+
+                                </StackPanel>
+                            </Grid>
+                        </DockPanel>
+                    </materialDesign:Card>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </DockPanel>
+
+
+</reactiveui:ReactiveUserControl>
