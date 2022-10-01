@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace clashN.Mode
+﻿namespace clashN.Mode
 {
     [Serializable]
     public class ServerStatistics

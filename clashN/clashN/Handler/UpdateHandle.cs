@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using clashN.Base;
+﻿using clashN.Base;
 using clashN.Mode;
 using clashN.Resx;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace clashN.Handler
 {
@@ -53,7 +47,7 @@ namespace clashN.Handler
 
                         try
                         {
-                            string fileName = Utils.GetPath(Utils.GetDownloadFileName(url));
+                            string fileName = Utils.GetTempPath(Utils.GetDownloadFileName(url));
                             fileName = Utils.UrlEncode(fileName);
                             Process process = new Process
                             {
@@ -331,7 +325,7 @@ namespace clashN.Handler
             }
             catch (Exception ex)
             {
-                Utils.SaveLog(ex.Message, ex);         
+                Utils.SaveLog(ex.Message, ex);
                 _updateFunc(false, ex.Message);
                 if (ex.InnerException != null)
                 {
@@ -352,7 +346,7 @@ namespace clashN.Handler
                 foreach (string name in coreInfo.coreExes)
                 {
                     string vName = string.Format("{0}.exe", name);
-                    vName = Utils.GetPath(vName);
+                    vName = Utils.GetBinPath(vName, coreInfo.coreType);
                     if (File.Exists(vName))
                     {
                         filePath = vName;

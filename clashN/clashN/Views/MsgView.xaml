@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="clashN.Views.MsgView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:clashN.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resx="clr-namespace:clashN.Resx"
+    xmlns:vms="clr-namespace:clashN.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <Grid>
+        <DockPanel>
+            <GroupBox Header="{x:Static resx:ResUI.TbMsgTitle}">
+                <TextBox
+                    Name="txtMsg"
+                    BorderThickness="0"
+                    FontSize="11"
+                    HorizontalScrollBarVisibility="Auto"
+                    IsReadOnly="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Visible" />
+            </GroupBox>
+
+        </DockPanel>
+    </Grid>
+</UserControl>

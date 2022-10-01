@@ -1,11 +1,7 @@
-﻿using log4net;
-using log4net.Appender;
-using log4net.Core;
-using log4net.Layout;
-using log4net.Repository.Hierarchy;
-using System;
+﻿using NLog;
+using NLog.Config;
+using NLog.Targets;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace clashN.Tool
 {
@@ -13,28 +9,13 @@ namespace clashN.Tool
     {
         public static void Setup()
         {
-            Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();
-
-            PatternLayout patternLayout = new PatternLayout();
-            patternLayout.ConversionPattern = "%date [%thread] %-5level %logger - %message%newline";
-            patternLayout.ActivateOptions();
-          
-            RollingFileAppender roller = new RollingFileAppender();
-            roller.AppendToFile = true;
-            roller.RollingStyle = RollingFileAppender.RollingMode.Date;
-            roller.DatePattern = "yyyy-MM-dd'.txt'";
-            roller.File = Utils.GetPath(@"guiLogs\");
-            roller.Layout = patternLayout;
-            roller.StaticLogFileName = false;
-            roller.ActivateOptions();
-            hierarchy.Root.AddAppender(roller);
-
-            MemoryAppender memory = new MemoryAppender();
-            memory.ActivateOptions();
-            hierarchy.Root.AddAppender(memory);
-
-            hierarchy.Root.Level = Level.Debug;
-            hierarchy.Configured = true;
+            LoggingConfiguration config = new LoggingConfiguration();
+            FileTarget fileTarget = new FileTarget();
+            config.AddTarget("file", fileTarget);
+            fileTarget.Layout = "${longdate}-${level:uppercase=true} ${message}";
+            fileTarget.FileName = Utils.GetPath(@"guiLogs/") + "${shortdate}.txt";
+            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, fileTarget));
+            LogManager.Configuration = config;
         }
 
         public static void ClearLogs()

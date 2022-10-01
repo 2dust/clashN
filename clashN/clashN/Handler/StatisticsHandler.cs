@@ -1,10 +1,6 @@
 ﻿using clashN.Mode;
-using System;
-using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace clashN.Handler
 {
@@ -18,12 +14,12 @@ namespace clashN.Handler
 
         Action<ulong, ulong, List<ProfileStatItem>> updateFunc_;
 
-        public bool Enable
+        private bool Enable
         {
             get; set;
         }
 
-        public List<ProfileStatItem> Statistic
+        private List<ProfileStatItem> Statistic
         {
             get
             {
@@ -141,7 +137,7 @@ namespace clashN.Handler
         {
             try
             {
-                string result = Utils.LoadResource(Utils.GetPath(Global.StatisticLogOverall));
+                string result = Utils.LoadResource(Utils.GetConfigPath(Global.StatisticLogOverall));
                 if (!Utils.IsNullOrEmpty(result))
                 {
                     serverStatistics_ = Utils.FromJson<ServerStatistics>(result);
@@ -177,7 +173,7 @@ namespace clashN.Handler
         {
             try
             {
-                Utils.ToJsonFile(serverStatistics_, Utils.GetPath(Global.StatisticLogOverall));
+                Utils.ToJsonFile(serverStatistics_, Utils.GetConfigPath(Global.StatisticLogOverall));
             }
             catch (Exception ex)
             {
@@ -202,6 +198,11 @@ namespace clashN.Handler
                 // update statistic json file
                 SaveToFile();
             }
+        }
+
+        public List<ProfileStatItem> GetStatistic()
+        {
+            return Statistic;
         }
 
         private ProfileStatItem GetServerStatItem(string itemId)

@@ -1,7 +1,4 @@
-﻿
-using System.Collections.Generic;
-
-namespace clashN
+﻿namespace clashN
 {
     class Global
     {
@@ -19,7 +16,7 @@ namespace clashN
         /// </summary>
         public const string SpeedTestUrl = @"http://cachefly.cachefly.net/10mb.test";
         public const string SpeedPingTestUrl = @"https://www.google.com/generate_204";
-        //public const string SubConvertUrl = @"https://sub.xeton.dev/sub?target=clash&url={0}";
+
         public static readonly List<string> SubConvertUrls = new List<string> {
                 @"https://sub.xeton.dev/sub?target=clash&url={0}",
                 @"https://api.dler.io/sub?target=clash&url={0}",
@@ -92,7 +89,13 @@ namespace clashN
         public const string StatisticLogOverall = "StatisticLogOverall.json";
 
         public const string IEProxyExceptions = "localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;192.168.*";
-
+        public static readonly List<string> IEProxyProtocols = new List<string> {
+                        "{ip}:{http_port}",
+                        "socks={ip}:{socks_port}",
+                        "http={ip}:{http_port};https={ip}:{http_port};ftp={ip}:{http_port};socks={ip}:{socks_port}",
+                        "http=http://{ip}:{http_port};https=http://{ip}:{http_port}",
+                        ""
+                    };
 
         public static readonly List<string> coreTypes = new List<string> { "clash", "clash_meta" };
 
@@ -102,7 +105,7 @@ namespace clashN
 
         public static readonly List<string> proxyVehicleType = new List<string> { "file", "http" };
 
-        public const string CheckMark = "√";
+        public static readonly List<string> Languages = new List<string> { "zh-Hans", "en" };
 
 
         #endregion
@@ -121,14 +124,13 @@ namespace clashN
         {
             get; set;
         }
-        public static System.Threading.Mutex mutexObj
+
+        public static bool ShowInTaskbar
         {
             get; set;
         }
 
         #endregion
-
-
 
     }
 }

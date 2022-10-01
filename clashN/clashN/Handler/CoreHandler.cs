@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using clashN.Mode;
+using clashN.Resx;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using clashN.Mode;
-using clashN.Resx;
 
 namespace clashN.Handler
 {
@@ -44,9 +42,9 @@ namespace clashN.Handler
                     return;
                 }
 
-         
+
                 SetCore(config, item, out bool blChanged);
-                string fileName = Utils.GetPath(coreConfigRes);
+                string fileName = Utils.GetConfigPath(coreConfigRes);
                 if (CoreConfigHandler.GenerateClientConfig(item, fileName, false, out string msg) != 0)
                 {
                     CoreStop();
@@ -104,7 +102,7 @@ namespace clashN.Handler
                         foreach (Process p in existing)
                         {
                             string path = p.MainModule.FileName;
-                            if (path == $"{Utils.GetPath(vName)}.exe")
+                            if (path == $"{Utils.GetBinPath(vName, coreInfo.coreType)}.exe")
                             {
                                 KillProcess(p);
                             }
@@ -155,13 +153,13 @@ namespace clashN.Handler
             }
         }
 
-        private string FindCoreExe(List<string> lstCoreTemp)
+        private string FindCoreExe()
         {
             string fileName = string.Empty;
-            foreach (string name in lstCoreTemp)
+            foreach (string name in coreInfo.coreExes)
             {
                 string vName = string.Format("{0}.exe", name);
-                vName = Utils.GetPath(vName);
+                vName = Utils.GetBinPath(vName, coreInfo.coreType);
                 if (File.Exists(vName))
                 {
                     fileName = vName;
@@ -185,14 +183,15 @@ namespace clashN.Handler
 
             try
             {
-                string fileName = FindCoreExe(coreInfo.coreExes);
+                string fileName = FindCoreExe();
                 if (fileName == "") return;
 
                 //Portable Mode
                 var arguments = coreInfo.arguments;
-                if (Directory.Exists(Utils.GetPath("data")))
+                var data = Utils.GetPath("data");
+                if (Directory.Exists(data))
                 {
-                    arguments += $" -d \"{ Utils.GetPath("data")}\"";
+                    arguments += $" -d \"{data}\"";
                 }
 
                 Process p = new Process
@@ -201,7 +200,7 @@ namespace clashN.Handler
                     {
                         FileName = fileName,
                         Arguments = arguments,
-                        WorkingDirectory = Utils.StartupPath(),
+                        WorkingDirectory = Utils.GetConfigPath(),
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,

@@ -1,8 +1,11 @@
-﻿using Microsoft.Win32;
+﻿using clashN.Base;
+using clashN.Mode;
+using Microsoft.Win32;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using NLog;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -10,22 +13,16 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows.Forms;
-using System.Drawing;
+using YamlDotNet.Serialization;
 using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
-using System.Security.Principal;
-using clashN.Base;
-using Newtonsoft.Json.Linq;
-using log4net;
-using System.Linq;
 using ZXing.Windows.Compatibility;
-using System.Web;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
 
 namespace clashN
 {
@@ -786,13 +783,13 @@ namespace clashN
                 if (blFull)
                 {
                     return string.Format("clashN - V{0} - {1}",
-                            FileVersionInfo.GetVersionInfo(location).FileVersion.ToString(),
+                            FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString(),
                             File.GetLastWriteTime(location).ToString("yyyy/MM/dd"));
                 }
                 else
                 {
                     return string.Format("clashN/{0}",
-                        FileVersionInfo.GetVersionInfo(location).FileVersion.ToString());
+                        FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString());
                 }
             }
             catch (Exception ex)
@@ -958,7 +955,14 @@ namespace clashN
 
         public static void ProcessStart(string fileName)
         {
-            Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+            try
+            {
+                Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                SaveLog(ex.Message, ex);
+            }
         }
         #endregion
 
@@ -1020,6 +1024,23 @@ namespace clashN
             }
         }
 
+        public static string GetBinPath(string filename, ECoreType? coreType = null)
+        {
+            string _tempPath = Path.Combine(StartupPath(), "bin");
+            if (!Directory.Exists(_tempPath))
+            {
+                Directory.CreateDirectory(_tempPath);
+            }
+            if (coreType != null)
+            {
+                _tempPath = Path.Combine(_tempPath, coreType.ToString()!);
+                if (!Directory.Exists(_tempPath))
+                {
+                    Directory.CreateDirectory(_tempPath);
+                }
+            }
+            return Path.Combine(_tempPath, filename);
+        }
         #endregion
 
         #region Log
@@ -1034,6 +1055,10 @@ namespace clashN
             var logger = LogManager.GetLogger("Log2");
             logger.Debug(strTitle);
             logger.Debug(ex);
+            if (ex != null && ex.InnerException != null)
+            {
+                logger.Error(ex.InnerException);
+            }
         }
 
         #endregion
@@ -1114,7 +1139,7 @@ namespace clashN
                 T obj = deserializer.Deserialize<T>(str);
                 return obj;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 SaveLog("FromYaml", ex);
                 return deserializer.Deserialize<T>("");

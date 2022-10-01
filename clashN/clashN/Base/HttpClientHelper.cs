@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
+﻿using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace clashN.Base
 {
@@ -42,7 +36,7 @@ namespace clashN.Base
         }
         public async Task<string> GetAsync(string url)
         {
-            if (string.IsNullOrEmpty(url))
+            if (Utils.IsNullOrEmpty(url))
             {
                 return null;
             }
@@ -59,7 +53,7 @@ namespace clashN.Base
         }
         public async Task<string> GetAsync(HttpClient client, string url, CancellationToken token)
         {
-            if (string.IsNullOrEmpty(url))
+            if (Utils.IsNullOrEmpty(url))
             {
                 return null;
             }
@@ -91,14 +85,23 @@ namespace clashN.Base
 
             await httpClient.PatchAsync(url, byteContent);
         }
+        public async Task DeleteAsync(string url)
+        {
+            //var myContent = Utils.ToJson(headers);
+            //var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
+            //var byteContent = new ByteArrayContent(buffer);
+            //byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            await httpClient.DeleteAsync(url);
+        }
 
         public async Task DownloadFileAsync(HttpClient client, string url, string fileName, IProgress<double> progress, CancellationToken token)
         {
-            if (string.IsNullOrEmpty(url))
+            if (Utils.IsNullOrEmpty(url))
             {
                 throw new ArgumentNullException("url");
             }
-            if (string.IsNullOrEmpty(fileName))
+            if (Utils.IsNullOrEmpty(fileName))
             {
                 throw new ArgumentNullException("fileName");
             }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace clashN.Mode
+﻿namespace clashN.Mode
 {
     public class ClashProxies
     {
@@ -18,7 +15,7 @@ namespace clashN.Mode
             public int delay { get; set; }
         }
         public class HistoryItem
-        { 
+        {
             public string time { get; set; }
             public int delay { get; set; }
         }

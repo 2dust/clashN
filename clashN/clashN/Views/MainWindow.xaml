@@ -1,0 +1,253 @@
+<reactiveui:ReactiveWindow
+    x:Class="clashN.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:clashN.Views"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:reactiveui="http://reactiveui.net"
+    xmlns:resx="clr-namespace:clashN.Resx"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
+    xmlns:vms="clr-namespace:clashN.ViewModels"
+    Title="clashN"
+    Width="1200"
+    Height="800"
+    MinWidth="800"
+    MinHeight="600"
+    x:TypeArguments="vms:MainWindowViewModel"
+    Background="{DynamicResource MaterialDesignPaper}"
+    ShowInTaskbar="True"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextOptions.TextFormattingMode="Display"
+    TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <materialDesign:DialogHost
+        Identifier="RootDialog"
+        SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"
+        Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" MinWidth="100" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                    <materialDesign:NavigationRailAssist.FloatingContent>
+                        <StackPanel
+                            Width="auto"
+                            Height="auto"
+                            Margin="16">
+                            <Grid Width="90" Margin="0,16,0,16">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:PackIcon
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Kind="ArrowUpThin" />
+                                <TextBlock
+                                    x:Name="txtSpeedUpload"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="8,0,0,0"
+                                    Padding="0,0,4,0"
+                                    Style="{StaticResource MaterialDesignCaptionTextBlock}" />
+                                <materialDesign:PackIcon
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Kind="ArrowDownThin" />
+                                <TextBlock
+                                    x:Name="txtSpeedDownload"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="8,0,0,0"
+                                    Padding="0,0,4,0"
+                                    Style="{StaticResource MaterialDesignCaptionTextBlock}" />
+                            </Grid>
+                            <Button
+                                x:Name="btnReload"
+                                Content="{materialDesign:PackIcon Kind=Reload}"
+                                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                ToolTip="Reload profile" />
+                        </StackPanel>
+                    </materialDesign:NavigationRailAssist.FloatingContent>
+                    <!--<TabItem
+                    x:Name="dashboardTabItem"
+                    Width="120"
+                    Height="auto"
+                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem.Header>
+                        <StackPanel Width="auto" Height="auto">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Margin="8"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Kind="Speedometer" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Dashboard" />
+                        </StackPanel>
+                    </TabItem.Header>
+                </TabItem>-->
+                    <TabItem
+                        x:Name="proxiesTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="ArrowDecisionOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbProxies}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem
+                        x:Name="profilesTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="Server" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbProfiles}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem
+                        x:Name="connectionsTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="LanConnect" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbConnections}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem
+                        x:Name="settingsTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="SettingsOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbSettings}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem
+                        x:Name="helpTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="HelpCircleOutline" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbHelp}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem
+                        x:Name="promotionTabItem"
+                        Width="120"
+                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="VolumeHigh" />
+                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbPromotion}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+
+
+                </TabControl>
+
+                <tb:TaskbarIcon
+                    x:Name="tbNotify"
+                    IconSource="/clashN.ico"
+                    TrayMouseDoubleClick="tbNotify_TrayMouseDoubleClick">
+                    <tb:TaskbarIcon.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="{x:Static resx:ResUI.menuSystemproxy}">
+                                <MenuItem
+                                    x:Name="menuSystemProxyClear"
+                                    Header="{x:Static resx:ResUI.menuSystemProxyClear}"
+                                    IsCheckable="True" />
+                                <MenuItem
+                                    x:Name="menuSystemProxySet"
+                                    Header="{x:Static resx:ResUI.menuSystemProxySet}"
+                                    IsCheckable="True" />
+                                <MenuItem
+                                    x:Name="menuSystemProxyNothing"
+                                    Header="{x:Static resx:ResUI.menuSystemProxyNothing}"
+                                    IsCheckable="True" />
+                            </MenuItem>
+                            <MenuItem Header="{x:Static resx:ResUI.menuRulemode}">
+                                <MenuItem
+                                    x:Name="menuModeRule"
+                                    Header="{x:Static resx:ResUI.menuModeRule}"
+                                    IsCheckable="True" />
+                                <MenuItem
+                                    x:Name="menuModeGlobal"
+                                    Header="{x:Static resx:ResUI.menuModeGlobal}"
+                                    IsCheckable="True" />
+                                <MenuItem
+                                    x:Name="menuModeDirect"
+                                    Header="{x:Static resx:ResUI.menuModeDirect}"
+                                    IsCheckable="True" />
+                                <MenuItem
+                                    x:Name="menuModeNothing"
+                                    Header="{x:Static resx:ResUI.menuModeNothing}"
+                                    IsCheckable="True" />
+                            </MenuItem>
+                            <Separator />
+                            <MenuItem x:Name="menuAddProfileViaScan" Header="{x:Static resx:ResUI.menuAddProfileViaScan}" />
+                            <MenuItem x:Name="menuSubUpdate" Header="{x:Static resx:ResUI.menuSubUpdate}" />
+                            <MenuItem x:Name="menuSubUpdateViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
+                            <Separator />
+                            <MenuItem x:Name="menuExit" Header="{x:Static resx:ResUI.menuExit}" />
+                        </ContextMenu>
+                    </tb:TaskbarIcon.ContextMenu>
+                </tb:TaskbarIcon>
+                <materialDesign:Snackbar x:Name="MainSnackbar" MessageQueue="{materialDesign:MessageQueue}" />
+
+            </Grid>
+
+            <GridSplitter Width="10" />
+
+            <local:MsgView x:Name="viewMsg" Grid.Column="1" />
+        </Grid>
+
+    </materialDesign:DialogHost>
+</reactiveui:ReactiveWindow>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using static clashN.Mode.ClashProxies;
+﻿using static clashN.Mode.ClashProxies;
 
 namespace clashN.Mode
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace clashN.Mode
+﻿namespace clashN.Mode
 {
     [Serializable]
     class ServerTestItem
