@@ -38,13 +38,13 @@
                     <Button x:Name="btnSave">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ContentSave" />
-                            <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{x:Static resx:ResUI.TbSave}" />
+                            <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSave}" />
                         </StackPanel>
                     </Button>
                     <Separator />
                     <TextBlock
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                        Style="{StaticResource ToolbarItem}"
                         Text="{x:Static resx:ResUI.TbSettingsColorMode}" />
                     <ToggleButton x:Name="togDarkMode" />
                     <ComboBox
@@ -54,7 +54,7 @@
                     <Separator />
                     <TextBlock
                         VerticalAlignment="Center"
-                        Style="{StaticResource MaterialDesignBody2TextBlock}"
+                        Style="{StaticResource ToolbarItem}"
                         Text="{x:Static resx:ResUI.TbSettingsLanguage}" />
                     <ComboBox
                         x:Name="cmbCurrentLanguage"

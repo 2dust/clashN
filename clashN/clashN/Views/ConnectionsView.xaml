@@ -23,11 +23,14 @@
             DockPanel.Dock="Top"
             Orientation="Horizontal">
             <TextBlock Style="{StaticResource ModuleTitle}" Text="{x:Static resx:ResUI.TbConnections}" />
-            <materialDesign:Chip x:Name="chipCount" />
+            <materialDesign:Chip x:Name="chipCount" Style="{StaticResource ListItemChip}" />
         </StackPanel>
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
-                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.TbSorting}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.TbSorting}" />
                 <ComboBox
                     x:Name="cmbSorting"
                     Width="100"
@@ -41,7 +44,7 @@
                 <Separator />
                 <TextBlock
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ToolbarItem}"
                     Text="{x:Static resx:ResUI.TbAutoRefresh}" />
                 <ToggleButton
                     x:Name="togAutoRefresh"
@@ -80,26 +83,26 @@
                                     Margin="8,0,8,0"
                                     HorizontalAlignment="Left"
                                     Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{Binding host}" />
+                                    <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding host}" />
                                 </StackPanel>
                                 <StackPanel
                                     Grid.Row="1"
                                     HorizontalAlignment="Left"
                                     Orientation="Horizontal">
-                                    <materialDesign:Chip Content="{Binding network}" />
-                                    <materialDesign:Chip Content="{Binding type}" />
-                                    <materialDesign:Chip Content="{Binding chain}" />
-                                    <materialDesign:Chip Content="{Binding uploadTraffic}">
+                                    <materialDesign:Chip Content="{Binding network}" Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip Content="{Binding type}" Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip Content="{Binding chain}" Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip Content="{Binding uploadTraffic}" Style="{StaticResource ListItemChip}">
                                         <materialDesign:Chip.Icon>
                                             <materialDesign:PackIcon Kind="ArrowUpThin" />
                                         </materialDesign:Chip.Icon>
                                     </materialDesign:Chip>
-                                    <materialDesign:Chip Content="{Binding downloadTraffic}">
+                                    <materialDesign:Chip Content="{Binding downloadTraffic}" Style="{StaticResource ListItemChip}">
                                         <materialDesign:Chip.Icon>
                                             <materialDesign:PackIcon Kind="ArrowDownThin" />
                                         </materialDesign:Chip.Icon>
                                     </materialDesign:Chip>
-                                    <materialDesign:Chip Content="{Binding elapsed}" />
+                                    <materialDesign:Chip Content="{Binding elapsed}" Style="{StaticResource ListItemChip}" />
                                 </StackPanel>
                             </Grid>
                         </DockPanel>

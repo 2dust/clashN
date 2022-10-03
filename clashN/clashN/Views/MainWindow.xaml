@@ -11,8 +11,8 @@
     xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:vms="clr-namespace:clashN.ViewModels"
     Title="clashN"
-    Width="1200"
-    Height="800"
+    Width="1000"
+    Height="700"
     MinWidth="800"
     MinHeight="600"
     x:TypeArguments="vms:MainWindowViewModel"
@@ -39,7 +39,7 @@
                             Width="auto"
                             Height="auto"
                             Margin="16">
-                            <Grid Width="90" Margin="0,16,0,16">
+                            <Grid Width="70" Margin="0,16,0,16">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -58,7 +58,7 @@
                                     Grid.Column="1"
                                     Margin="8,0,0,0"
                                     Padding="0,0,4,0"
-                                    Style="{StaticResource MaterialDesignCaptionTextBlock}" />
+                                    Style="{StaticResource ToolbarItem}" />
                                 <materialDesign:PackIcon
                                     Grid.Row="1"
                                     Grid.Column="0"
@@ -69,7 +69,7 @@
                                     Grid.Column="1"
                                     Margin="8,0,0,0"
                                     Padding="0,0,4,0"
-                                    Style="{StaticResource MaterialDesignCaptionTextBlock}" />
+                                    Style="{StaticResource ToolbarItem}" />
                             </Grid>
                             <Button
                                 x:Name="btnReload"
@@ -80,9 +80,8 @@
                     </materialDesign:NavigationRailAssist.FloatingContent>
                     <!--<TabItem
                     x:Name="dashboardTabItem"
-                    Width="120"
                     Height="auto"
-                    Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
@@ -99,10 +98,7 @@
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>-->
-                    <TabItem
-                        x:Name="proxiesTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="proxiesTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -110,14 +106,14 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="ArrowDecisionOutline" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbProxies}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbProxies}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        x:Name="profilesTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="profilesTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -125,14 +121,14 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="Server" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbProfiles}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbProfiles}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        x:Name="connectionsTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="connectionsTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -140,14 +136,14 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="LanConnect" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbConnections}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbConnections}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        x:Name="settingsTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="settingsTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -155,14 +151,14 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="SettingsOutline" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbSettings}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbSettings}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        x:Name="helpTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="helpTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -170,14 +166,14 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="HelpCircleOutline" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbHelp}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbHelp}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-                    <TabItem
-                        x:Name="promotionTabItem"
-                        Width="120"
-                        Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                    <TabItem x:Name="promotionTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
                             <StackPanel Width="auto" Height="auto">
                                 <materialDesign:PackIcon
@@ -185,7 +181,10 @@
                                     Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="VolumeHigh" />
-                                <TextBlock HorizontalAlignment="Center" Text="{x:Static resx:ResUI.TbPromotion}" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbPromotion}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>

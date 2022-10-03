@@ -29,17 +29,23 @@
 
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
-                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.menuSystemproxy}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.menuSystemproxy}" />
                 <ComboBox
                     x:Name="cmbSystemProxy"
-                    Width="120"
+                    Width="110"
                     Margin="8">
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyClear}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxySet}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyNothing}" />
                 </ComboBox>
                 <Separator />
-                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.menuRulemode}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.menuRulemode}" />
                 <ComboBox
                     x:Name="cmbRulemode"
                     Width="80"
@@ -50,7 +56,10 @@
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuModeNothing}" />
                 </ComboBox>
                 <Separator />
-                <Label VerticalAlignment="Center" Content="{x:Static resx:ResUI.TbSorting}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.TbSorting}" />
                 <ComboBox
                     x:Name="cmbSorting"
                     Width="60"
@@ -61,7 +70,7 @@
                 <Separator />
                 <TextBlock
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ToolbarItem}"
                     Text="{x:Static resx:ResUI.TbAutoRefresh}" />
                 <ToggleButton
                     x:Name="togAutoRefresh"
@@ -92,7 +101,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <materialDesign:Card
-                            Width="210"
+                            Width="130"
                             Padding="0"
                             materialDesign:UniformCornerRadius="8">
                             <DockPanel>
@@ -102,15 +111,15 @@
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                        <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}" Text="{Binding name}" />
+                                        <TextBlock Style="{StaticResource ListItemTitle}" Text="{Binding name}" />
                                         <TextBlock
                                             Margin="8,0,0,0"
-                                            Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                            Style="{StaticResource ListItemSubTitle}"
                                             Text="{Binding type}" />
                                     </StackPanel>
                                     <TextBlock
                                         Grid.Row="1"
-                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Style="{StaticResource ListItemSubTitle}"
                                         Text="{Binding now}" />
                                 </Grid>
                             </DockPanel>
@@ -139,12 +148,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <materialDesign:Card
-                            Width="210"
+                            Width="130"
                             Padding="0"
                             materialDesign:UniformCornerRadius="8">
                             <DockPanel>
                                 <Border
-                                    Width="10"
+                                    Width="5"
                                     Height="auto"
                                     Background="{DynamicResource PrimaryHueLightBrush}"
                                     CornerRadius="4"
@@ -157,15 +166,15 @@
                                     </Grid.RowDefinitions>
                                     <TextBlock
                                         Grid.Row="0"
-                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Style="{StaticResource ListItemSubTitle}"
                                         Text="{Binding name}" />
                                     <DockPanel Grid.Row="1">
                                         <TextBlock
                                             DockPanel.Dock="Right"
                                             Foreground="{Binding Path=delay, Converter={StaticResource DelayColorConverter}}"
-                                            Style="{StaticResource MaterialDesignOverlineTextBlock}"
+                                            Style="{StaticResource ListItemSubTitle2}"
                                             Text="{Binding delayName}" />
-                                        <TextBlock Style="{StaticResource MaterialDesignOverlineTextBlock}" Text="{Binding type}" />
+                                        <TextBlock Style="{StaticResource ListItemSubTitle2}" Text="{Binding type}" />
                                     </DockPanel>
                                 </Grid>
                             </DockPanel>

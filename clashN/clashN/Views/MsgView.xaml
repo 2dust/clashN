@@ -14,11 +14,11 @@
 
     <Grid>
         <DockPanel>
-            <GroupBox Header="{x:Static resx:ResUI.TbMsgTitle}">
+            <GroupBox FontSize="10" Header="{x:Static resx:ResUI.TbMsgTitle}">
                 <TextBox
                     Name="txtMsg"
                     BorderThickness="0"
-                    FontSize="11"
+                    FontSize="9"
                     HorizontalScrollBarVisibility="Auto"
                     IsReadOnly="True"
                     TextWrapping="Wrap"

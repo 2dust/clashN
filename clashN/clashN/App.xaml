@@ -14,9 +14,47 @@
                     SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="ModuleTitle" TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="28" />
+            <Style
+                x:Key="MyMaterialDesignNavigationRailTabItem"
+                BasedOn="{StaticResource MaterialDesignNavigationRailTabItem}"
+                TargetType="TabItem">
+                <Setter Property="Width" Value="100" />
+            </Style>
+            <Style
+                x:Key="ModuleTitle"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style
+                x:Key="TabItemTitle"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+            <Style
+                x:Key="ListItemTitle"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style
+                x:Key="ListItemSubTitle"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="10" />
+            </Style>
+            <Style
+                x:Key="ListItemSubTitle2"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="8" />
+            </Style>
+            <Style
+                x:Key="ToolbarItem"
+                BasedOn="{StaticResource MaterialDesignTextBlock}"
+                TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="10" />
             </Style>
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
@@ -28,6 +66,15 @@
                         <Setter Property="Foreground" Value="{DynamicResource PrimaryHueLightBrush}" />
                     </Trigger>
                 </Style.Triggers>
+            </Style>
+            <Style
+                x:Key="ListItemCheckBox"
+                BasedOn="{StaticResource MaterialDesignUserForegroundCheckBox}"
+                TargetType="{x:Type CheckBox}">
+                <Setter Property="FontSize" Value="10" />
+            </Style>
+            <Style x:Key="ListItemChip" TargetType="{x:Type materialDesign:Chip}">
+                <Setter Property="FontSize" Value="10" />
             </Style>
         </ResourceDictionary>
 

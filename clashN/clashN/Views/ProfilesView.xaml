@@ -28,7 +28,7 @@
                 <Button x:Name="btnAddProfile" ToolTip="{x:Static resx:ResUI.menuAddProfile}">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Plus" />
-                        <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Text="{x:Static resx:ResUI.menuAddProfile}" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuAddProfile}" />
                     </StackPanel>
                 </Button>
                 <Separator />
@@ -85,12 +85,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <materialDesign:Card
-                        Width="320"
+                        Width="280"
                         Padding="0"
                         materialDesign:UniformCornerRadius="8">
                         <DockPanel>
                             <Border
-                                Width="10"
+                                Width="5"
                                 Height="auto"
                                 Background="{DynamicResource PrimaryHueLightBrush}"
                                 CornerRadius="4"
@@ -107,7 +107,7 @@
                                 <TextBlock
                                     Grid.Row="0"
                                     Margin="8,8,8,0"
-                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    Style="{StaticResource TabItemTitle}"
                                     Text="{Binding remarks}" />
 
                                 <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -122,26 +122,26 @@
                                         Content="{x:Static resx:ResUI.TbUrl}"
                                         IsChecked="{Binding HasUrl, Mode=OneWay}"
                                         IsHitTestVisible="False"
-                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                        Style="{StaticResource ListItemCheckBox}" />
                                     <CheckBox
                                         Padding="0,0,8,0"
                                         Content="{x:Static resx:ResUI.TbAddress}"
                                         IsChecked="{Binding HasAddress, Mode=OneWay}"
                                         IsHitTestVisible="False"
-                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                        Style="{StaticResource ListItemCheckBox}" />
                                     <CheckBox
                                         Padding="0,0,8,0"
                                         Content="{x:Static resx:ResUI.TbEnableUpdate}"
                                         IsChecked="{Binding enabled}"
                                         IsHitTestVisible="False"
-                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
+                                        Style="{StaticResource ListItemCheckBox}" />
                                     <CheckBox
                                         Padding="0,0,8,0"
                                         Content="{x:Static resx:ResUI.TbEnableTun}"
                                         IsChecked="{Binding enableTun}"
                                         IsHitTestVisible="False"
-                                        Style="{StaticResource MaterialDesignUserForegroundCheckBox}" />
-                                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}" Text="{Binding HasUpdateTime}" />
+                                        Style="{StaticResource ListItemCheckBox}" />
+                                    <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding HasUpdateTime}" />
 
                                 </StackPanel>
 
@@ -155,7 +155,7 @@
                                     <materialDesign:PackIcon Padding="4,0,4,0" Kind="ArrowUpThin" />
                                     <TextBlock
                                         Padding="4,0,4,0"
-                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Style="{StaticResource ListItemSubTitle}"
                                         Text="{Binding totalUp}" />
                                     <materialDesign:PackIcon
                                         Margin="8,0,0,0"
@@ -163,7 +163,7 @@
                                         Kind="ArrowDownThin" />
                                     <TextBlock
                                         Padding="4,0,4,0"
-                                        Style="{StaticResource MaterialDesignCaptionTextBlock}"
+                                        Style="{StaticResource ListItemSubTitle}"
                                         Text="{Binding totalDown}" />
 
                                 </StackPanel>
