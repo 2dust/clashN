@@ -147,10 +147,10 @@ namespace clashN.ViewModels
             {
                 Locator.Current.GetService<ProfilesViewModel>()?.UpdateSubscriptionProcess(true, false);
             });
-            ExitCmd = ReactiveCommand.Create(() =>
-            {
-                MyAppExit(false);
-            });
+            //ExitCmd = ReactiveCommand.Create(() =>
+            //{
+            //    MyAppExit(false);
+            //});
             ReloadCmd = ReactiveCommand.Create(() =>
             {
                 Global.reloadCore = true;

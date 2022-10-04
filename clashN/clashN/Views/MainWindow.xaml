@@ -235,7 +235,10 @@
                             <MenuItem x:Name="menuSubUpdate" Header="{x:Static resx:ResUI.menuSubUpdate}" />
                             <MenuItem x:Name="menuSubUpdateViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
                             <Separator />
-                            <MenuItem x:Name="menuExit" Header="{x:Static resx:ResUI.menuExit}" />
+                            <MenuItem
+                                x:Name="menuExit"
+                                Click="menuExit_Click"
+                                Header="{x:Static resx:ResUI.menuExit}" />
                         </ContextMenu>
                     </tb:TaskbarIcon.ContextMenu>
                 </tb:TaskbarIcon>
