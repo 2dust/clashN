@@ -53,7 +53,7 @@
             BorderThickness="0"
             ItemContainerStyle="{StaticResource lvItemSelected}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ContextMenu>
                 <ContextMenu Style="{StaticResource DefMenu}">
                     <MenuItem x:Name="menuEditLocalFile" Header="{x:Static resx:ResUI.menuEditLocalFile}" />
