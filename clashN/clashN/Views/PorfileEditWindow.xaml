@@ -11,8 +11,8 @@
     xmlns:resx="clr-namespace:clashN.Resx"
     xmlns:vms="clr-namespace:clashN.ViewModels"
     Title="clashN"
-    Width="900"
-    Height="660"
+    Width="700"
+    Height="600"
     x:TypeArguments="vms:ProfileEditViewModel"
     Background="{DynamicResource MaterialDesignPaper}"
     KeyDown="PorfileEditWindow_KeyDown"
@@ -53,14 +53,14 @@
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     Style="{StaticResource ModuleTitle}"
                     Text="{x:Static resx:ResUI.TbProfiles}" />
 
                 <TextBlock
                     Grid.Row="1"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbAlias}" />
@@ -69,8 +69,8 @@
                     x:Name="txtRemarks"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Width="360"
-                    Margin="8"
+                    Width="300"
+                    Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -79,7 +79,7 @@
                 <TextBlock
                     Grid.Row="2"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbUrlAs}" />
@@ -87,8 +87,8 @@
                     x:Name="txtUrl"
                     Grid.Row="2"
                     Grid.Column="1"
-                    Width="360"
-                    Margin="8"
+                    Width="300"
+                    Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -97,7 +97,7 @@
                 <TextBlock
                     Grid.Row="3"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbAddressAs}" />
@@ -105,8 +105,8 @@
                     x:Name="txtAddress"
                     Grid.Row="3"
                     Grid.Column="1"
-                    Width="360"
-                    Margin="8"
+                    Width="300"
+                    Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
                     IsReadOnly="True"
@@ -115,7 +115,8 @@
                 <StackPanel
                     Grid.Row="3"
                     Grid.Column="2"
-                    Orientation="Horizontal">
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
                     <Button
                         x:Name="btnBrowse"
                         Width="100"
@@ -125,7 +126,7 @@
                     <Button
                         x:Name="btnEdit"
                         Width="100"
-                        Margin="2,0,8,0"
+                        Margin="2,2,8,0"
                         Content="{x:Static resx:ResUI.TbEdit}"
                         Style="{StaticResource DefButton}" />
                 </StackPanel>
@@ -133,7 +134,7 @@
                 <TextBlock
                     Grid.Row="4"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbUserAgent}" />
@@ -141,8 +142,8 @@
                     x:Name="txtUserAgent"
                     Grid.Row="4"
                     Grid.Column="1"
-                    Width="360"
-                    Margin="8"
+                    Width="300"
+                    Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -151,7 +152,7 @@
                 <TextBlock
                     Grid.Row="5"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbCoreType}" />
@@ -159,14 +160,14 @@
                     x:Name="cmbCoreType"
                     Grid.Row="5"
                     Grid.Column="1"
-                    Margin="8"
+                    Margin="4"
                     materialDesign:HintAssist.Hint="Core"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}" />
 
                 <TextBlock
                     Grid.Row="6"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableTunAs}" />
@@ -174,13 +175,13 @@
                     x:Name="togEnableTun"
                     Grid.Row="6"
                     Grid.Column="1"
-                    Margin="8"
+                    Margin="4"
                     HorizontalAlignment="Left" />
 
                 <TextBlock
                     Grid.Row="7"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableUpdateAs}" />
@@ -188,13 +189,13 @@
                     x:Name="togEnabled"
                     Grid.Row="7"
                     Grid.Column="1"
-                    Margin="8"
+                    Margin="4"
                     HorizontalAlignment="Left" />
 
                 <TextBlock
                     Grid.Row="8"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     VerticalAlignment="Center"
                     Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableConvert}" />
@@ -202,7 +203,7 @@
                     x:Name="togEnableConvert"
                     Grid.Row="8"
                     Grid.Column="1"
-                    Margin="8"
+                    Margin="4"
                     HorizontalAlignment="Left" />
 
             </Grid>
@@ -217,13 +218,13 @@
                 <Button
                     x:Name="btnSave"
                     Grid.Column="0"
-                    Margin="8"
+                    Margin="4"
                     Content="{x:Static resx:ResUI.TbConfirm}"
                     Style="{StaticResource DefButton}" />
                 <Button
                     x:Name="btnCancel"
                     Grid.Column="1"
-                    Margin="8"
+                    Margin="4"
                     Click="btnCancel_Click"
                     Content="{x:Static resx:ResUI.TbCancel}"
                     Style="{StaticResource DefButton}" />
