@@ -17,6 +17,7 @@ namespace clashN.Views
         {
             InitializeComponent();
             this.Closing += MainWindow_Closing;
+            App.Current.SessionEnding += Current_SessionEnding;
 
             ViewModel = new MainWindowViewModel(MainSnackbar.MessageQueue!);
             Locator.CurrentMutable.RegisterLazySingleton(() => ViewModel, typeof(MainWindowViewModel));
@@ -80,6 +81,12 @@ namespace clashN.Views
         {
             tbNotify.Dispose();
             ViewModel?.MyAppExit(false);
+        }
+
+        private void Current_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+        {
+            Utils.SaveLog("Current_SessionEnding");
+            ViewModel?.MyAppExit(true);
         }
     }
 }
