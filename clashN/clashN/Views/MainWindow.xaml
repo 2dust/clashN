@@ -29,8 +29,8 @@
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*" MinWidth="100" />
-                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="2*" MinWidth="100" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
