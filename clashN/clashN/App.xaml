@@ -76,6 +76,18 @@
             <Style x:Key="ListItemChip" TargetType="{x:Type materialDesign:Chip}">
                 <Setter Property="FontSize" Value="10" />
             </Style>
+            <Style
+                x:Key="DefButton"
+                BasedOn="{StaticResource MaterialDesignRaisedButton}"
+                TargetType="{x:Type ButtonBase}">
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+            <Style
+                x:Key="DefMenu"
+                BasedOn="{StaticResource MaterialDesignContextMenu}"
+                TargetType="{x:Type ContextMenu}">
+                <Setter Property="FontSize" Value="12" />
+            </Style>
         </ResourceDictionary>
 
     </Application.Resources>

@@ -55,7 +55,7 @@
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Hidden">
             <ListView.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Style="{StaticResource DefMenu}">
                     <MenuItem x:Name="menuEditLocalFile" Header="{x:Static resx:ResUI.menuEditLocalFile}" />
                     <MenuItem x:Name="menuEditProfile" Header="{x:Static resx:ResUI.menuEditProfile}" />
                     <MenuItem x:Name="menuAddProfile" Header="{x:Static resx:ResUI.menuAddProfile}" />

@@ -59,7 +59,7 @@
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Style="{StaticResource DefMenu}">
                     <MenuItem x:Name="menuConnectionClose" Header="{x:Static resx:ResUI.menuConnectionClose}" />
                     <MenuItem x:Name="menuConnectionCloseAll" Header="{x:Static resx:ResUI.menuConnectionCloseAll}" />
                 </ContextMenu>

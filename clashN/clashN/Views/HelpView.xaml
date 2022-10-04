@@ -35,7 +35,7 @@
                         <TextBlock
                             Grid.Row="0"
                             Margin="16,16,16,4"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            Style="{StaticResource TabItemTitle}"
                             Text="{x:Static resx:ResUI.TbHelpProject}" />
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -52,7 +52,7 @@
                                 Click="btnAbout_Click"
                                 Content="{x:Static resx:ResUI.TbHelpProjectGo}"
                                 DockPanel.Dock="Right"
-                                Style="{StaticResource MaterialDesignRaisedButton}" />
+                                Style="{StaticResource DefButton}" />
                         </DockPanel>
                     </Grid>
                 </DockPanel>
@@ -73,7 +73,7 @@
                         <TextBlock
                             Grid.Row="0"
                             Margin="16,16,16,4"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            Style="{StaticResource TabItemTitle}"
                             Text="Update ClashN" />
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -89,7 +89,7 @@
                                 Width="100"
                                 Content="{x:Static resx:ResUI.TbHelpCheck}"
                                 DockPanel.Dock="Right"
-                                Style="{StaticResource MaterialDesignRaisedButton}" />
+                                Style="{StaticResource DefButton}" />
                         </DockPanel>
                     </Grid>
                 </DockPanel>
@@ -110,7 +110,7 @@
                         <TextBlock
                             Grid.Row="0"
                             Margin="16,16,16,4"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            Style="{StaticResource TabItemTitle}"
                             Text="Update Clash Core" />
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -126,7 +126,7 @@
                                 Width="100"
                                 Content="{x:Static resx:ResUI.TbHelpCheck}"
                                 DockPanel.Dock="Right"
-                                Style="{StaticResource MaterialDesignRaisedButton}" />
+                                Style="{StaticResource DefButton}" />
                         </DockPanel>
                     </Grid>
                 </DockPanel>
@@ -147,7 +147,7 @@
                         <TextBlock
                             Grid.Row="0"
                             Margin="16,16,16,4"
-                            Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                            Style="{StaticResource TabItemTitle}"
                             Text="Update Clash.Meta Core" />
 
                         <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -163,7 +163,7 @@
                                 Width="100"
                                 Content="{x:Static resx:ResUI.TbHelpCheck}"
                                 DockPanel.Dock="Right"
-                                Style="{StaticResource MaterialDesignRaisedButton}" />
+                                Style="{StaticResource DefButton}" />
                         </DockPanel>
                     </Grid>
                 </DockPanel>

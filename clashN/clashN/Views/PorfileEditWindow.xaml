@@ -54,7 +54,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Margin="8"
-                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                    Style="{StaticResource ModuleTitle}"
                     Text="{x:Static resx:ResUI.TbProfiles}" />
 
                 <TextBlock
@@ -62,7 +62,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbAlias}" />
 
                 <TextBox
@@ -81,7 +81,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbUrlAs}" />
                 <TextBox
                     x:Name="txtUrl"
@@ -99,7 +99,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbAddressAs}" />
                 <TextBox
                     x:Name="txtAddress"
@@ -120,12 +120,14 @@
                         x:Name="btnBrowse"
                         Width="100"
                         Margin="2,0,8,0"
-                        Content="{x:Static resx:ResUI.TbBrowse}" />
+                        Content="{x:Static resx:ResUI.TbBrowse}"
+                        Style="{StaticResource DefButton}" />
                     <Button
                         x:Name="btnEdit"
                         Width="100"
                         Margin="2,0,8,0"
-                        Content="{x:Static resx:ResUI.TbEdit}" />
+                        Content="{x:Static resx:ResUI.TbEdit}"
+                        Style="{StaticResource DefButton}" />
                 </StackPanel>
 
                 <TextBlock
@@ -133,7 +135,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbUserAgent}" />
                 <TextBox
                     x:Name="txtUserAgent"
@@ -151,7 +153,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbCoreType}" />
                 <ComboBox
                     x:Name="cmbCoreType"
@@ -166,7 +168,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableTunAs}" />
                 <ToggleButton
                     x:Name="togEnableTun"
@@ -180,7 +182,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableUpdateAs}" />
                 <ToggleButton
                     x:Name="togEnabled"
@@ -194,7 +196,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbEnableConvert}" />
                 <ToggleButton
                     x:Name="togEnableConvert"
@@ -216,13 +218,15 @@
                     x:Name="btnSave"
                     Grid.Column="0"
                     Margin="8"
-                    Content="{x:Static resx:ResUI.TbConfirm}" />
+                    Content="{x:Static resx:ResUI.TbConfirm}"
+                    Style="{StaticResource DefButton}" />
                 <Button
                     x:Name="btnCancel"
                     Grid.Column="1"
                     Margin="8"
                     Click="btnCancel_Click"
-                    Content="{x:Static resx:ResUI.TbCancel}" />
+                    Content="{x:Static resx:ResUI.TbCancel}"
+                    Style="{StaticResource DefButton}" />
             </Grid>
 
 

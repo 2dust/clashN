@@ -11,8 +11,8 @@
     xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:vms="clr-namespace:clashN.ViewModels"
     Title="clashN"
-    Width="1000"
-    Height="700"
+    Width="900"
+    Height="680"
     MinWidth="800"
     MinHeight="600"
     x:TypeArguments="vms:MainWindowViewModel"
@@ -197,7 +197,7 @@
                     IconSource="/clashN.ico"
                     TrayMouseDoubleClick="tbNotify_TrayMouseDoubleClick">
                     <tb:TaskbarIcon.ContextMenu>
-                        <ContextMenu>
+                        <ContextMenu Style="{StaticResource DefMenu}">
                             <MenuItem Header="{x:Static resx:ResUI.menuSystemproxy}">
                                 <MenuItem
                                     x:Name="menuSystemProxyClear"

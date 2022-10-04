@@ -88,7 +88,7 @@
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListView.ContextMenu>
-                    <ContextMenu>
+                    <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuProxiesReload" Header="{x:Static resx:ResUI.menuProxiesReload}" />
                         <MenuItem x:Name="menuProxiesDelaytest" Header="{x:Static resx:ResUI.menuProxiesDelaytest}" />
                     </ContextMenu>
@@ -135,7 +135,7 @@
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ContextMenu>
-                    <ContextMenu>
+                    <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuProxiesDelaytestPart" Header="{x:Static resx:ResUI.menuProxiesDelaytestPart}" />
                         <MenuItem x:Name="menuProxiesSelectActivity" Header="{x:Static resx:ResUI.menuProxiesSelectActivity}" />
                     </ContextMenu>

@@ -52,7 +52,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Margin="8"
-                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                    Style="{StaticResource ModuleTitle}"
                     Text="{x:Static resx:ResUI.TbGlobalHotkeySetting}" />
 
                 <TextBlock
@@ -60,7 +60,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbDisplayGUI}" />
 
                 <TextBox
@@ -78,7 +78,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbClearSystemProxy}" />
                 <TextBox
                     x:Name="txtGlobalHotkey1"
@@ -95,7 +95,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbSetSystemProxy}" />
                 <TextBox
                     x:Name="txtGlobalHotkey2"
@@ -111,7 +111,7 @@
                     Grid.Column="0"
                     Margin="8"
                     VerticalAlignment="Center"
-                    Style="{StaticResource MaterialDesignBody2TextBlock}"
+                    Style="{StaticResource ListItemTitle}"
                     Text="{x:Static resx:ResUI.TbNotChangeSystemProxy}" />
                 <TextBox
                     x:Name="txtGlobalHotkey3"
@@ -129,7 +129,7 @@
                 Grid.Row="1"
                 Margin="8"
                 VerticalAlignment="Center"
-                Style="{StaticResource MaterialDesignBody2TextBlock}"
+                Style="{StaticResource ListItemTitle}"
                 Text="{x:Static resx:ResUI.TbGlobalHotkeySettingTip}" />
 
             <Grid
@@ -146,19 +146,22 @@
                     Grid.Column="0"
                     Margin="8"
                     Click="btnReset_Click"
-                    Content="{x:Static resx:ResUI.TbReset}" />
+                    Content="{x:Static resx:ResUI.TbReset}"
+                    Style="{StaticResource DefButton}" />
                 <Button
                     x:Name="btnSave"
                     Grid.Column="1"
                     Margin="8"
                     Click="btnSave_Click"
-                    Content="{x:Static resx:ResUI.TbConfirm}" />
+                    Content="{x:Static resx:ResUI.TbConfirm}"
+                    Style="{StaticResource DefButton}" />
                 <Button
                     x:Name="btnCancel"
                     Grid.Column="2"
                     Margin="8"
                     Click="btnCancel_Click"
-                    Content="{x:Static resx:ResUI.TbCancel}" />
+                    Content="{x:Static resx:ResUI.TbCancel}"
+                    Style="{StaticResource DefButton}" />
             </Grid>
         </Grid>
     </ScrollViewer>
