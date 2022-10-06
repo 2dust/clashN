@@ -23,10 +23,16 @@
             DockPanel.Dock="Top"
             Orientation="Horizontal">
             <TextBlock Style="{StaticResource ModuleTitle}" Text="{x:Static resx:ResUI.TbConnections}" />
-            <materialDesign:Chip x:Name="chipCount" Style="{StaticResource ListItemChip}" />
+            <materialDesign:Chip
+                x:Name="chipCount"
+                Height="20"
+                Style="{StaticResource ListItemChip}" />
         </StackPanel>
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
+                <Button Width="1" Visibility="Hidden">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
                 <TextBlock
                     VerticalAlignment="Center"
                     Style="{StaticResource ToolbarItem}"

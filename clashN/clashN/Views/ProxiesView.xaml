@@ -29,6 +29,9 @@
 
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
+                <Button Width="1" Visibility="Hidden">
+                    <materialDesign:PackIcon Kind="ContentSave" />
+                </Button>
                 <TextBlock
                     VerticalAlignment="Center"
                     Style="{StaticResource ToolbarItem}"
