@@ -128,7 +128,8 @@ namespace clashN.ViewModels
 
             ClearStatisticCmd = ReactiveCommand.Create(() =>
             {
-                Locator.Current.GetService<MainWindowViewModel>()?.ClearAllServerStatistics();
+                ConfigHandler.ClearAllServerStatistics(ref _config);
+                RefreshProfiles();
             });
             ProfileReloadCmd = ReactiveCommand.Create(() =>
             {
@@ -320,22 +321,10 @@ namespace clashN.ViewModels
             ConfigHandler.SetDefaultProfile(_config, _config.profileItems);
 
             var lstModel = new List<ProfileItemModel>();
-            var statistic = Locator.Current.GetService<MainWindowViewModel>()?.GetAllServerStatistic();
             foreach (var item in _config.profileItems)
             {
                 var model = Utils.FromJson<ProfileItemModel>(Utils.ToJson(item));
                 model.isActive = _config.IsActiveNode(item);
-                if (statistic != null)
-                {
-                    var statOne = statistic.Where(t => t.indexId == item.indexId).FirstOrDefault();
-                    if (statOne != null)
-                    {
-                        model.todayUp = Utils.HumanFy(statOne.todayUp);
-                        model.todayDown = Utils.HumanFy(statOne.todayDown);
-                        model.totalUp = Utils.HumanFy(statOne.totalUp);
-                        model.totalDown = Utils.HumanFy(statOne.totalDown);
-                    }
-                }
                 lstModel.Add(model);
             }
 

@@ -637,7 +637,16 @@ namespace clashN.Handler
             }
         }
 
+        public static void ClearAllServerStatistics(ref Config config)
+        {
+            foreach (var item in config.profileItems)
+            {
+                item.uploadRemote = 0;
+                item.downloadRemote = 0;
+            }
 
+            ToJsonFile(config);
+        }
         #endregion
 
     }

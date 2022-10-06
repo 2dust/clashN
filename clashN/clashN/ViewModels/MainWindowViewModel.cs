@@ -200,7 +200,7 @@ namespace clashN.ViewModels
 
                 StorageUI();
                 ConfigHandler.SaveConfig(ref _config);
-                statistics?.SaveToFile();
+                //statistics?.SaveToFile();
                 statistics?.Close();
             }
             catch { }
@@ -271,7 +271,7 @@ namespace clashN.ViewModels
                 await LoadCore();
             }
         }
-        private void UpdateStatisticsHandler(ulong up, ulong down, List<ProfileStatItem> statistics)
+        private void UpdateStatisticsHandler(ulong up, ulong down)
         {
             try
             {
@@ -290,15 +290,6 @@ namespace clashN.ViewModels
             {
                 Utils.SaveLog(ex.Message, ex);
             }
-        }
-
-        public void ClearAllServerStatistics()
-        {
-            statistics?.ClearAllServerStatistics();
-        }
-        public List<ProfileStatItem>? GetAllServerStatistic()
-        {
-            return statistics?.GetStatistic();
         }
         #endregion
 
@@ -319,7 +310,7 @@ namespace clashN.ViewModels
 
             Global.reloadCore = false;
             ConfigHandler.SaveConfig(ref _config, false);
-            statistics?.SaveToFile();
+            //statistics?.SaveToFile();
 
             ChangePACButtonStatus(_config.sysProxyType);
             SetRuleMode(_config.ruleMode);
@@ -332,7 +323,7 @@ namespace clashN.ViewModels
         public void CloseCore()
         {
             ConfigHandler.SaveConfig(ref _config, false);
-            statistics?.SaveToFile();
+            //statistics?.SaveToFile();
 
             ChangePACButtonStatus(ESysProxyType.ForcedClear);
 
@@ -450,7 +441,7 @@ namespace clashN.ViewModels
 
             if (_config.uiItem.mainWidth > 0 && _config.uiItem.mainHeight > 0)
             {
-                if(_config.uiItem.mainWidth > SystemInformation.WorkingArea.Width)
+                if (_config.uiItem.mainWidth > SystemInformation.WorkingArea.Width)
                 {
                     _config.uiItem.mainWidth = SystemInformation.WorkingArea.Width * 2 / 3;
                 }

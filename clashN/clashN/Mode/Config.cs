@@ -150,7 +150,7 @@ namespace clashN.Mode
         {
             get { return !address.IsNullOrEmpty(); }
         }
-        public string HasUpdateTime
+        public string StrUpdateTime
         {
             get
             {
@@ -159,9 +159,30 @@ namespace clashN.Mode
                     return String.Empty;
                 }
                 var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM/dd HH:mm");
+                return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM-dd HH:mm");
             }
         }
+        public string TrafficUsed
+        {
+            get { return Utils.HumanFy(uploadRemote + downloadRemote); }
+        }
+        public string TrafficTotal
+        {
+            get { return totalRemote <= 0 ? "∞" : Utils.HumanFy(totalRemote); }
+        }
+        public string StrExpireTime
+        {
+            get
+            {
+                if (expireRemote <= 0)
+                {
+                    return String.Empty;
+                }
+                var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                return dateTime.AddSeconds(expireRemote).ToLocalTime().ToString("yyyy-MM-dd");
+            }
+        }
+
 
         #endregion
 
@@ -216,7 +237,10 @@ namespace clashN.Mode
         public bool enableConvert { get; set; }
 
         public long updateTime { get; set; }
-
+        public ulong uploadRemote { get; set; }
+        public ulong downloadRemote { get; set; }
+        public ulong totalRemote { get; set; }
+        public long expireRemote { get; set; }
     }
 
     [Serializable]

@@ -51,18 +51,18 @@ namespace clashN.Base
             }
             return null;
         }
-        public async Task<string> GetAsync(HttpClient client, string url, CancellationToken token)
+        public async Task<(string, HttpResponseHeaders)> GetAsync(HttpClient client, string url, CancellationToken token)
         {
             if (Utils.IsNullOrEmpty(url))
             {
-                return null;
+                return (null, null);
             }
             HttpResponseMessage response = await client.GetAsync(url, token);
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(string.Format("The request returned with HTTP status code {0}", response.StatusCode));
             }
-            return await response.Content.ReadAsStringAsync();
+            return (await response.Content.ReadAsStringAsync(), response.Headers);
         }
 
 

@@ -142,7 +142,7 @@
                                         IsHitTestVisible="False"
                                         Style="{StaticResource ListItemCheckBox}" />
 
-                                    <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding HasUpdateTime}" />
+                                    <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding StrUpdateTime}" />
 
                                 </StackPanel>
 
@@ -152,20 +152,25 @@
                                     Grid.Row="4"
                                     Margin="8,0,8,8"
                                     HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
                                     Orientation="Horizontal">
-                                    <materialDesign:PackIcon Padding="4,0,4,0" Kind="ArrowUpThin" />
+                                    <materialDesign:PackIcon Kind="ChartDonut" />
                                     <TextBlock
                                         Padding="4,0,4,0"
                                         Style="{StaticResource ListItemSubTitle}"
-                                        Text="{Binding totalUp}" />
-                                    <materialDesign:PackIcon
-                                        Margin="8,0,0,0"
-                                        Padding="4,0,4,0"
-                                        Kind="ArrowDownThin" />
+                                        Text="{Binding TrafficUsed}" />
                                     <TextBlock
                                         Padding="4,0,4,0"
                                         Style="{StaticResource ListItemSubTitle}"
-                                        Text="{Binding totalDown}" />
+                                        Text="/" />
+                                    <TextBlock
+                                        Padding="4,0,4,0"
+                                        Style="{StaticResource ListItemSubTitle}"
+                                        Text="{Binding TrafficTotal}" />
+                                    <TextBlock
+                                        Padding="4,0,4,0"
+                                        Style="{StaticResource ListItemSubTitle}"
+                                        Text="{Binding StrExpireTime}" />
 
                                 </StackPanel>
                             </Grid>

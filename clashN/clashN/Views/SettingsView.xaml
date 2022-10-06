@@ -36,6 +36,7 @@
                 <ComboBox
                     x:Name="cmbSwatches"
                     Width="100"
+                    Margin="8"
                     DisplayMemberPath="Name"
                     Style="{StaticResource DefComboBox}" />
                 <Separator />
@@ -46,6 +47,7 @@
                 <ComboBox
                     x:Name="cmbCurrentLanguage"
                     Width="100"
+                    Margin="8"
                     materialDesign:HintAssist.Hint="Language"
                     Style="{StaticResource DefComboBox}" />
 

@@ -71,7 +71,7 @@ namespace clashN.Handler
         /// DownloadString
         /// </summary> 
         /// <param name="url"></param>
-        public async Task<string> DownloadStringAsync(string url, bool blProxy, string userAgent)
+        public async Task<(string, HttpResponseHeaders)> DownloadStringAsync(string url, bool blProxy, string userAgent)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace clashN.Handler
                     Error?.Invoke(this, new ErrorEventArgs(ex.InnerException));
                 }
             }
-            return null;
+            return (null, null);
         }
 
         public async Task<string> UrlRedirectAsync(string url, bool blProxy)

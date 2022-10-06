@@ -3,6 +3,7 @@ using clashN.Mode;
 using clashN.Resx;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -211,27 +212,56 @@ namespace clashN.Handler
                         _updateFunc(false, $"{hashCode}{args.GetException().Message}");
                     };
                     var result = await downloadHandle.DownloadStringAsync(url, blProxy, userAgent);
-                    if (blProxy && Utils.IsNullOrEmpty(result))
+                    if (blProxy && Utils.IsNullOrEmpty(result.Item1))
                     {
                         result = await downloadHandle.DownloadStringAsync(url, false, userAgent);
                     }
 
-                    if (Utils.IsNullOrEmpty(result))
+                    if (Utils.IsNullOrEmpty(result.Item1))
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgSubscriptionDecodingFailed}");
                     }
                     else
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgGetSubscriptionSuccessfully}");
-                        if (result.Length < 99)
+                        if (result.Item1.Length < 99)
                         {
                             _updateFunc(false, $"{hashCode}{result}");
                         }
 
-                        int ret = ConfigHandler.AddBatchProfiles(ref config, result, indexId, groupId);
+                        int ret = ConfigHandler.AddBatchProfiles(ref config, result.Item1, indexId, groupId);
                         if (ret == 0)
                         {
                             item.updateTime = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
+
+                            //get remote info
+                            try
+                            {
+                                if (result.Item2 != null && result.Item2 is HttpResponseHeaders)
+                                {
+                                    var userinfo = ((HttpResponseHeaders)result.Item2)
+                                    .Where(t => t.Key == "subscription-userinfo")
+                                    .Select(t => t.Value)
+                                    .FirstOrDefault()?
+                                    .FirstOrDefault();
+
+                                    Dictionary<string, string>? dicInfo = userinfo?.Split(';')
+                                              .Select(value => value.Split('='))
+                                              .ToDictionary(pair => pair[0].Trim(), pair => pair[1].Trim());
+
+                                    if (dicInfo != null)
+                                    {
+                                        item.uploadRemote = ParseRemoteInfo(dicInfo, "upload");
+                                        item.downloadRemote = ParseRemoteInfo(dicInfo, "download");
+                                        item.totalRemote = ParseRemoteInfo(dicInfo, "total");
+                                        item.expireRemote = dicInfo.ContainsKey("expire") ? Convert.ToInt64(dicInfo?["expire"]) : 0;
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                _updateFunc(false, ex.Message);
+                            }
                             _updateFunc(false, $"{hashCode}{ResUI.MsgUpdateSubscriptionEnd}");
                         }
                         else
@@ -251,7 +281,10 @@ namespace clashN.Handler
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
             });
         }
-
+        private ulong ParseRemoteInfo(Dictionary<string, string> dicInfo, string key)
+        {
+            return dicInfo.ContainsKey(key) ? Convert.ToUInt64(dicInfo?[key]) : 0;
+        }
 
         public void UpdateGeoFile(string geoName, Config config, Action<bool, string> update)
         {
