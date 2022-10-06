@@ -9,7 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>clashN.ico</ApplicationIcon>
 	<Copyright>Copyright © 2019-2022 (GPLv3)</Copyright>
-	<FileVersion>2.0</FileVersion>
+	<FileVersion>2.1</FileVersion>
   </PropertyGroup>
  
 
