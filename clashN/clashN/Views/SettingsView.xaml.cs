@@ -26,7 +26,10 @@ namespace clashN.Views
             {
                 cmbsystemProxyAdvancedProtocol.Items.Add(it);
             });
-
+            Global.LogLevel.ForEach(it =>
+            {
+                cmbLogLevel.Items.Add(it);
+            });            
 
             this.WhenActivated(disposables =>
             {

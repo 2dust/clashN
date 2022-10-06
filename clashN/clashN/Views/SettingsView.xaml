@@ -177,13 +177,7 @@
                             Grid.Row="7"
                             Grid.Column="1"
                             Margin="8"
-                            materialDesign:HintAssist.Hint="Level">
-                            <ComboBoxItem Content="debug" />
-                            <ComboBoxItem Content="info" />
-                            <ComboBoxItem Content="warning" />
-                            <ComboBoxItem Content="error" />
-                            <ComboBoxItem Content="slient" />
-                        </ComboBox>
+                            materialDesign:HintAssist.Hint="Level" />
 
                         <TextBlock
                             Grid.Row="8"

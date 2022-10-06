@@ -1,4 +1,6 @@
-﻿namespace clashN
+﻿using System.Windows.Controls;
+
+namespace clashN
 {
     class Global
     {
@@ -107,6 +109,7 @@
 
         public static readonly List<string> Languages = new List<string> { "zh-Hans", "en" };
 
+        public static readonly List<string> LogLevel = new List<string> { "debug", "info", "warning", "error", "silent" };
 
         #endregion
 
