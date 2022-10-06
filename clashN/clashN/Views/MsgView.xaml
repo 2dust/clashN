@@ -12,19 +12,21 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-        <DockPanel>
-            <GroupBox FontSize="10" Header="{x:Static resx:ResUI.TbMsgTitle}">
-                <TextBox
-                    Name="txtMsg"
-                    BorderThickness="0"
-                    FontSize="9"
-                    HorizontalScrollBarVisibility="Auto"
-                    IsReadOnly="True"
-                    TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Visible" />
-            </GroupBox>
+    <DockPanel Margin="2">
+        <TextBlock
+            DockPanel.Dock="Top"
+            Foreground="{DynamicResource PrimaryHueLightBrush}"
+            Style="{StaticResource ListItemTitle}"
+            Text="{x:Static resx:ResUI.TbMsgTitle}" />
+        <TextBox
+            Name="txtMsg"
+            BorderThickness="0"
+            FontSize="9"
+            HorizontalScrollBarVisibility="Auto"
+            IsReadOnly="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Visible" />
 
-        </DockPanel>
-    </Grid>
+
+    </DockPanel>
 </UserControl>

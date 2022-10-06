@@ -89,6 +89,12 @@
                 TargetType="{x:Type ContextMenu}">
                 <Setter Property="FontSize" Value="12" />
             </Style>
+            <Style
+                x:Key="DefComboBox"
+                BasedOn="{StaticResource MaterialDesignComboBox}"
+                TargetType="{x:Type ComboBox}">
+                <Setter Property="FontSize" Value="10" />
+            </Style>
         </ResourceDictionary>
 
     </Application.Resources>

@@ -36,7 +36,8 @@
                 <ComboBox
                     x:Name="cmbSystemProxy"
                     Width="110"
-                    Margin="8">
+                    Margin="8"
+                    Style="{StaticResource DefComboBox}">
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyClear}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxySet}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuSystemProxyNothing}" />
@@ -49,7 +50,8 @@
                 <ComboBox
                     x:Name="cmbRulemode"
                     Width="80"
-                    Margin="8">
+                    Margin="8"
+                    Style="{StaticResource DefComboBox}">
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuModeRule}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuModeGlobal}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.menuModeDirect}" />
@@ -63,7 +65,8 @@
                 <ComboBox
                     x:Name="cmbSorting"
                     Width="60"
-                    Margin="8">
+                    Margin="8"
+                    Style="{StaticResource DefComboBox}">
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDelay}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingName}" />
                 </ComboBox>

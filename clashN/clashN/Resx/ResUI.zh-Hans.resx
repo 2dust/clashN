@@ -530,7 +530,7 @@
     <value>本地http监听端口</value>
   </data>
   <data name="TbSettingsIpv6" xml:space="preserve">
-    <value>启用Ipv6</value>
+    <value>启用IPv6</value>
   </data>
   <data name="TbSettingsLanguage" xml:space="preserve">
     <value>语言(需重启)</value>

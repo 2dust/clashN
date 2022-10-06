@@ -34,7 +34,8 @@
                 <ComboBox
                     x:Name="cmbSorting"
                     Width="100"
-                    Margin="8">
+                    Margin="8"
+                    Style="{StaticResource DefComboBox}">
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingUpSpeed}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDownSpeed}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingUpTraffic}" />

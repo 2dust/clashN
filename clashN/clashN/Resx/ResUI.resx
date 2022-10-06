@@ -530,7 +530,7 @@
     <value>Http Port</value>
   </data>
   <data name="TbSettingsIpv6" xml:space="preserve">
-    <value>Enable Ipv6</value>
+    <value>Enable IPv6</value>
   </data>
   <data name="TbSettingsLanguage" xml:space="preserve">
     <value>Language(restart)</value>

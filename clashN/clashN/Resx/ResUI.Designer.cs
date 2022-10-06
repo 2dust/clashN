@@ -1322,7 +1322,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Enable Ipv6 的本地化字符串。
+        ///   查找类似 Enable IPv6 的本地化字符串。
         /// </summary>
         public static string TbSettingsIpv6 {
             get {
