@@ -35,18 +35,18 @@ namespace clashN.Views
                 this.OneWayBind(ViewModel, vm => vm.SpeedUpload, v => v.txtSpeedUpload.Text).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.SpeedDownload, v => v.txtSpeedDownload.Text).DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, vm => vm.BlSystemProxyClear, v => v.menuSystemProxyClear.IsChecked).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.BlSystemProxySet, v => v.menuSystemProxySet.IsChecked).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.BlSystemProxyNothing, v => v.menuSystemProxyNothing.IsChecked).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlSystemProxyClear, v => v.menuSystemProxyClear2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlSystemProxySet, v => v.menuSystemProxySet2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlSystemProxyNothing, v => v.menuSystemProxyNothing2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SystemProxyClearCmd, v => v.menuSystemProxyClear).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SystemProxySetCmd, v => v.menuSystemProxySet).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SystemProxyNothingCmd, v => v.menuSystemProxyNothing).DisposeWith(disposables);
 
 
-                this.OneWayBind(ViewModel, vm => vm.BlModeRule, v => v.menuModeRule.IsChecked).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.BlModeGlobal, v => v.menuModeGlobal.IsChecked).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.BlModeDirect, v => v.menuModeDirect.IsChecked).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.BlModeNothing, v => v.menuModeNothing.IsChecked).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlModeRule, v => v.menuModeRule2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlModeGlobal, v => v.menuModeGlobal2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlModeDirect, v => v.menuModeDirect2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.BlModeNothing, v => v.menuModeNothing2.Visibility, conversionHint: BooleanToVisibilityHint.UseHidden, vmToViewConverterOverride: new BooleanToVisibilityTypeConverter()).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ModeRuleCmd, v => v.menuModeRule).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ModeGlobalCmd, v => v.menuModeGlobal).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ModeDirectCmd, v => v.menuModeDirect).DisposeWith(disposables);
@@ -60,6 +60,7 @@ namespace clashN.Views
                 this.BindCommand(ViewModel, vm => vm.ReloadCmd, v => v.btnReload).DisposeWith(disposables);
 
                 this.OneWayBind(ViewModel, vm => vm.NotifyIcon, v => v.tbNotify.Icon).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.NotifyLeftClickCmd, v => v.tbNotify.LeftClickCommand).DisposeWith(disposables);
             });
 
 
@@ -74,7 +75,7 @@ namespace clashN.Views
 
         private void tbNotify_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            ViewModel?.ShowHideWindow(true);
+            ViewModel?.ShowHideWindow(null);
         }
 
         private void menuExit_Click(object sender, RoutedEventArgs e)

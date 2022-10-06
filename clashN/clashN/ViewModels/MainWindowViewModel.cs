@@ -75,6 +75,7 @@ namespace clashN.ViewModels
         public ReactiveCommand<Unit, Unit> ExitCmd { get; }
 
         public ReactiveCommand<Unit, Unit> ReloadCmd { get; }
+        public ReactiveCommand<Unit, Unit> NotifyLeftClickCmd { get; }
         [Reactive]
         public Icon NotifyIcon { get; set; }
         #endregion
@@ -106,33 +107,33 @@ namespace clashN.ViewModels
             SystemProxyClearCmd = ReactiveCommand.Create(() =>
             {
                 SetListenerType(ESysProxyType.ForcedClear);
-            }, this.WhenAnyValue(x => x.BlSystemProxyClear, y => !y));
+            });//, this.WhenAnyValue(x => x.BlSystemProxyClear, y => !y));
             SystemProxySetCmd = ReactiveCommand.Create(() =>
             {
                 SetListenerType(ESysProxyType.ForcedChange);
-            }, this.WhenAnyValue(x => x.BlSystemProxySet, y => !y));
+            });//, this.WhenAnyValue(x => x.BlSystemProxySet, y => !y));
             SystemProxyNothingCmd = ReactiveCommand.Create(() =>
             {
                 SetListenerType(ESysProxyType.Unchanged);
-            }, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
+            });//, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
 
             //Rule mode
             ModeRuleCmd = ReactiveCommand.Create(() =>
             {
                 SetRuleModeCheck(ERuleMode.Rule);
-            }, this.WhenAnyValue(x => x.BlModeRule, y => !y));
+            });//, this.WhenAnyValue(x => x.BlModeRule, y => !y));
             ModeGlobalCmd = ReactiveCommand.Create(() =>
             {
                 SetRuleModeCheck(ERuleMode.Global);
-            }, this.WhenAnyValue(x => x.BlModeGlobal, y => !y));
+            });//, this.WhenAnyValue(x => x.BlModeGlobal, y => !y));
             ModeDirectCmd = ReactiveCommand.Create(() =>
             {
                 SetRuleModeCheck(ERuleMode.Direct);
-            }, this.WhenAnyValue(x => x.BlModeDirect, y => !y));
+            });//, this.WhenAnyValue(x => x.BlModeDirect, y => !y));
             ModeNothingCmd = ReactiveCommand.Create(() =>
             {
                 SetRuleModeCheck(ERuleMode.Unchanged);
-            }, this.WhenAnyValue(x => x.BlModeNothing, y => !y));
+            });//, this.WhenAnyValue(x => x.BlModeNothing, y => !y));
 
             //Other
             AddProfileViaScanCmd = ReactiveCommand.CreateFromTask(() =>
@@ -156,6 +157,11 @@ namespace clashN.ViewModels
                 Global.reloadCore = true;
                 _ = LoadCore();
             });
+            NotifyLeftClickCmd = ReactiveCommand.Create(() =>
+            {
+                ShowHideWindow(null);
+            });
+
             Global.ShowInTaskbar = true;//Application.Current.MainWindow.ShowInTaskbar;
         }
         private void OnProgramStarted(object state, bool timeout)

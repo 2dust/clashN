@@ -29,7 +29,7 @@
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" MinWidth="100" />
+                <ColumnDefinition Width="3*" MinWidth="100" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
@@ -198,38 +198,86 @@
                     TrayMouseDoubleClick="tbNotify_TrayMouseDoubleClick">
                     <tb:TaskbarIcon.ContextMenu>
                         <ContextMenu Style="{StaticResource DefMenu}">
-                            <MenuItem Header="{x:Static resx:ResUI.menuSystemproxy}">
-                                <MenuItem
-                                    x:Name="menuSystemProxyClear"
-                                    Header="{x:Static resx:ResUI.menuSystemProxyClear}"
-                                    IsCheckable="True" />
-                                <MenuItem
-                                    x:Name="menuSystemProxySet"
-                                    Header="{x:Static resx:ResUI.menuSystemProxySet}"
-                                    IsCheckable="True" />
-                                <MenuItem
-                                    x:Name="menuSystemProxyNothing"
-                                    Header="{x:Static resx:ResUI.menuSystemProxyNothing}"
-                                    IsCheckable="True" />
+                            <MenuItem x:Name="menuSystemProxyClear">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuSystemProxyClear2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyClear}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem Header="{x:Static resx:ResUI.menuRulemode}">
-                                <MenuItem
-                                    x:Name="menuModeRule"
-                                    Header="{x:Static resx:ResUI.menuModeRule}"
-                                    IsCheckable="True" />
-                                <MenuItem
-                                    x:Name="menuModeGlobal"
-                                    Header="{x:Static resx:ResUI.menuModeGlobal}"
-                                    IsCheckable="True" />
-                                <MenuItem
-                                    x:Name="menuModeDirect"
-                                    Header="{x:Static resx:ResUI.menuModeDirect}"
-                                    IsCheckable="True" />
-                                <MenuItem
-                                    x:Name="menuModeNothing"
-                                    Header="{x:Static resx:ResUI.menuModeNothing}"
-                                    IsCheckable="True" />
+                            <MenuItem x:Name="menuSystemProxySet">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuSystemProxySet2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuSystemProxySet}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
                             </MenuItem>
+                            <MenuItem x:Name="menuSystemProxyNothing">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuSystemProxyNothing2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyNothing}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <Separator />
+
+                            <MenuItem x:Name="menuModeRule">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuModeRule2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuModeRule}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="menuModeGlobal">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuModeGlobal2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuModeGlobal}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="menuModeDirect">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuModeDirect2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuModeDirect}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="menuModeNothing">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuModeNothing2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuModeNothing}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
+
                             <Separator />
                             <MenuItem x:Name="menuAddProfileViaScan" Header="{x:Static resx:ResUI.menuAddProfileViaScan}" />
                             <MenuItem x:Name="menuSubUpdate" Header="{x:Static resx:ResUI.menuSubUpdate}" />
