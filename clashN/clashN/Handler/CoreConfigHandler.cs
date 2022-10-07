@@ -59,7 +59,7 @@ namespace clashN.Handler
 
                 var config = LazyConfig.Instance.GetConfig();
                 var txtFile = File.ReadAllText(addressFileName);
-                txtFile = txtFile.Replace("!<str>", "");
+                txtFile = txtFile.Replace("!<str>", "").Replace("MATCH,,", "MATCH,");
 
                 var fileContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
                 if (fileContent == null)
