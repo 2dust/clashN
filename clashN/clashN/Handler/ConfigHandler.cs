@@ -45,8 +45,7 @@ namespace clashN.Handler
                     logLevel = "warning",
                     profileItems = new List<ProfileItem>(),
 
-                    // 默认不开启统计
-                    enableStatistics = false,
+                    enableStatistics = true,
                 };
             }
 
