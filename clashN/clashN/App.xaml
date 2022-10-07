@@ -37,25 +37,25 @@
                 x:Key="ListItemTitle"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="13" />
             </Style>
             <Style
                 x:Key="ListItemSubTitle"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontSize" Value="11" />
             </Style>
             <Style
                 x:Key="ListItemSubTitle2"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="8" />
+                <Setter Property="FontSize" Value="9" />
             </Style>
             <Style
                 x:Key="ToolbarItem"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontSize" Value="11" />
             </Style>
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
@@ -72,10 +72,10 @@
                 x:Key="ListItemCheckBox"
                 BasedOn="{StaticResource MaterialDesignUserForegroundCheckBox}"
                 TargetType="{x:Type CheckBox}">
-                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontSize" Value="11" />
             </Style>
             <Style x:Key="ListItemChip" TargetType="{x:Type materialDesign:Chip}">
-                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontSize" Value="11" />
             </Style>
             <Style
                 x:Key="DefButton"
@@ -87,13 +87,13 @@
                 x:Key="DefMenu"
                 BasedOn="{StaticResource MaterialDesignContextMenu}"
                 TargetType="{x:Type ContextMenu}">
-                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontSize" Value="13" />
             </Style>
             <Style
                 x:Key="DefComboBox"
                 BasedOn="{StaticResource MaterialDesignComboBox}"
                 TargetType="{x:Type ComboBox}">
-                <Setter Property="FontSize" Value="10" />
+                <Setter Property="FontSize" Value="11" />
             </Style>
         </ResourceDictionary>
 

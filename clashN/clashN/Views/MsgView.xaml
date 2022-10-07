@@ -21,7 +21,7 @@
         <TextBox
             Name="txtMsg"
             BorderThickness="0"
-            FontSize="9"
+            FontSize="10"
             HorizontalScrollBarVisibility="Auto"
             IsReadOnly="True"
             TextWrapping="Wrap"
