@@ -37,7 +37,7 @@
                 x:Key="ListItemTitle"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontSize" Value="12" />
             </Style>
             <Style
                 x:Key="ListItemSubTitle"
