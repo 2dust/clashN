@@ -407,7 +407,7 @@ namespace clashN.ViewModels
                 }
                 Application.Current.Dispatcher.Invoke((Action)(() =>
                 {
-                    UpdateHandler(false, $"{item.name}={result}");
+                    //UpdateHandler(false, $"{item.name}={result}");
                     var detail = _proxyDetails.Where(it => it.name == item.name).FirstOrDefault();
                     if (detail != null)
                     {
