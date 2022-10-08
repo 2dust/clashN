@@ -49,7 +49,7 @@
                 x:Key="ListItemSubTitle2"
                 BasedOn="{StaticResource MaterialDesignTextBlock}"
                 TargetType="{x:Type TextBlock}">
-                <Setter Property="FontSize" Value="9" />
+                <Setter Property="FontSize" Value="10" />
             </Style>
             <Style
                 x:Key="ToolbarItem"

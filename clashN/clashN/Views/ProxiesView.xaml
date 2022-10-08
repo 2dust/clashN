@@ -20,7 +20,7 @@
         <converters:DelayColorConverter x:Key="DelayColorConverter" />
     </UserControl.Resources>
 
-    <DockPanel Margin="16">
+    <DockPanel Margin="8">
         <TextBlock
             Margin="8,0,8,8"
             DockPanel.Dock="Top"

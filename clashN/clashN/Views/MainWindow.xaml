@@ -28,18 +28,14 @@
         SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" MinWidth="100" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
                     <materialDesign:NavigationRailAssist.FloatingContent>
                         <StackPanel
                             Width="auto"
                             Height="auto"
-                            Margin="16">
-                            <Grid Width="70" Margin="0,16,0,16">
+                            Margin="4">
+                            <Grid Width="80" Margin="0,8,0,8">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
@@ -74,7 +70,7 @@
                             <Button
                                 x:Name="btnReload"
                                 Content="{materialDesign:PackIcon Kind=Reload}"
-                                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                 ToolTip="Reload profile" />
                         </StackPanel>
                     </materialDesign:NavigationRailAssist.FloatingContent>
@@ -125,6 +121,21 @@
                                     HorizontalAlignment="Center"
                                     Style="{StaticResource TabItemTitle}"
                                     Text="{x:Static resx:ResUI.TbProfiles}" />
+                            </StackPanel>
+                        </TabItem.Header>
+                    </TabItem>
+                    <TabItem x:Name="logsTabItem" Style="{StaticResource MyMaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <StackPanel Width="auto" Height="auto">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    HorizontalAlignment="Center"
+                                    Kind="MessageTextOutline" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Style="{StaticResource TabItemTitle}"
+                                    Text="{x:Static resx:ResUI.TbLogs}" />
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
@@ -293,10 +304,6 @@
                 <materialDesign:Snackbar x:Name="MainSnackbar" MessageQueue="{materialDesign:MessageQueue}" />
 
             </Grid>
-
-            <GridSplitter Width="10" />
-
-            <local:MsgView x:Name="viewMsg" Grid.Column="1" />
         </Grid>
 
     </materialDesign:DialogHost>

@@ -1,6 +1,7 @@
 ﻿using clashN.Base;
 using clashN.Mode;
 using clashN.Resx;
+using Splat;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http.Headers;
@@ -146,6 +147,7 @@ namespace clashN.Handler
                 }
                 else
                 {
+                    Locator.Current.GetService<NoticeHandler>()?.Enqueue(args.Msg);
                     _updateFunc(false, args.Msg);
                 }
             };

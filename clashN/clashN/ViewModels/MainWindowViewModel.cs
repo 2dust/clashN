@@ -29,6 +29,7 @@ namespace clashN.ViewModels
         //public DashboardView GetDashboardView { get; }
         public ProxiesView GetProxyView { get; }
         public ProfilesView GetProfilesView { get; }
+        public LogsView GetLogsView { get; }
         public ConnectionsView GetConnectionsView { get; }
         public SettingsView GetSettingsView { get; }
         public HelpView GetHelpView { get; }
@@ -95,6 +96,7 @@ namespace clashN.ViewModels
             //GetDashboardView = new();
             GetProxyView = new();
             GetProfilesView = new();
+            GetLogsView = new();
             GetConnectionsView = new();
             GetSettingsView = new();
             GetHelpView = new();

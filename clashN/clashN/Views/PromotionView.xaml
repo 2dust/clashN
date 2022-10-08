@@ -17,7 +17,7 @@
         materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
         HorizontalScrollBarVisibility="Auto"
         VerticalScrollBarVisibility="Auto">
-        <Grid Margin="16">
+        <Grid Margin="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -36,7 +36,7 @@
             <materialDesign:Card
                 Grid.Row="1"
                 Width="300"
-                Margin="16">
+                Margin="8">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />

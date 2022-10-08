@@ -17,7 +17,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
     </UserControl.Resources>
-    <DockPanel Grid.Row="0" Margin="16">
+    <DockPanel Margin="8">
         <TextBlock
             Margin="8,0,8,8"
             DockPanel.Dock="Top"

@@ -13,14 +13,14 @@
     d:DesignWidth="800"
     x:TypeArguments="vms:HelpViewModel"
     mc:Ignorable="d">
-    <DockPanel Grid.Row="0" Margin="16">
+    <DockPanel Margin="8">
         <TextBlock
             Margin="8,0,8,8"
             DockPanel.Dock="Top"
             Style="{StaticResource ModuleTitle}"
             Text="{x:Static resx:ResUI.TbHelp}" />
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <WrapPanel Margin="16">
+            <WrapPanel>
                 <materialDesign:Card
                     Width="300"
                     Margin="8"

@@ -613,4 +613,13 @@
   <data name="menuProfileQrcode" xml:space="preserve">
     <value>分享二维码</value>
   </data>
+  <data name="TbLogs" xml:space="preserve">
+    <value>日志信息</value>
+  </data>
+  <data name="TbFilter" xml:space="preserve">
+    <value>过滤器</value>
+  </data>
+  <data name="TbLineCount" xml:space="preserve">
+    <value>最大行数</value>
+  </data>
 </root>

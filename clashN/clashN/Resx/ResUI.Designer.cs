@@ -1070,6 +1070,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Filter 的本地化字符串。
+        /// </summary>
+        public static string TbFilter {
+            get {
+                return ResourceManager.GetString("TbFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 GlobalHotkey Setting 的本地化字符串。
         /// </summary>
         public static string TbGlobalHotkeySetting {
@@ -1120,6 +1129,24 @@ namespace clashN.Resx {
         public static string TbHelpProjectGo {
             get {
                 return ResourceManager.GetString("TbHelpProjectGo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Max Line 的本地化字符串。
+        /// </summary>
+        public static string TbLineCount {
+            get {
+                return ResourceManager.GetString("TbLineCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Logs 的本地化字符串。
+        /// </summary>
+        public static string TbLogs {
+            get {
+                return ResourceManager.GetString("TbLogs", resourceCulture);
             }
         }
         

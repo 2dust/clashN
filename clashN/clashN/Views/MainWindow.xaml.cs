@@ -27,6 +27,7 @@ namespace clashN.Views
                 //this.OneWayBind(ViewModel, vm => vm.GetDashboardView, v => v.dashboardTabItem.Content).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.GetProxyView, v => v.proxiesTabItem.Content).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.GetProfilesView, v => v.profilesTabItem.Content).DisposeWith(disposables);
+                this.OneWayBind(ViewModel, vm => vm.GetLogsView, v => v.logsTabItem.Content).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.GetConnectionsView, v => v.connectionsTabItem.Content).DisposeWith(disposables);
 
                 this.OneWayBind(ViewModel, vm => vm.GetSettingsView, v => v.settingsTabItem.Content).DisposeWith(disposables);

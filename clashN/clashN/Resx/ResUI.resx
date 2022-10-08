@@ -613,4 +613,13 @@
   <data name="menuProfileQrcode" xml:space="preserve">
     <value>Share Qrcode</value>
   </data>
+  <data name="TbLogs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="TbFilter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="TbLineCount" xml:space="preserve">
+    <value>Max Line</value>
+  </data>
 </root>

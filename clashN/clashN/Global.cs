@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace clashN
+﻿namespace clashN
 {
     class Global
     {
