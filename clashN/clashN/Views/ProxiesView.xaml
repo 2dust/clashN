@@ -107,7 +107,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <materialDesign:Card
-                            Width="150"
+                            Width="160"
                             Padding="0"
                             materialDesign:UniformCornerRadius="8">
                             <DockPanel>
@@ -154,7 +154,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <materialDesign:Card
-                            Width="150"
+                            Width="160"
                             Padding="0"
                             materialDesign:UniformCornerRadius="8">
                             <DockPanel>

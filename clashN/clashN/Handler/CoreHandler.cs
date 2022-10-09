@@ -180,6 +180,7 @@ namespace clashN.Handler
         private void CoreStart(ProfileItem item)
         {
             ShowMsg(false, string.Format(ResUI.StartService, DateTime.Now.ToString()));
+            ShowMsg(false, $"{ResUI.TbCoreType} {coreInfo.coreType.ToString()}");
 
             try
             {
