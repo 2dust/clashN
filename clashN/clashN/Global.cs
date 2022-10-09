@@ -23,6 +23,9 @@
                 @"http://127.0.0.1:25500/sub?target=clash&url={0}",
                 ""
             };
+        public static readonly List<string> SubConvertConfig = new List<string> {
+                @"https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
+            };
 
 
         /// <summary>
