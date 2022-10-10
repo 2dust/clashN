@@ -6,8 +6,8 @@ A clash client for Windows, supports [Clash core](https://github.com/Dreamacro/c
 
 
 ### How to use
-- If you are new to this, please download clashN-Core.zip from [releases](https://github.com/2dust/clashN/releases)
-- Otherwise, please download clashN.zip (you will also need to download Clash core into the same folder with clashN.exe)
+- Please download clashN.zip from [releases](https://github.com/2dust/clashN/releases)
+- Unzip to folder
 - Run clashN.exe
 
 ### Requirements  
