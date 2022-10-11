@@ -36,9 +36,8 @@ namespace clashN.Mode
         public string systemProxyExceptions { get; set; }
         public string systemProxyAdvancedProtocol { get; set; }
 
-        public int autoUpdateInterval { get; set; } = 0;
-        public int autoUpdateSubInterval { get; set; } = 0;
-        public int autoDelayTestInterval { get; set; } = 0;
+        public int autoUpdateSubInterval { get; set; } = 10;
+        public int autoDelayTestInterval { get; set; } = 10;
 
         public bool enableSecurityProtocolTls13 { get; set; }
 

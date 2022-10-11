@@ -23,6 +23,7 @@
             <materialDesign:Chip
                 x:Name="chipCount"
                 Height="20"
+                IsEnabled="False"
                 Style="{StaticResource ListItemChip}" />
         </StackPanel>
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
@@ -58,6 +59,7 @@
         </ToolBarTray>
         <ListView
             x:Name="lstConnections"
+            HorizontalContentAlignment="Stretch"
             BorderThickness="0"
             ItemContainerStyle="{StaticResource lvItemSelected}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -75,8 +77,16 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <materialDesign:Card MinWidth="800" materialDesign:UniformCornerRadius="8">
+                    <StackPanel>
                         <DockPanel>
+                            <Button
+                                x:Name="btnClose"
+                                Margin="8,0"
+                                Click="btnClose_Click"
+                                Content="{materialDesign:PackIcon Kind=Close}"
+                                DockPanel.Dock="Left"
+                                IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -93,24 +103,35 @@
                                     Grid.Row="1"
                                     HorizontalAlignment="Left"
                                     Orientation="Horizontal">
-                                    <materialDesign:Chip Content="{Binding network}" Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip Content="{Binding type}" Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip Content="{Binding chain}" Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip Content="{Binding uploadTraffic}" Style="{StaticResource ListItemChip}">
-                                        <materialDesign:Chip.Icon>
-                                            <materialDesign:PackIcon Kind="ArrowUpThin" />
-                                        </materialDesign:Chip.Icon>
-                                    </materialDesign:Chip>
-                                    <materialDesign:Chip Content="{Binding downloadTraffic}" Style="{StaticResource ListItemChip}">
-                                        <materialDesign:Chip.Icon>
-                                            <materialDesign:PackIcon Kind="ArrowDownThin" />
-                                        </materialDesign:Chip.Icon>
-                                    </materialDesign:Chip>
-                                    <materialDesign:Chip Content="{Binding elapsed}" Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding network}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding type}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding chain}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding uploadTraffic}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding downloadTraffic}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
+                                    <materialDesign:Chip
+                                        Content="{Binding elapsed}"
+                                        IsEnabled="False"
+                                        Style="{StaticResource ListItemChip}" />
                                 </StackPanel>
                             </Grid>
                         </DockPanel>
-                    </materialDesign:Card>
+                        <Separator />
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

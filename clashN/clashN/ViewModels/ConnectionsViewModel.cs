@@ -133,8 +133,8 @@ namespace clashN.ViewModels
                 model.time = sp.TotalSeconds < 0 ? 1 : sp.TotalSeconds;
                 model.upload = item.upload;
                 model.download = item.download;
-                model.uploadTraffic = Utils.HumanFy(item.upload);
-                model.downloadTraffic = Utils.HumanFy(item.download);
+                model.uploadTraffic = $"¡ü {Utils.HumanFy(item.upload)}";
+                model.downloadTraffic = $"¡ý {Utils.HumanFy(item.download)}";
                 model.elapsed = sp.ToString(@"hh\:mm\:ss");
                 model.chain = item.chains.Count > 0 ? item.chains[0] : String.Empty;
 

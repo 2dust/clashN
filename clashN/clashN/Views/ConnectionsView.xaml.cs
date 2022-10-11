@@ -27,6 +27,11 @@ namespace clashN.Views
                 this.Bind(ViewModel, vm => vm.SortingSelected, v => v.cmbSorting.SelectedIndex).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.AutoRefresh, v => v.togAutoRefresh.IsChecked).DisposeWith(disposables);
             });
+        }         
+
+        private void btnClose_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ViewModel?.ClashConnectionClose(false);
         }
     }
 }
