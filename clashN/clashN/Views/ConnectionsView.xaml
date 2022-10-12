@@ -47,6 +47,13 @@
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingTime}" />
                 </ComboBox>
                 <Separator />
+                <Button x:Name="btnConnectionCloseAll" ToolTip="{x:Static resx:ResUI.menuConnectionCloseAll}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Close" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuConnectionCloseAll}" />
+                    </StackPanel>
+                </Button>
+                <Separator />
                 <TextBlock
                     VerticalAlignment="Center"
                     Style="{StaticResource ToolbarItem}"

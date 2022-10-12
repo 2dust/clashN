@@ -71,7 +71,7 @@
                                 x:Name="btnReload"
                                 Content="{materialDesign:PackIcon Kind=Reload}"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
-                                ToolTip="Reload profile" />
+                                ToolTip="{x:Static resx:ResUI.TbReloadCore}" />
                         </StackPanel>
                     </materialDesign:NavigationRailAssist.FloatingContent>
                     <!--<TabItem

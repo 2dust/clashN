@@ -48,6 +48,7 @@ namespace clashN.Views
                 this.BindCommand(ViewModel, vm => vm.AddProfileCmd, v => v.btnAddProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.AddProfileViaClipboardCmd, v => v.btnAddProfileViaClipboard).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SubUpdateViaProxyCmd, v => v.btnSubUpdateViaProxy).DisposeWith(disposables);
+                this.BindCommand(ViewModel, vm => vm.SetDefaultProfileCmd, v => v.btnSetDefaultProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ProfileQrcodeCmd, v => v.btnProfileQrcode).DisposeWith(disposables);
 
             });

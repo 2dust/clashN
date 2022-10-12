@@ -229,10 +229,10 @@
     <value>配置文件</value>
   </data>
   <data name="menuProfileReload" xml:space="preserve">
-    <value>重新加载 (F5)</value>
+    <value>刷新 (F5)</value>
   </data>
   <data name="menuProxiesReload" xml:space="preserve">
-    <value>重新加载 (F5)</value>
+    <value>刷新 (F5)</value>
   </data>
   <data name="menuProxiesSelectActivity" xml:space="preserve">
     <value>设为活动节点 (Enter)</value>
@@ -621,5 +621,20 @@
   </data>
   <data name="TbLineCount" xml:space="preserve">
     <value>最大行数</value>
+  </data>
+  <data name="TbAddProfileViaClipboard" xml:space="preserve">
+    <value>剪贴板导入</value>
+  </data>
+  <data name="TbSubUpdateViaProxy" xml:space="preserve">
+    <value>更新订阅</value>
+  </data>
+  <data name="TbReloadCore" xml:space="preserve">
+    <value>重新加载</value>
+  </data>
+  <data name="TbSettingsSaveTip" xml:space="preserve">
+    <value>修改以下参数后，点击保存才生效</value>
+  </data>
+  <data name="TbSetDefaultProfile" xml:space="preserve">
+    <value>设为活动</value>
   </data>
 </root>

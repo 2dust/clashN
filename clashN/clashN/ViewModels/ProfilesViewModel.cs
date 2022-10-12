@@ -300,6 +300,10 @@ namespace clashN.ViewModels
         }
         public void SetDefaultProfile()
         {
+            if (Utils.IsNullOrEmpty(SelectedSource?.indexId))
+            {
+                return;
+            }
             var item = _config.GetProfileItem(SelectedSource.indexId);
             if (item is null)
             {

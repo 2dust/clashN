@@ -92,6 +92,7 @@ namespace clashN.Handler
                 }
                 else
                 {
+                    Locator.Current.GetService<NoticeHandler>()?.Enqueue(args.Msg);
                     _updateFunc(false, args.Msg);
                 }
             };

@@ -229,10 +229,10 @@
     <value>Profile</value>
   </data>
   <data name="menuProfileReload" xml:space="preserve">
-    <value>Profile Reload (F5)</value>
+    <value>Refresh Profile (F5)</value>
   </data>
   <data name="menuProxiesReload" xml:space="preserve">
-    <value>Proxies reload (F5)</value>
+    <value>Refresh Proxies (F5)</value>
   </data>
   <data name="menuProxiesSelectActivity" xml:space="preserve">
     <value>Select active node (Enter)</value>
@@ -621,5 +621,20 @@
   </data>
   <data name="TbLineCount" xml:space="preserve">
     <value>Max Line</value>
+  </data>
+  <data name="TbAddProfileViaClipboard" xml:space="preserve">
+    <value>Import from clipboard</value>
+  </data>
+  <data name="TbSubUpdateViaProxy" xml:space="preserve">
+    <value>Update subscription</value>
+  </data>
+  <data name="TbReloadCore" xml:space="preserve">
+    <value>Reload Core</value>
+  </data>
+  <data name="TbSettingsSaveTip" xml:space="preserve">
+    <value>After modifying the following parameters, click Save to take effect</value>
+  </data>
+  <data name="TbSetDefaultProfile" xml:space="preserve">
+    <value>Set as active</value>
   </data>
 </root>

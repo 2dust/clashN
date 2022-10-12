@@ -53,6 +53,11 @@
 
             </ToolBar>
         </ToolBarTray>
+        <TextBlock
+            Margin="8,0,8,8"
+            DockPanel.Dock="Top"
+            Style="{StaticResource ListItemTitle}"
+            Text="{x:Static resx:ResUI.TbSettingsSaveTip}" />
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <TabControl>
                 <TabItem Header="{x:Static resx:ResUI.TbSettingsCore}">
@@ -282,7 +287,7 @@
                             x:Name="txtautoUpdateSubInterval"
                             Grid.Row="6"
                             Grid.Column="1"
-                            Width="200"
+                            Width="300"
                             Margin="8" />
 
                         <TextBlock
@@ -296,7 +301,7 @@
                             x:Name="txtautoDelayTestInterval"
                             Grid.Row="7"
                             Grid.Column="1"
-                            Width="200"
+                            Width="300"
                             Margin="8" />
 
                         <TextBlock
@@ -310,9 +315,10 @@
                             x:Name="cmbSubConvertUrl"
                             Grid.Row="8"
                             Grid.Column="1"
-                            Width="200"
+                            Width="300"
                             Margin="8"
-                            materialDesign:HintAssist.Hint="Convert Url" />
+                            materialDesign:HintAssist.Hint="Convert Url"
+                            IsEditable="True" />
 
                         <Button
                             x:Name="btnSetLoopback"
@@ -361,8 +367,8 @@
                         <TextBox
                             x:Name="txtsystemProxyExceptions"
                             Grid.Row="2"
-                            MinWidth="200"
-                            MinHeight="300"
+                            MinWidth="500"
+                            MinHeight="240"
                             MaxWidth="800"
                             Margin="8"
                             VerticalAlignment="Stretch"

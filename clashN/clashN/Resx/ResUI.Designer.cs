@@ -403,7 +403,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Profile Reload (F5) 的本地化字符串。
+        ///   查找类似 Refresh Profile (F5) 的本地化字符串。
         /// </summary>
         public static string menuProfileReload {
             get {
@@ -430,7 +430,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Proxies reload (F5) 的本地化字符串。
+        ///   查找类似 Refresh Proxies (F5) 的本地化字符串。
         /// </summary>
         public static string menuProxiesReload {
             get {
@@ -917,6 +917,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Import from clipboard 的本地化字符串。
+        /// </summary>
+        public static string TbAddProfileViaClipboard {
+            get {
+                return ResourceManager.GetString("TbAddProfileViaClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Address 的本地化字符串。
         /// </summary>
         public static string TbAddress {
@@ -1205,6 +1214,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Reload Core 的本地化字符串。
+        /// </summary>
+        public static string TbReloadCore {
+            get {
+                return ResourceManager.GetString("TbReloadCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Reset 的本地化字符串。
         /// </summary>
         public static string TbReset {
@@ -1219,6 +1237,15 @@ namespace clashN.Resx {
         public static string TbSave {
             get {
                 return ResourceManager.GetString("TbSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Set as active 的本地化字符串。
+        /// </summary>
+        public static string TbSetDefaultProfile {
+            get {
+                return ResourceManager.GetString("TbSetDefaultProfile", resourceCulture);
             }
         }
         
@@ -1394,6 +1421,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 After modifying the following parameters, click Save to take effect 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsSaveTip {
+            get {
+                return ResourceManager.GetString("TbSettingsSaveTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Set Win10 UWP Loopback 的本地化字符串。
         /// </summary>
         public static string TbSettingsSetUWP {
@@ -1525,6 +1561,15 @@ namespace clashN.Resx {
         public static string TbSortingUpTraffic {
             get {
                 return ResourceManager.GetString("TbSortingUpTraffic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Update subscription 的本地化字符串。
+        /// </summary>
+        public static string TbSubUpdateViaProxy {
+            get {
+                return ResourceManager.GetString("TbSubUpdateViaProxy", resourceCulture);
             }
         }
         

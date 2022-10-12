@@ -32,20 +32,33 @@
                     </StackPanel>
                 </Button>
                 <Separator />
-                <Button
-                    x:Name="btnAddProfileViaClipboard"
-                    Content="{materialDesign:PackIcon Kind=ContentPaste}"
-                    ToolTip="{x:Static resx:ResUI.menuAddProfileViaClipboard}" />
+                <Button x:Name="btnAddProfileViaClipboard" ToolTip="{x:Static resx:ResUI.menuAddProfileViaClipboard}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="ContentPaste" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbAddProfileViaClipboard}" />
+                    </StackPanel>
+                </Button>
                 <Separator />
-                <Button
-                    x:Name="btnSubUpdateViaProxy"
-                    Content="{materialDesign:PackIcon Kind=Update}"
-                    ToolTip="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
+                <Button x:Name="btnSubUpdateViaProxy" ToolTip="{x:Static resx:ResUI.menuSubUpdateViaProxy}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Update" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSubUpdateViaProxy}" />
+                    </StackPanel>
+                </Button>
                 <Separator />
-                <Button
-                    x:Name="btnProfileQrcode"
-                    Content="{materialDesign:PackIcon Kind=QrcodePlus}"
-                    ToolTip="{x:Static resx:ResUI.menuProfileQrcode}" />
+                <Button x:Name="btnSetDefaultProfile" ToolTip="{x:Static resx:ResUI.menuSetDefaultProfile}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Check" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSetDefaultProfile}" />
+                    </StackPanel>
+                </Button>
+                <Separator />
+                <Button x:Name="btnProfileQrcode" ToolTip="{x:Static resx:ResUI.menuProfileQrcode}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="QrcodePlus" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuProfileQrcode}" />
+                    </StackPanel>
+                </Button>
             </ToolBar>
         </ToolBarTray>
         <ListView
