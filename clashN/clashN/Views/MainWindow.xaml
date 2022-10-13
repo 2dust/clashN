@@ -206,7 +206,7 @@
                 <tb:TaskbarIcon
                     x:Name="tbNotify"
                     IconSource="/clashN.ico"
-                    TrayMouseDoubleClick="tbNotify_TrayMouseDoubleClick">
+                    NoLeftClickDelay="True">
                     <tb:TaskbarIcon.ContextMenu>
                         <ContextMenu Style="{StaticResource DefMenu}">
                             <MenuItem x:Name="menuSystemProxyClear">

@@ -74,11 +74,6 @@ namespace clashN.Views
             ViewModel?.ShowHideWindow(false);
         }
 
-        private void tbNotify_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            ViewModel?.ShowHideWindow(null);
-        }
-
         private void menuExit_Click(object sender, RoutedEventArgs e)
         {
             tbNotify.Dispose();
