@@ -61,12 +61,21 @@
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
             <Style x:Key="lvItemSelected" TargetType="{x:Type ListViewItem}">
-                <Setter Property="Margin" Value="1" />
-                <Style.Triggers>
-                    <Trigger Property="IsSelected" Value="true">
-                        <Setter Property="Foreground" Value="{DynamicResource PrimaryHueLightBrush}" />
-                    </Trigger>
-                </Style.Triggers>
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <materialDesign:Card Name="_Card" SnapsToDevicePixels="true">
+                                <ContentPresenter />
+                            </materialDesign:Card>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="_Card" Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <Style
                 x:Key="ListItemCheckBox"

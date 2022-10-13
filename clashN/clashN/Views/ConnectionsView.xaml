@@ -137,7 +137,6 @@
                                 </StackPanel>
                             </Grid>
                         </DockPanel>
-                        <Separator />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

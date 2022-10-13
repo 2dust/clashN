@@ -106,10 +106,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <materialDesign:Card
-                            Width="160"
-                            Padding="0"
-                            materialDesign:UniformCornerRadius="8">
+                        <Border Width="160" Padding="0">
                             <DockPanel>
                                 <Grid Grid.Column="0" Margin="4">
                                     <Grid.RowDefinitions>
@@ -129,7 +126,7 @@
                                         Text="{Binding now}" />
                                 </Grid>
                             </DockPanel>
-                        </materialDesign:Card>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -153,10 +150,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <materialDesign:Card
-                            Width="160"
-                            Padding="0"
-                            materialDesign:UniformCornerRadius="8">
+                        <Border Width="160" Padding="0">
                             <DockPanel>
                                 <Border
                                     Width="5"
@@ -184,7 +178,7 @@
                                     </DockPanel>
                                 </Grid>
                             </DockPanel>
-                        </materialDesign:Card>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
