@@ -101,7 +101,7 @@ namespace clashN.ViewModels
             }, this.IsValid());
 
             //clashN       
-            AutoRun = Utils.IsAutoRun();
+            AutoRun = _config.autoRun;
             EnableStatistics = _config.enableStatistics;
             EnableSecurityProtocolTls13 = _config.enableSecurityProtocolTls13;
             autoUpdateSubInterval = _config.autoUpdateSubInterval;
@@ -196,6 +196,7 @@ namespace clashN.ViewModels
 
             //clashN                   
             Utils.SetAutoRun(AutoRun);
+            _config.autoRun = AutoRun;
             _config.enableStatistics = EnableStatistics;
             _config.enableSecurityProtocolTls13 = EnableSecurityProtocolTls13;
             _config.autoUpdateSubInterval = autoUpdateSubInterval;

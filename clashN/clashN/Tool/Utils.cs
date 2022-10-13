@@ -1,6 +1,7 @@
 ﻿using clashN.Base;
 using clashN.Mode;
 using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
@@ -534,8 +535,25 @@ namespace clashN
         {
             try
             {
-                string exePath = GetExePath();
-                RegWriteValue(autoRunRegPath, autoRunName, run ? $"\"{exePath}\"" : null);
+                //delete first
+                RegWriteValue(autoRunRegPath, autoRunName, null);
+                if (IsAdministrator())
+                {
+                    AutoStart(autoRunName, "", "");
+                }
+
+                if (run)
+                {
+                    string exePath = $"\"{GetExePath()}\"";
+                    if (IsAdministrator())
+                    {
+                        AutoStart(autoRunName, exePath, "");
+                    }
+                    else
+                    {
+                        RegWriteValue(autoRunRegPath, autoRunName, exePath);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -661,6 +679,47 @@ namespace clashN
                     return (int)ndpKey.GetValue("Release") >= release ? true : false;
                 }
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Auto Start via TaskService
+        /// </summary>
+        /// <param name="taskName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="description"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void AutoStart(string taskName, string fileName, string description)
+        {
+            if (string.IsNullOrEmpty(taskName))
+            {
+                return;
+            }
+            string TaskName = taskName;
+            var logonUser = WindowsIdentity.GetCurrent().Name;
+            string taskDescription = description;
+            string deamonFileName = fileName;
+
+            using (var taskService = new TaskService())
+            {
+                var tasks = taskService.RootFolder.GetTasks(new Regex(TaskName));
+                foreach (var t in tasks)
+                {
+                    taskService.RootFolder.DeleteTask(t.Name);
+                }
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    return;
+                }
+
+                var task = taskService.NewTask();
+                task.RegistrationInfo.Description = taskDescription;
+                task.Settings.DisallowStartIfOnBatteries = false;
+                task.Triggers.Add(new LogonTrigger { UserId = logonUser });
+                task.Principal.RunLevel = TaskRunLevel.Highest;
+                task.Actions.Add(new ExecAction(deamonFileName));
+
+                taskService.RootFolder.RegisterTaskDefinition(TaskName, task);
             }
         }
 

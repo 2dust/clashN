@@ -31,6 +31,8 @@ namespace clashN.Mode
 
         public bool allowLANConn { get; set; }
 
+        public bool autoRun { get; set; }
+
         public bool enableStatistics { get; set; }
 
         public string systemProxyExceptions { get; set; }
