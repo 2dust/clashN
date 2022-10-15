@@ -244,7 +244,7 @@ namespace clashN.Handler
                                 if (result.Item2 != null && result.Item2 is HttpResponseHeaders)
                                 {
                                     var userinfo = ((HttpResponseHeaders)result.Item2)
-                                    .Where(t => t.Key == "subscription-userinfo")
+                                    .Where(t => t.Key.ToLower() == "subscription-userinfo")
                                     .Select(t => t.Value)
                                     .FirstOrDefault()?
                                     .FirstOrDefault();
