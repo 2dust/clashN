@@ -11,6 +11,7 @@ using ReactiveUI.Fody.Helpers;
 using Splat;
 using System.Drawing;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using Application = System.Windows.Application;
@@ -103,7 +104,15 @@ namespace clashN.ViewModels
             GetPromotionView = new();
 
             RestoreUI();
-            // ShowHideWindow(false);
+            Observable.Range(1, 1)
+             .Delay(TimeSpan.FromSeconds(9))
+             .Subscribe(x =>
+             {
+                 Application.Current.Dispatcher.Invoke((Action)(() =>
+                 {
+                     ShowHideWindow(false);
+                 }));
+             });
 
             //System proxy
             SystemProxyClearCmd = ReactiveCommand.Create(() =>
