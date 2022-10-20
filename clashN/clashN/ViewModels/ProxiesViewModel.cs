@@ -312,6 +312,8 @@ namespace clashN.ViewModels
                 case 1:
                     lstDetails = lstDetails.OrderBy(t => t.name).ToList();
                     break;
+                default:
+                    break;
             }
             _proxyDetails.AddRange(lstDetails);
         }

@@ -1502,6 +1502,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Default 的本地化字符串。
+        /// </summary>
+        public static string TbSortingDefault {
+            get {
+                return ResourceManager.GetString("TbSortingDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Delay 的本地化字符串。
         /// </summary>
         public static string TbSortingDelay {

@@ -637,4 +637,7 @@
   <data name="TbSetDefaultProfile" xml:space="preserve">
     <value>Set as active</value>
   </data>
+  <data name="TbSortingDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
 </root>

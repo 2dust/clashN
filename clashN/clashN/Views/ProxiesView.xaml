@@ -72,6 +72,7 @@
                     Style="{StaticResource DefComboBox}">
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDelay}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingName}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDefault}" />
                 </ComboBox>
                 <Separator />
                 <TextBlock

@@ -637,4 +637,7 @@
   <data name="TbSetDefaultProfile" xml:space="preserve">
     <value>设为活动</value>
   </data>
+  <data name="TbSortingDefault" xml:space="preserve">
+    <value>默认</value>
+  </data>
 </root>
