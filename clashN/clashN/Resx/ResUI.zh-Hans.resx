@@ -142,7 +142,7 @@
     <value>是否下载? {0}</value>
   </data>
   <data name="EnableTunModeFailed" xml:space="preserve">
-    <value>启用 tun 模式失败, 请以管理员身份运行</value>
+    <value>启用tun模式失败, 请以管理员身份运行</value>
   </data>
   <data name="FailedConversionConfiguration" xml:space="preserve">
     <value>转换配置文件失败</value>
@@ -443,7 +443,7 @@
     <value>Tun</value>
   </data>
   <data name="TbEnableTunAs" xml:space="preserve">
-    <value>启用 tun 模式 (以管理员身份运行)</value>
+    <value>启用tun模式(需管理员身份)</value>
   </data>
   <data name="TbEnableUpdate" xml:space="preserve">
     <value>更新</value>

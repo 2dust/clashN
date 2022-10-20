@@ -97,6 +97,10 @@ namespace clashN.ViewModels
                 item.enabled = SelectedSource.enabled;
                 item.enableConvert = SelectedSource.enableConvert;
             }
+            if (SelectedSource.enableTun && SelectedSource.coreType != ECoreType.clash_meta)
+            {
+                UI.ShowWarning(ResUI.TunModeCoreTip);
+            }
 
             if (ConfigHandler.EditProfile(ref _config, item) == 0)
             {
