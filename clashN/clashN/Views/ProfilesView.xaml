@@ -102,6 +102,7 @@
                             <Border
                                 Width="5"
                                 Height="auto"
+                                Margin="0,1"
                                 Background="{DynamicResource PrimaryHueLightBrush}"
                                 CornerRadius="4"
                                 DockPanel.Dock="Left"
