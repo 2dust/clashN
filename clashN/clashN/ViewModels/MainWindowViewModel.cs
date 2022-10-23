@@ -105,7 +105,7 @@ namespace clashN.ViewModels
 
             RestoreUI();
             Observable.Range(1, 1)
-             .Delay(TimeSpan.FromSeconds(9))
+             .Delay(TimeSpan.FromSeconds(1))
              .Subscribe(x =>
              {
                  Application.Current.Dispatcher.Invoke((Action)(() =>
