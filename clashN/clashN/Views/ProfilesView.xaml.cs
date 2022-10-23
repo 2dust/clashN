@@ -1,8 +1,12 @@
+using clashN.Mode;
 using clashN.ViewModels;
 using ReactiveUI;
 using Splat;
 using System.Reactive.Disposables;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace clashN.Views
 {
@@ -16,6 +20,11 @@ namespace clashN.Views
             InitializeComponent();
             ViewModel = new ProfilesViewModel();
             Locator.CurrentMutable.RegisterLazySingleton(() => ViewModel, typeof(ProfilesViewModel));
+
+            lstProfiles.PreviewMouseLeftButtonDown += LstProfiles_PreviewMouseLeftButtonDown;
+            lstProfiles.MouseMove += LstProfiles_MouseMove;
+            lstProfiles.DragEnter += LstProfiles_DragEnter;
+            lstProfiles.Drop += LstProfiles_Drop;
 
             this.WhenActivated(disposables =>
             {
@@ -83,5 +92,99 @@ namespace clashN.Views
                 }
             }
         }
+
+        #region Drag and Drop
+
+        private Point startPoint = new Point();
+        private int startIndex = -1;
+        private string formatData = "ProfileItemModel";
+
+        /// <summary>
+        /// Helper to search up the VisualTree
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="current"></param>
+        /// <returns></returns>
+        private static T? FindAnchestor<T>(DependencyObject current) where T : DependencyObject
+        {
+            do
+            {
+                if (current is T)
+                {
+                    return (T)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
+        }
+
+
+        private void LstProfiles_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // Get current mouse position
+            startPoint = e.GetPosition(null);
+        }
+        private void LstProfiles_MouseMove(object sender, MouseEventArgs e)
+        {
+            // Get the current mouse position
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                       Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                // Get the dragged ListViewItem
+                var listView = sender as ListView;
+                if (listView == null) return;
+                var listViewItem = FindAnchestor<ListViewItem>((DependencyObject)e.OriginalSource);
+                if (listViewItem == null) return;           // Abort
+                                                            // Find the data behind the ListViewItem
+                ProfileItemModel item = (ProfileItemModel)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
+                if (item == null) return;                   // Abort
+                                                            // Initialize the drag & drop operation
+                startIndex = lstProfiles.SelectedIndex;
+                DataObject dragData = new DataObject(formatData, item);
+                DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Copy | DragDropEffects.Move);
+            }
+        }
+
+        private void LstProfiles_DragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(formatData) || sender != e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private void LstProfiles_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(formatData) && sender == e.Source)
+            {
+                // Get the drop ListViewItem destination
+                var listView = sender as ListView;
+                if (listView == null) return;
+                var listViewItem = FindAnchestor<ListViewItem>((DependencyObject)e.OriginalSource);
+                if (listViewItem == null)
+                {
+                    // Abort
+                    e.Effects = DragDropEffects.None;
+                    return;
+                }
+                // Find the data behind the ListViewItem
+                ProfileItemModel item = (ProfileItemModel)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
+                if (item == null) return;
+                // Move item into observable collection 
+                // (this will be automatically reflected to lstView.ItemsSource)
+                e.Effects = DragDropEffects.Move;
+
+                ViewModel?.MoveProfile(startIndex, item);
+
+                startIndex = -1;
+            }
+        }
+
+        #endregion
     }
 }

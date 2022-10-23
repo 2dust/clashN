@@ -63,6 +63,7 @@
         </ToolBarTray>
         <ListView
             x:Name="lstProfiles"
+            AllowDrop="True"
             BorderThickness="0"
             ItemContainerStyle="{StaticResource lvItemSelected}"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"

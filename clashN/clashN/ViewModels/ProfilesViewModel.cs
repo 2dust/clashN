@@ -325,7 +325,7 @@ namespace clashN.ViewModels
             ConfigHandler.SetDefaultProfile(_config, _config.profileItems);
 
             var lstModel = new List<ProfileItemModel>();
-            foreach (var item in _config.profileItems)
+            foreach (var item in _config.profileItems.OrderBy(it => it.sort))
             {
                 var model = Utils.FromJson<ProfileItemModel>(Utils.ToJson(item));
                 model.isActive = _config.IsActiveNode(item);
@@ -338,6 +338,18 @@ namespace clashN.ViewModels
                 _profileItems.AddRange(lstModel);
             }));
 
+        }
+
+        public void MoveProfile(int startIndex, ProfileItemModel targetItem)
+        {
+            var targetIndex = _profileItems.IndexOf(targetItem);
+            if (startIndex >= 0 && targetIndex >= 0 && startIndex != targetIndex)
+            {
+                if (ConfigHandler.MoveProfile(ref _config, startIndex, EMove.Position, targetIndex) == 0)
+                {
+                    RefreshProfiles();
+                }
+            }
         }
 
         public async void ProfileQrcode()

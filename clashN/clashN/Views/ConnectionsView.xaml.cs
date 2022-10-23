@@ -28,7 +28,7 @@ namespace clashN.Views
                 this.BindCommand(ViewModel, vm => vm.ConnectionCloseAllCmd, v => v.btnConnectionCloseAll).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.AutoRefresh, v => v.togAutoRefresh.IsChecked).DisposeWith(disposables);
             });
-        }         
+        }
 
         private void btnClose_Click(object sender, System.Windows.RoutedEventArgs e)
         {

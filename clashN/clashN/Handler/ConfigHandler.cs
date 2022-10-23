@@ -289,12 +289,12 @@ namespace clashN.Handler
         /// 移动配置文件
         /// </summary>
         /// <param name="config"></param>
-        /// <param name="lstProfile"></param>
         /// <param name="index"></param>
         /// <param name="eMove"></param>
         /// <returns></returns>
-        public static int MoveProfile(ref Config config, ref List<ProfileItem> lstProfile, int index, EMove eMove, int pos = -1)
+        public static int MoveProfile(ref Config config, int index, EMove eMove, int pos = -1)
         {
+            List<ProfileItem> lstProfile = config.profileItems.OrderBy(it => it.sort).ToList();
             int count = lstProfile.Count;
             if (index < 0 || index > lstProfile.Count - 1)
             {
