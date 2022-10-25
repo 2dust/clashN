@@ -25,6 +25,7 @@ namespace clashN.ViewModels
         private NoticeHandler? _noticeHandler;
         private StatisticsHandler? statistics;
         private readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private bool blFirst = true;
 
         #region Views
         //public DashboardView GetDashboardView { get; }
@@ -111,6 +112,7 @@ namespace clashN.ViewModels
                  Application.Current.Dispatcher.Invoke((Action)(() =>
                  {
                      ShowHideWindow(false);
+                     blFirst = false;
                  }));
              });
 
@@ -187,7 +189,10 @@ namespace clashN.ViewModels
                         return;
                     }
                 }
-                ShowHideWindow(true);
+                if (!blFirst)
+                {
+                    ShowHideWindow(true);
+                }
 
                 Locator.Current.GetService<ProfilesViewModel>()?.AddProfilesViaClipboard(true);
             }));
