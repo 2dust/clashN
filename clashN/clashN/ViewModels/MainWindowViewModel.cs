@@ -49,6 +49,8 @@ namespace clashN.ViewModels
         public bool BlSystemProxySet { get; set; }
         [Reactive]
         public bool BlSystemProxyNothing { get; set; }
+        [Reactive]
+        public bool BlSystemProxyPac { get; set; }
         public ReactiveCommand<Unit, Unit> SystemProxyClearCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxySetCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxyNothingCmd { get; }
@@ -368,6 +370,7 @@ namespace clashN.ViewModels
             BlSystemProxyClear = (type == ESysProxyType.ForcedClear);
             BlSystemProxySet = (type == ESysProxyType.ForcedChange);
             BlSystemProxyNothing = (type == ESysProxyType.Unchanged);
+            BlSystemProxyPac = (type == ESysProxyType.Pac);
 
             _noticeHandler?.SendMessage($"Change system proxy", true);
 
