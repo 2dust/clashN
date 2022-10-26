@@ -715,7 +715,7 @@ namespace clashN
                 var task = taskService.NewTask();
                 task.RegistrationInfo.Description = taskDescription;
                 task.Settings.DisallowStartIfOnBatteries = false;
-                task.Triggers.Add(new LogonTrigger { UserId = logonUser });
+                task.Triggers.Add(new LogonTrigger { UserId = logonUser, Delay = TimeSpan.FromMinutes(1) });
                 task.Principal.RunLevel = TaskRunLevel.Highest;
                 task.Actions.Add(new ExecAction(deamonFileName));
 
