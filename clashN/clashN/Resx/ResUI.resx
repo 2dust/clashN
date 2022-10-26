@@ -640,4 +640,10 @@
   <data name="TbSortingDefault" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="menuSystemProxyPac" xml:space="preserve">
+    <value>Pac Mode</value>
+  </data>
+  <data name="TbSettingsPacListenPort" xml:space="preserve">
+    <value>Pac listen port</value>
+  </data>
 </root>

@@ -538,6 +538,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Pac Mode 的本地化字符串。
+        /// </summary>
+        public static string menuSystemProxyPac {
+            get {
+                return ResourceManager.GetString("menuSystemProxyPac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Set system proxy 的本地化字符串。
         /// </summary>
         public static string menuSystemProxySet {
@@ -1417,6 +1426,15 @@ namespace clashN.Resx {
         public static string TbSettingsMixin {
             get {
                 return ResourceManager.GetString("TbSettingsMixin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Pac listen port 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsPacListenPort {
+            get {
+                return ResourceManager.GetString("TbSettingsPacListenPort", resourceCulture);
             }
         }
         

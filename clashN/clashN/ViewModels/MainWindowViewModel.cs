@@ -1,4 +1,3 @@
-using clashN.Base;
 using clashN.Handler;
 using clashN.Mode;
 using clashN.Views;
@@ -53,6 +52,8 @@ namespace clashN.ViewModels
         public ReactiveCommand<Unit, Unit> SystemProxyClearCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxySetCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxyNothingCmd { get; }
+
+        public ReactiveCommand<Unit, Unit> SystemProxyPacCmd { get; }
         #endregion
 
         #region Rule mode
@@ -126,6 +127,10 @@ namespace clashN.ViewModels
             SystemProxyNothingCmd = ReactiveCommand.Create(() =>
             {
                 SetListenerType(ESysProxyType.Unchanged);
+            });//, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
+            SystemProxyPacCmd = ReactiveCommand.Create(() =>
+            {
+                SetListenerType(ESysProxyType.Pac);
             });//, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
 
             //Rule mode

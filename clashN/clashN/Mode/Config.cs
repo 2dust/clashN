@@ -1,5 +1,4 @@
-﻿using clashN.Base;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace clashN.Mode
@@ -44,6 +43,11 @@ namespace clashN.Mode
         public bool enableSecurityProtocolTls13 { get; set; }
 
         public bool enableMixinContent { get; set; }
+
+        /// <summary>
+        /// Pac监听端口
+        /// </summary>
+        public int PacPort { get; set; }
 
         #endregion
 
