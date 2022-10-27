@@ -482,6 +482,13 @@ namespace clashN.ViewModels
 
             theme.SetBaseTheme(isDarkTheme ? Theme.Dark : Theme.Light);
             _paletteHelper.SetTheme(theme);
+
+            IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
+            int attribute = isDarkTheme ? 1 : 0;
+            uint attributeSize = (uint)System.Runtime.InteropServices.Marshal.SizeOf(attribute);
+
+            Utils.DwmSetWindowAttribute(hwnd, Utils.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1, ref attribute, attributeSize);
+            Utils.DwmSetWindowAttribute(hwnd, Utils.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, ref attribute, attributeSize);
         }
         public void ChangePrimaryColor(System.Windows.Media.Color color)
         {

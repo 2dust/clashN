@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Principal;
 using System.Text;
@@ -1227,6 +1228,20 @@ namespace clashN
             }
             return result;
         }
+        #endregion
+
+        #region Interop
+
+        [Flags]
+        public enum DWMWINDOWATTRIBUTE : uint
+        {
+            DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19,
+            DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
+        }
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref int attributeValue, uint attributeSize);
+
         #endregion
 
     }
