@@ -21,7 +21,6 @@
 		<PackageReference Include="NHotkey.Wpf" Version="2.1.0" />
 		<PackageReference Include="QRCoder.Xaml" Version="1.4.3" />
 		<PackageReference Include="TaskScheduler" Version="2.10.1" />
-		<PackageReference Include="TouchSocket" Version="0.7.4" />
 		<PackageReference Include="YamlDotNet" Version="12.0.2" />
 		<PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.10" />
 		<PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />

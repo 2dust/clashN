@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using clashN.Base;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace clashN.Mode
