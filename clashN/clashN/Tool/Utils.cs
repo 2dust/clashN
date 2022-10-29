@@ -14,6 +14,7 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -1023,6 +1024,17 @@ namespace clashN
                 SaveLog(ex.Message, ex);
             }
         }
+
+        public static void SetDarkBorder(System.Windows.Window window, bool dark)
+        {
+            // Make sure the handle is created before the window is shown
+            IntPtr hWnd = new System.Windows.Interop.WindowInteropHelper(window).EnsureHandle();
+            int attribute = dark ? 1 : 0;
+            uint attributeSize = (uint)Marshal.SizeOf(attribute);
+            DwmSetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1, ref attribute, attributeSize);
+            DwmSetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, ref attribute, attributeSize);
+        }
+
         #endregion
 
         #region TempPath
@@ -1229,5 +1241,18 @@ namespace clashN
         }
         #endregion
 
+        #region Interop
+
+        [Flags]
+        public enum DWMWINDOWATTRIBUTE : uint
+        {
+            DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1 = 19,
+            DWMWA_USE_IMMERSIVE_DARK_MODE = 20,
+        }
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref int attributeValue, uint attributeSize);
+
+        #endregion
     }
 }
