@@ -482,6 +482,8 @@ namespace clashN.ViewModels
 
             theme.SetBaseTheme(isDarkTheme ? Theme.Dark : Theme.Light);
             _paletteHelper.SetTheme(theme);
+
+            Utils.SetDarkBorder(Application.Current.MainWindow, isDarkTheme);
         }
         public void ChangePrimaryColor(System.Windows.Media.Color color)
         {
