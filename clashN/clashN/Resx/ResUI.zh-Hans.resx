@@ -640,4 +640,13 @@
   <data name="TbSortingDefault" xml:space="preserve">
     <value>默认</value>
   </data>
+  <data name="menuSystemProxyPac" xml:space="preserve">
+    <value>Pac模式</value>
+  </data>
+  <data name="pacListenPort" xml:space="preserve">
+    <value>Pac监听端口号</value>
+  </data>
+  <data name="TbSettingsPacListenPort" xml:space="preserve">
+    <value>Pac监听端口号</value>
+  </data>
 </root>

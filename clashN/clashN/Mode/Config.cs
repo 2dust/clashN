@@ -45,6 +45,11 @@ namespace clashN.Mode
 
         public bool enableMixinContent { get; set; }
 
+        /// <summary>
+        /// Pac监听端口
+        /// </summary>
+        public int PacPort { get; set; }
+
         #endregion
 
         #region other entities

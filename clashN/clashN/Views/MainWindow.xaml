@@ -242,6 +242,17 @@
                                     </StackPanel>
                                 </MenuItem.Header>
                             </MenuItem>
+                            <MenuItem x:Name="menuSystemProxyPac">
+                                <MenuItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon
+                                            x:Name="menuSystemProxyPac2"
+                                            Margin="0,0,8,0"
+                                            Kind="Check" />
+                                        <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyPac}" />
+                                    </StackPanel>
+                                </MenuItem.Header>
+                            </MenuItem>
                             <Separator />
 
                             <MenuItem x:Name="menuModeRule">

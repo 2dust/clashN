@@ -67,6 +67,11 @@ namespace clashN.Handler
                 config.APIPort = 9090;
             }
 
+            if (config.PacPort == 0)
+            {
+                config.PacPort = 7990;
+            }
+
             if (config.profileItems == null)
             {
                 config.profileItems = new List<ProfileItem>();

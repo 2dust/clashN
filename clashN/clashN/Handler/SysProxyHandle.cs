@@ -75,6 +75,17 @@ namespace clashN.Handler
                 else if (type == ESysProxyType.Unchanged)
                 {
                 }
+                else if (type == ESysProxyType.Pac)
+                {
+                    HttpHandler.Start(config);
+                    var strProxy = $"http://127.0.0.1:{config.PacPort}/";
+                    SetIEProxy(false, strProxy, "");
+                }
+
+                if (type != ESysProxyType.Pac)
+                {
+                    HttpHandler.Stop();
+                }
             }
             catch (Exception ex)
             {

@@ -221,6 +221,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -303,9 +304,21 @@
                             Grid.Column="1"
                             Width="300"
                             Margin="8" />
-
                         <TextBlock
                             Grid.Row="8"
+                            Grid.Column="0"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
+                            Text="{x:Static resx:ResUI.TbSettingsPacListenPort}" />
+                        <TextBox
+                            x:Name="txtPacPort"
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Width="300"
+                            Margin="8" />
+                        <TextBlock
+                            Grid.Row="9"
                             Grid.Column="0"
                             Margin="8"
                             VerticalAlignment="Center"
@@ -313,7 +326,7 @@
                             Text="{x:Static resx:ResUI.TbSettingsSubConvert}" />
                         <ComboBox
                             x:Name="cmbSubConvertUrl"
-                            Grid.Row="8"
+                            Grid.Row="9"
                             Grid.Column="1"
                             Width="300"
                             Margin="8"
@@ -322,14 +335,14 @@
 
                         <Button
                             x:Name="btnSetLoopback"
-                            Grid.Row="9"
+                            Grid.Row="10"
                             Grid.Column="0"
                             Margin="8"
                             Content="{x:Static resx:ResUI.TbSettingsSetUWP}"
                             Style="{StaticResource DefButton}" />
                         <Button
                             x:Name="btnSetGlobalHotkey"
-                            Grid.Row="10"
+                            Grid.Row="11"
                             Grid.Column="0"
                             Margin="8"
                             Content="{x:Static resx:ResUI.TbGlobalHotkeySetting}"
