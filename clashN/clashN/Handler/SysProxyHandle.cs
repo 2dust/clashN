@@ -37,7 +37,7 @@ namespace clashN.Handler
         {
             var type = config.sysProxyType;
 
-            if (forceDisable && type == ESysProxyType.ForcedChange)
+            if (forceDisable && (type == ESysProxyType.ForcedChange || type == ESysProxyType.Pac))
             {
                 type = ESysProxyType.ForcedClear;
             }
@@ -78,7 +78,7 @@ namespace clashN.Handler
                 else if (type == ESysProxyType.Pac)
                 {
                     HttpHandler.Start(config);
-                    var strProxy = $"http://127.0.0.1:{config.PacPort}/";
+                    var strProxy = $"{Global.httpProtocol}{Global.Loopback}:{config.PacPort}/pac?t={DateTime.Now.Ticks}";
                     SetIEProxy(false, strProxy, "");
                 }
 

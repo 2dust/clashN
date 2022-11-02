@@ -34,13 +34,19 @@ public class HttpHandler
             {
                 try
                 {
+                    if (!_tcpListener.Pending())
+                    {
+                        Thread.Sleep(10);
+                        continue;
+                    }
+
                     var client = _tcpListener.AcceptTcpClient();
                     Task.Factory.StartNew(() =>
                     {
                         var stream = client.GetStream();
                         var sb = new StringBuilder();
                         sb.AppendLine("HTTP/1.0 200 OK");
-                        sb.AppendLine("Content-type:text/plain;charset=UTF-8");
+                        sb.AppendLine("Content-type:application/x-ns-proxy-autoconfig");
                         sb.AppendLine("Connection:close");
                         sb.AppendLine("Content-Length:" + Encoding.UTF8.GetByteCount(_pacText));
                         sb.AppendLine();

@@ -39,6 +39,8 @@ namespace clashN.Handler
                         return Properties.Resources.NotifyIcon2;
                     case 2:
                         return Properties.Resources.NotifyIcon3;
+                    case 3:
+                        return Properties.Resources.NotifyIcon2;
                 }
 
                 return Properties.Resources.NotifyIcon1;

@@ -54,10 +54,10 @@ namespace clashN.ViewModels
         public int autoDelayTestInterval { get; set; }
         [Reactive]
         public string SubConvertUrl { get; set; }
+        [Reactive]
+        public int PacPort { get; set; }
         public ReactiveCommand<Unit, Unit> SetLoopbackCmd { get; }
         public ReactiveCommand<Unit, Unit> SetGlobalHotkeyCmd { get; }
-        [Reactive]
-        public int PacListenPort { get; set; }
         #endregion
 
         #region  System proxy
@@ -109,7 +109,7 @@ namespace clashN.ViewModels
             autoUpdateSubInterval = _config.autoUpdateSubInterval;
             autoDelayTestInterval = _config.autoDelayTestInterval;
             SubConvertUrl = _config.constItem.subConvertUrl;
-            PacListenPort = _config.PacPort;
+            PacPort = _config.PacPort;
             SetLoopbackCmd = ReactiveCommand.Create(() =>
             {
                 Utils.ProcessStart(Utils.GetBinPath("EnableLoopback.exe"));
@@ -205,7 +205,7 @@ namespace clashN.ViewModels
             _config.autoUpdateSubInterval = autoUpdateSubInterval;
             _config.autoDelayTestInterval = autoDelayTestInterval;
             _config.constItem.subConvertUrl = SubConvertUrl;
-            _config.PacPort = PacListenPort;
+            _config.PacPort = PacPort;
 
             //System proxy
             _config.systemProxyExceptions = systemProxyExceptions;

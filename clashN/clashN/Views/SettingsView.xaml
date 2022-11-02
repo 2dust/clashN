@@ -303,20 +303,7 @@
                             Grid.Row="7"
                             Grid.Column="1"
                             Width="300"
-                            Margin="8" />
-                        <TextBlock
-                            Grid.Row="8"
-                            Grid.Column="0"
-                            Margin="8"
-                            VerticalAlignment="Center"
-                            Style="{StaticResource ListItemTitle}"
-                            Text="{x:Static resx:ResUI.TbSettingsPacListenPort}" />
-                        <TextBox
-                            x:Name="txtPacPort"
-                            Grid.Row="8"
-                            Grid.Column="1"
-                            Width="300"
-                            Margin="8" />
+                            Margin="8" />                   
                         <TextBlock
                             Grid.Row="9"
                             Grid.Column="0"
@@ -355,6 +342,7 @@
                 <TabItem Header="{x:Static resx:ResUI.TbSettingsSystemproxy}">
                     <Grid Grid.Row="3" Margin="8">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
@@ -402,6 +390,17 @@
                             Grid.Row="4"
                             Margin="8"
                             materialDesign:HintAssist.Hint="Protocol" />
+                        <TextBlock
+                            Grid.Row="5"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
+                            Text="{x:Static resx:ResUI.TbSettingsPacListenPort}" />
+                        <TextBox
+                            x:Name="txtPacPort"
+                            Grid.Row="5"
+                            Width="200"
+                            Margin="8" />
                     </Grid>
 
                 </TabItem>
