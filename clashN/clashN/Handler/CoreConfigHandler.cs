@@ -57,9 +57,12 @@ namespace clashN.Handler
                     return -1;
                 }
 
+                string tagYamlStr1 = "!<str>";
+                string tagYamlStr2 = "__strn__";
+                string tagYamlStr3 = "!!str";
                 var config = LazyConfig.Instance.GetConfig();
                 var txtFile = File.ReadAllText(addressFileName);
-                txtFile = txtFile.Replace("!<str>", "");
+                txtFile = txtFile.Replace(tagYamlStr1, tagYamlStr2);
 
                 var fileContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
                 if (fileContent == null)
@@ -125,7 +128,8 @@ namespace clashN.Handler
                     Utils.SaveLog("GenerateClientCustomConfig-Mixin", ex);
                 }
 
-                File.WriteAllText(fileName, Utils.ToYaml(fileContent));
+                var txtFileNew = Utils.ToYaml(fileContent).Replace(tagYamlStr2, tagYamlStr3);
+                File.WriteAllText(fileName, txtFileNew);
                 //check again
                 if (!File.Exists(fileName))
                 {
@@ -160,7 +164,7 @@ namespace clashN.Handler
             }
 
             var txtFile = File.ReadAllText(Utils.GetConfigPath(Global.mixinConfigFileName));
-            txtFile = txtFile.Replace("!<str>", "");
+            //txtFile = txtFile.Replace("!<str>", "");
 
             var mixinContent = Utils.FromYaml<Dictionary<string, object>>(txtFile);
             if (mixinContent == null)
