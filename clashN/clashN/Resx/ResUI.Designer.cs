@@ -1304,6 +1304,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Auto hide startup 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsAutoHideStartup {
+            get {
+                return ResourceManager.GetString("TbSettingsAutoHideStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Automatic latency test interval (minutes) 的本地化字符串。
         /// </summary>
         public static string TbSettingsAutoTest {
@@ -1597,6 +1606,15 @@ namespace clashN.Resx {
         public static string TbSubUpdateViaProxy {
             get {
                 return ResourceManager.GetString("TbSubUpdateViaProxy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Pac Mode 的本地化字符串。
+        /// </summary>
+        public static string TbSystemProxyPac {
+            get {
+                return ResourceManager.GetString("TbSystemProxyPac", resourceCulture);
             }
         }
         

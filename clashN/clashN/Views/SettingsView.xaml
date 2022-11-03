@@ -283,13 +283,13 @@
                             Margin="8"
                             VerticalAlignment="Center"
                             Style="{StaticResource ListItemTitle}"
-                            Text="{x:Static resx:ResUI.TbSettingsAutoUpdate}" />
-                        <TextBox
-                            x:Name="txtautoUpdateSubInterval"
+                            Text="{x:Static resx:ResUI.TbSettingsAutoHideStartup}" />
+                        <ToggleButton
+                            x:Name="togAutoHideStartup"
                             Grid.Row="6"
                             Grid.Column="1"
-                            Width="300"
-                            Margin="8" />
+                            Margin="8"
+                            HorizontalAlignment="Left" />
 
                         <TextBlock
                             Grid.Row="7"
@@ -297,13 +297,27 @@
                             Margin="8"
                             VerticalAlignment="Center"
                             Style="{StaticResource ListItemTitle}"
-                            Text="{x:Static resx:ResUI.TbSettingsAutoTest}" />
+                            Text="{x:Static resx:ResUI.TbSettingsAutoUpdate}" />
                         <TextBox
-                            x:Name="txtautoDelayTestInterval"
+                            x:Name="txtautoUpdateSubInterval"
                             Grid.Row="7"
                             Grid.Column="1"
                             Width="300"
-                            Margin="8" />                   
+                            Margin="8" />
+
+                        <TextBlock
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
+                            Text="{x:Static resx:ResUI.TbSettingsAutoTest}" />
+                        <TextBox
+                            x:Name="txtautoDelayTestInterval"
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Width="300"
+                            Margin="8" />
                         <TextBlock
                             Grid.Row="9"
                             Grid.Column="0"

@@ -646,4 +646,10 @@
   <data name="TbSettingsPacListenPort" xml:space="preserve">
     <value>Pac listen port</value>
   </data>
+  <data name="TbSettingsAutoHideStartup" xml:space="preserve">
+    <value>Auto hide startup</value>
+  </data>
+  <data name="TbSystemProxyPac" xml:space="preserve">
+    <value>Pac Mode</value>
+  </data>
 </root>

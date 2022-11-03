@@ -649,4 +649,10 @@
   <data name="TbSettingsPacListenPort" xml:space="preserve">
     <value>Pac监听端口号</value>
   </data>
+  <data name="TbSettingsAutoHideStartup" xml:space="preserve">
+    <value>启动后隐藏窗口</value>
+  </data>
+  <data name="TbSystemProxyPac" xml:space="preserve">
+    <value>Pac模式</value>
+  </data>
 </root>

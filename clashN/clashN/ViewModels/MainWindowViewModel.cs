@@ -109,16 +109,19 @@ namespace clashN.ViewModels
             GetPromotionView = new();
 
             RestoreUI();
-            Observable.Range(1, 1)
-             .Delay(TimeSpan.FromSeconds(1))
-             .Subscribe(x =>
-             {
-                 Application.Current.Dispatcher.Invoke((Action)(() =>
+            if (_config.autoHideStartup)
+            {
+                Observable.Range(1, 1)
+                 .Delay(TimeSpan.FromSeconds(1))
+                 .Subscribe(x =>
                  {
-                     ShowHideWindow(false);
-                     blFirst = false;
-                 }));
-             });
+                     Application.Current.Dispatcher.Invoke((Action)(() =>
+                     {
+                         ShowHideWindow(false);
+                         blFirst = false;
+                     }));
+                 });
+            }
 
             //System proxy
             SystemProxyClearCmd = ReactiveCommand.Create(() =>
@@ -250,6 +253,9 @@ namespace clashN.ViewModels
                     break;
                 case (int)EGlobalHotkey.SystemProxyUnchanged:
                     SetListenerType(ESysProxyType.Unchanged);
+                    break;
+                case (int)EGlobalHotkey.SystemProxyPac:
+                    SetListenerType(ESysProxyType.Pac);
                     break;
             }
             e.Handled = true;

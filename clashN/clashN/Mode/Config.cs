@@ -45,10 +45,9 @@ namespace clashN.Mode
 
         public bool enableMixinContent { get; set; }
 
-        /// <summary>
-        /// Pac监听端口
-        /// </summary>
         public int PacPort { get; set; }
+
+        public bool autoHideStartup { get; set; }
 
         #endregion
 

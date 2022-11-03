@@ -55,7 +55,7 @@ namespace clashN.ViewModels
         [Reactive]
         public string SubConvertUrl { get; set; }
         [Reactive]
-        public int PacPort { get; set; }
+        public bool AutoHideStartup { get; set; }
         public ReactiveCommand<Unit, Unit> SetLoopbackCmd { get; }
         public ReactiveCommand<Unit, Unit> SetGlobalHotkeyCmd { get; }
         #endregion
@@ -65,6 +65,8 @@ namespace clashN.ViewModels
         public string systemProxyExceptions { get; set; }
         [Reactive]
         public string systemProxyAdvancedProtocol { get; set; }
+        [Reactive]
+        public int PacPort { get; set; }
 
 
         #endregion
@@ -109,7 +111,8 @@ namespace clashN.ViewModels
             autoUpdateSubInterval = _config.autoUpdateSubInterval;
             autoDelayTestInterval = _config.autoDelayTestInterval;
             SubConvertUrl = _config.constItem.subConvertUrl;
-            PacPort = _config.PacPort;
+            AutoHideStartup = _config.autoHideStartup;
+
             SetLoopbackCmd = ReactiveCommand.Create(() =>
             {
                 Utils.ProcessStart(Utils.GetBinPath("EnableLoopback.exe"));
@@ -122,6 +125,7 @@ namespace clashN.ViewModels
             //System proxy
             systemProxyExceptions = _config.systemProxyExceptions;
             systemProxyAdvancedProtocol = _config.systemProxyAdvancedProtocol;
+            PacPort = _config.PacPort;
 
             //UI
             ColorModeDark = _config.uiItem.colorModeDark;
@@ -205,11 +209,12 @@ namespace clashN.ViewModels
             _config.autoUpdateSubInterval = autoUpdateSubInterval;
             _config.autoDelayTestInterval = autoDelayTestInterval;
             _config.constItem.subConvertUrl = SubConvertUrl;
-            _config.PacPort = PacPort;
+            _config.autoHideStartup = AutoHideStartup;
 
             //System proxy
             _config.systemProxyExceptions = systemProxyExceptions;
             _config.systemProxyAdvancedProtocol = systemProxyAdvancedProtocol;
+            _config.PacPort = PacPort;
 
             if (ConfigHandler.SaveConfig(ref _config) == 0)
             {

@@ -49,6 +49,7 @@ namespace clashN.Views
             txtGlobalHotkey1.KeyDown += TxtGlobalHotkey_KeyDown;
             txtGlobalHotkey2.KeyDown += TxtGlobalHotkey_KeyDown;
             txtGlobalHotkey3.KeyDown += TxtGlobalHotkey_KeyDown;
+            txtGlobalHotkey4.KeyDown += TxtGlobalHotkey_KeyDown;
 
             BindingData(-1);
         }
