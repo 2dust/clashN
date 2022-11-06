@@ -94,7 +94,7 @@
                 DockPanel.Dock="Left"
                 ItemContainerStyle="{StaticResource lvItemSelected}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ContextMenu>
                     <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuProxiesReload" Header="{x:Static resx:ResUI.menuProxiesReload}" />
