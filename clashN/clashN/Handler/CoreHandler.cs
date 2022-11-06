@@ -206,7 +206,8 @@ namespace clashN.Handler
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         CreateNoWindow = true,
-                        StandardOutputEncoding = Encoding.UTF8
+                        StandardOutputEncoding = Encoding.UTF8,
+                        StandardErrorEncoding = Encoding.UTF8
                     }
                 };
                 if (item.enableTun)
@@ -222,7 +223,7 @@ namespace clashN.Handler
                     }
                 });
                 p.Start();
-                p.PriorityClass = ProcessPriorityClass.High;
+                //p.PriorityClass = ProcessPriorityClass.High;
                 p.BeginOutputReadLine();
                 //processId = p.Id;
                 _process = p;
@@ -242,11 +243,6 @@ namespace clashN.Handler
             }
         }
 
-        /// <summary>
-        /// 委托
-        /// </summary>
-        /// <param name="updateToTrayTooltip">是否更新托盘图标的工具提示</param>
-        /// <param name="msg">输出到日志框</param>
         private void ShowMsg(bool updateToTrayTooltip, string msg)
         {
             _updateFunc(updateToTrayTooltip, msg);
