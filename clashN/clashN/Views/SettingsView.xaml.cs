@@ -43,7 +43,7 @@ namespace clashN.Views
                 this.Bind(ViewModel, vm => vm.EnableMixinContent, v => v.togEnableMixinContent.IsChecked).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.EditMixinContentCmd, v => v.btnEditMixinContent).DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, vm => vm.Swatches, v => v.cmbSwatches.ItemsSource);
+                this.OneWayBind(ViewModel, vm => vm.Swatches, v => v.cmbSwatches.ItemsSource).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SelectedSwatch, v => v.cmbSwatches.SelectedItem).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.ColorModeDark, v => v.togDarkMode.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.CurrentLanguage, v => v.cmbCurrentLanguage.Text).DisposeWith(disposables);
