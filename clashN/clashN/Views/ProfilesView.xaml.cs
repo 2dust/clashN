@@ -28,7 +28,7 @@ namespace clashN.Views
 
             this.WhenActivated(disposables =>
             {
-                this.OneWayBind(ViewModel, vm => vm.ProfileItems, v => v.lstProfiles.ItemsSource);
+                this.OneWayBind(ViewModel, vm => vm.ProfileItems, v => v.lstProfiles.ItemsSource).DisposeWith(disposables);
 
                 this.Bind(ViewModel, vm => vm.SelectedSource, v => v.lstProfiles.SelectedItem).DisposeWith(disposables);
 
