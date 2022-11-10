@@ -1,10 +1,8 @@
-﻿using System.IO;
+﻿using clashN.Mode;
+using clashN.Properties;
+using System.IO;
 using System.Net.Sockets;
 using System.Text;
-using System.Windows;
-using clashN.Mode;
-using clashN.Properties;
-using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 
 namespace clashN.Handler;
@@ -58,11 +56,11 @@ public class HttpHandler
                 }
                 catch (Exception e)
                 {
-                    
+
                 }
-                
+
             }
-            
+
         });
     }
 
@@ -78,7 +76,7 @@ public class HttpHandler
             catch (Exception e)
             {
             }
-            
+
         }
     }
 }

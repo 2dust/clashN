@@ -521,7 +521,7 @@ namespace clashN.Handler
         {
             try
             {
-                if(File.Exists(Utils.GetConfigPath(config.profileItems[index].address)))
+                if (File.Exists(Utils.GetConfigPath(config.profileItems[index].address)))
                 {
                     File.Delete(Utils.GetConfigPath(config.profileItems[index].address));
                 }
