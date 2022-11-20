@@ -58,9 +58,9 @@
             DockPanel.Dock="Top"
             Style="{StaticResource ListItemTitle}"
             Text="{x:Static resx:ResUI.TbSettingsSaveTip}" />
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <TabControl>
-                <TabItem Header="{x:Static resx:ResUI.TbSettingsCore}">
+        <TabControl>
+            <TabItem Header="{x:Static resx:ResUI.TbSettingsCore}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Grid.Row="1" Margin="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -205,9 +205,10 @@
                             Content="{x:Static resx:ResUI.TbSettingsEditMixin}"
                             Style="{StaticResource DefButton}" />
                     </Grid>
-                </TabItem>
-
-                <TabItem Header="{x:Static resx:ResUI.TbSettingsClashN}">
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="{x:Static resx:ResUI.TbSettingsClashN}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Grid.Row="2" Margin="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -350,10 +351,11 @@
                             Style="{StaticResource DefButton}" />
 
                     </Grid>
+                </ScrollViewer>
+            </TabItem>
 
-                </TabItem>
-
-                <TabItem Header="{x:Static resx:ResUI.TbSettingsSystemproxy}">
+            <TabItem Header="{x:Static resx:ResUI.TbSettingsSystemproxy}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <Grid Grid.Row="3" Margin="8">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -416,9 +418,9 @@
                             Width="200"
                             Margin="8" />
                     </Grid>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
 
-                </TabItem>
-            </TabControl>
-        </ScrollViewer>
     </DockPanel>
 </reactiveui:ReactiveUserControl>

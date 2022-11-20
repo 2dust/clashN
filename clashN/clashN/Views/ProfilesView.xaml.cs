@@ -21,6 +21,7 @@ namespace clashN.Views
             ViewModel = new ProfilesViewModel();
             Locator.CurrentMutable.RegisterLazySingleton(() => ViewModel, typeof(ProfilesViewModel));
 
+            lstProfiles.PreviewMouseDoubleClick += lstProfiles_PreviewMouseDoubleClick;
             lstProfiles.PreviewMouseLeftButtonDown += LstProfiles_PreviewMouseLeftButtonDown;
             lstProfiles.MouseMove += LstProfiles_MouseMove;
             lstProfiles.DragEnter += LstProfiles_DragEnter;
@@ -91,6 +92,11 @@ namespace clashN.Views
                     ViewModel?.SetDefaultProfile();
                 }
             }
+        }
+
+        private void lstProfiles_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ViewModel?.EditProfile(false);
         }
 
         #region Drag and Drop
@@ -186,5 +192,6 @@ namespace clashN.Views
         }
 
         #endregion
+
     }
 }

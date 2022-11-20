@@ -25,16 +25,13 @@
         materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
         HorizontalScrollBarVisibility="Auto"
         VerticalScrollBarVisibility="Auto">
-        <Grid>
+        <Grid Margin="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid
-                x:Name="gridText"
-                Grid.Row="0"
-                Margin="8">
+            <Grid x:Name="gridText" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />

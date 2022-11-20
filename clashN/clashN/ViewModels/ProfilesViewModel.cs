@@ -161,7 +161,7 @@ namespace clashN.ViewModels
             }
         }
 
-        private void EditProfile(bool blNew)
+        public void EditProfile(bool blNew)
         {
             ProfileItem item;
             if (blNew)
