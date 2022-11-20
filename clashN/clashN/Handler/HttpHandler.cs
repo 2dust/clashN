@@ -56,7 +56,6 @@ public class HttpHandler
                 }
                 catch (Exception e)
                 {
-
                 }
 
             }
@@ -72,6 +71,7 @@ public class HttpHandler
             {
                 _isRunning = false;
                 _tcpListener.Stop();
+                _tcpListener = null;
             }
             catch (Exception e)
             {
