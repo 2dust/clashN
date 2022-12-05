@@ -91,6 +91,18 @@ namespace clashN.Handler
                 match = "Clash Meta"
             });
 
+            coreInfos.Add(new CoreInfo
+            {
+                coreType = ECoreType.clash_premium,
+                coreExes = new List<string> { "clash-windows-amd64-v3", "clash-windows-amd64", "clash-windows-386", "clash" },
+                arguments = "-f config.yaml",
+                coreUrl = Global.clashCoreUrl,
+                coreLatestUrl = Global.clashCoreUrl + "/latest",
+                coreDownloadUrl32 = Global.clashCoreUrl + "/download/{0}/clash-windows-386-{0}.zip",
+                coreDownloadUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip",
+                match = "Clash"
+            });
+
         }
     }
 }

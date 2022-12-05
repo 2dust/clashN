@@ -1655,7 +1655,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 To enable tun mode, please use Clash.Meta Core first; if you must use Clash Core, you need to download Clash Premium Core overlay 的本地化字符串。
+        ///   查找类似 To enable tun mode, please use Clash.Meta Core first; or use Clash Premium Core 的本地化字符串。
         /// </summary>
         public static string TunModeCoreTip {
             get {

@@ -602,7 +602,7 @@
     <value>当前服务的真连接延迟: {0}</value>
   </data>
   <data name="TunModeCoreTip" xml:space="preserve">
-    <value>开启tun模式请优先使用Clash.Meta Core; 如一定要使用Clash Core, 需要下载Clash Premium Core覆盖</value>
+    <value>开启tun模式请优先使用Clash.Meta Core; 或者使用Clash Premium Core</value>
   </data>
   <data name="TbSave" xml:space="preserve">
     <value>保存</value>

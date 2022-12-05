@@ -602,7 +602,7 @@
     <value>The ping of current service: {0}</value>
   </data>
   <data name="TunModeCoreTip" xml:space="preserve">
-    <value>To enable tun mode, please use Clash.Meta Core first; if you must use Clash Core, you need to download Clash Premium Core overlay</value>
+    <value>To enable tun mode, please use Clash.Meta Core first; or use Clash Premium Core</value>
   </data>
   <data name="TbSave" xml:space="preserve">
     <value>Save</value>
