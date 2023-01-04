@@ -61,6 +61,7 @@ namespace clashN.ViewModels
                 SaveProfile();
             });
 
+            Utils.SetDarkBorder(view, _config.uiItem.colorModeDark);
         }
 
         private void SaveProfile()

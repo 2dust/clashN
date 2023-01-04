@@ -14,6 +14,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Interop;
 using Application = System.Windows.Application;
 
 namespace clashN.ViewModels
@@ -472,17 +473,19 @@ namespace clashN.ViewModels
 
             if (_config.uiItem.mainWidth > 0 && _config.uiItem.mainHeight > 0)
             {
-                if (_config.uiItem.mainWidth > SystemInformation.WorkingArea.Width)
-                {
-                    _config.uiItem.mainWidth = SystemInformation.WorkingArea.Width * 2 / 3;
-                }
-                if (_config.uiItem.mainHeight > SystemInformation.WorkingArea.Height)
-                {
-                    _config.uiItem.mainHeight = SystemInformation.WorkingArea.Height * 2 / 3;
-                }
-
                 Application.Current.MainWindow.Width = _config.uiItem.mainWidth;
                 Application.Current.MainWindow.Height = _config.uiItem.mainHeight;
+            }
+
+            IntPtr hWnd = new WindowInteropHelper(Application.Current.MainWindow).EnsureHandle();
+            Graphics g = Graphics.FromHwnd(hWnd);
+            if (Application.Current.MainWindow.Width > SystemInformation.WorkingArea.Width * 96 / g.DpiX)
+            {
+                Application.Current.MainWindow.Width = SystemInformation.WorkingArea.Width * 96 / g.DpiX;
+            }
+            if (Application.Current.MainWindow.Height > SystemInformation.WorkingArea.Height * 96 / g.DpiY)
+            {
+                Application.Current.MainWindow.Height = SystemInformation.WorkingArea.Height * 96 / g.DpiY;
             }
         }
         private void StorageUI()
