@@ -52,6 +52,8 @@ namespace clashN.Views
             txtGlobalHotkey4.KeyDown += TxtGlobalHotkey_KeyDown;
 
             BindingData(-1);
+
+            Utils.SetDarkBorder(this, _config.uiItem.colorModeDark);
         }
 
 
