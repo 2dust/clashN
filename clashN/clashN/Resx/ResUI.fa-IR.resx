@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllGroupProfiles" xml:space="preserve">
+    <value>تمام سرورها</value>
+  </data>
+  <data name="BatchExportSuccessfully" xml:space="preserve">
+    <value>Export configuration file to clipboard successfully</value>
+  </data>
+  <data name="CheckProfileSettings" xml:space="preserve">
+    <value>Please check the configuration file settings first</value>
+  </data>
+  <data name="ConfigurationFormatIncorrect" xml:space="preserve">
+    <value> configuration format is incorrect</value>
+  </data>
+  <data name="CustomProfileTips" xml:space="preserve">
+    <value>Note that custom configuration relies entirely on your own configuration and does not work with all settings. If you want to use the system proxy, please modify the listening port manually.</value>
+  </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>درحال دانلود ...</value>
+  </data>
+  <data name="downloadSpeed" xml:space="preserve">
+    <value>DOWN</value>
+  </data>
+  <data name="DownloadYesNo" xml:space="preserve">
+    <value>Whether to download? {0}</value>
+  </data>
+  <data name="EnableTunModeFailed" xml:space="preserve">
+    <value>Failed to enable tun mode, please run as administrator</value>
+  </data>
+  <data name="FailedConversionConfiguration" xml:space="preserve">
+    <value>Failed to convert configuration file</value>
+  </data>
+  <data name="FailedGenDefaultConfiguration" xml:space="preserve">
+    <value>Failed to generate default configuration file</value>
+  </data>
+  <data name="FailedGetDefaultConfiguration" xml:space="preserve">
+    <value> Failed to get the default configuration</value>
+  </data>
+  <data name="FailedImportedCustomProfile" xml:space="preserve">
+    <value>Failed to import configuration file</value>
+  </data>
+  <data name="FailedReadConfiguration" xml:space="preserve">
+    <value>Failed to read configuration file</value>
+  </data>
+  <data name="FillProfileAddressCustom" xml:space="preserve">
+    <value>Please browse to import configuration file configuration</value>
+  </data>
+  <data name="IncorrectClientConfiguration" xml:space="preserve">
+    <value> is not the correct client configuration file, please check</value>
+  </data>
+  <data name="Incorrectconfiguration" xml:space="preserve">
+    <value> is not the correct configuration, please check</value>
+  </data>
+  <data name="IncorrectProfileConfiguration" xml:space="preserve">
+    <value> is not the correct configuration file configuration file, please check</value>
+  </data>
+  <data name="InitialConfiguration" xml:space="preserve">
+    <value>Initial Configuration</value>
+  </data>
+  <data name="IsLatestCore" xml:space="preserve">
+    <value>{0} already up to date.</value>
+  </data>
+  <data name="IsLatestN" xml:space="preserve">
+    <value>{0} already up to date.</value>
+  </data>
+  <data name="menuAddProfile" xml:space="preserve">
+    <value>فایل پیکربندی را اضافه کنید</value>
+  </data>
+  <data name="menuAddProfileViaClipboard" xml:space="preserve">
+    <value>Add configuration file from clipboard (Ctrl+V)</value>
+  </data>
+  <data name="menuAddProfileViaScan" xml:space="preserve">
+    <value>Scan QR code on the screen</value>
+  </data>
+  <data name="menuClearStatistic" xml:space="preserve">
+    <value>تمام آمار خدمات را پاک کنید</value>
+  </data>
+  <data name="menuCloneProfile" xml:space="preserve">
+    <value>Clone selected configuration file</value>
+  </data>
+  <data name="menuConnectionClose" xml:space="preserve">
+    <value>بستن اتصال</value>
+  </data>
+  <data name="menuConnectionCloseAll" xml:space="preserve">
+    <value>تمام اتصالات را ببندید</value>
+  </data>
+  <data name="menuEditLocalFile" xml:space="preserve">
+    <value>Edit Local File</value>
+  </data>
+  <data name="menuEditProfile" xml:space="preserve">
+    <value>Edit configuration file</value>
+  </data>
+  <data name="menuExit" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="menuExportProfile" xml:space="preserve">
+    <value>Export configuration file to clipboard (Ctrl+C)</value>
+  </data>
+  <data name="menuModeDirect" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="menuModeGlobal" xml:space="preserve">
+    <value>Global</value>
+  </data>
+  <data name="menuModeNothing" xml:space="preserve">
+    <value>تغییر نده</value>
+  </data>
+  <data name="menuModeRule" xml:space="preserve">
+    <value>قانون</value>
+  </data>
+  <data name="menuProfile" xml:space="preserve">
+    <value>پروفایل</value>
+  </data>
+  <data name="menuProfileReload" xml:space="preserve">
+    <value>Refresh Profile (F5)</value>
+  </data>
+  <data name="menuProxiesReload" xml:space="preserve">
+    <value>Refresh Proxies (F5)</value>
+  </data>
+  <data name="menuProxiesSelectActivity" xml:space="preserve">
+    <value>Select active node (Enter)</value>
+  </data>
+  <data name="menuProxiesDelaytest" xml:space="preserve">
+    <value>All Node Latency Test</value>
+  </data>
+  <data name="menuProxiesDelaytestPart" xml:space="preserve">
+    <value>Part Node Latency Test</value>
+  </data>
+  <data name="menuRemoveProfile" xml:space="preserve">
+    <value>Remove selected configuration files (Delete)</value>
+  </data>
+  <data name="menuRulemode" xml:space="preserve">
+    <value>نوع قانون</value>
+  </data>
+  <data name="menuSetDefaultProfile" xml:space="preserve">
+    <value>Set as active configuration file (Enter)</value>
+  </data>
+  <data name="menuSubUpdate" xml:space="preserve">
+    <value>Update subscription without proxy</value>
+  </data>
+  <data name="menuSubUpdateSelected" xml:space="preserve">
+    <value>Update selected subscription without proxy</value>
+  </data>
+  <data name="menuSubUpdateSelectedViaProxy" xml:space="preserve">
+    <value>Update selected subscription with proxy</value>
+  </data>
+  <data name="menuSubUpdateViaProxy" xml:space="preserve">
+    <value>Update subscription with proxy</value>
+  </data>
+  <data name="menuSystemproxy" xml:space="preserve">
+    <value>پروکسی سیستم</value>
+  </data>
+  <data name="menuSystemProxyClear" xml:space="preserve">
+    <value>پاک کردن پروکسی سیستم</value>
+  </data>
+  <data name="menuSystemProxyNothing" xml:space="preserve">
+    <value>Do not change system proxy</value>
+  </data>
+  <data name="menuSystemProxySet" xml:space="preserve">
+    <value>Set system proxy</value>
+  </data>
+  <data name="MsgClearSubscription" xml:space="preserve">
+    <value>Clear original subscription content</value>
+  </data>
+  <data name="MsgDownloadCoreSuccessfully" xml:space="preserve">
+    <value>Download Core successfully</value>
+  </data>
+  <data name="MsgDownloadGeoFileSuccessfully" xml:space="preserve">
+    <value>Download GeoFile: {0} successfully</value>
+  </data>
+  <data name="MsgFailedImportSubscription" xml:space="preserve">
+    <value>Failed to import subscription content</value>
+  </data>
+  <data name="MsgGetSubscriptionSuccessfully" xml:space="preserve">
+    <value>Get the subscription content successfully</value>
+  </data>
+  <data name="MsgInformationTitle" xml:space="preserve">
+    <value>Informations (Filter : {0})</value>
+  </data>
+  <data name="MsgNeedUrl" xml:space="preserve">
+    <value>Please fill in the address (Url)</value>
+  </data>
+  <data name="MsgNoValidSubscription" xml:space="preserve">
+    <value>No valid subscriptions set</value>
+  </data>
+  <data name="MsgParsingSuccessfully" xml:space="preserve">
+    <value>Resolve {0} successfully</value>
+  </data>
+  <data name="MsgSkipSubscriptionUpdate" xml:space="preserve">
+    <value>Skip this subscription update</value>
+  </data>
+  <data name="MsgStartGettingSubscriptions" xml:space="preserve">
+    <value>Start getting subscriptions</value>
+  </data>
+  <data name="MsgStartUpdating" xml:space="preserve">
+    <value>Start updating {0}...</value>
+  </data>
+  <data name="MsgSubscriptionDecodingFailed" xml:space="preserve">
+    <value>Invalid subscription content</value>
+  </data>
+  <data name="MsgSureContinue" xml:space="preserve">
+    <value>Are you sure you want to continue?</value>
+  </data>
+  <data name="MsgUnpacking" xml:space="preserve">
+    <value>در حال باز کردن بسته بندی است ...</value>
+  </data>
+  <data name="MsgUpdateCoreCoreFailed" xml:space="preserve">
+    <value>Update Core failed, see the log for details</value>
+  </data>
+  <data name="MsgUpdateCoreCoreSuccessfully" xml:space="preserve">
+    <value>بروزرسانی هسته با موفق بود</value>
+  </data>
+  <data name="MsgUpdateCoreCoreSuccessfullyMore" xml:space="preserve">
+    <value>Update Core successfully! Restarting service...</value>
+  </data>
+  <data name="MsgUpdateSubscriptionEnd" xml:space="preserve">
+    <value>بروزرسانی اشتراک به پایان رسید</value>
+  </data>
+  <data name="MsgUpdateSubscriptionStart" xml:space="preserve">
+    <value>بروزرسانی اشتراک شروع شد</value>
+  </data>
+  <data name="NeedHttpGlobalProxy" xml:space="preserve">
+    <value> This feature relies on the Http global proxy, please set it correctly first.</value>
+  </data>
+  <data name="NotFoundCore" xml:space="preserve">
+    <value>Core not found, please download: {0}</value>
+  </data>
+  <data name="NotRunAsAdmin" xml:space="preserve">
+    <value>به عنوان ادمین اجرا نمی شود</value>
+  </data>
+  <data name="NoValidQRcodeFound" xml:space="preserve">
+    <value>Scan completed, no valid QR code found</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value> operation failed, please check retry</value>
+  </data>
+  <data name="OperationSuccess" xml:space="preserve">
+    <value>Operation success</value>
+  </data>
+  <data name="PleaseFillRemarks" xml:space="preserve">
+    <value>Please Fill Remarks</value>
+  </data>
+  <data name="PleaseSelectEncryption" xml:space="preserve">
+    <value>Please select the encryption method</value>
+  </data>
+  <data name="PleaseSelectProfile" xml:space="preserve">
+    <value>Please select the configuration file first</value>
+  </data>
+  <data name="PleaseSelectProtocol" xml:space="preserve">
+    <value>Please select an agreement</value>
+  </data>
+  <data name="PleaseSelectRules" xml:space="preserve">
+    <value>Please select rules</value>
+  </data>
+  <data name="RegisterGlobalHotkeyFailed" xml:space="preserve">
+    <value>Global hotkey {0} registered failed, reason {1}</value>
+  </data>
+  <data name="RegisterGlobalHotkeySuccessfully" xml:space="preserve">
+    <value>Global hotkey {0} registered successfully</value>
+  </data>
+  <data name="RemoveProfile" xml:space="preserve">
+    <value>Are you sure to remove the configuration file?</value>
+  </data>
+  <data name="RunAsAdmin" xml:space="preserve">
+    <value>اجرا به عنوان ادمین</value>
+  </data>
+  <data name="SpeedProfileTips" xml:space="preserve">
+    <value>Note: After this function relies on the Http global proxy test, please manually adjust the Http global proxy and active node!</value>
+  </data>
+  <data name="StartService" xml:space="preserve">
+    <value>Start service ({0})...</value>
+  </data>
+  <data name="SuccessfulConfiguration" xml:space="preserve">
+    <value>Successful configuration
+{0}</value>
+  </data>
+  <data name="SuccessfullyImportedCustomProfile" xml:space="preserve">
+    <value>Successfully imported configuration file</value>
+  </data>
+  <data name="SuccessfullyImportedProfileViaClipboard" xml:space="preserve">
+    <value>Import configuration file from clipboard successfully.</value>
+  </data>
+  <data name="SuccessfullyImportedProfileViaScan" xml:space="preserve">
+    <value>اسکن واردات با موفقیت انجام شد</value>
+  </data>
+  <data name="TbAddress" xml:space="preserve">
+    <value>آدرس</value>
+  </data>
+  <data name="TbAddressAs" xml:space="preserve">
+    <value>فایل محلی</value>
+  </data>
+  <data name="TbAlias" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="TbAutoRefresh" xml:space="preserve">
+    <value>بازخوانی خودکار</value>
+  </data>
+  <data name="TbBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="TbCancel" xml:space="preserve">
+    <value>لغو کنید</value>
+  </data>
+  <data name="TbClearSystemProxy" xml:space="preserve">
+    <value>پاک کردن پروکسی سیستم</value>
+  </data>
+  <data name="TbConfirm" xml:space="preserve">
+    <value>تایید</value>
+  </data>
+  <data name="TbConnections" xml:space="preserve">
+    <value>اتصالات</value>
+  </data>
+  <data name="TbCoreType" xml:space="preserve">
+    <value>نوع هسته</value>
+  </data>
+  <data name="TbDisplayGUI" xml:space="preserve">
+    <value>نمایش رابط کاربری</value>
+  </data>
+  <data name="TbEdit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="TbEnableConvert" xml:space="preserve">
+    <value>Enable subscription conversion</value>
+  </data>
+  <data name="TbEnableTun" xml:space="preserve">
+    <value>Tun</value>
+  </data>
+  <data name="TbEnableTunAs" xml:space="preserve">
+    <value>Enable tun mode (Run As Admin)</value>
+  </data>
+  <data name="TbEnableUpdate" xml:space="preserve">
+    <value>بروزرسانی</value>
+  </data>
+  <data name="TbEnableUpdateAs" xml:space="preserve">
+    <value>Enable Update subscription</value>
+  </data>
+  <data name="TbGlobalHotkeySetting" xml:space="preserve">
+    <value>GlobalHotkey Setting</value>
+  </data>
+  <data name="TbGlobalHotkeySettingTip" xml:space="preserve">
+    <value>Set directly by pressing the keyboard, Take effect after restart</value>
+  </data>
+  <data name="TbHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="TbHelpCheck" xml:space="preserve">
+    <value>چک کردن</value>
+  </data>
+  <data name="TbHelpProject" xml:space="preserve">
+    <value>پروژه clashN</value>
+  </data>
+  <data name="TbHelpProjectGo" xml:space="preserve">
+    <value>Go to</value>
+  </data>
+  <data name="TbMsgTitle" xml:space="preserve">
+    <value>اطلاعات</value>
+  </data>
+  <data name="TbNotChangeSystemProxy" xml:space="preserve">
+    <value>پروکسی سیستم را تغییر ندهد</value>
+  </data>
+  <data name="TbProfiles" xml:space="preserve">
+    <value>پروفایل</value>
+  </data>
+  <data name="TbPromotion" xml:space="preserve">
+    <value>ترفیع</value>
+  </data>
+  <data name="TbPromotionInformation" xml:space="preserve">
+    <value>Click the button below to support the developer.</value>
+  </data>
+  <data name="TbProxies" xml:space="preserve">
+    <value>پروکسی</value>
+  </data>
+  <data name="TbReset" xml:space="preserve">
+    <value>بازنشانی</value>
+  </data>
+  <data name="TbSetSystemProxy" xml:space="preserve">
+    <value>تنظیم پراکسی سیستم</value>
+  </data>
+  <data name="TbSettings" xml:space="preserve">
+    <value>تنظیمات</value>
+  </data>
+  <data name="TbSettingsAllowLAN" xml:space="preserve">
+    <value>اتصالات از شبکه محلی را مجاز کنید</value>
+  </data>
+  <data name="TbSettingsAPIPort" xml:space="preserve">
+    <value>API Port</value>
+  </data>
+  <data name="TbSettingsAutoTest" xml:space="preserve">
+    <value>Automatic latency test interval (minutes)</value>
+  </data>
+  <data name="TbSettingsAutoUpdate" xml:space="preserve">
+    <value>Automatic update interval of subscriptions (hours)</value>
+  </data>
+  <data name="TbSettingsClashN" xml:space="preserve">
+    <value>ClashN settings</value>
+  </data>
+  <data name="TbSettingsColorMode" xml:space="preserve">
+    <value>حالت تاریک</value>
+  </data>
+  <data name="TbSettingsCore" xml:space="preserve">
+    <value>تنظیمات هسته</value>
+  </data>
+  <data name="TbSettingsEditMixin" xml:space="preserve">
+    <value>Edit Mixin</value>
+  </data>
+  <data name="TbSettingsException" xml:space="preserve">
+    <value>Exception</value>
+  </data>
+  <data name="TbSettingsExceptionTip" xml:space="preserve">
+    <value>Exception. Do not use proxy server for addresses beginning with,Use semicolon (;)</value>
+  </data>
+  <data name="TbSettingsHttpPort" xml:space="preserve">
+    <value>Http Port</value>
+  </data>
+  <data name="TbSettingsIpv6" xml:space="preserve">
+    <value>Enable IPv6</value>
+  </data>
+  <data name="TbSettingsLanguage" xml:space="preserve">
+    <value>زبان (راه اندازی مجدد)</value>
+  </data>
+  <data name="TbSettingsLogLevel" xml:space="preserve">
+    <value>Log Level</value>
+  </data>
+  <data name="TbSettingsMixedPort" xml:space="preserve">
+    <value>Mixed Port</value>
+  </data>
+  <data name="TbSettingsMixin" xml:space="preserve">
+    <value>Enable Mixin configuration content</value>
+  </data>
+  <data name="TbSettingsSetUWP" xml:space="preserve">
+    <value>Set Win10 UWP Loopback</value>
+  </data>
+  <data name="TbSettingsSocksPort" xml:space="preserve">
+    <value>پورت ساکس</value>
+  </data>
+  <data name="TbSettingsStartBoot" xml:space="preserve">
+    <value>شروع در راه اندازی سیستم</value>
+  </data>
+  <data name="TbSettingsStatistics" xml:space="preserve">
+    <value>فعال کردن آمار (نیاز به راه اندازی مجدد)</value>
+  </data>
+  <data name="TbSettingsSubConvert" xml:space="preserve">
+    <value>Subscription conversion Url</value>
+  </data>
+  <data name="TbSettingsSystemproxy" xml:space="preserve">
+    <value>تنظیمات پراکسی سیستم</value>
+  </data>
+  <data name="TbSettingsTLS13" xml:space="preserve">
+    <value>Enable Security Protocol TLS v1.3 (subscription/update)</value>
+  </data>
+  <data name="TbSorting" xml:space="preserve">
+    <value>مرتب سازی</value>
+  </data>
+  <data name="TbSortingDelay" xml:space="preserve">
+    <value>تاخیر</value>
+  </data>
+  <data name="TbSortingDownSpeed" xml:space="preserve">
+    <value>سرعت دانلود</value>
+  </data>
+  <data name="TbSortingDownTraffic" xml:space="preserve">
+    <value>ترافیک دانلود</value>
+  </data>
+  <data name="TbSortingName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="TbSortingTime" xml:space="preserve">
+    <value>زمان</value>
+  </data>
+  <data name="TbSortingUpSpeed" xml:space="preserve">
+    <value>سرعت اپلود</value>
+  </data>
+  <data name="TbSortingUpTraffic" xml:space="preserve">
+    <value>ترافیک آپلود</value>
+  </data>
+  <data name="TbUrl" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="TbUrlAs" xml:space="preserve">
+    <value>Subscription url</value>
+  </data>
+  <data name="TbUserAgent" xml:space="preserve">
+    <value>User Agent(optional)</value>
+  </data>
+  <data name="TestMeOutput" xml:space="preserve">
+    <value>The ping of current service: {0}</value>
+  </data>
+  <data name="TunModeCoreTip" xml:space="preserve">
+    <value>To enable tun mode, please use Clash.Meta Core first; or use Clash Premium Core</value>
+  </data>
+  <data name="TbSave" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="TbSettingsAdvancedProtocol" xml:space="preserve">
+    <value>Advanced proxy settings, protocol selection (optional)</value>
+  </data>
+  <data name="menuProfileQrcode" xml:space="preserve">
+    <value>Share Qrcode</value>
+  </data>
+  <data name="TbLogs" xml:space="preserve">
+    <value>لاگ ها</value>
+  </data>
+  <data name="TbFilter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="TbLineCount" xml:space="preserve">
+    <value>Max Line</value>
+  </data>
+  <data name="TbAddProfileViaClipboard" xml:space="preserve">
+    <value>Import from clipboard</value>
+  </data>
+  <data name="TbSubUpdateViaProxy" xml:space="preserve">
+    <value>Update subscription</value>
+  </data>
+  <data name="TbReloadCore" xml:space="preserve">
+    <value>Reload Core</value>
+  </data>
+  <data name="TbSettingsSaveTip" xml:space="preserve">
+    <value>After modifying the following parameters, click Save to take effect</value>
+  </data>
+  <data name="TbSetDefaultProfile" xml:space="preserve">
+    <value>Set as active</value>
+  </data>
+  <data name="TbSortingDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="menuSystemProxyPac" xml:space="preserve">
+    <value>Pac Mode</value>
+  </data>
+  <data name="TbSettingsPacListenPort" xml:space="preserve">
+    <value>Pac listen port</value>
+  </data>
+  <data name="TbSettingsAutoHideStartup" xml:space="preserve">
+    <value>Auto hide startup</value>
+  </data>
+  <data name="TbSystemProxyPac" xml:space="preserve">
+    <value>Pac Mode</value>
+  </data>
+</root>
