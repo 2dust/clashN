@@ -53,5 +53,8 @@
         <EmbeddedResource Update="Resx\ResUI.zh-Hans.resx">
           <Generator>PublicResXFileCodeGenerator</Generator>
         </EmbeddedResource>
+        <EmbeddedResource Update="Resx\ResUI.fa-IR.resx">
+          <Generator>PublicResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
     </ItemGroup>
 </Project>
