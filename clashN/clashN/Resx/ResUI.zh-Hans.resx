@@ -655,4 +655,16 @@
   <data name="TbSystemProxyPac" xml:space="preserve">
     <value>Pac模式</value>
   </data>
+  <data name="TbSortingChain" xml:space="preserve">
+    <value>路由链</value>
+  </data>
+  <data name="TbSortingHost" xml:space="preserve">
+    <value>主机</value>
+  </data>
+  <data name="TbSortingNetwork" xml:space="preserve">
+    <value>网络</value>
+  </data>
+  <data name="TbSortingType" xml:space="preserve">
+    <value>类型</value>
+  </data>
 </root>

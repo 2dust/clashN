@@ -652,4 +652,16 @@
   <data name="TbSystemProxyPac" xml:space="preserve">
     <value>Pac Mode</value>
   </data>
+  <data name="TbSortingChain" xml:space="preserve">
+    <value>Chain</value>
+  </data>
+  <data name="TbSortingHost" xml:space="preserve">
+    <value>Host</value>
+  </data>
+  <data name="TbSortingNetwork" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="TbSortingType" xml:space="preserve">
+    <value>Type</value>
+  </data>
 </root>

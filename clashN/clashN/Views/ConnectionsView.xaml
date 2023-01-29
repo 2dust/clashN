@@ -45,6 +45,7 @@
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingUpTraffic}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingDownTraffic}" />
                     <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingTime}" />
+                    <ComboBoxItem Content="{x:Static resx:ResUI.TbSortingHost}" />
                 </ComboBox>
                 <Separator />
                 <Button x:Name="btnConnectionCloseAll" ToolTip="{x:Static resx:ResUI.menuConnectionCloseAll}">
@@ -64,83 +65,55 @@
                     HorizontalAlignment="Left" />
             </ToolBar>
         </ToolBarTray>
-        <ListView
+        <DataGrid
             x:Name="lstConnections"
-            HorizontalContentAlignment="Stretch"
-            BorderThickness="0"
-            ItemContainerStyle="{StaticResource lvItemSelected}"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListView.ContextMenu>
+            AutoGenerateColumns="False"
+            BorderThickness="1"
+            CanUserAddRows="False"
+            CanUserResizeRows="False"
+            CanUserSortColumns="False"
+            EnableRowVirtualization="True"
+            GridLinesVisibility="All"
+            HeadersVisibility="Column"
+            IsReadOnly="True">
+            <DataGrid.ContextMenu>
                 <ContextMenu Style="{StaticResource DefMenu}">
                     <MenuItem x:Name="menuConnectionClose" Header="{x:Static resx:ResUI.menuConnectionClose}" />
                     <MenuItem x:Name="menuConnectionCloseAll" Header="{x:Static resx:ResUI.menuConnectionCloseAll}" />
                 </ContextMenu>
-            </ListView.ContextMenu>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <DockPanel>
-                            <Button
-                                x:Name="btnClose"
-                                Margin="8,0"
-                                Click="btnClose_Click"
-                                Content="{materialDesign:PackIcon Kind=Close}"
-                                DockPanel.Dock="Left"
-                                IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}" />
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <StackPanel
-                                    Grid.Row="0"
-                                    Margin="8,0,8,0"
-                                    HorizontalAlignment="Left"
-                                    Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding host}" />
-                                </StackPanel>
-                                <StackPanel
-                                    Grid.Row="1"
-                                    HorizontalAlignment="Left"
-                                    Orientation="Horizontal">
-                                    <materialDesign:Chip
-                                        Content="{Binding network}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip
-                                        Content="{Binding type}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip
-                                        Content="{Binding chain}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip
-                                        Content="{Binding uploadTraffic}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip
-                                        Content="{Binding downloadTraffic}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                    <materialDesign:Chip
-                                        Content="{Binding elapsed}"
-                                        IsEnabled="False"
-                                        Style="{StaticResource ListItemChip}" />
-                                </StackPanel>
-                            </Grid>
-                        </DockPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="300"
+                    Binding="{Binding host}"
+                    Header="{x:Static resx:ResUI.TbSortingHost}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding network}"
+                    Header="{x:Static resx:ResUI.TbSortingNetwork}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding type}"
+                    Header="{x:Static resx:ResUI.TbSortingType}" />
+                <DataGridTextColumn
+                    Width="200"
+                    Binding="{Binding chain}"
+                    Header="{x:Static resx:ResUI.TbSortingChain}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding uploadTraffic}"
+                    Header="{x:Static resx:ResUI.TbSortingUpTraffic}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding downloadTraffic}"
+                    Header="{x:Static resx:ResUI.TbSortingDownTraffic}" />
+                <DataGridTextColumn
+                    Width="100"
+                    Binding="{Binding elapsed}"
+                    Header="{x:Static resx:ResUI.TbSortingTime}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
     </DockPanel>
 
 </reactiveui:ReactiveUserControl>

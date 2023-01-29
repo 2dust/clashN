@@ -1529,6 +1529,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Chain 的本地化字符串。
+        /// </summary>
+        public static string TbSortingChain {
+            get {
+                return ResourceManager.GetString("TbSortingChain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Default 的本地化字符串。
         /// </summary>
         public static string TbSortingDefault {
@@ -1565,6 +1574,15 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Host 的本地化字符串。
+        /// </summary>
+        public static string TbSortingHost {
+            get {
+                return ResourceManager.GetString("TbSortingHost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Name 的本地化字符串。
         /// </summary>
         public static string TbSortingName {
@@ -1574,11 +1592,29 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 Network 的本地化字符串。
+        /// </summary>
+        public static string TbSortingNetwork {
+            get {
+                return ResourceManager.GetString("TbSortingNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Time 的本地化字符串。
         /// </summary>
         public static string TbSortingTime {
             get {
                 return ResourceManager.GetString("TbSortingTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Type 的本地化字符串。
+        /// </summary>
+        public static string TbSortingType {
+            get {
+                return ResourceManager.GetString("TbSortingType", resourceCulture);
             }
         }
         
