@@ -108,7 +108,7 @@ namespace clashN.Handler
                 }
 
                 //enable tun mode
-                if (node.enableTun)
+                if (config.enableTun)
                 {
                     string tun = Utils.GetEmbedText(Global.SampleTun);
                     if (!Utils.IsNullOrEmpty(tun))
@@ -173,7 +173,7 @@ namespace clashN.Handler
             }
             foreach (var item in mixinContent)
             {
-                if (!node.enableTun && item.Key == "tun")
+                if (!config.enableTun && item.Key == "tun")
                 {
                     continue;
                 }

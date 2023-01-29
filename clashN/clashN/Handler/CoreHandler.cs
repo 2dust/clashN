@@ -36,9 +36,14 @@ namespace clashN.Handler
                     return;
                 }
 
-                if (item.enableTun && !Utils.IsAdministrator())
+                if (config.enableTun && !Utils.IsAdministrator())
                 {
-                    ShowMsg(false, ResUI.EnableTunModeFailed);
+                    ShowMsg(true, ResUI.EnableTunModeFailed);
+                    return;
+                }
+                if (config.enableTun && item.coreType == ECoreType.clash)
+                {
+                    ShowMsg(true, ResUI.TunModeCoreTip);
                     return;
                 }
 
@@ -210,10 +215,10 @@ namespace clashN.Handler
                         StandardErrorEncoding = Encoding.UTF8
                     }
                 };
-                if (item.enableTun)
-                {
-                    p.StartInfo.Verb = "runas";
-                }
+                //if (config.enableTun)
+                //{
+                //    p.StartInfo.Verb = "runas";
+                //}
                 p.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     if (!String.IsNullOrEmpty(e.Data))

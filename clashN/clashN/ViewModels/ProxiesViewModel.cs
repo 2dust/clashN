@@ -47,6 +47,9 @@ namespace clashN.ViewModels
         public int SortingSelected { get; set; }
         [Reactive]
         public bool AutoRefresh { get; set; }
+        [Reactive]
+        public bool EnableTun { get; set; }
+        
 
         public ProxiesViewModel()
         {
@@ -56,6 +59,7 @@ namespace clashN.ViewModels
             SelectedGroup = new();
             SelectedDetail = new();
             AutoRefresh = true;
+            EnableTun = _config.enableTun;
 
             //GetClashProxies(true);
             this.WhenAnyValue(
@@ -77,6 +81,11 @@ namespace clashN.ViewModels
                x => x.SortingSelected,
                y => y != null && y >= 0)
                   .Subscribe(c => DoSortingSelected(c));
+
+            this.WhenAnyValue(
+                x => x.EnableTun,
+                 y => y == true)
+                    .Subscribe(c => DoEnableTun(c));
 
             ProxiesReloadCmd = ReactiveCommand.Create(() =>
             {
@@ -172,6 +181,21 @@ namespace clashN.ViewModels
         public void ReloadRulemodeSelected()
         {
             RuleModeSelected = (int)_config.ruleMode;
+        }
+
+        void DoEnableTun(bool c)
+        {
+            if (_config.enableTun != EnableTun)
+            {
+                _config.enableTun = EnableTun; 
+                TunModeSwitch();
+            }           
+        }
+
+        void TunModeSwitch()
+        {
+            Global.reloadCore = true;
+            _ = Locator.Current.GetService<MainWindowViewModel>()?.LoadCore();
         }
 
         #region  proxy function

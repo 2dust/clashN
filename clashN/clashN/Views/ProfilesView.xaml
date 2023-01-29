@@ -143,12 +143,6 @@
                                         Style="{StaticResource ListItemCheckBox}" />
                                     <CheckBox
                                         Padding="0,0,8,0"
-                                        Content="{x:Static resx:ResUI.TbEnableTun}"
-                                        IsChecked="{Binding enableTun}"
-                                        IsHitTestVisible="False"
-                                        Style="{StaticResource ListItemCheckBox}" />
-                                    <CheckBox
-                                        Padding="0,0,8,0"
                                         Content="{x:Static resx:ResUI.TbEnableUpdate}"
                                         IsChecked="{Binding enabled}"
                                         IsHitTestVisible="False"

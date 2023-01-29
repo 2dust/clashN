@@ -48,6 +48,8 @@ namespace clashN.Mode
 
         public bool autoHideStartup { get; set; }
 
+        public bool enableTun { get; set; }
+
         #endregion
 
         #region other entities
@@ -121,7 +123,6 @@ namespace clashN.Mode
             remarks = string.Empty;
             testResult = string.Empty;
             groupId = string.Empty;
-            enableTun = false;
             enableConvert = false;
         }
 
@@ -175,12 +176,7 @@ namespace clashN.Mode
 
         public bool enabled { get; set; } = true;
 
-        public string userAgent
-        {
-            get; set;
-        } = string.Empty;
-
-        public bool enableTun { get; set; }
+        public string userAgent { get; set; } = string.Empty;
 
         public bool enableConvert { get; set; }
 

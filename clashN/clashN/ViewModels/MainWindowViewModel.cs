@@ -291,7 +291,15 @@ namespace clashN.ViewModels
 
         private void UpdateHandler(bool notify, string msg)
         {
-            _noticeHandler?.SendMessage(msg);
+            if (notify)
+            {
+                _noticeHandler?.Enqueue(msg); 
+                _noticeHandler?.SendMessage(msg);
+            }
+            else
+            {
+                _noticeHandler?.SendMessage(msg);
+            }
         }
         private async void UpdateTaskHandler(bool success, string msg)
         {

@@ -94,13 +94,8 @@ namespace clashN.ViewModels
                 item.address = SelectedSource.address;
                 item.userAgent = SelectedSource.userAgent;
                 item.coreType = SelectedSource.coreType;
-                item.enableTun = SelectedSource.enableTun;
                 item.enabled = SelectedSource.enabled;
                 item.enableConvert = SelectedSource.enableConvert;
-            }
-            if (SelectedSource.enableTun && SelectedSource.coreType != ECoreType.clash_meta)
-            {
-                UI.ShowWarning(ResUI.TunModeCoreTip);
             }
 
             if (ConfigHandler.EditProfile(ref _config, item) == 0)

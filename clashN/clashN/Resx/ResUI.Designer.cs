@@ -133,7 +133,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Failed to enable tun mode, please run as administrator 的本地化字符串。
+        ///   查找类似 Failed to enable Tun mode, please run as administrator 的本地化字符串。
         /// </summary>
         public static string EnableTunModeFailed {
             get {
@@ -1061,7 +1061,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Enable tun mode (Run As Admin) 的本地化字符串。
+        ///   查找类似 Enable Tun mode 的本地化字符串。
         /// </summary>
         public static string TbEnableTunAs {
             get {
@@ -1691,7 +1691,7 @@ namespace clashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 To enable tun mode, please use Clash.Meta Core first; or use Clash Premium Core 的本地化字符串。
+        ///   查找类似 To enable Tun mode, please use Clash.Meta Core first; or use Clash Premium Core 的本地化字符串。
         /// </summary>
         public static string TunModeCoreTip {
             get {

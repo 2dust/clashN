@@ -79,6 +79,15 @@
                 <TextBlock
                     VerticalAlignment="Center"
                     Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.TbEnableTunAs}" />
+                <ToggleButton
+                    x:Name="togEnableTun"
+                    Margin="8"
+                    HorizontalAlignment="Left" />
+                <Separator />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
                     Text="{x:Static resx:ResUI.TbAutoRefresh}" />
                 <ToggleButton
                     x:Name="togAutoRefresh"

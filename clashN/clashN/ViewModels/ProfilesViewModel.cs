@@ -166,7 +166,10 @@ namespace clashN.ViewModels
             ProfileItem item;
             if (blNew)
             {
-                item = new();
+                item = new()
+                {
+                    coreType = ECoreType.clash_meta
+                };
             }
             else
             {

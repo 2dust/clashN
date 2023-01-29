@@ -27,7 +27,6 @@ namespace clashN.Views
                 this.Bind(ViewModel, vm => vm.SelectedSource.userAgent, v => v.txtUserAgent.Text).DisposeWith(disposables);
 
                 this.Bind(ViewModel, vm => vm.CoreType, v => v.cmbCoreType.Text).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.SelectedSource.enableTun, v => v.togEnableTun.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SelectedSource.enabled, v => v.togEnabled.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SelectedSource.enableConvert, v => v.togEnableConvert.IsChecked).DisposeWith(disposables);
 
