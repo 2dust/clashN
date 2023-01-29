@@ -47,7 +47,6 @@
 
                         <TextBlock
                             VerticalAlignment="Center"
-                            FontWeight="Bold"
                             Text="{x:Static resx:ResUI.TbPromotionInformation}"
                             TextWrapping="Wrap" />
                     </StackPanel>

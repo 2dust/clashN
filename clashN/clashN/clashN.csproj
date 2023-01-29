@@ -8,7 +8,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>clashN.ico</ApplicationIcon>
-	<Copyright>Copyright © 2019-2022 (GPLv3)</Copyright>
+	<Copyright>Copyright © 2019-2023 (GPLv3)</Copyright>
 	<FileVersion>2.11</FileVersion>
   </PropertyGroup>
  
@@ -57,4 +57,10 @@
           <Generator>PublicResXFileCodeGenerator</Generator>
         </EmbeddedResource>
     </ItemGroup>
+	
+	<ItemGroup>
+	  <None Update="Resources\Fonts\MiSans-Regular.ttf">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
