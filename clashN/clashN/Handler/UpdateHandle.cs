@@ -208,7 +208,10 @@ namespace clashN.Handler
                             config.constItem.subConvertUrl = Global.SubConvertUrls[0];
                         }
                         url = String.Format(config.constItem.subConvertUrl, Utils.UrlEncode(url));
-                        url += String.Format("&config={0}", Global.SubConvertConfig[0]);
+                        if (!url.Contains("config="))
+                        {
+                            url += String.Format("&config={0}", Global.SubConvertConfig[0]);
+                        }
                     }
                     var downloadHandle = new DownloadHandle();
                     downloadHandle.Error += (sender2, args) =>
