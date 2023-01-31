@@ -59,7 +59,7 @@
     </ItemGroup>
 	
 	<ItemGroup>
-	  <None Update="Resources\Fonts\MiSans-Regular.ttf">
+	  <None Update="Resources\Fonts\SourceHanSansCN-Regular.ttf">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
