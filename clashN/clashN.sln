@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clashN", "clashN\clashN.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "clashUpgrade", "clashUpgrade\clashUpgrade.csproj", "{59E0AF2B-9915-47F2-9F5F-9008F47DAE5F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacLib", "..\..\v2rayN\v2rayN\PacLib\PacLib.csproj", "{E27F1C24-9A0A-47D5-8723-B17D00F264FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{59E0AF2B-9915-47F2-9F5F-9008F47DAE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E0AF2B-9915-47F2-9F5F-9008F47DAE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E0AF2B-9915-47F2-9F5F-9008F47DAE5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27F1C24-9A0A-47D5-8723-B17D00F264FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27F1C24-9A0A-47D5-8723-B17D00F264FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27F1C24-9A0A-47D5-8723-B17D00F264FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27F1C24-9A0A-47D5-8723-B17D00F264FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

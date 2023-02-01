@@ -1,6 +1,7 @@
 ﻿using clashN.Mode;
 using clashN.Properties;
 using clashN.Tool;
+using PacLib;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -77,14 +78,14 @@ namespace clashN.Handler
                 }
                 else if (type == ESysProxyType.Pac)
                 {
-                    HttpHandler.Start(config);
+                    PacHandler.Start(Utils.GetConfigPath(), port, config.PacPort);
                     var strProxy = $"{Global.httpProtocol}{Global.Loopback}:{config.PacPort}/pac?t={DateTime.Now.Ticks}";
                     SetIEProxy(false, strProxy, "");
                 }
 
                 if (type != ESysProxyType.Pac)
                 {
-                    HttpHandler.Stop();
+                    PacHandler.Stop();
                 }
             }
             catch (Exception ex)
