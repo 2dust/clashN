@@ -197,6 +197,14 @@ namespace clashN.Mode
 
         public bool colorModeDark { get; set; }
         public string? colorPrimaryName { get; set; }
+        public string currentFontFamily { get; set; }
+        public int currentFontSize { get; set; }
+
+        public int proxiesSorting { get; set; }
+        public bool proxiesAutoRefresh { get; set; }
+
+        public int connectionsSorting { get; set; }
+        public bool connectionsAutoRefresh { get; set; }
 
     }
 

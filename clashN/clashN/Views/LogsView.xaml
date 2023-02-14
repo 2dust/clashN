@@ -68,7 +68,7 @@
         <TextBox
             Name="txtMsg"
             BorderThickness="0"
-            FontSize="11"
+            FontSize="{DynamicResource StdFontSize}"
             HorizontalScrollBarVisibility="Auto"
             IsReadOnly="True"
             TextWrapping="Wrap"

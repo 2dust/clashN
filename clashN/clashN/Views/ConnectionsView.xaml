@@ -75,7 +75,8 @@
             EnableRowVirtualization="True"
             GridLinesVisibility="All"
             HeadersVisibility="Column"
-            IsReadOnly="True">
+            IsReadOnly="True"
+            Style="{StaticResource DefDataGrid}">
             <DataGrid.ContextMenu>
                 <ContextMenu Style="{StaticResource DefMenu}">
                     <MenuItem x:Name="menuConnectionClose" Header="{x:Static resx:ResUI.menuConnectionClose}" />

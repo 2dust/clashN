@@ -49,7 +49,7 @@ namespace clashN.ViewModels
         public bool AutoRefresh { get; set; }
         [Reactive]
         public bool EnableTun { get; set; }
-        
+
 
         public ProxiesViewModel()
         {
@@ -58,14 +58,15 @@ namespace clashN.ViewModels
 
             SelectedGroup = new();
             SelectedDetail = new();
-            AutoRefresh = true;
+            AutoRefresh = _config.uiItem.proxiesAutoRefresh;
             EnableTun = _config.enableTun;
+            SortingSelected = _config.uiItem.proxiesSorting;
 
             //GetClashProxies(true);
             this.WhenAnyValue(
-            x => x.SelectedGroup,
-            y => y != null && !y.name.IsNullOrEmpty())
-                .Subscribe(c => RefreshProxyDetails(c));
+               x => x.SelectedGroup,
+               y => y != null && !y.name.IsNullOrEmpty())
+                   .Subscribe(c => RefreshProxyDetails(c));
 
             this.WhenAnyValue(
               x => x.SystemProxySelected,
@@ -86,6 +87,11 @@ namespace clashN.ViewModels
                 x => x.EnableTun,
                  y => y == true)
                     .Subscribe(c => DoEnableTun(c));
+
+            this.WhenAnyValue(
+            x => x.AutoRefresh,
+            y => y == true)
+                .Subscribe(c => { _config.uiItem.proxiesAutoRefresh = AutoRefresh; });
 
             ProxiesReloadCmd = ReactiveCommand.Create(() =>
             {
@@ -142,6 +148,10 @@ namespace clashN.ViewModels
             {
                 return;
             }
+            if (SortingSelected != _config.uiItem.proxiesSorting)
+            {
+                _config.uiItem.proxiesSorting = SortingSelected;
+            }
 
             RefreshProxyDetails(c);
         }
@@ -187,9 +197,9 @@ namespace clashN.ViewModels
         {
             if (_config.enableTun != EnableTun)
             {
-                _config.enableTun = EnableTun; 
+                _config.enableTun = EnableTun;
                 TunModeSwitch();
-            }           
+            }
         }
 
         void TunModeSwitch()

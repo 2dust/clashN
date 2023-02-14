@@ -58,10 +58,4 @@
           <Generator>PublicResXFileCodeGenerator</Generator>
         </EmbeddedResource>
     </ItemGroup>
-	
-	<ItemGroup>
-	  <None Update="Resources\Fonts\SourceHanSansCN-Regular.ttf">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
 </Project>

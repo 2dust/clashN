@@ -37,6 +37,10 @@ namespace clashN.ViewModels
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
             _config = LazyConfig.Instance.GetConfig();
 
+            AutoRefreshInterval = 10;
+            SortingSelected = _config.uiItem.connectionsSorting;
+            AutoRefresh = _config.uiItem.connectionsAutoRefresh;
+
             var canEditRemove = this.WhenAnyValue(
              x => x.SelectedSource,
              selectedSource => selectedSource != null && !selectedSource.id.IsNullOrEmpty());
@@ -45,6 +49,11 @@ namespace clashN.ViewModels
               x => x.SortingSelected,
               y => y != null && y >= 0)
                   .Subscribe(c => DoSortingSelected(c));
+
+            this.WhenAnyValue(
+               x => x.AutoRefresh,
+               y => y == true)
+                   .Subscribe(c => { _config.uiItem.connectionsAutoRefresh = AutoRefresh; });
 
             ConnectionCloseCmd = ReactiveCommand.Create(() =>
             {
@@ -56,10 +65,6 @@ namespace clashN.ViewModels
                 ClashConnectionClose(true);
             });
 
-            AutoRefreshInterval = 10;
-            SortingSelected = 4;
-            AutoRefresh = true;
-
             Init();
         }
 
@@ -68,6 +73,10 @@ namespace clashN.ViewModels
             if (!c)
             {
                 return;
+            }
+            if (SortingSelected != _config.uiItem.connectionsSorting)
+            {
+                _config.uiItem.connectionsSorting = SortingSelected;
             }
 
             GetClashConnections();
@@ -128,7 +137,7 @@ namespace clashN.ViewModels
                 model.id = item.id;
                 model.network = item.metadata.network;
                 model.type = item.metadata.type;
-                model.host = $"{item.metadata.host}:{item.metadata.destinationPort}";
+                model.host = $"{(item.metadata.host.IsNullOrEmpty() ? item.metadata.destinationIP : item.metadata.host)}:{item.metadata.destinationPort}";
                 var sp = (dtNow - item.start);
                 model.time = sp.TotalSeconds < 0 ? 1 : sp.TotalSeconds;
                 model.upload = item.upload;

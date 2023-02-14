@@ -13,6 +13,7 @@ using ReactiveUI.Validation.Helpers;
 using Splat;
 using System.IO;
 using System.Reactive;
+using System.Windows;
 
 namespace clashN.ViewModels
 {
@@ -55,6 +56,8 @@ namespace clashN.ViewModels
         [Reactive]
         public string SubConvertUrl { get; set; }
         [Reactive]
+        public string currentFontFamily { get; set; }
+        [Reactive]
         public bool AutoHideStartup { get; set; }
         public ReactiveCommand<Unit, Unit> SetLoopbackCmd { get; }
         public ReactiveCommand<Unit, Unit> SetGlobalHotkeyCmd { get; }
@@ -81,6 +84,8 @@ namespace clashN.ViewModels
         public bool ColorModeDark { get; set; }
         [Reactive]
         public string CurrentLanguage { get; set; }
+        [Reactive]
+        public int CurrentFontSize { get; set; }
         #endregion
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
@@ -111,6 +116,7 @@ namespace clashN.ViewModels
             autoUpdateSubInterval = _config.autoUpdateSubInterval;
             autoDelayTestInterval = _config.autoDelayTestInterval;
             SubConvertUrl = _config.constItem.subConvertUrl;
+            currentFontFamily = _config.uiItem.currentFontFamily;
             AutoHideStartup = _config.autoHideStartup;
 
             SetLoopbackCmd = ReactiveCommand.Create(() =>
@@ -135,6 +141,7 @@ namespace clashN.ViewModels
                 SelectedSwatch = _swatches.FirstOrDefault(t => t.Name == _config.uiItem.colorPrimaryName);
             }
             CurrentLanguage = Utils.RegReadValue(Global.MyRegPath, Global.MyRegKeyLanguage, Global.Languages[0]);
+            CurrentFontSize = _config.uiItem.currentFontSize;
 
             this.WhenAnyValue(
             x => x.ColorModeDark,
@@ -181,6 +188,37 @@ namespace clashN.ViewModels
                     }
                 });
 
+            this.WhenAnyValue(
+             x => x.CurrentFontSize,
+             y => y > 0)
+             .Subscribe(c =>
+             {
+                 if (_config.uiItem.colorModeDark != ColorModeDark)
+                 {
+                     _config.uiItem.colorModeDark = ColorModeDark;
+                     Locator.Current.GetService<MainWindowViewModel>()?.ModifyTheme(ColorModeDark);
+                     ConfigHandler.SaveConfig(ref _config);
+                 }
+             });
+
+            this.WhenAnyValue(
+             x => x.CurrentFontSize,
+             y => y > 0)
+                .Subscribe(c =>
+                {
+                    if (CurrentFontSize >= Global.MinFontSize)
+                    {
+                        _config.uiItem.currentFontSize = CurrentFontSize;
+                        double size = (long)CurrentFontSize;
+                        Application.Current.Resources["StdFontSize1"] = size;
+                        Application.Current.Resources["StdFontSize2"] = size + 1;
+                        Application.Current.Resources["StdFontSize3"] = size + 2;
+                        Application.Current.Resources["StdFontSize4"] = size + 3;
+
+                        ConfigHandler.SaveConfig(ref _config);
+                    }
+                });
+
             //CMD
             SaveCommand = ReactiveCommand.Create(() =>
             {
@@ -209,6 +247,7 @@ namespace clashN.ViewModels
             _config.autoUpdateSubInterval = autoUpdateSubInterval;
             _config.autoDelayTestInterval = autoDelayTestInterval;
             _config.constItem.subConvertUrl = SubConvertUrl;
+            _config.uiItem.currentFontFamily = currentFontFamily;
             _config.autoHideStartup = AutoHideStartup;
 
             //System proxy

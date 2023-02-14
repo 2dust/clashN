@@ -92,6 +92,8 @@ namespace clashN.ViewModels
 
         public MainWindowViewModel(ISnackbarMessageQueue snackbarMessageQueue)
         {
+            _config = LazyConfig.Instance.GetConfig();
+
             Locator.CurrentMutable.RegisterLazySingleton(() => new NoticeHandler(snackbarMessageQueue), typeof(NoticeHandler));
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
 
@@ -264,12 +266,8 @@ namespace clashN.ViewModels
 
         private void Init()
         {
-            if (ConfigHandler.LoadConfig(ref _config) != 0)
-            {
-                UI.ShowWarning($"Loading GUI configuration file is abnormal,please restart the application{Environment.NewLine}加载GUI配置文件异常,请重启应用");
-                Environment.Exit(0);
-                return;
-            }
+
+
             MainFormHandler.Instance.BackupGuiNConfig(_config, true);
             MainFormHandler.Instance.InitRegister(_config);
 
@@ -293,7 +291,7 @@ namespace clashN.ViewModels
         {
             if (notify)
             {
-                _noticeHandler?.Enqueue(msg); 
+                _noticeHandler?.Enqueue(msg);
                 _noticeHandler?.SendMessage(msg);
             }
             else

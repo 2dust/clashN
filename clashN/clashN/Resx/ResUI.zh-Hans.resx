@@ -667,4 +667,13 @@
   <data name="TbSortingType" xml:space="preserve">
     <value>类型</value>
   </data>
+  <data name="TbSettingsFontFamily" xml:space="preserve">
+    <value>当前字体(需重启)</value>
+  </data>
+  <data name="TbSettingsFontFamilyTip" xml:space="preserve">
+    <value>拷贝字体TTF文件到目录guiFonts，重启</value>
+  </data>
+  <data name="TbSettingsFontSize" xml:space="preserve">
+    <value>字体大小</value>
+  </data>
 </root>

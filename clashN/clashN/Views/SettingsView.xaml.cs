@@ -1,6 +1,11 @@
+using clashN.Handler;
+using clashN.Mode;
 using clashN.ViewModels;
 using ReactiveUI;
+using System.Globalization;
+using System.IO;
 using System.Reactive.Disposables;
+using System.Windows.Media;
 
 namespace clashN.Views
 {
@@ -9,9 +14,12 @@ namespace clashN.Views
     /// </summary>
     public partial class SettingsView
     {
+        private static Config _config;
+
         public SettingsView()
         {
             InitializeComponent();
+            _config = LazyConfig.Instance.GetConfig();
             ViewModel = new SettingsViewModel();
 
             Global.SubConvertUrls.ForEach(it =>
@@ -31,6 +39,53 @@ namespace clashN.Views
                 cmbLogLevel.Items.Add(it);
             });
 
+            for (int i = Global.MinFontSize; i <= Global.MinFontSize + 8; i++)
+            {
+                cmbCurrentFontSize.Items.Add(i.ToString());
+            }
+
+            //fill fonts
+            try
+            {
+                var dir = new DirectoryInfo(Utils.GetFontsPath());
+                var files = dir.GetFiles("*.ttf");
+                var culture = "zh-cn";
+                var culture2 = "en-us";
+                foreach (var it in files)
+                {
+                    var families = Fonts.GetFontFamilies(Utils.GetFontsPath(it.Name));
+                    foreach (FontFamily family in families)
+                    {
+                        var typefaces = family.GetTypefaces();
+                        foreach (Typeface typeface in typefaces)
+                        {
+                            typeface.TryGetGlyphTypeface(out GlyphTypeface glyph);
+                            //var fontFace = glyph.Win32FaceNames[new CultureInfo("en-us")];
+                            //if (!fontFace.Equals("Regular") && !fontFace.Equals("Normal"))
+                            //{
+                            //    continue;
+                            //}
+                            var fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture)];
+                            if (Utils.IsNullOrEmpty(fontFamily))
+                            {
+                                fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture2)];
+                                if (Utils.IsNullOrEmpty(fontFamily))
+                                {
+                                    continue;
+                                }
+                            }
+                            cmbcurrentFontFamily.Items.Add(fontFamily);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Utils.SaveLog("fill fonts error", ex);
+            }
+            cmbcurrentFontFamily.Items.Add(string.Empty);
+
             this.WhenActivated(disposables =>
             {
                 this.Bind(ViewModel, vm => vm.MixedPort, v => v.txtMixedPort.Text).DisposeWith(disposables);
@@ -47,6 +102,7 @@ namespace clashN.Views
                 this.Bind(ViewModel, vm => vm.SelectedSwatch, v => v.cmbSwatches.SelectedItem).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.ColorModeDark, v => v.togDarkMode.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.CurrentLanguage, v => v.cmbCurrentLanguage.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CurrentFontSize, v => v.cmbCurrentFontSize.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.AutoRun, v => v.togAutoRun.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.EnableStatistics, v => v.togEnableStatistics.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.EnableSecurityProtocolTls13, v => v.togEnableSecurityProtocolTls13.IsChecked).DisposeWith(disposables);
@@ -54,6 +110,7 @@ namespace clashN.Views
                 this.Bind(ViewModel, vm => vm.autoUpdateSubInterval, v => v.txtautoUpdateSubInterval.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.autoDelayTestInterval, v => v.txtautoDelayTestInterval.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SubConvertUrl, v => v.cmbSubConvertUrl.Text).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.currentFontFamily, v => v.cmbcurrentFontFamily.Text).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SetLoopbackCmd, v => v.btnSetLoopback).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SetGlobalHotkeyCmd, v => v.btnSetGlobalHotkey).DisposeWith(disposables);
 

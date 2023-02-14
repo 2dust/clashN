@@ -50,6 +50,17 @@
                     Margin="8"
                     materialDesign:HintAssist.Hint="Language"
                     Style="{StaticResource DefComboBox}" />
+                <Separator />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ToolbarItem}"
+                    Text="{x:Static resx:ResUI.TbSettingsFontSize}" />
+                <ComboBox
+                    x:Name="cmbCurrentFontSize"
+                    Width="100"
+                    Margin="8"
+                    Style="{StaticResource DefComboBox}" />
+
 
             </ToolBar>
         </ToolBarTray>
@@ -98,7 +109,8 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Width="200"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
 
                         <TextBlock
                             Grid.Row="2"
@@ -112,7 +124,8 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             Width="200"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
 
                         <TextBlock
                             Grid.Row="3"
@@ -126,7 +139,8 @@
                             Grid.Row="3"
                             Grid.Column="1"
                             Width="200"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
 
                         <TextBlock
                             Grid.Row="4"
@@ -140,7 +154,8 @@
                             Grid.Row="4"
                             Grid.Column="1"
                             Width="200"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
 
                         <TextBlock
                             Grid.Row="5"
@@ -182,7 +197,8 @@
                             Grid.Row="7"
                             Grid.Column="1"
                             Margin="8"
-                            materialDesign:HintAssist.Hint="Level" />
+                            materialDesign:HintAssist.Hint="Level"
+                            Style="{StaticResource DefComboBox}" />
 
                         <TextBlock
                             Grid.Row="8"
@@ -223,8 +239,10 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
@@ -304,7 +322,8 @@
                             Grid.Row="7"
                             Grid.Column="1"
                             Width="300"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
 
                         <TextBlock
                             Grid.Row="8"
@@ -318,7 +337,8 @@
                             Grid.Row="8"
                             Grid.Column="1"
                             Width="300"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
                         <TextBlock
                             Grid.Row="9"
                             Grid.Column="0"
@@ -333,18 +353,41 @@
                             Width="300"
                             Margin="8"
                             materialDesign:HintAssist.Hint="Convert Url"
-                            IsEditable="True" />
+                            IsEditable="True"
+                            Style="{StaticResource DefComboBox}" />
+
+                        <TextBlock
+                            Grid.Row="10"
+                            Grid.Column="0"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
+                            Text="{x:Static resx:ResUI.TbSettingsFontFamily}" />
+                        <ComboBox
+                            x:Name="cmbcurrentFontFamily"
+                            Grid.Row="10"
+                            Grid.Column="1"
+                            Width="300"
+                            Margin="8"
+                            Style="{StaticResource DefComboBox}" />
+                        <TextBlock
+                            Grid.Row="10"
+                            Grid.Column="2"
+                            Margin="8"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
+                            Text="{x:Static resx:ResUI.TbSettingsFontFamilyTip}" />
 
                         <Button
                             x:Name="btnSetLoopback"
-                            Grid.Row="10"
+                            Grid.Row="11"
                             Grid.Column="0"
                             Margin="8"
                             Content="{x:Static resx:ResUI.TbSettingsSetUWP}"
                             Style="{StaticResource DefButton}" />
                         <Button
                             x:Name="btnSetGlobalHotkey"
-                            Grid.Row="11"
+                            Grid.Row="12"
                             Grid.Column="0"
                             Margin="8"
                             Content="{x:Static resx:ResUI.TbGlobalHotkeySetting}"
@@ -392,6 +435,7 @@
                             AcceptsReturn="True"
                             BorderThickness="1"
                             SpellCheck.IsEnabled="True"
+                            Style="{StaticResource DefTextBox}"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto" />
 
@@ -405,7 +449,8 @@
                             x:Name="cmbsystemProxyAdvancedProtocol"
                             Grid.Row="4"
                             Margin="8"
-                            materialDesign:HintAssist.Hint="Protocol" />
+                            materialDesign:HintAssist.Hint="Protocol"
+                            Style="{StaticResource DefComboBox}" />
                         <TextBlock
                             Grid.Row="5"
                             Margin="8"
@@ -416,7 +461,8 @@
                             x:Name="txtPacPort"
                             Grid.Row="5"
                             Width="200"
-                            Margin="8" />
+                            Margin="8"
+                            Style="{StaticResource DefTextBox}" />
                     </Grid>
                 </ScrollViewer>
             </TabItem>

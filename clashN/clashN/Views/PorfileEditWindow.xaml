@@ -76,7 +76,7 @@
                     Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Style="{StaticResource MyOutlinedTextBox}"
                     TextWrapping="Wrap" />
 
                 <TextBlock
@@ -94,7 +94,7 @@
                     Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Style="{StaticResource MyOutlinedTextBox}"
                     TextWrapping="Wrap" />
 
                 <TextBlock
@@ -113,7 +113,7 @@
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
                     IsReadOnly="True"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Style="{StaticResource MyOutlinedTextBox}"
                     TextWrapping="Wrap" />
                 <StackPanel
                     Grid.Row="3"
@@ -149,7 +149,7 @@
                     Margin="4"
                     VerticalAlignment="Top"
                     AcceptsReturn="True"
-                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Style="{StaticResource MyOutlinedTextBox}"
                     TextWrapping="Wrap" />
 
                 <TextBlock
@@ -165,6 +165,7 @@
                     Grid.Column="1"
                     Margin="4"
                     materialDesign:HintAssist.Hint="Core"
+                    FontSize="{DynamicResource StdFontSize2}"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}" />
 
 

@@ -1,4 +1,6 @@
-﻿using clashN.Tool;
+﻿using clashN.Handler;
+using clashN.Mode;
+using clashN.Tool;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -10,7 +12,7 @@ namespace clashN
     public partial class App : Application
     {
         public static EventWaitHandle ProgramStarted;
-
+        private static Config _config;
         public App()
         {
             // Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
@@ -46,12 +48,24 @@ namespace clashN
             Utils.SaveLog($"clashN start up | {Utils.GetVersion()} | {Utils.GetExePath()}");
             Logging.ClearLogs();
 
+            Init();
+
             string lang = Utils.RegReadValue(Global.MyRegPath, Global.MyRegKeyLanguage, Global.Languages[0]);
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
 
             base.OnStartup(e);
         }
 
+        private void Init()
+        {
+            if (ConfigHandler.LoadConfig(ref _config) != 0)
+            {
+                UI.ShowWarning($"Loading GUI configuration file is abnormal,please restart the application{Environment.NewLine}加载GUI配置文件异常,请重启应用");
+                Application.Current.Shutdown();
+                Environment.Exit(0);
+                return;
+            }
+        }
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Utils.SaveLog("App_DispatcherUnhandledException", e.Exception);

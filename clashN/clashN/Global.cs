@@ -87,6 +87,7 @@
         /// Icon
         /// </summary>
         public const string CustomIconName = "clashN.ico";
+        public const int MinFontSize = 10;
 
 
         public const string StatisticLogOverall = "StatisticLogOverall.json";
@@ -108,7 +109,7 @@
 
         public static readonly List<string> proxyVehicleType = new List<string> { "file", "http" };
 
-        public static readonly List<string> Languages = new List<string> { "zh-Hans", "en","fa-IR" };
+        public static readonly List<string> Languages = new List<string> { "zh-Hans", "en", "fa-IR" };
 
         public static readonly List<string> LogLevel = new List<string> { "debug", "info", "warning", "error", "silent" };
 

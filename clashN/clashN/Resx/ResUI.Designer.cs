@@ -1385,6 +1385,33 @@ namespace clashN.Resx {
         }
         
         /// <summary>
+        ///   查找类似 FontFamily(Require restart) 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsFontFamily {
+            get {
+                return ResourceManager.GetString("TbSettingsFontFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Copy the font TTF file to the directory guiFonts, restart the settings 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsFontFamilyTip {
+            get {
+                return ResourceManager.GetString("TbSettingsFontFamilyTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 FontSize 的本地化字符串。
+        /// </summary>
+        public static string TbSettingsFontSize {
+            get {
+                return ResourceManager.GetString("TbSettingsFontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Http Port 的本地化字符串。
         /// </summary>
         public static string TbSettingsHttpPort {

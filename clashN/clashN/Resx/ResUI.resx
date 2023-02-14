@@ -664,4 +664,13 @@
   <data name="TbSortingType" xml:space="preserve">
     <value>Type</value>
   </data>
+  <data name="TbSettingsFontFamily" xml:space="preserve">
+    <value>FontFamily(Require restart)</value>
+  </data>
+  <data name="TbSettingsFontFamilyTip" xml:space="preserve">
+    <value>Copy the font TTF file to the directory guiFonts, restart the settings</value>
+  </data>
+  <data name="TbSettingsFontSize" xml:space="preserve">
+    <value>FontSize</value>
+  </data>
 </root>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using clashN.Handler;
 using System.Windows.Media;
 
 namespace clashN.Converters
@@ -10,8 +9,22 @@ namespace clashN.Converters
 
         static MaterialDesignFonts()
         {
-            var fontPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\Fonts\");
-            MyFont = new FontFamily(new Uri($"file:///{fontPath}"), "./#Source Han Sans CN");
+            try
+            {
+                var fontFamily = LazyConfig.Instance.GetConfig().uiItem.currentFontFamily;
+                if (!string.IsNullOrEmpty(fontFamily))
+                {
+                    var fontPath = Utils.GetFontsPath();
+                    MyFont = new FontFamily(new Uri(@$"file:///{fontPath}\"), $"./#{fontFamily}");
+                }
+            }
+            catch
+            {
+            }
+            if (MyFont is null)
+            {
+                MyFont = new FontFamily("Microsoft YaHei");
+            }
         }
     }
 }

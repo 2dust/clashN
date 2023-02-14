@@ -47,6 +47,7 @@
 
                         <TextBlock
                             VerticalAlignment="Center"
+                            Style="{StaticResource ListItemTitle}"
                             Text="{x:Static resx:ResUI.TbPromotionInformation}"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -65,6 +66,7 @@
                                 materialDesign:ButtonProgressAssist.Value="-1"
                                 Click="btnPromotion_Click"
                                 Content="{x:Static resx:ResUI.TbPromotion}"
+                                FontSize="{DynamicResource StdFontSize2}"
                                 Style="{StaticResource MaterialDesignRaisedButton}" />
                         </Grid>
                     </StackPanel>
