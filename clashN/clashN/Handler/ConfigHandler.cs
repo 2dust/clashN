@@ -506,6 +506,10 @@ namespace clashN.Handler
             {
                 profileItem.indexId = Utils.GetGUID(false);
             }
+            if (profileItem.coreType is null)
+            {
+                profileItem.coreType = ECoreType.clash_meta;
+            }
             if (!config.profileItems.Exists(it => it.indexId == profileItem.indexId))
             {
                 var maxSort = config.profileItems.Any() ? config.profileItems.Max(t => t.sort) : 0;
@@ -564,7 +568,7 @@ namespace clashN.Handler
                 {
                     groupId = groupId,
                     url = clipboardData,
-                    coreType = ECoreType.clash,
+                    coreType = ECoreType.clash_meta,
                     address = string.Empty,
                     enabled = true,
                     remarks = "clash_subscription"
@@ -586,7 +590,7 @@ namespace clashN.Handler
                         {
                             groupId = groupId,
                             url = query["url"],
-                            coreType = ECoreType.clash,
+                            coreType = ECoreType.clash_meta,
                             address = string.Empty,
                             enabled = true,
                             remarks = "clash_subscription"
@@ -604,7 +608,7 @@ namespace clashN.Handler
                 {
                     groupId = groupId,
                     url = "",
-                    coreType = ECoreType.clash,
+                    coreType = ECoreType.clash_meta,
                     address = string.Empty,
                     enabled = false,
                     remarks = "clash_local_file"
