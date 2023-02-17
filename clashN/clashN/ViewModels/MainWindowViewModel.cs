@@ -39,9 +39,9 @@ namespace ClashN.ViewModels
         public PromotionView GetPromotionView { get; }
 
         [Reactive]
-        public string SpeedUpload { get; set; }
+        public string SpeedUpload { get; set; } = "0.00";
         [Reactive]
-        public string SpeedDownload { get; set; }
+        public string SpeedDownload { get; set; } = "0.00";
 
         #endregion
 
