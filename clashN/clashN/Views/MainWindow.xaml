@@ -32,7 +32,7 @@
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
             <Grid Grid.Column="0">
-                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}" Padding="10, 0">
                     <materialDesign:NavigationRailAssist.FloatingContent>
                         <StackPanel
                             Width="auto"

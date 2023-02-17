@@ -96,11 +96,12 @@
             </ToolBar>
         </ToolBarTray>
         <DockPanel>
-
             <ListView
                 x:Name="lstProxyGroups"
+                Margin="0, 0, 5, 0"
                 BorderThickness="0"
                 DockPanel.Dock="Left"
+                Style="{StaticResource MaterialDesignListView}"
                 ItemContainerStyle="{StaticResource lvItemSelected}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">
@@ -145,6 +146,7 @@
             <ListView
                 x:Name="lstProxyDetails"
                 BorderThickness="0"
+                Style="{StaticResource MaterialDesignListView}"
                 ItemContainerStyle="{StaticResource lvItemSelected}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible">

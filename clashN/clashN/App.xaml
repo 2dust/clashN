@@ -11,7 +11,7 @@
         <ResourceDictionary xmlns:system="clr-namespace:System;assembly=mscorlib">
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme
-                    BaseTheme="Light"
+                    BaseTheme="Dark"
                     PrimaryColor="Blue"
                     SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
@@ -65,8 +65,9 @@
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
-            <Style x:Key="lvItemSelected" TargetType="{x:Type ListViewItem}">
-                <Setter Property="Margin" Value="2" />
+            <Style x:Key="lvItemSelected"
+                   TargetType="{x:Type ListViewItem}">
+                <Setter Property="Margin" Value="5" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListViewItem">
@@ -75,7 +76,7 @@
                             </materialDesign:Card>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
-                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource PrimaryHueLightBrush}"/>
+                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource PrimaryHueDarkBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -96,6 +97,7 @@
                 BasedOn="{StaticResource MaterialDesignRaisedButton}"
                 TargetType="{x:Type ButtonBase}">
                 <Setter Property="FontSize" Value="{DynamicResource StdFontSize3}" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
             </Style>
             <Style
                 x:Key="DefMenu"
