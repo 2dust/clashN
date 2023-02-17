@@ -19,7 +19,7 @@ namespace ClashN.Views
         public SettingsView()
         {
             InitializeComponent();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
             ViewModel = new SettingsViewModel();
 
             Global.SubConvertUrls.ForEach(it =>
@@ -66,10 +66,10 @@ namespace ClashN.Views
                             //    continue;
                             //}
                             var fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture)];
-                            if (Utils.IsNullOrEmpty(fontFamily))
+                            if (string.IsNullOrEmpty(fontFamily))
                             {
                                 fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture2)];
-                                if (Utils.IsNullOrEmpty(fontFamily))
+                                if (string.IsNullOrEmpty(fontFamily))
                                 {
                                     continue;
                                 }

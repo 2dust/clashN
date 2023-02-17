@@ -4,15 +4,9 @@ namespace ClashN.Mode
 {
     public class ProfileItemModel : ProfileItem
     {
-        public bool isActive { get; set; }
-        public bool HasUrl
-        {
-            get { return !url.IsNullOrEmpty(); }
-        }
-        public bool HasAddress
-        {
-            get { return !address.IsNullOrEmpty(); }
-        }
+        public bool IsActive { get; set; }
+        public bool HasUrl => string.IsNullOrEmpty(url);
+        public bool HasAddress => string.IsNullOrEmpty(address);
         public string StrUpdateTime
         {
             get
@@ -25,14 +19,8 @@ namespace ClashN.Mode
                 return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM-dd HH:mm");
             }
         }
-        public string TrafficUsed
-        {
-            get { return Utils.HumanFy(uploadRemote + downloadRemote); }
-        }
-        public string TrafficTotal
-        {
-            get { return totalRemote <= 0 ? "∞" : Utils.HumanFy(totalRemote); }
-        }
+        public string TrafficUsed => Utils.HumanFy(uploadRemote + downloadRemote);
+        public string TrafficTotal => totalRemote <= 0 ? "∞" : Utils.HumanFy(totalRemote);
         public string StrExpireTime
         {
             get

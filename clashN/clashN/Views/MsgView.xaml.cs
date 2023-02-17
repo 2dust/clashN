@@ -22,7 +22,7 @@ namespace ClashN.Views
 
         public void AppendText(string msg)
         {
-            //if (!Utils.IsNullOrEmpty(MsgFilter))
+            //if (!string.IsNullOrEmpty(MsgFilter))
             //{
             //    if (!Regex.IsMatch(text, MsgFilter))
             //    {

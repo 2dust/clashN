@@ -32,7 +32,7 @@ namespace ClashN.ViewModels
         public ProfileEditViewModel(ProfileItem profileItem, PorfileEditWindow view)
         {
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
             if (profileItem.indexId.IsNullOrEmpty())
             {
@@ -44,7 +44,7 @@ namespace ClashN.ViewModels
             }
 
             _view = view;
-            CoreType = (SelectedSource.coreType ?? ECoreType.clash).ToString();
+            CoreType = (SelectedSource.coreType ?? CoreKind.Clash).ToString();
 
             BrowseProfileCmd = ReactiveCommand.Create(() =>
             {
@@ -61,25 +61,25 @@ namespace ClashN.ViewModels
                 SaveProfile();
             });
 
-            Utils.SetDarkBorder(view, _config.uiItem.colorModeDark);
+            Utils.SetDarkBorder(view, _config.UiItem.colorModeDark);
         }
 
         private void SaveProfile()
         {
             string remarks = SelectedSource.remarks;
-            if (Utils.IsNullOrEmpty(remarks))
+            if (string.IsNullOrEmpty(remarks))
             {
                 _noticeHandler?.Enqueue(ResUI.PleaseFillRemarks);
                 return;
             }
 
-            if (Utils.IsNullOrEmpty(CoreType))
+            if (string.IsNullOrEmpty(CoreType))
             {
                 SelectedSource.coreType = null;
             }
             else
             {
-                SelectedSource.coreType = (ECoreType)Enum.Parse(typeof(ECoreType), CoreType);
+                SelectedSource.coreType = (CoreKind)Enum.Parse(typeof(CoreKind), CoreType);
             }
 
             var item = _config.GetProfileItem(SelectedSource.indexId);
@@ -98,7 +98,7 @@ namespace ClashN.ViewModels
                 item.enableConvert = SelectedSource.enableConvert;
             }
 
-            if (ConfigHandler.EditProfile(ref _config, item) == 0)
+            if (ConfigProc.EditProfile(ref _config, item) == 0)
             {
                 Locator.Current.GetService<ProfilesViewModel>()?.RefreshProfiles();
                 _noticeHandler?.Enqueue(ResUI.OperationSuccess);
@@ -128,7 +128,7 @@ namespace ClashN.ViewModels
                 return;
             }
             string fileName = fileDialog.FileName;
-            if (Utils.IsNullOrEmpty(fileName))
+            if (string.IsNullOrEmpty(fileName))
             {
                 return;
             }
@@ -137,7 +137,7 @@ namespace ClashN.ViewModels
             {
                 item = SelectedSource;
             }
-            if (ConfigHandler.AddProfileViaPath(ref _config, item, fileName) == 0)
+            if (ConfigProc.AddProfileViaPath(ref _config, item, fileName) == 0)
             {
                 _noticeHandler?.Enqueue(ResUI.SuccessfullyImportedCustomProfile);
                 Locator.Current.GetService<ProfilesViewModel>()?.RefreshProfiles();
@@ -152,7 +152,7 @@ namespace ClashN.ViewModels
         private void EditProfile()
         {
             var address = SelectedSource.address;
-            if (Utils.IsNullOrEmpty(address))
+            if (string.IsNullOrEmpty(address))
             {
                 _noticeHandler?.Enqueue(ResUI.FillProfileAddressCustom);
                 return;

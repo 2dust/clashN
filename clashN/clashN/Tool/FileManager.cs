@@ -81,7 +81,7 @@ namespace ClashN.Tool
                         }
                         try
                         {
-                            if (!Utils.IsNullOrEmpty(ignoredName) && entry.Name.Contains(ignoredName))
+                            if (!string.IsNullOrEmpty(ignoredName) && entry.Name.Contains(ignoredName))
                             {
                                 continue;
                             }

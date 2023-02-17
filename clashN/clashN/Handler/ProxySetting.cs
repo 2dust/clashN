@@ -21,7 +21,7 @@ namespace ClashN.Handler
             }
             else if (type == 2 || type == 4)
             {
-                optionCount = Utils.IsNullOrEmpty(exceptions) ? 2 : 3;
+                optionCount = string.IsNullOrEmpty(exceptions) ? 2 : 3;
             }
 
             int m_Int = (int)PerConnFlags.PROXY_TYPE_DIRECT;
@@ -37,7 +37,7 @@ namespace ClashN.Handler
                 m_Option = PerConnOption.INTERNET_PER_CONN_AUTOCONFIG_URL;
             }
 
-            //int optionCount = Utils.IsNullOrEmpty(strProxy) ? 1 : (Utils.IsNullOrEmpty(exceptions) ? 2 : 3);
+            //int optionCount = string.IsNullOrEmpty(strProxy) ? 1 : (string.IsNullOrEmpty(exceptions) ? 2 : 3);
             InternetConnectionOption[] options = new InternetConnectionOption[optionCount];
             // USE a proxy server ...
             options[0].m_Option = PerConnOption.INTERNET_PER_CONN_FLAGS;

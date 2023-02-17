@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
@@ -407,7 +408,7 @@ namespace ClashN
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static bool IsNullOrEmpty(string text)
+        public static bool IsNullOrEmpty(string? text)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -846,13 +847,13 @@ namespace ClashN
                 string location = GetExePath();
                 if (blFull)
                 {
-                    return string.Format("clashN - V{0} - {1}",
+                    return string.Format("ClashN - V{0} - {1}",
                             FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString(),
                             File.GetLastWriteTime(location).ToString("yyyy/MM/dd"));
                 }
                 else
                 {
-                    return string.Format("clashN/{0}",
+                    return string.Format("ClashN/{0}",
                         FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString());
                 }
             }
@@ -889,9 +890,9 @@ namespace ClashN
         /// 获取剪贴板数
         /// </summary>
         /// <returns></returns>
-        public static string GetClipboardData()
+        public static string? GetClipboardData()
         {
-            string strData = string.Empty;
+            string? strData = null;
             try
             {
 
@@ -900,7 +901,8 @@ namespace ClashN
                 {
                     strData = data.GetData(DataFormats.UnicodeText).ToString();
                 }
-                if (Utils.IsNullOrEmpty(strData))
+
+                if (string.IsNullOrEmpty(strData))
                 {
                     var file = Clipboard.GetFileDropList();
                     if (file.Count > 0)
@@ -915,6 +917,7 @@ namespace ClashN
             {
                 SaveLog(ex.Message, ex);
             }
+
             return strData;
         }
 
@@ -1099,7 +1102,7 @@ namespace ClashN
             }
         }
 
-        public static string GetBinPath(string filename, ECoreType? coreType = null)
+        public static string GetBinPath(string filename, CoreKind? coreType = null)
         {
             string _tempPath = Path.Combine(StartupPath(), "bin");
             if (!Directory.Exists(_tempPath))
@@ -1223,7 +1226,7 @@ namespace ClashN
         public static T FromYaml<T>(string str)
         {
             var deserializer = new DeserializerBuilder()
-                //.WithNamingConvention(UnderscoredNamingConvention.Instance)
+                .WithNamingConvention(PascalCaseNamingConvention.Instance)
                 .Build();
             try
             {
@@ -1245,7 +1248,7 @@ namespace ClashN
         public static string ToYaml(Object obj)
         {
             var serializer = new SerializerBuilder()
-                    //.WithNamingConvention(CamelCaseNamingConvention.Instance)
+                    .WithNamingConvention(HyphenatedNamingConvention.Instance)
                     .Build();
 
             string result = string.Empty;

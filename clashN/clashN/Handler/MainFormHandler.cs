@@ -23,7 +23,7 @@ namespace ClashN.Handler
         {
             try
             {
-                int index = (int)config.sysProxyType;
+                int index = (int)config.SysProxyType;
 
                 //Load from local file
                 var fileName = Utils.GetPath($"NotifyIcon{index + 1}.ico");
@@ -76,7 +76,7 @@ namespace ClashN.Handler
                 }
                 fileName = fileDialog.FileName;
             }
-            if (Utils.IsNullOrEmpty(fileName))
+            if (string.IsNullOrEmpty(fileName))
             {
                 return;
             }
@@ -112,9 +112,9 @@ namespace ClashN.Handler
             {
                 var dtNow = DateTime.Now;
 
-                if (config.autoUpdateSubInterval > 0)
+                if (config.AutoUpdateSubInterval > 0)
                 {
-                    if ((dtNow - autoUpdateSubTime).Hours % config.autoUpdateSubInterval == 0)
+                    if ((dtNow - autoUpdateSubTime).Hours % config.AutoUpdateSubInterval == 0)
                     {
                         updateHandle.UpdateSubscriptionProcess(config, true, null, (bool success, string msg) =>
                         {
@@ -183,13 +183,13 @@ namespace ClashN.Handler
                 var gesture = new KeyGesture(KeyInterop.KeyFromVirtualKey((int)item.KeyCode), modifiers);
                 try
                 {
-                    HotkeyManager.Current.AddOrReplace(((int)item.eGlobalHotkey).ToString(), gesture, handler);
-                    var msg = string.Format(ResUI.RegisterGlobalHotkeySuccessfully, $"{item.eGlobalHotkey.ToString()} = {Utils.ToJson(item)}");
+                    HotkeyManager.Current.AddOrReplace(((int)item.GlobalHotkey).ToString(), gesture, handler);
+                    var msg = string.Format(ResUI.RegisterGlobalHotkeySuccessfully, $"{item.GlobalHotkey.ToString()} = {Utils.ToJson(item)}");
                     update(false, msg);
                 }
                 catch (Exception ex)
                 {
-                    var msg = string.Format(ResUI.RegisterGlobalHotkeyFailed, $"{item.eGlobalHotkey.ToString()} = {Utils.ToJson(item)}", ex.Message);
+                    var msg = string.Format(ResUI.RegisterGlobalHotkeyFailed, $"{item.GlobalHotkey.ToString()} = {Utils.ToJson(item)}", ex.Message);
                     update(false, msg);
                     Utils.SaveLog(msg);
                 }
@@ -205,12 +205,12 @@ namespace ClashN.Handler
         {
             for (var i = 0; i < 5; i++)
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/proxies";
-                var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/proxies";
+                var result = await HttpClientHelper.GetInstance().TryGetAsync(url);
                 var clashProxies = Utils.FromJson<ClashProxies>(result);
 
-                var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/providers/proxies";
-                var result2 = await HttpClientHelper.GetInstance().GetAsync(url2);
+                var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/providers/proxies";
+                var result2 = await HttpClientHelper.GetInstance().TryGetAsync(url2);
                 var clashProviders = Utils.FromJson<ClashProviders>(result2);
 
                 if (clashProxies != null || clashProviders != null)
@@ -261,8 +261,8 @@ namespace ClashN.Handler
                 {
                     return;
                 }
-                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies";
-                urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl;
+                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/proxies";
+                urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.Config.ConstItem.speedPingTestUrl;
 
                 List<Task> tasks = new List<Task>();
                 foreach (var it in lstProxy)
@@ -275,7 +275,7 @@ namespace ClashN.Handler
                     var url = string.Format(urlBase, name);
                     tasks.Add(Task.Run(async () =>
                     {
-                        var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                        var result = await HttpClientHelper.GetInstance().TryGetAsync(url);
                         update(it, result);
                     }));
                 }
@@ -320,7 +320,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/proxies/{name}";
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/proxies/{name}";
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("name", nameNode);
                 await HttpClientHelper.GetInstance().PutAsync(url, headers);
@@ -341,7 +341,7 @@ namespace ClashN.Handler
                     return;
                 }
 
-                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs";
+                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/configs";
 
                 await HttpClientHelper.GetInstance().PatchAsync(urlBase, headers);
             });
@@ -352,7 +352,7 @@ namespace ClashN.Handler
             ClashConnectionClose("");
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/configs?force=true";
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/configs?force=true";
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("path", filePath);
                 await HttpClientHelper.GetInstance().PutAsync(url, headers);
@@ -371,8 +371,8 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.APIPort}/connections";
-                var result = await HttpClientHelper.GetInstance().GetAsync(url);
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/connections";
+                var result = await HttpClientHelper.GetInstance().TryGetAsync(url);
                 var clashConnections = Utils.FromJson<ClashConnections>(result);
 
                 update(clashConnections);
@@ -387,7 +387,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.GetConfig().APIPort}/connections/{id}";
+                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/connections/{id}";
                 await HttpClientHelper.GetInstance().DeleteAsync(url);
             }
             catch (Exception ex)

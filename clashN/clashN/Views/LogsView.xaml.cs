@@ -41,7 +41,7 @@ namespace ClashN.Views
                 return;
             }
             string? msgFilter = ViewModel?.MsgFilter;
-            if (!Utils.IsNullOrEmpty(msgFilter))
+            if (!string.IsNullOrEmpty(msgFilter))
             {
                 if (!Regex.IsMatch(msg, msgFilter))
                 {

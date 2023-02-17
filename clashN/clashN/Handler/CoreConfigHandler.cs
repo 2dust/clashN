@@ -42,7 +42,7 @@ namespace ClashN.Handler
                 }
 
                 string addressFileName = node.address;
-                if (Utils.IsNullOrEmpty(addressFileName))
+                if (string.IsNullOrEmpty(addressFileName))
                 {
                     msg = ResUI.FailedGetDefaultConfiguration;
                     return -1;
@@ -60,7 +60,7 @@ namespace ClashN.Handler
                 string tagYamlStr1 = "!<str>";
                 string tagYamlStr2 = "__strn__";
                 string tagYamlStr3 = "!!str";
-                var config = LazyConfig.Instance.GetConfig();
+                var config = LazyConfig.Instance.Config;
                 var txtFile = File.ReadAllText(addressFileName);
                 txtFile = txtFile.Replace(tagYamlStr1, tagYamlStr2);
 
@@ -71,50 +71,51 @@ namespace ClashN.Handler
                     return -1;
                 }
                 //mixed-port
-                ModifyContent(fileContent, "mixed-port", config.mixedPort);
+                fileContent["mixed-port"] = config.MixedPort;
                 //port
-                ModifyContent(fileContent, "port", config.httpPort);
+                fileContent["port"] = config.HttpPort;
                 //socks-port
-                ModifyContent(fileContent, "socks-port", config.socksPort);
+                fileContent["socks-port"] = config.SocksPort;
                 //log-level
-                ModifyContent(fileContent, "log-level", config.logLevel);
+                fileContent["log-level"] = config.LogLevel;
                 //external-controller
-                ModifyContent(fileContent, "external-controller", $"{Global.Loopback}:{config.APIPort}");
+                fileContent["external-controller"] = $"{Global.Loopback}:{config.ApiPort}";
                 //allow-lan
-                if (config.allowLANConn)
+                if (config.AllowLANConn)
                 {
-                    ModifyContent(fileContent, "allow-lan", "true");
-                    ModifyContent(fileContent, "bind-address", "*");
+                    fileContent["allow-lan"] = "true";
+                    fileContent["bind-address"] = "*";
                 }
                 else
                 {
-                    ModifyContent(fileContent, "allow-lan", "false");
+                    fileContent["allow-lan"] = "false";
                 }
 
                 //ipv6
-                ModifyContent(fileContent, "ipv6", config.enableIpv6);
+                fileContent["ipv6"] = config.EnableIpv6;
 
                 //mode
                 if (!fileContent.ContainsKey("mode"))
                 {
-                    ModifyContent(fileContent, "mode", ERuleMode.Rule.ToString().ToLower());
+                    fileContent["mode"] = ERuleMode.Rule.ToString().ToLower();
                 }
                 else
                 {
                     if (config.ruleMode != ERuleMode.Unchanged)
                     {
-                        ModifyContent(fileContent, "mode", config.ruleMode.ToString().ToLower());
+                        fileContent["model"] = config.ruleMode.ToString().ToLower();
                     }
                 }
 
                 //enable tun mode
-                if (config.enableTun)
+                if (config.EnableTun)
                 {
                     string tun = Utils.GetEmbedText(Global.SampleTun);
-                    if (!Utils.IsNullOrEmpty(tun))
+                    if (!string.IsNullOrEmpty(tun))
                     {
                         var tunContent = Utils.FromYaml<Dictionary<string, object>>(tun);
-                        ModifyContent(fileContent, "tun", tunContent["tun"]);
+                        if (tunContent != null)
+                            fileContent["tun"] = tunContent["tun"];
                     }
                 }
 
@@ -152,7 +153,7 @@ namespace ClashN.Handler
 
         private static void MixinContent(Dictionary<string, object> fileContent, Config config, ProfileItem node)
         {
-            if (!config.enableMixinContent)
+            if (!config.EnableMixinContent)
             {
                 return;
             }
@@ -173,7 +174,7 @@ namespace ClashN.Handler
             }
             foreach (var item in mixinContent)
             {
-                if (!config.enableTun && item.Key == "tun")
+                if (!config.EnableTun && item.Key == "tun")
                 {
                     continue;
                 }
@@ -186,23 +187,12 @@ namespace ClashN.Handler
                 }
                 else
                 {
-                    ModifyContent(fileContent, item.Key, item.Value);
+                    fileContent[item.Key] = item.Value;
                 }
             }
             return;
         }
 
-        private static void ModifyContent(Dictionary<string, object> fileContent, string key, object value)
-        {
-            if (fileContent.ContainsKey(key))
-            {
-                fileContent[key] = value;
-            }
-            else
-            {
-                fileContent.Add(key, value);
-            }
-        }
         private static void ModifyContentMerge(Dictionary<string, object> fileContent, string key, object value)
         {
             bool blPrepend = false;

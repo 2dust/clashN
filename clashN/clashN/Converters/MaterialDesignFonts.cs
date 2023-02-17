@@ -11,7 +11,7 @@ namespace ClashN.Converters
         {
             try
             {
-                var fontFamily = LazyConfig.Instance.GetConfig().uiItem.currentFontFamily;
+                var fontFamily = LazyConfig.Instance.Config.UiItem.currentFontFamily;
                 if (!string.IsNullOrEmpty(fontFamily))
                 {
                     var fontPath = Utils.GetFontsPath();

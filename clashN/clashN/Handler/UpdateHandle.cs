@@ -88,7 +88,7 @@ namespace ClashN.Handler
                     _updateFunc(false, string.Format(ResUI.MsgParsingSuccessfully, "clashN"));
 
                     url = args.Msg;
-                    askToDownload(downloadHandle, url, true);
+                    AskToDownload(downloadHandle, url, true);
                 }
                 else
                 {
@@ -97,11 +97,11 @@ namespace ClashN.Handler
                 }
             };
             _updateFunc(false, string.Format(ResUI.MsgStartUpdating, "clashN"));
-            CheckUpdateAsync(ECoreType.clashN);
+            CheckUpdateAsync(CoreKind.ClashN);
         }
 
 
-        public void CheckUpdateCore(ECoreType type, Config config, Action<bool, string> update)
+        public void CheckUpdateCore(CoreKind type, Config config, Action<bool, string> update)
         {
             _config = config;
             _updateFunc = update;
@@ -144,7 +144,7 @@ namespace ClashN.Handler
                 {
                     _updateFunc(false, string.Format(ResUI.MsgParsingSuccessfully, "Core"));
                     url = args.Msg;
-                    askToDownload(downloadHandle, url, true);
+                    AskToDownload(downloadHandle, url, true);
                 }
                 else
                 {
@@ -164,7 +164,7 @@ namespace ClashN.Handler
 
             _updateFunc(false, ResUI.MsgUpdateSubscriptionStart);
 
-            if (config.profileItems == null || config.profileItems.Count <= 0)
+            if (config.ProfileItems == null || config.ProfileItems.Count <= 0)
             {
                 _updateFunc(false, ResUI.MsgNoValidSubscription);
                 return;
@@ -174,17 +174,17 @@ namespace ClashN.Handler
             {
                 //Turn off system proxy
                 bool bSysProxyType = false;
-                if (!blProxy && config.sysProxyType == ESysProxyType.ForcedChange)
+                if (!blProxy && config.SysProxyType == SysProxyType.ForcedChange)
                 {
                     bSysProxyType = true;
-                    config.sysProxyType = ESysProxyType.ForcedClear;
+                    config.SysProxyType = SysProxyType.ForcedClear;
                     SysProxyHandle.UpdateSysProxy(config, false);
                     Thread.Sleep(3000);
                 }
 
                 if (profileItems == null)
                 {
-                    profileItems = config.profileItems;
+                    profileItems = config.ProfileItems;
                 }
                 foreach (var item in profileItems)
                 {
@@ -193,7 +193,7 @@ namespace ClashN.Handler
                     string userAgent = item.userAgent.TrimEx();
                     string groupId = item.groupId.TrimEx();
                     string hashCode = $"{item.remarks}->";
-                    if (item.enabled == false || Utils.IsNullOrEmpty(indexId) || Utils.IsNullOrEmpty(url))
+                    if (item.enabled == false || string.IsNullOrEmpty(indexId) || string.IsNullOrEmpty(url))
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgSkipSubscriptionUpdate}");
                         continue;
@@ -203,11 +203,11 @@ namespace ClashN.Handler
 
                     if (item.enableConvert)
                     {
-                        if (Utils.IsNullOrEmpty(config.constItem.subConvertUrl))
+                        if (string.IsNullOrEmpty(config.ConstItem.subConvertUrl))
                         {
-                            config.constItem.subConvertUrl = Global.SubConvertUrls[0];
+                            config.ConstItem.subConvertUrl = Global.SubConvertUrls[0];
                         }
-                        url = String.Format(config.constItem.subConvertUrl, Utils.UrlEncode(url));
+                        url = String.Format(config.ConstItem.subConvertUrl, Utils.UrlEncode(url));
                         if (!url.Contains("config="))
                         {
                             url += String.Format("&config={0}", Global.SubConvertConfig[0]);
@@ -219,12 +219,12 @@ namespace ClashN.Handler
                         _updateFunc(false, $"{hashCode}{args.GetException().Message}");
                     };
                     var result = await downloadHandle.DownloadStringAsync(url, blProxy, userAgent);
-                    if (blProxy && Utils.IsNullOrEmpty(result.Item1))
+                    if (blProxy && string.IsNullOrEmpty(result.Item1))
                     {
                         result = await downloadHandle.DownloadStringAsync(url, false, userAgent);
                     }
 
-                    if (Utils.IsNullOrEmpty(result.Item1))
+                    if (string.IsNullOrEmpty(result.Item1))
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgSubscriptionDecodingFailed}");
                     }
@@ -236,7 +236,7 @@ namespace ClashN.Handler
                             _updateFunc(false, $"{hashCode}{result}");
                         }
 
-                        int ret = ConfigHandler.AddBatchProfiles(ref config, result.Item1, indexId, groupId);
+                        int ret = ConfigProc.AddBatchProfiles(ref config, result.Item1, indexId, groupId);
                         if (ret == 0)
                         {
                             item.updateTime = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
@@ -282,7 +282,7 @@ namespace ClashN.Handler
                 //restore system proxy
                 if (bSysProxyType)
                 {
-                    config.sysProxyType = ESysProxyType.ForcedChange;
+                    config.SysProxyType = SysProxyType.ForcedChange;
                     SysProxyHandle.UpdateSysProxy(config, false);
                 }
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
@@ -340,12 +340,12 @@ namespace ClashN.Handler
                 };
             }
 
-            askToDownload(downloadHandle, url, false);
+            AskToDownload(downloadHandle, url, false);
         }
 
         #region private
 
-        private async void CheckUpdateAsync(ECoreType type)
+        private async void CheckUpdateAsync(CoreKind type)
         {
             try
             {
@@ -353,7 +353,7 @@ namespace ClashN.Handler
                 string url = coreInfo.coreLatestUrl;
 
                 var result = await (new DownloadHandle()).UrlRedirectAsync(url, true);
-                if (!Utils.IsNullOrEmpty(result))
+                if (!string.IsNullOrEmpty(result))
                 {
                     responseHandler(type, result);
                 }
@@ -377,7 +377,7 @@ namespace ClashN.Handler
         /// <summary>
         /// 获取Core版本
         /// </summary>
-        private string getCoreVersion(ECoreType type)
+        private string getCoreVersion(CoreKind type)
         {
             try
             {
@@ -393,7 +393,7 @@ namespace ClashN.Handler
                         break;
                     }
                 }
-                if (Utils.IsNullOrEmpty(filePath))
+                if (string.IsNullOrEmpty(filePath))
                 {
                     string msg = string.Format(ResUI.NotFoundCore, @"");
                     return "";
@@ -420,7 +420,7 @@ namespace ClashN.Handler
                 return "";
             }
         }
-        private void responseHandler(ECoreType type, string redirectUrl)
+        private void responseHandler(CoreKind type, string redirectUrl)
         {
             try
             {
@@ -430,7 +430,7 @@ namespace ClashN.Handler
                 string curVersion;
                 string message;
                 string url;
-                if (type == ECoreType.clash)
+                if (type == CoreKind.Clash)
                 {
                     curVersion = getCoreVersion(type);
                     message = string.Format(ResUI.IsLatestCore, curVersion);
@@ -443,7 +443,7 @@ namespace ClashN.Handler
                         url = string.Format(coreInfo.coreDownloadUrl32, version);
                     }
                 }
-                else if (type == ECoreType.clash_meta)
+                else if (type == CoreKind.ClashMeta)
                 {
                     curVersion = getCoreVersion(type);
                     message = string.Format(ResUI.IsLatestCore, curVersion);
@@ -456,7 +456,7 @@ namespace ClashN.Handler
                         url = string.Format(coreInfo.coreDownloadUrl32, version);
                     }
                 }
-                else if (type == ECoreType.clashN)
+                else if (type == CoreKind.ClashN)
                 {
                     curVersion = FileVersionInfo.GetVersionInfo(Utils.GetExePath()).FileVersion.ToString();
                     message = string.Format(ResUI.IsLatestN, curVersion);
@@ -482,7 +482,7 @@ namespace ClashN.Handler
             }
         }
 
-        private void askToDownload(DownloadHandle downloadHandle, string url, bool blAsk)
+        private void AskToDownload(DownloadHandle downloadHandle, string url, bool blAsk)
         {
             bool blDownload = false;
             if (blAsk)

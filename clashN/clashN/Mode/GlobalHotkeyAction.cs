@@ -1,7 +1,7 @@
 ﻿
 namespace ClashN.Mode
 {
-    public enum EGlobalHotkey
+    public enum GlobalHotkeyAction
     {
         ShowForm = 0,
         SystemProxyClear = 1,

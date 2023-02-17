@@ -1,7 +1,7 @@
 ﻿
 namespace ClashN.Mode
 {
-    public enum ESysProxyType
+    public enum SysProxyType
     {
         ForcedClear = 0,
         ForcedChange = 1,

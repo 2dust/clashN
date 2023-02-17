@@ -11,8 +11,21 @@ namespace ClashN
     /// </summary>
     public partial class App : Application
     {
-        public static EventWaitHandle ProgramStarted;
-        private static Config _config;
+        public static EventWaitHandle? ProgramStarted;
+        private Config? _config;
+
+        static App()
+        {
+            ProgramStarted = new EventWaitHandle(false, EventResetMode.AutoReset, "ProgramStartedEvent", out bool bCreatedNew);
+            if (!bCreatedNew)
+            {
+                ProgramStarted.Set();
+                App.Current.Shutdown();
+                Environment.Exit(-1);
+                return;
+            }
+        }
+
         public App()
         {
             // Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
@@ -34,14 +47,6 @@ namespace ClashN
                 Utils.SetClipboardData(arg);
             }
 
-            ProgramStarted = new EventWaitHandle(false, EventResetMode.AutoReset, "ProgramStartedEvent", out bool bCreatedNew);
-            if (!bCreatedNew)
-            {
-                ProgramStarted.Set();
-                App.Current.Shutdown();
-                Environment.Exit(-1);
-                return;
-            }
             Global.processJob = new Job();
 
             Logging.Setup();
@@ -58,7 +63,7 @@ namespace ClashN
 
         private void Init()
         {
-            if (ConfigHandler.LoadConfig(ref _config) != 0)
+            if (ConfigProc.LoadConfig(ref _config) != 0)
             {
                 UI.ShowWarning($"Loading GUI configuration file is abnormal,please restart the application{Environment.NewLine}加载GUI配置文件异常,请重启应用");
                 Application.Current.Shutdown();
@@ -80,7 +85,7 @@ namespace ClashN
             }
         }
 
-        private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        private void TaskScheduler_UnobservedTaskException(object? sender, UnobservedTaskExceptionEventArgs e)
         {
             Utils.SaveLog("TaskScheduler_UnobservedTaskException", e.Exception);
         }
