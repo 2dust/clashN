@@ -11,7 +11,7 @@
     xmlns:resx="clr-namespace:ClashN.Resx"
     xmlns:tb="http://www.hardcodet.net/taskbar"
     xmlns:vms="clr-namespace:ClashN.ViewModels"
-    Title="clashN"
+    Title="ClashN"
     Width="900"
     Height="680"
     MinWidth="800"
@@ -73,7 +73,7 @@
                             <Button
                                 x:Name="btnReload"
                                 Content="{materialDesign:PackIcon Kind=Reload}"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
                                 ToolTip="{x:Static resx:ResUI.TbReloadCore}" />
                         </StackPanel>
                     </materialDesign:NavigationRailAssist.FloatingContent>

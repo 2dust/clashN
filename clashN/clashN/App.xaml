@@ -11,8 +11,8 @@
         <ResourceDictionary xmlns:system="clr-namespace:System;assembly=mscorlib">
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme
-                    BaseTheme="Dark"
-                    PrimaryColor="DeepPurple"
+                    BaseTheme="Light"
+                    PrimaryColor="Blue"
                     SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -75,8 +75,7 @@
                             </materialDesign:Card>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
-                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource MaterialDesignDarkForeground}"/>
-                                    <Setter TargetName="_Card" Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
+                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource PrimaryHueLightBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
