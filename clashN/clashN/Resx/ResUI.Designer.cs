@@ -953,15 +953,6 @@ namespace ClashN.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alias.
-        /// </summary>
-        public static string TbAlias {
-            get {
-                return ResourceManager.GetString("TbAlias", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to AutoRefresh.
         /// </summary>
         public static string TbAutoRefresh {
@@ -1228,6 +1219,15 @@ namespace ClashN.Resx {
         public static string TbReloadCore {
             get {
                 return ResourceManager.GetString("TbReloadCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remark.
+        /// </summary>
+        public static string TbRemark {
+            get {
+                return ResourceManager.GetString("TbRemark", resourceCulture);
             }
         }
         

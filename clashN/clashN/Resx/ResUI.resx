@@ -406,8 +406,8 @@
   <data name="TbAddressAs" xml:space="preserve">
     <value>Local file</value>
   </data>
-  <data name="TbAlias" xml:space="preserve">
-    <value>Alias</value>
+  <data name="TbRemark" xml:space="preserve">
+    <value>Remark</value>
   </data>
   <data name="TbAutoRefresh" xml:space="preserve">
     <value>AutoRefresh</value>
