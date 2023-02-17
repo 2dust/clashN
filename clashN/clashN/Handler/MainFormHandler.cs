@@ -68,7 +68,9 @@ namespace ClashN.Handler
                     FilterIndex = 2,
                     RestoreDirectory = true
                 };
-                if (fileDialog.ShowDialog() != DialogResult.OK)
+
+                IWin32Window parent = App.Current.MainWindow.WpfWindow2WinFormWin32Window();
+                if (fileDialog.ShowDialog(parent) != DialogResult.OK)
                 {
                     return;
                 }

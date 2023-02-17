@@ -125,7 +125,12 @@ namespace ClashN.ViewModels
             }, this.IsValid());
             SetGlobalHotkeyCmd = ReactiveCommand.Create(() =>
             {
-                new GlobalHotkeySettingWindow().ShowDialog();
+                GlobalHotkeySettingWindow dialog = new GlobalHotkeySettingWindow()
+                {
+                    Owner = App.Current.MainWindow
+                };
+
+                dialog.ShowDialog();
             }, this.IsValid());
 
             //System proxy

@@ -28,7 +28,7 @@ using ZXing.Windows.Compatibility;
 
 namespace ClashN
 {
-    class Utils
+    static class Utils
     {
 
         #region 资源Json操作
@@ -1274,5 +1274,21 @@ namespace ClashN
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref int attributeValue, uint attributeSize);
 
         #endregion
+
+        public static System.Windows.Forms.IWin32Window WpfWindow2WinFormWin32Window(this System.Windows.Window wpfWindow)
+        {
+            return new WinFormWin32WindowWrapper(
+                new System.Windows.Interop.WindowInteropHelper(wpfWindow).Handle);
+        }
+
+        private class WinFormWin32WindowWrapper : System.Windows.Forms.IWin32Window
+        {
+            public WinFormWin32WindowWrapper(IntPtr hwnd)
+            {
+                Handle = hwnd;
+            }
+
+            public IntPtr Handle { get; }
+        }
     }
 }

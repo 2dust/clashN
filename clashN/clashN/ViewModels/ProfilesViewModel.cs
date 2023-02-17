@@ -179,7 +179,13 @@ namespace ClashN.ViewModels
                     return;
                 }
             }
-            if ((new PorfileEditWindow(item)).ShowDialog() == true)
+
+            PorfileEditWindow dialog = new PorfileEditWindow(item)
+            {
+                Owner = App.Current.MainWindow,
+            };
+
+            if (dialog.ShowDialog() == true)
             {
                 RefreshProfiles();
             }
