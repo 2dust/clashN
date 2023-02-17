@@ -75,6 +75,7 @@
                             </materialDesign:Card>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource MaterialDesignDarkForeground}"/>
                                     <Setter TargetName="_Card" Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
