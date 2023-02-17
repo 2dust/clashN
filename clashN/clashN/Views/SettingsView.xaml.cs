@@ -1,13 +1,13 @@
-using clashN.Handler;
-using clashN.Mode;
-using clashN.ViewModels;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.ViewModels;
 using ReactiveUI;
 using System.Globalization;
 using System.IO;
 using System.Reactive.Disposables;
 using System.Windows.Media;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for SettingsView.xaml

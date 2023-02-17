@@ -1,12 +1,12 @@
-﻿using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
+﻿using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Forms = System.Windows.Forms;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// GlobalHotkeySettingWindow.xaml 的交互逻辑

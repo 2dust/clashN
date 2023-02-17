@@ -1,7 +1,7 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -10,10 +10,10 @@ using Splat;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
-using static clashN.Mode.ClashProviders;
-using static clashN.Mode.ClashProxies;
+using static ClashN.Mode.ClashProviders;
+using static ClashN.Mode.ClashProxies;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class ProxiesViewModel : ReactiveObject
     {

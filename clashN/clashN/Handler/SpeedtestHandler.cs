@@ -1,9 +1,9 @@
-﻿using clashN.Mode;
+﻿using ClashN.Mode;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     class SpeedtestHandler
     {

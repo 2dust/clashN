@@ -1,8 +1,8 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
-using clashN.Views;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
+using ClashN.Views;
 using DynamicData;
 using DynamicData.Binding;
 using MaterialDesignColors;
@@ -15,7 +15,7 @@ using System.IO;
 using System.Reactive;
 using System.Windows;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class SettingsViewModel : ReactiveValidationObject
     {

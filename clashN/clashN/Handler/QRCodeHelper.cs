@@ -2,7 +2,7 @@
 using QRCoder.Xaml;
 using System.Windows.Media;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     /// <summary>
     /// 含有QR码的描述类和包装编码和渲染

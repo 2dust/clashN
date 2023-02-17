@@ -1,6 +1,6 @@
-﻿using clashN.Base;
+﻿using ClashN.Base;
 
-namespace clashN.Mode
+namespace ClashN.Mode
 {
     public class ProfileItemModel : ProfileItem
     {

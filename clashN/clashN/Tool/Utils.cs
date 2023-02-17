@@ -1,5 +1,5 @@
-﻿using clashN.Base;
-using clashN.Mode;
+﻿using ClashN.Base;
+using ClashN.Mode;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ using ZXing.Common;
 using ZXing.QrCode;
 using ZXing.Windows.Compatibility;
 
-namespace clashN
+namespace ClashN
 {
     class Utils
     {

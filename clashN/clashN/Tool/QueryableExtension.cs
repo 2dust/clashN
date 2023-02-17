@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace clashN.Tool
+namespace ClashN.Tool
 {
     public static class QueryableExtension
     {

@@ -1,12 +1,12 @@
-﻿using clashN.Base;
-using clashN.Resx;
+﻿using ClashN.Base;
+using ClashN.Resx;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     /// <summary>
     ///Download

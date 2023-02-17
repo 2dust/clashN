@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace clashN.Base
+namespace ClashN.Base
 {
     /// <summary>
     /// </summary>

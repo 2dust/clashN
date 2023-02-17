@@ -2,7 +2,7 @@ using ReactiveUI;
 using System.Reactive.Linq;
 using System.Windows.Threading;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for MsgView.xaml

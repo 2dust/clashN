@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace clashN.Mode
+namespace ClashN.Mode
 {
     /// <summary>
     /// 本软件配置文件实体类

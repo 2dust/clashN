@@ -1,4 +1,4 @@
-﻿namespace clashN.Mode
+﻿namespace ClashN.Mode
 {
     public class ClashConnections
     {

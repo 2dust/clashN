@@ -1,5 +1,5 @@
-using clashN.Mode;
-using clashN.ViewModels;
+using ClashN.Mode;
+using ClashN.ViewModels;
 using ReactiveUI;
 using Splat;
 using System.Reactive.Disposables;
@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for ProfilesView.xaml

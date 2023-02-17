@@ -1,5 +1,5 @@
 ﻿
-namespace clashN.Mode
+namespace ClashN.Mode
 {
     public enum ECoreType
     {

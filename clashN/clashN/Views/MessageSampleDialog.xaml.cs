@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for MessageSampleDialog.xaml

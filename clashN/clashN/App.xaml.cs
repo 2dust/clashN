@@ -1,10 +1,10 @@
-﻿using clashN.Handler;
-using clashN.Mode;
-using clashN.Tool;
+﻿using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Tool;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace clashN
+namespace ClashN
 {
     /// <summary>
     /// Interaction logic for App.xaml

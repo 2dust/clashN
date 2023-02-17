@@ -2,7 +2,7 @@
 using System.IO.Compression;
 using System.Text;
 
-namespace clashN.Tool
+namespace ClashN.Tool
 {
     public static class FileManager
     {

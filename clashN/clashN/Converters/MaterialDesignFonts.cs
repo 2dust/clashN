@@ -1,7 +1,7 @@
-﻿using clashN.Handler;
+﻿using ClashN.Handler;
 using System.Windows.Media;
 
-namespace clashN.Converters
+namespace ClashN.Converters
 {
     public class MaterialDesignFonts
     {

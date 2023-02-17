@@ -1,6 +1,6 @@
 using ReactiveUI;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for DashboardView.xaml

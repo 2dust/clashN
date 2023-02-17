@@ -1,8 +1,8 @@
-﻿using clashN.Mode;
+﻿using ClashN.Mode;
 using System.Runtime.Intrinsics.X86;
-using static clashN.Mode.ClashProxies;
+using static ClashN.Mode.ClashProxies;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     public sealed class LazyConfig
     {

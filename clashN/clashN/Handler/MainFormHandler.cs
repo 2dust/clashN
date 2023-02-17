@@ -1,6 +1,6 @@
-﻿using clashN.Base;
-using clashN.Mode;
-using clashN.Resx;
+﻿using ClashN.Base;
+using ClashN.Mode;
+using ClashN.Resx;
 using NHotkey;
 using NHotkey.Wpf;
 using Splat;
@@ -8,9 +8,9 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
-using static clashN.Mode.ClashProxies;
+using static ClashN.Mode.ClashProxies;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     public sealed class MainFormHandler
     {

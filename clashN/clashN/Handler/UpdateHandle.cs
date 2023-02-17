@@ -1,6 +1,6 @@
-﻿using clashN.Base;
-using clashN.Mode;
-using clashN.Resx;
+﻿using ClashN.Base;
+using ClashN.Mode;
+using ClashN.Resx;
 using Splat;
 using System.Diagnostics;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     class UpdateHandle
     {

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Data;
 using System.Windows.Media;
 
-namespace clashN.Converters
+namespace ClashN.Converters
 {
     public class DelayColorConverter : IValueConverter
     {

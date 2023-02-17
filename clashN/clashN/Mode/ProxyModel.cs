@@ -1,6 +1,6 @@
 ﻿using ReactiveUI.Fody.Helpers;
 
-namespace clashN.Mode
+namespace ClashN.Mode
 {
     [Serializable]
     public class ProxyModel

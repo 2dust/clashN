@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace clashN.Properties {
+namespace ClashN.Properties {
     using System;
     
     

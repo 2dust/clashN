@@ -1,12 +1,12 @@
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
-using clashN.Tool;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
+using ClashN.Tool;
 using ReactiveUI;
 using Splat;
 using System.Reactive;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class HelpViewModel : ReactiveObject
     {

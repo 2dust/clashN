@@ -1,7 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Runtime.InteropServices;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     class ProxySetting
     {
