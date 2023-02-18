@@ -1,11 +1,11 @@
-using clashN.ViewModels;
+using ClashN.ViewModels;
 using ReactiveUI;
 using System.Reactive.Disposables;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for LogsView.xaml
@@ -41,7 +41,7 @@ namespace clashN.Views
                 return;
             }
             string? msgFilter = ViewModel?.MsgFilter;
-            if (!Utils.IsNullOrEmpty(msgFilter))
+            if (!string.IsNullOrEmpty(msgFilter))
             {
                 if (!Regex.IsMatch(msg, msgFilter))
                 {

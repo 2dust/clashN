@@ -1,9 +1,9 @@
-﻿using clashN.Mode;
+﻿using ClashN.Mode;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     class SpeedtestHandler
     {
@@ -29,8 +29,8 @@ namespace clashN.Handler
             {
                 _selecteds.Add(new ServerTestItem()
                 {
-                    indexId = it.indexId,
-                    address = it.address
+                    IndexId = it.indexId,
+                    Address = it.address
                 });
             }
 
@@ -74,9 +74,9 @@ namespace clashN.Handler
         {
             RunPingSub((ServerTestItem it) =>
             {
-                long time = Utils.Ping(it.address);
+                long time = Utils.Ping(it.Address);
 
-                _updateFunc(it.indexId, FormatOut(time, "ms"));
+                _updateFunc(it.IndexId, FormatOut(time, "ms"));
             });
         }
 
@@ -84,9 +84,9 @@ namespace clashN.Handler
         {
             RunPingSub((ServerTestItem it) =>
             {
-                int time = GetTcpingTime(it.address, it.port);
+                int time = GetTcpingTime(it.Address, it.Port);
 
-                _updateFunc(it.indexId, FormatOut(time, "ms"));
+                _updateFunc(it.IndexId, FormatOut(time, "ms"));
             });
         }
 
@@ -95,7 +95,7 @@ namespace clashN.Handler
         {
             try
             {
-                int httpPort = _config.httpPort;
+                int httpPort = _config.HttpPort;
 
                 Task<int> t = Task.Run(() =>
                 {
@@ -103,8 +103,8 @@ namespace clashN.Handler
                     {
                         WebProxy webProxy = new WebProxy(Global.Loopback, httpPort);
                         int responseTime = -1;
-                        string status = GetRealPingTime(LazyConfig.Instance.GetConfig().constItem.speedPingTestUrl, webProxy, out responseTime);
-                        bool noError = Utils.IsNullOrEmpty(status);
+                        string status = GetRealPingTime(LazyConfig.Instance.Config.ConstItem.speedPingTestUrl, webProxy, out responseTime);
+                        bool noError = string.IsNullOrEmpty(status);
                         return noError ? responseTime : -1;
                     }
                     catch (Exception ex)

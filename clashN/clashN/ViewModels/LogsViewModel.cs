@@ -1,7 +1,7 @@
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class LogsViewModel : ReactiveObject
     {

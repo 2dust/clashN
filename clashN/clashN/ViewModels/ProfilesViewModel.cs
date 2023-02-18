@@ -1,8 +1,8 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
-using clashN.Views;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
+using ClashN.Views;
 using DynamicData;
 using DynamicData.Binding;
 using MaterialDesignThemes.Wpf;
@@ -14,7 +14,7 @@ using System.Reactive;
 using System.Windows.Forms;
 using Application = System.Windows.Application;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class ProfilesViewModel : ReactiveObject
     {
@@ -51,7 +51,7 @@ namespace clashN.ViewModels
         public ProfilesViewModel()
         {
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
             SelectedSource = new();
 
@@ -128,7 +128,7 @@ namespace clashN.ViewModels
 
             ClearStatisticCmd = ReactiveCommand.Create(() =>
             {
-                ConfigHandler.ClearAllServerStatistics(ref _config);
+                ConfigProc.ClearAllServerStatistics(ref _config);
                 RefreshProfiles();
             });
             ProfileReloadCmd = ReactiveCommand.Create(() =>
@@ -144,7 +144,7 @@ namespace clashN.ViewModels
         private void EditLocalFile()
         {
             var address = SelectedSource.address;
-            if (Utils.IsNullOrEmpty(address))
+            if (string.IsNullOrEmpty(address))
             {
                 _noticeHandler?.Enqueue(ResUI.FillProfileAddressCustom);
                 return;
@@ -168,7 +168,7 @@ namespace clashN.ViewModels
             {
                 item = new()
                 {
-                    coreType = ECoreType.clash_meta
+                    coreType = CoreKind.ClashMeta
                 };
             }
             else
@@ -179,7 +179,13 @@ namespace clashN.ViewModels
                     return;
                 }
             }
-            if ((new PorfileEditWindow(item)).ShowDialog() == true)
+
+            PorfileEditWindow dialog = new PorfileEditWindow(item)
+            {
+                Owner = App.Current.MainWindow,
+            };
+
+            if (dialog.ShowDialog() == true)
             {
                 RefreshProfiles();
             }
@@ -196,13 +202,13 @@ namespace clashN.ViewModels
 
             Locator.Current.GetService<MainWindowViewModel>()?.ShowHideWindow(true);
 
-            if (Utils.IsNullOrEmpty(result))
+            if (string.IsNullOrEmpty(result))
             {
                 _noticeHandler?.Enqueue(ResUI.NoValidQRcodeFound);
             }
             else
             {
-                int ret = ConfigHandler.AddBatchProfiles(ref _config, result, "", "");
+                int ret = ConfigProc.AddBatchProfiles(ref _config, result, "", "");
                 if (ret == 0)
                 {
                     RefreshProfiles();
@@ -212,12 +218,12 @@ namespace clashN.ViewModels
         }
         public void AddProfilesViaClipboard(bool bClear)
         {
-            string clipboardData = Utils.GetClipboardData();
-            if (Utils.IsNullOrEmpty(clipboardData))
+            string? clipboardData = Utils.GetClipboardData();
+            if (string.IsNullOrEmpty(clipboardData))
             {
                 return;
             }
-            int ret = ConfigHandler.AddBatchProfiles(ref _config, clipboardData, "", "");
+            int ret = ConfigProc.AddBatchProfiles(ref _config, clipboardData, "", "");
             if (ret == 0)
             {
                 if (bClear)
@@ -236,8 +242,8 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            var content = ConfigHandler.GetProfileContent(item);
-            if (Utils.IsNullOrEmpty(content))
+            var content = ConfigProc.GetProfileContent(item);
+            if (string.IsNullOrEmpty(content))
             {
                 content = item.url;
             }
@@ -280,7 +286,7 @@ namespace clashN.ViewModels
                 return;
             }
 
-            ConfigHandler.RemoveProfile(_config, new List<ProfileItem>() { item });
+            ConfigProc.RemoveProfile(_config, new List<ProfileItem>() { item });
 
             _noticeHandler?.Enqueue(ResUI.OperationSuccess);
 
@@ -295,7 +301,7 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            if (ConfigHandler.CopyProfile(ref _config, new List<ProfileItem>() { item }) == 0)
+            if (ConfigProc.CopyProfile(ref _config, new List<ProfileItem>() { item }) == 0)
             {
                 _noticeHandler?.Enqueue(ResUI.OperationSuccess);
                 RefreshProfiles();
@@ -303,7 +309,7 @@ namespace clashN.ViewModels
         }
         public void SetDefaultProfile()
         {
-            if (Utils.IsNullOrEmpty(SelectedSource?.indexId))
+            if (string.IsNullOrEmpty(SelectedSource?.indexId))
             {
                 return;
             }
@@ -314,7 +320,7 @@ namespace clashN.ViewModels
                 return;
             }
 
-            if (ConfigHandler.SetDefaultProfile(ref _config, item) == 0)
+            if (ConfigProc.SetDefaultProfile(ref _config, item) == 0)
             {
                 _noticeHandler?.Enqueue(ResUI.OperationSuccess);
                 RefreshProfiles();
@@ -325,13 +331,13 @@ namespace clashN.ViewModels
 
         public void RefreshProfiles()
         {
-            ConfigHandler.SetDefaultProfile(_config, _config.profileItems);
+            ConfigProc.SetDefaultProfile(_config, _config.ProfileItems);
 
             var lstModel = new List<ProfileItemModel>();
-            foreach (var item in _config.profileItems.OrderBy(it => it.sort))
+            foreach (var item in _config.ProfileItems.OrderBy(it => it.sort))
             {
                 var model = Utils.FromJson<ProfileItemModel>(Utils.ToJson(item));
-                model.isActive = _config.IsActiveNode(item);
+                model.IsActive = _config.IsActiveNode(item);
                 lstModel.Add(model);
             }
 
@@ -348,7 +354,7 @@ namespace clashN.ViewModels
             var targetIndex = _profileItems.IndexOf(targetItem);
             if (startIndex >= 0 && targetIndex >= 0 && startIndex != targetIndex)
             {
-                if (ConfigHandler.MoveProfile(ref _config, startIndex, EMove.Position, targetIndex) == 0)
+                if (ConfigProc.MoveProfile(ref _config, startIndex, MovementTarget.Position, targetIndex) == 0)
                 {
                     RefreshProfiles();
                 }
@@ -362,7 +368,7 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            if (Utils.IsNullOrEmpty(item.url))
+            if (string.IsNullOrEmpty(item.url))
             {
                 return;
             }

@@ -1,5 +1,5 @@
-﻿using clashN.Base;
-using clashN.Mode;
+﻿using ClashN.Base;
+using ClashN.Mode;
 using Microsoft.Win32;
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
@@ -21,14 +21,15 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
 using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
 using ZXing;
 using ZXing.Common;
 using ZXing.QrCode;
 using ZXing.Windows.Compatibility;
 
-namespace clashN
+namespace ClashN
 {
-    class Utils
+    static class Utils
     {
 
         #region 资源Json操作
@@ -407,7 +408,7 @@ namespace clashN
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static bool IsNullOrEmpty(string text)
+        public static bool IsNullOrEmpty(string? text)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -846,13 +847,13 @@ namespace clashN
                 string location = GetExePath();
                 if (blFull)
                 {
-                    return string.Format("clashN - V{0} - {1}",
+                    return string.Format("ClashN - V{0} - {1}",
                             FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString(),
                             File.GetLastWriteTime(location).ToString("yyyy/MM/dd"));
                 }
                 else
                 {
-                    return string.Format("clashN/{0}",
+                    return string.Format("ClashN/{0}",
                         FileVersionInfo.GetVersionInfo(location).FileVersion?.ToString());
                 }
             }
@@ -889,9 +890,9 @@ namespace clashN
         /// 获取剪贴板数
         /// </summary>
         /// <returns></returns>
-        public static string GetClipboardData()
+        public static string? GetClipboardData()
         {
-            string strData = string.Empty;
+            string? strData = null;
             try
             {
 
@@ -900,7 +901,8 @@ namespace clashN
                 {
                     strData = data.GetData(DataFormats.UnicodeText).ToString();
                 }
-                if (Utils.IsNullOrEmpty(strData))
+
+                if (string.IsNullOrEmpty(strData))
                 {
                     var file = Clipboard.GetFileDropList();
                     if (file.Count > 0)
@@ -915,6 +917,7 @@ namespace clashN
             {
                 SaveLog(ex.Message, ex);
             }
+
             return strData;
         }
 
@@ -1099,7 +1102,7 @@ namespace clashN
             }
         }
 
-        public static string GetBinPath(string filename, ECoreType? coreType = null)
+        public static string GetBinPath(string filename, CoreKind? coreType = null)
         {
             string _tempPath = Path.Combine(StartupPath(), "bin");
             if (!Directory.Exists(_tempPath))
@@ -1223,7 +1226,7 @@ namespace clashN
         public static T FromYaml<T>(string str)
         {
             var deserializer = new DeserializerBuilder()
-                //.WithNamingConvention(UnderscoredNamingConvention.Instance)
+                .WithNamingConvention(PascalCaseNamingConvention.Instance)
                 .Build();
             try
             {
@@ -1245,7 +1248,7 @@ namespace clashN
         public static string ToYaml(Object obj)
         {
             var serializer = new SerializerBuilder()
-                    //.WithNamingConvention(CamelCaseNamingConvention.Instance)
+                    .WithNamingConvention(HyphenatedNamingConvention.Instance)
                     .Build();
 
             string result = string.Empty;
@@ -1274,5 +1277,21 @@ namespace clashN
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref int attributeValue, uint attributeSize);
 
         #endregion
+
+        public static System.Windows.Forms.IWin32Window WpfWindow2WinFormWin32Window(this System.Windows.Window wpfWindow)
+        {
+            return new WinFormWin32WindowWrapper(
+                new System.Windows.Interop.WindowInteropHelper(wpfWindow).Handle);
+        }
+
+        private class WinFormWin32WindowWrapper : System.Windows.Forms.IWin32Window
+        {
+            public WinFormWin32WindowWrapper(IntPtr hwnd)
+            {
+                Handle = hwnd;
+            }
+
+            public IntPtr Handle { get; }
+        }
     }
 }

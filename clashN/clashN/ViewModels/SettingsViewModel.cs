@@ -1,8 +1,8 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
-using clashN.Views;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
+using ClashN.Views;
 using DynamicData;
 using DynamicData.Binding;
 using MaterialDesignColors;
@@ -15,7 +15,7 @@ using System.IO;
 using System.Reactive;
 using System.Windows;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class SettingsViewModel : ReactiveValidationObject
     {
@@ -93,31 +93,31 @@ namespace clashN.ViewModels
 
         public SettingsViewModel()
         {
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
             //Core
-            MixedPort = _config.mixedPort;
-            SocksPort = _config.socksPort;
-            HttpPort = _config.httpPort;
-            APIPort = _config.APIPort;
-            AllowLANConn = _config.allowLANConn;
-            EnableIpv6 = _config.enableIpv6;
-            LogLevel = _config.logLevel;
-            EnableMixinContent = _config.enableMixinContent;
+            MixedPort = _config.MixedPort;
+            SocksPort = _config.SocksPort;
+            HttpPort = _config.HttpPort;
+            APIPort = _config.ApiPort;
+            AllowLANConn = _config.AllowLANConn;
+            EnableIpv6 = _config.EnableIpv6;
+            LogLevel = _config.LogLevel;
+            EnableMixinContent = _config.EnableMixinContent;
             EditMixinContentCmd = ReactiveCommand.Create(() =>
             {
                 EditMixinContent();
             }, this.IsValid());
 
             //clashN       
-            AutoRun = _config.autoRun;
-            EnableStatistics = _config.enableStatistics;
-            EnableSecurityProtocolTls13 = _config.enableSecurityProtocolTls13;
-            autoUpdateSubInterval = _config.autoUpdateSubInterval;
-            autoDelayTestInterval = _config.autoDelayTestInterval;
-            SubConvertUrl = _config.constItem.subConvertUrl;
-            currentFontFamily = _config.uiItem.currentFontFamily;
-            AutoHideStartup = _config.autoHideStartup;
+            AutoRun = _config.AutoRun;
+            EnableStatistics = _config.EnableStatistics;
+            EnableSecurityProtocolTls13 = _config.EnableSecurityProtocolTls13;
+            autoUpdateSubInterval = _config.AutoUpdateSubInterval;
+            autoDelayTestInterval = _config.AutoDelayTestInterval;
+            SubConvertUrl = _config.ConstItem.subConvertUrl;
+            currentFontFamily = _config.UiItem.currentFontFamily;
+            AutoHideStartup = _config.AutoHideStartup;
 
             SetLoopbackCmd = ReactiveCommand.Create(() =>
             {
@@ -125,34 +125,39 @@ namespace clashN.ViewModels
             }, this.IsValid());
             SetGlobalHotkeyCmd = ReactiveCommand.Create(() =>
             {
-                new GlobalHotkeySettingWindow().ShowDialog();
+                GlobalHotkeySettingWindow dialog = new GlobalHotkeySettingWindow()
+                {
+                    Owner = App.Current.MainWindow
+                };
+
+                dialog.ShowDialog();
             }, this.IsValid());
 
             //System proxy
-            systemProxyExceptions = _config.systemProxyExceptions;
-            systemProxyAdvancedProtocol = _config.systemProxyAdvancedProtocol;
+            systemProxyExceptions = _config.SystemProxyExceptions;
+            systemProxyAdvancedProtocol = _config.SystemProxyAdvancedProtocol;
             PacPort = _config.PacPort;
 
             //UI
-            ColorModeDark = _config.uiItem.colorModeDark;
+            ColorModeDark = _config.UiItem.colorModeDark;
             _swatches.AddRange(new SwatchesProvider().Swatches);
-            if (!_config.uiItem.colorPrimaryName.IsNullOrEmpty())
+            if (!_config.UiItem.colorPrimaryName.IsNullOrEmpty())
             {
-                SelectedSwatch = _swatches.FirstOrDefault(t => t.Name == _config.uiItem.colorPrimaryName);
+                SelectedSwatch = _swatches.FirstOrDefault(t => t.Name == _config.UiItem.colorPrimaryName);
             }
             CurrentLanguage = Utils.RegReadValue(Global.MyRegPath, Global.MyRegKeyLanguage, Global.Languages[0]);
-            CurrentFontSize = _config.uiItem.currentFontSize;
+            CurrentFontSize = _config.UiItem.currentFontSize;
 
             this.WhenAnyValue(
             x => x.ColorModeDark,
             y => y == true)
                 .Subscribe(c =>
                 {
-                    if (_config.uiItem.colorModeDark != ColorModeDark)
+                    if (_config.UiItem.colorModeDark != ColorModeDark)
                     {
-                        _config.uiItem.colorModeDark = ColorModeDark;
+                        _config.UiItem.colorModeDark = ColorModeDark;
                         Locator.Current.GetService<MainWindowViewModel>()?.ModifyTheme(ColorModeDark);
-                        ConfigHandler.SaveConfig(ref _config);
+                        ConfigProc.SaveConfig(_config);
                     }
                 });
 
@@ -168,11 +173,11 @@ namespace clashN.ViewModels
                      {
                          return;
                      }
-                     if (_config.uiItem.colorPrimaryName != SelectedSwatch?.Name)
+                     if (_config.UiItem.colorPrimaryName != SelectedSwatch?.Name)
                      {
-                         _config.uiItem.colorPrimaryName = SelectedSwatch?.Name;
+                         _config.UiItem.colorPrimaryName = SelectedSwatch?.Name;
                          Locator.Current.GetService<MainWindowViewModel>()?.ChangePrimaryColor(SelectedSwatch.ExemplarHue.Color);
-                         ConfigHandler.SaveConfig(ref _config);
+                         ConfigProc.SaveConfig(_config);
                      }
                  });
 
@@ -181,7 +186,7 @@ namespace clashN.ViewModels
              y => y != null && !y.IsNullOrEmpty())
                 .Subscribe(c =>
                 {
-                    if (!Utils.IsNullOrEmpty(CurrentLanguage))
+                    if (!string.IsNullOrEmpty(CurrentLanguage))
                     {
                         Utils.RegWriteValue(Global.MyRegPath, Global.MyRegKeyLanguage, CurrentLanguage);
                         Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(CurrentLanguage);
@@ -193,11 +198,11 @@ namespace clashN.ViewModels
              y => y > 0)
              .Subscribe(c =>
              {
-                 if (_config.uiItem.colorModeDark != ColorModeDark)
+                 if (_config.UiItem.colorModeDark != ColorModeDark)
                  {
-                     _config.uiItem.colorModeDark = ColorModeDark;
+                     _config.UiItem.colorModeDark = ColorModeDark;
                      Locator.Current.GetService<MainWindowViewModel>()?.ModifyTheme(ColorModeDark);
-                     ConfigHandler.SaveConfig(ref _config);
+                     ConfigProc.SaveConfig(_config);
                  }
              });
 
@@ -208,14 +213,14 @@ namespace clashN.ViewModels
                 {
                     if (CurrentFontSize >= Global.MinFontSize)
                     {
-                        _config.uiItem.currentFontSize = CurrentFontSize;
+                        _config.UiItem.currentFontSize = CurrentFontSize;
                         double size = (long)CurrentFontSize;
                         Application.Current.Resources["StdFontSize1"] = size;
                         Application.Current.Resources["StdFontSize2"] = size + 1;
                         Application.Current.Resources["StdFontSize3"] = size + 2;
                         Application.Current.Resources["StdFontSize4"] = size + 3;
 
-                        ConfigHandler.SaveConfig(ref _config);
+                        ConfigProc.SaveConfig(_config);
                     }
                 });
 
@@ -230,32 +235,32 @@ namespace clashN.ViewModels
         void SaveConfig()
         {
             //Core
-            _config.mixedPort = MixedPort;
-            _config.socksPort = SocksPort;
-            _config.httpPort = HttpPort;
-            _config.APIPort = APIPort;
-            _config.allowLANConn = AllowLANConn;
-            _config.enableIpv6 = EnableIpv6;
-            _config.logLevel = LogLevel;
-            _config.enableMixinContent = EnableMixinContent;
+            _config.MixedPort = MixedPort;
+            _config.SocksPort = SocksPort;
+            _config.HttpPort = HttpPort;
+            _config.ApiPort = APIPort;
+            _config.AllowLANConn = AllowLANConn;
+            _config.EnableIpv6 = EnableIpv6;
+            _config.LogLevel = LogLevel;
+            _config.EnableMixinContent = EnableMixinContent;
 
             //clashN                   
             Utils.SetAutoRun(AutoRun);
-            _config.autoRun = AutoRun;
-            _config.enableStatistics = EnableStatistics;
-            _config.enableSecurityProtocolTls13 = EnableSecurityProtocolTls13;
-            _config.autoUpdateSubInterval = autoUpdateSubInterval;
-            _config.autoDelayTestInterval = autoDelayTestInterval;
-            _config.constItem.subConvertUrl = SubConvertUrl;
-            _config.uiItem.currentFontFamily = currentFontFamily;
-            _config.autoHideStartup = AutoHideStartup;
+            _config.AutoRun = AutoRun;
+            _config.EnableStatistics = EnableStatistics;
+            _config.EnableSecurityProtocolTls13 = EnableSecurityProtocolTls13;
+            _config.AutoUpdateSubInterval = autoUpdateSubInterval;
+            _config.AutoDelayTestInterval = autoDelayTestInterval;
+            _config.ConstItem.subConvertUrl = SubConvertUrl;
+            _config.UiItem.currentFontFamily = currentFontFamily;
+            _config.AutoHideStartup = AutoHideStartup;
 
             //System proxy
-            _config.systemProxyExceptions = systemProxyExceptions;
-            _config.systemProxyAdvancedProtocol = systemProxyAdvancedProtocol;
+            _config.SystemProxyExceptions = systemProxyExceptions;
+            _config.SystemProxyAdvancedProtocol = systemProxyAdvancedProtocol;
             _config.PacPort = PacPort;
 
-            if (ConfigHandler.SaveConfig(ref _config) == 0)
+            if (ConfigProc.SaveConfig(_config) == 0)
             {
                 Locator.Current.GetService<NoticeHandler>()?.Enqueue(ResUI.OperationSuccess);
                 Locator.Current.GetService<MainWindowViewModel>()?.LoadCore();
@@ -273,7 +278,7 @@ namespace clashN.ViewModels
             if (!File.Exists(address))
             {
                 string contents = Utils.GetEmbedText(Global.SampleMixin);
-                if (!Utils.IsNullOrEmpty(contents))
+                if (!string.IsNullOrEmpty(contents))
                 {
                     File.WriteAllText(address, contents);
                 }

@@ -2,7 +2,7 @@ using ReactiveUI;
 using System.Reactive.Linq;
 using System.Windows.Threading;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for MsgView.xaml
@@ -22,7 +22,7 @@ namespace clashN.Views
 
         public void AppendText(string msg)
         {
-            //if (!Utils.IsNullOrEmpty(MsgFilter))
+            //if (!string.IsNullOrEmpty(MsgFilter))
             //{
             //    if (!Regex.IsMatch(text, MsgFilter))
             //    {

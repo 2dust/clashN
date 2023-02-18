@@ -1,10 +1,10 @@
-﻿using clashN.Mode;
-using clashN.Resx;
+﻿using ClashN.Mode;
+using ClashN.Resx;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     /// <summary>
     /// core进程处理类
@@ -28,7 +28,7 @@ namespace clashN.Handler
         {
             if (Global.reloadCore)
             {
-                var item = ConfigHandler.GetDefaultProfile(ref config);
+                var item = ConfigProc.GetDefaultProfile(ref config);
                 if (item == null)
                 {
                     CoreStop();
@@ -36,12 +36,12 @@ namespace clashN.Handler
                     return;
                 }
 
-                if (config.enableTun && !Utils.IsAdministrator())
+                if (config.EnableTun && !Utils.IsAdministrator())
                 {
                     ShowMsg(true, ResUI.EnableTunModeFailed);
                     return;
                 }
-                if (config.enableTun && item.coreType == ECoreType.clash)
+                if (config.EnableTun && item.coreType == CoreKind.Clash)
                 {
                     ShowMsg(true, ResUI.TunModeCoreTip);
                     return;
@@ -171,7 +171,7 @@ namespace clashN.Handler
                     break;
                 }
             }
-            if (Utils.IsNullOrEmpty(fileName))
+            if (string.IsNullOrEmpty(fileName))
             {
                 string msg = string.Format(ResUI.NotFoundCore, coreInfo.coreUrl);
                 ShowMsg(false, msg);

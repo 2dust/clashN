@@ -1,8 +1,8 @@
-﻿using clashN.Mode;
+﻿using ClashN.Mode;
 using System.Net.WebSockets;
 using System.Text;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     class StatisticsHandler
     {
@@ -30,7 +30,7 @@ namespace clashN.Handler
         public StatisticsHandler(Config config, Action<ulong, ulong> update)
         {
             config_ = config;
-            Enable = config.enableStatistics;
+            Enable = config.EnableStatistics;
             updateFunc_ = update;
             exitFlag_ = false;
 
@@ -46,7 +46,7 @@ namespace clashN.Handler
             try
             {
 
-                url = $"ws://{Global.Loopback}:{config_.APIPort}/traffic";
+                url = $"ws://{Global.Loopback}:{config_.ApiPort}/traffic";
 
                 if (webSocket == null)
                 {
@@ -104,9 +104,9 @@ namespace clashN.Handler
                         while (!res.CloseStatus.HasValue)
                         {
                             var result = Encoding.UTF8.GetString(buffer, 0, res.Count);
-                            if (!Utils.IsNullOrEmpty(result))
+                            if (!string.IsNullOrEmpty(result))
                             {
-                                var serverStatItem = config_.GetProfileItem(config_.indexId);
+                                var serverStatItem = config_.GetProfileItem(config_.IndexId);
                                 ParseOutput(result, out ulong up, out ulong down);
                                 if (up + down > 0)
                                 {
@@ -134,7 +134,7 @@ namespace clashN.Handler
         //    try
         //    {
         //        string result = Utils.LoadResource(Utils.GetConfigPath(Global.StatisticLogOverall));
-        //        if (!Utils.IsNullOrEmpty(result))
+        //        if (!string.IsNullOrEmpty(result))
         //        {
         //            serverStatistics_ = Utils.FromJson<ServerStatistics>(result);
         //        }
@@ -239,7 +239,7 @@ namespace clashN.Handler
                     down = trafficItem.down;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Utils.SaveLog(ex.Message, ex);
             }

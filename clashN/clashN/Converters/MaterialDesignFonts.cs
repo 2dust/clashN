@@ -1,7 +1,7 @@
-﻿using clashN.Handler;
+﻿using ClashN.Handler;
 using System.Windows.Media;
 
-namespace clashN.Converters
+namespace ClashN.Converters
 {
     public class MaterialDesignFonts
     {
@@ -11,7 +11,7 @@ namespace clashN.Converters
         {
             try
             {
-                var fontFamily = LazyConfig.Instance.GetConfig().uiItem.currentFontFamily;
+                var fontFamily = LazyConfig.Instance.Config.UiItem.currentFontFamily;
                 if (!string.IsNullOrEmpty(fontFamily))
                 {
                     var fontPath = Utils.GetFontsPath();

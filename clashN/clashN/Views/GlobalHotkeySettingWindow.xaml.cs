@@ -1,12 +1,12 @@
-﻿using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
+﻿using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Forms = System.Windows.Forms;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// GlobalHotkeySettingWindow.xaml 的交互逻辑
@@ -14,28 +14,23 @@ namespace clashN.Views
     public partial class GlobalHotkeySettingWindow
     {
         private static Config _config;
-        List<KeyEventItem> lstKey;
+        List<KeyShortcut> lstKey;
 
         public GlobalHotkeySettingWindow()
         {
             InitializeComponent();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
-            if (_config.globalHotkeys == null)
+            foreach (GlobalHotkeyAction it in Enum.GetValues(typeof(GlobalHotkeyAction)))
             {
-                _config.globalHotkeys = new List<KeyEventItem>();
-            }
-
-            foreach (EGlobalHotkey it in Enum.GetValues(typeof(EGlobalHotkey)))
-            {
-                if (_config.globalHotkeys.FindIndex(t => t.eGlobalHotkey == it) >= 0)
+                if (_config.globalHotkeys.FindIndex(t => t.GlobalHotkey == it) >= 0)
                 {
                     continue;
                 }
 
-                _config.globalHotkeys.Add(new KeyEventItem()
+                _config.globalHotkeys.Add(new KeyShortcut()
                 {
-                    eGlobalHotkey = it,
+                    GlobalHotkey = it,
                     Alt = false,
                     Control = false,
                     Shift = false,
@@ -53,7 +48,7 @@ namespace clashN.Views
 
             BindingData(-1);
 
-            Utils.SetDarkBorder(this, _config.uiItem.colorModeDark);
+            Utils.SetDarkBorder(this, _config.UiItem.colorModeDark);
         }
 
 
@@ -66,10 +61,13 @@ namespace clashN.Views
                 return;
             var formsKey = (Forms.Keys)KeyInterop.VirtualKeyFromKey(e.Key);
 
-            lstKey[index].KeyCode = formsKey;
-            lstKey[index].Alt = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
-            lstKey[index].Control = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
-            lstKey[index].Shift = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
+            lstKey[index] = new KeyShortcut()
+            {
+                KeyCode = formsKey,
+                Alt = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt),
+                Control = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl),
+                Shift = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift),
+            };
 
             BindingData(index);
         }
@@ -108,9 +106,10 @@ namespace clashN.Views
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            _config.globalHotkeys = lstKey;
+            _config.globalHotkeys.Clear();
+            _config.globalHotkeys.AddRange(lstKey);
 
-            if (ConfigHandler.SaveConfig(ref _config, false) == 0)
+            if (ConfigProc.SaveConfig(_config, false) == 0)
             {
                 this.Close();
             }
@@ -128,16 +127,16 @@ namespace clashN.Views
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             lstKey.Clear();
-            foreach (EGlobalHotkey it in Enum.GetValues(typeof(EGlobalHotkey)))
+            foreach (GlobalHotkeyAction it in Enum.GetValues(typeof(GlobalHotkeyAction)))
             {
-                if (lstKey.FindIndex(t => t.eGlobalHotkey == it) >= 0)
+                if (lstKey.FindIndex(t => t.GlobalHotkey == it) >= 0)
                 {
                     continue;
                 }
 
-                lstKey.Add(new KeyEventItem()
+                lstKey.Add(new KeyShortcut()
                 {
-                    eGlobalHotkey = it,
+                    GlobalHotkey = it,
                     Alt = false,
                     Control = false,
                     Shift = false,

@@ -1,7 +1,7 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -10,10 +10,10 @@ using Splat;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
-using static clashN.Mode.ClashProviders;
-using static clashN.Mode.ClashProxies;
+using static ClashN.Mode.ClashProviders;
+using static ClashN.Mode.ClashProxies;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class ProxiesViewModel : ReactiveObject
     {
@@ -54,13 +54,13 @@ namespace clashN.ViewModels
         public ProxiesViewModel()
         {
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
             SelectedGroup = new();
             SelectedDetail = new();
-            AutoRefresh = _config.uiItem.proxiesAutoRefresh;
-            EnableTun = _config.enableTun;
-            SortingSelected = _config.uiItem.proxiesSorting;
+            AutoRefresh = _config.UiItem.proxiesAutoRefresh;
+            EnableTun = _config.EnableTun;
+            SortingSelected = _config.UiItem.proxiesSorting;
 
             //GetClashProxies(true);
             this.WhenAnyValue(
@@ -70,17 +70,17 @@ namespace clashN.ViewModels
 
             this.WhenAnyValue(
               x => x.SystemProxySelected,
-              y => y != null && y >= 0)
+              y => y >= 0)
                   .Subscribe(c => DoSystemProxySelected(c));
 
             this.WhenAnyValue(
                x => x.RuleModeSelected,
-               y => y != null && y >= 0)
+               y => y >= 0)
                    .Subscribe(c => DoRulemodeSelected(c));
 
             this.WhenAnyValue(
                x => x.SortingSelected,
-               y => y != null && y >= 0)
+               y => y >= 0)
                   .Subscribe(c => DoSortingSelected(c));
 
             this.WhenAnyValue(
@@ -91,7 +91,7 @@ namespace clashN.ViewModels
             this.WhenAnyValue(
             x => x.AutoRefresh,
             y => y == true)
-                .Subscribe(c => { _config.uiItem.proxiesAutoRefresh = AutoRefresh; });
+                .Subscribe(c => { _config.UiItem.proxiesAutoRefresh = AutoRefresh; });
 
             ProxiesReloadCmd = ReactiveCommand.Create(() =>
             {
@@ -123,11 +123,11 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            if (_config.sysProxyType == (ESysProxyType)SystemProxySelected)
+            if (_config.SysProxyType == (SysProxyType)SystemProxySelected)
             {
                 return;
             }
-            Locator.Current.GetService<MainWindowViewModel>()?.SetListenerType((ESysProxyType)SystemProxySelected);
+            Locator.Current.GetService<MainWindowViewModel>()?.SetListenerType((SysProxyType)SystemProxySelected);
         }
         void DoRulemodeSelected(bool c)
         {
@@ -148,9 +148,9 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            if (SortingSelected != _config.uiItem.proxiesSorting)
+            if (SortingSelected != _config.UiItem.proxiesSorting)
             {
-                _config.uiItem.proxiesSorting = SortingSelected;
+                _config.UiItem.proxiesSorting = SortingSelected;
             }
 
             RefreshProxyDetails(c);
@@ -186,7 +186,7 @@ namespace clashN.ViewModels
         }
         public void ReloadSystemProxySelected()
         {
-            SystemProxySelected = (int)_config.sysProxyType;
+            SystemProxySelected = (int)_config.SysProxyType;
         }
         public void ReloadRulemodeSelected()
         {
@@ -195,9 +195,9 @@ namespace clashN.ViewModels
 
         void DoEnableTun(bool c)
         {
-            if (_config.enableTun != EnableTun)
+            if (_config.EnableTun != EnableTun)
             {
-                _config.enableTun = EnableTun;
+                _config.EnableTun = EnableTun;
                 TunModeSwitch();
             }
         }
@@ -242,7 +242,7 @@ namespace clashN.ViewModels
             {
                 foreach (var it in proxyGroups)
                 {
-                    if (Utils.IsNullOrEmpty(it.name) || !proxies.ContainsKey(it.name))
+                    if (string.IsNullOrEmpty(it.name) || !proxies.ContainsKey(it.name))
                     {
                         continue;
                     }
@@ -298,7 +298,7 @@ namespace clashN.ViewModels
                 return;
             }
             var name = SelectedGroup?.name;
-            if (Utils.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 return;
             }
@@ -388,12 +388,12 @@ namespace clashN.ViewModels
                 return;
             }
             var name = SelectedGroup.name;
-            if (Utils.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 return;
             }
             var nameNode = SelectedDetail.name;
-            if (Utils.IsNullOrEmpty(nameNode))
+            if (string.IsNullOrEmpty(nameNode))
             {
                 return;
             }
@@ -437,7 +437,7 @@ namespace clashN.ViewModels
                     GetClashProxies(true);
                     return;
                 }
-                if (Utils.IsNullOrEmpty(result))
+                if (string.IsNullOrEmpty(result))
                 {
                     return;
                 }
@@ -485,9 +485,9 @@ namespace clashN.ViewModels
                   }
                   var dtNow = DateTime.Now;
 
-                  if (_config.autoDelayTestInterval > 0)
+                  if (_config.AutoDelayTestInterval > 0)
                   {
-                      if ((dtNow - autoDelayTestTime).Minutes % _config.autoDelayTestInterval == 0)
+                      if ((dtNow - autoDelayTestTime).Minutes % _config.AutoDelayTestInterval == 0)
                       {
                           ProxiesDelayTest();
                           autoDelayTestTime = dtNow;

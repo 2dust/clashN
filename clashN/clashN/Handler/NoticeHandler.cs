@@ -1,7 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using ReactiveUI;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     public class NoticeHandler
     {

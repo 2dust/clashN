@@ -1,8 +1,8 @@
-﻿using clashN.Mode;
+﻿using ClashN.Mode;
 using System.Runtime.Intrinsics.X86;
-using static clashN.Mode.ClashProxies;
+using static ClashN.Mode.ClashProxies;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     public sealed class LazyConfig
     {
@@ -19,10 +19,7 @@ namespace clashN.Handler
         {
             _config = config;
         }
-        public Config GetConfig()
-        {
-            return _config;
-        }
+        public Config Config => _config;
 
         public void SetProxies(Dictionary<String, ProxiesItem> proxies)
         {
@@ -35,17 +32,17 @@ namespace clashN.Handler
 
         public Dictionary<string, object> ProfileContent { get; set; }
 
-        public ECoreType GetCoreType(ProfileItem profileItem)
+        public CoreKind GetCoreType(ProfileItem profileItem)
         {
             if (profileItem != null && profileItem.coreType != null)
             {
-                return (ECoreType)profileItem.coreType;
+                return (CoreKind)profileItem.coreType;
             }
-            return ECoreType.clash;
+            return CoreKind.Clash;
 
         }
 
-        public CoreInfo GetCoreInfo(ECoreType coreType)
+        public CoreInfo GetCoreInfo(CoreKind coreType)
         {
             if (coreInfos == null)
             {
@@ -60,7 +57,7 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
-                coreType = ECoreType.clashN,
+                coreType = CoreKind.ClashN,
                 coreUrl = Global.NUrl,
                 coreLatestUrl = Global.NUrl + "/latest",
                 coreDownloadUrl32 = Global.NUrl + "/download/{0}/clashN-32.zip",
@@ -69,7 +66,7 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
-                coreType = ECoreType.clash,
+                coreType = CoreKind.Clash,
                 coreExes = new List<string> { "clash-windows-amd64-v3", "clash-windows-amd64", "clash-windows-386", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashCoreUrl,
@@ -81,7 +78,7 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
-                coreType = ECoreType.clash_meta,
+                coreType = CoreKind.ClashMeta,
                 coreExes = new List<string> { $"Clash.Meta-windows-amd64{(Avx2.X64.IsSupported ? "" : "-compatible")}", "Clash.Meta-windows-amd64-compatible", "Clash.Meta-windows-amd64", "Clash.Meta-windows-386", "Clash.Meta", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashMetaCoreUrl,
@@ -93,7 +90,7 @@ namespace clashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
-                coreType = ECoreType.clash_premium,
+                coreType = CoreKind.ClashPremium,
                 coreExes = new List<string> { "clash-windows-amd64-v3", "clash-windows-amd64", "clash-windows-386", "clash" },
                 arguments = "-f config.yaml",
                 coreUrl = Global.clashCoreUrl,

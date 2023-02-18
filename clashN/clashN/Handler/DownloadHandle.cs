@@ -1,21 +1,20 @@
-﻿using clashN.Base;
-using clashN.Resx;
+﻿using ClashN.Base;
+using ClashN.Resx;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     /// <summary>
     ///Download
     /// </summary>
     class DownloadHandle
     {
-        public event EventHandler<ResultEventArgs> UpdateCompleted;
-
-        public event ErrorEventHandler Error;
+        public event EventHandler<ResultEventArgs>? UpdateCompleted;
+        public event ErrorEventHandler? Error;
 
 
         public class ResultEventArgs : EventArgs
@@ -34,7 +33,7 @@ namespace clashN.Handler
         {
             try
             {
-                Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
+                Utils.SetSecurityProtocol(LazyConfig.Instance.Config.EnableSecurityProtocolTls13);
                 UpdateCompleted?.Invoke(this, new ResultEventArgs(false, ResUI.Downloading));
 
                 var client = new HttpClient(new SocketsHttpHandler()
@@ -75,13 +74,13 @@ namespace clashN.Handler
         {
             try
             {
-                Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
+                Utils.SetSecurityProtocol(LazyConfig.Instance.Config.EnableSecurityProtocolTls13);
                 var client = new HttpClient(new SocketsHttpHandler()
                 {
                     Proxy = GetWebProxy(blProxy)
                 });
 
-                if (Utils.IsNullOrEmpty(userAgent))
+                if (string.IsNullOrEmpty(userAgent))
                 {
                     userAgent = $"{Utils.GetVersion(false)}";
                 }
@@ -89,7 +88,7 @@ namespace clashN.Handler
 
                 Uri uri = new Uri(url);
                 //Authorization Header
-                if (!Utils.IsNullOrEmpty(uri.UserInfo))
+                if (!string.IsNullOrEmpty(uri.UserInfo))
                 {
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Utils.Base64Encode(uri.UserInfo));
                 }
@@ -114,7 +113,7 @@ namespace clashN.Handler
 
         public async Task<string> UrlRedirectAsync(string url, bool blProxy)
         {
-            Utils.SetSecurityProtocol(LazyConfig.Instance.GetConfig().enableSecurityProtocolTls13);
+            Utils.SetSecurityProtocol(LazyConfig.Instance.Config.EnableSecurityProtocolTls13);
             SocketsHttpHandler webRequestHandler = new SocketsHttpHandler
             {
                 AllowAutoRedirect = false,
@@ -140,7 +139,7 @@ namespace clashN.Handler
             {
                 return null;
             }
-            var socksPort = LazyConfig.Instance.GetConfig().socksPort;
+            var socksPort = LazyConfig.Instance.Config.SocksPort;
             if (!SocketCheck(Global.Loopback, socksPort))
             {
                 return null;

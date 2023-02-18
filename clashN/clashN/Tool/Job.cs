@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 
-namespace clashN
+namespace ClashN
 {
     /*
      * See:

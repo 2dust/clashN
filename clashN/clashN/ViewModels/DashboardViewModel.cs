@@ -1,6 +1,6 @@
 using ReactiveUI;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class DashboardViewModel : ReactiveObject
     {

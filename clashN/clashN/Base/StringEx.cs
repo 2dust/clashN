@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace clashN.Base
+namespace ClashN.Base
 {
     static class StringEx
     {

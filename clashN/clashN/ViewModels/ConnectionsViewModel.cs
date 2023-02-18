@@ -1,6 +1,6 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI;
@@ -10,11 +10,19 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class ConnectionsViewModel : ReactiveObject
     {
         private static Config _config;
+
+        static ConnectionsViewModel()
+        {
+            _config = LazyConfig.Instance.Config;
+        }
+
+
+
         private NoticeHandler? _noticeHandler;
         private IObservableCollection<ConnectionModel> _connectionItems = new ObservableCollectionExtended<ConnectionModel>();
 
@@ -35,11 +43,10 @@ namespace clashN.ViewModels
         public ConnectionsViewModel()
         {
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
-            _config = LazyConfig.Instance.GetConfig();
 
             AutoRefreshInterval = 10;
-            SortingSelected = _config.uiItem.connectionsSorting;
-            AutoRefresh = _config.uiItem.connectionsAutoRefresh;
+            SortingSelected = _config.UiItem.connectionsSorting;
+            AutoRefresh = _config.UiItem.connectionsAutoRefresh;
 
             var canEditRemove = this.WhenAnyValue(
              x => x.SelectedSource,
@@ -47,13 +54,13 @@ namespace clashN.ViewModels
 
             this.WhenAnyValue(
               x => x.SortingSelected,
-              y => y != null && y >= 0)
+              y => y >= 0)
                   .Subscribe(c => DoSortingSelected(c));
 
             this.WhenAnyValue(
                x => x.AutoRefresh,
                y => y == true)
-                   .Subscribe(c => { _config.uiItem.connectionsAutoRefresh = AutoRefresh; });
+                   .Subscribe(c => { _config.UiItem.connectionsAutoRefresh = AutoRefresh; });
 
             ConnectionCloseCmd = ReactiveCommand.Create(() =>
             {
@@ -74,9 +81,9 @@ namespace clashN.ViewModels
             {
                 return;
             }
-            if (SortingSelected != _config.uiItem.connectionsSorting)
+            if (SortingSelected != _config.UiItem.connectionsSorting)
             {
-                _config.uiItem.connectionsSorting = SortingSelected;
+                _config.UiItem.connectionsSorting = SortingSelected;
             }
 
             GetClashConnections();
@@ -119,7 +126,7 @@ namespace clashN.ViewModels
 
                 Application.Current.Dispatcher.Invoke((Action)(() =>
                 {
-                    RefreshConnections(it?.connections!);
+                    RefreshConnections(it?.Connections!);
                 }));
             });
         }
@@ -134,10 +141,10 @@ namespace clashN.ViewModels
             {
                 ConnectionModel model = new();
 
-                model.id = item.id;
-                model.network = item.metadata.network;
-                model.type = item.metadata.type;
-                model.host = $"{(item.metadata.host.IsNullOrEmpty() ? item.metadata.destinationIP : item.metadata.host)}:{item.metadata.destinationPort}";
+                model.id = item.Id;
+                model.network = item.metadata.Network;
+                model.type = item.metadata.Type;
+                model.host = $"{(item.metadata.Host.IsNullOrEmpty() ? item.metadata.DestinationIP : item.metadata.Host)}:{item.metadata.DestinationPort}";
                 var sp = (dtNow - item.start);
                 model.time = sp.TotalSeconds < 0 ? 1 : sp.TotalSeconds;
                 model.upload = item.upload;
@@ -145,7 +152,7 @@ namespace clashN.ViewModels
                 model.uploadTraffic = $"{Utils.HumanFy(item.upload)}";
                 model.downloadTraffic = $"{Utils.HumanFy(item.download)}";
                 model.elapsed = sp.ToString(@"hh\:mm\:ss");
-                model.chain = item.chains.Count > 0 ? item.chains[0] : String.Empty;
+                model.chain = item.Chains.Count > 0 ? item.Chains[0] : String.Empty;
 
                 lstModel.Add(model);
             }

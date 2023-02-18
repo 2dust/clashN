@@ -406,8 +406,8 @@
   <data name="TbAddressAs" xml:space="preserve">
     <value>本地文件</value>
   </data>
-  <data name="TbAlias" xml:space="preserve">
-    <value>别名(remarks)</value>
+  <data name="TbRemark" xml:space="preserve">
+    <value>备注</value>
   </data>
   <data name="TbAutoRefresh" xml:space="preserve">
     <value>自动刷新</value>

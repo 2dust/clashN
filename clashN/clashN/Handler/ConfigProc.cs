@@ -1,14 +1,14 @@
-﻿using clashN.Mode;
-using clashN.Tool;
+﻿using ClashN.Mode;
+using ClashN.Tool;
 using System.IO;
 using System.Web;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     /// <summary>
     /// 本软件配置文件处理类
     /// </summary>
-    class ConfigHandler
+    class ConfigProc
     {
         private static string configRes = Global.ConfigFileName;
         private static readonly object objLock = new object();
@@ -20,11 +20,11 @@ namespace clashN.Handler
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public static int LoadConfig(ref Config config)
+        public static int LoadConfig(ref Config? config)
         {
             //载入配置文件 
             string result = Utils.LoadResource(Utils.GetConfigPath(configRes));
-            if (!Utils.IsNullOrEmpty(result))
+            if (!string.IsNullOrEmpty(result))
             {
                 //转成Json
                 config = Utils.FromJson<Config>(result);
@@ -42,71 +42,59 @@ namespace clashN.Handler
             {
                 config = new Config
                 {
-                    logLevel = "warning",
-                    profileItems = new List<ProfileItem>(),
-
-                    enableStatistics = true,
+                    LogLevel = "warning",
+                    EnableStatistics = true,
                 };
             }
 
             //本地监听
-            if (config.mixedPort == 0)
-            {
-                config.mixedPort = 7888;
-            }
-            if (config.httpPort == 0)
-            {
-                config.httpPort = 7890;
-            }
-            if (config.socksPort == 0)
-            {
-                config.socksPort = 7891;
-            }
-            if (config.APIPort == 0)
-            {
-                config.APIPort = 9090;
-            }
+            if (config.MixedPort == 0)
+                config.MixedPort = 7888;
+
+            if (config.HttpPort == 0)
+                config.HttpPort = 7890;
+
+            if (config.SocksPort == 0)
+                config.SocksPort = 7891;
+
+            if (config.ApiPort == 0)
+                config.ApiPort = 9090;
 
             if (config.PacPort == 0)
             {
                 config.PacPort = 7990;
             }
 
-            if (config.profileItems == null)
+            if (config.UiItem == null)
             {
-                config.profileItems = new List<ProfileItem>();
-            }
-
-            if (config.uiItem == null)
-            {
-                config.uiItem = new UIItem()
+                config.UiItem = new UIItem()
                 {
                 };
             }
 
-            if (config.constItem == null)
+            if (config.ConstItem == null)
             {
-                config.constItem = new ConstItem();
+                config.ConstItem = new ConstItem();
             }
-            //if (Utils.IsNullOrEmpty(config.constItem.subConvertUrl))
+            //if (string.IsNullOrEmpty(config.constItem.subConvertUrl))
             //{
             //    config.constItem.subConvertUrl = Global.SubConvertUrl;
             //}
-            if (Utils.IsNullOrEmpty(config.constItem.speedTestUrl))
+            if (string.IsNullOrEmpty(config.ConstItem.speedTestUrl))
             {
-                config.constItem.speedTestUrl = Global.SpeedTestUrl;
+                config.ConstItem.speedTestUrl = Global.SpeedTestUrl;
             }
-            if (Utils.IsNullOrEmpty(config.constItem.speedPingTestUrl))
+            if (string.IsNullOrEmpty(config.ConstItem.speedPingTestUrl))
             {
-                config.constItem.speedPingTestUrl = Global.SpeedPingTestUrl;
+                config.ConstItem.speedPingTestUrl = Global.SpeedPingTestUrl;
             }
-            if (Utils.IsNullOrEmpty(config.constItem.defIEProxyExceptions))
+            if (string.IsNullOrEmpty(config.ConstItem.defIEProxyExceptions))
             {
-                config.constItem.defIEProxyExceptions = Global.IEProxyExceptions;
+                config.ConstItem.defIEProxyExceptions = Global.IEProxyExceptions;
             }
 
             if (config == null
-                || config.profileItems.Count <= 0
+                || config.ProfileItems.Count <= 0
                 )
             {
                 Global.reloadCore = false;
@@ -115,11 +103,11 @@ namespace clashN.Handler
             {
                 Global.reloadCore = true;
 
-                for (int i = 0; i < config.profileItems.Count; i++)
+                for (int i = 0; i < config.ProfileItems.Count; i++)
                 {
-                    ProfileItem profileItem = config.profileItems[i];
+                    ProfileItem profileItem = config.ProfileItems[i];
 
-                    if (Utils.IsNullOrEmpty(profileItem.indexId))
+                    if (string.IsNullOrEmpty(profileItem.indexId))
                     {
                         profileItem.indexId = Utils.GetGUID(false);
                     }
@@ -134,7 +122,7 @@ namespace clashN.Handler
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        public static int SaveConfig(ref Config config, bool reload = true)
+        public static int SaveConfig(Config config, bool reload = true)
         {
             Global.reloadCore = reload;
 
@@ -215,7 +203,7 @@ namespace clashN.Handler
                 profileItem.indexId = string.Empty;
                 profileItem.remarks = string.Format("{0}-clone", item.remarks);
 
-                if (Utils.IsNullOrEmpty(profileItem.address) || !File.Exists(Utils.GetConfigPath(profileItem.address)))
+                if (string.IsNullOrEmpty(profileItem.address) || !File.Exists(Utils.GetConfigPath(profileItem.address)))
                 {
                     profileItem.address = string.Empty;
                     AddProfileCommon(ref config, profileItem);
@@ -246,7 +234,7 @@ namespace clashN.Handler
                 return -1;
             }
 
-            config.indexId = item.indexId;
+            config.IndexId = item.indexId;
             Global.reloadCore = true;
 
             ToJsonFile(config);
@@ -256,11 +244,11 @@ namespace clashN.Handler
 
         public static int SetDefaultProfile(Config config, List<ProfileItem> lstProfile)
         {
-            if (lstProfile.Exists(t => t.indexId == config.indexId))
+            if (lstProfile.Exists(t => t.indexId == config.IndexId))
             {
                 return 0;
             }
-            if (config.profileItems.Exists(t => t.indexId == config.indexId))
+            if (config.ProfileItems.Exists(t => t.indexId == config.IndexId))
             {
                 return 0;
             }
@@ -268,26 +256,26 @@ namespace clashN.Handler
             {
                 return SetDefaultProfile(ref config, lstProfile[0]);
             }
-            if (config.profileItems.Count > 0)
+            if (config.ProfileItems.Count > 0)
             {
-                return SetDefaultProfile(ref config, config.profileItems[0]);
+                return SetDefaultProfile(ref config, config.ProfileItems[0]);
             }
             return -1;
         }
         public static ProfileItem GetDefaultProfile(ref Config config)
         {
-            if (config.profileItems.Count <= 0)
+            if (config.ProfileItems.Count <= 0)
             {
                 return null;
             }
-            var index = config.FindIndexId(config.indexId);
+            var index = config.FindIndexId(config.IndexId);
             if (index < 0)
             {
-                SetDefaultProfile(ref config, config.profileItems[0]);
-                return config.profileItems[0];
+                SetDefaultProfile(ref config, config.ProfileItems[0]);
+                return config.ProfileItems[0];
             }
 
-            return config.profileItems[index];
+            return config.ProfileItems[index];
         }
 
         /// <summary>
@@ -297,9 +285,9 @@ namespace clashN.Handler
         /// <param name="index"></param>
         /// <param name="eMove"></param>
         /// <returns></returns>
-        public static int MoveProfile(ref Config config, int index, EMove eMove, int pos = -1)
+        public static int MoveProfile(ref Config config, int index, MovementTarget eMove, int pos = -1)
         {
-            List<ProfileItem> lstProfile = config.profileItems.OrderBy(it => it.sort).ToList();
+            List<ProfileItem> lstProfile = config.ProfileItems.OrderBy(it => it.sort).ToList();
             int count = lstProfile.Count;
             if (index < 0 || index > lstProfile.Count - 1)
             {
@@ -313,48 +301,48 @@ namespace clashN.Handler
 
             switch (eMove)
             {
-                case EMove.Top:
+                case MovementTarget.Top:
+                {
+                    if (index == 0)
                     {
-                        if (index == 0)
-                        {
-                            return 0;
-                        }
-                        lstProfile[index].sort = lstProfile[0].sort - 1;
-
-                        break;
+                        return 0;
                     }
-                case EMove.Up:
+                    lstProfile[index].sort = lstProfile[0].sort - 1;
+
+                    break;
+                }
+                case MovementTarget.Up:
+                {
+                    if (index == 0)
                     {
-                        if (index == 0)
-                        {
-                            return 0;
-                        }
-                        lstProfile[index].sort = lstProfile[index - 1].sort - 1;
-
-                        break;
+                        return 0;
                     }
+                    lstProfile[index].sort = lstProfile[index - 1].sort - 1;
 
-                case EMove.Down:
+                    break;
+                }
+
+                case MovementTarget.Down:
+                {
+                    if (index == count - 1)
                     {
-                        if (index == count - 1)
-                        {
-                            return 0;
-                        }
-                        lstProfile[index].sort = lstProfile[index + 1].sort + 1;
-
-                        break;
+                        return 0;
                     }
-                case EMove.Bottom:
+                    lstProfile[index].sort = lstProfile[index + 1].sort + 1;
+
+                    break;
+                }
+                case MovementTarget.Bottom:
+                {
+                    if (index == count - 1)
                     {
-                        if (index == count - 1)
-                        {
-                            return 0;
-                        }
-                        lstProfile[index].sort = lstProfile[lstProfile.Count - 1].sort + 1;
-
-                        break;
+                        return 0;
                     }
-                case EMove.Position:
+                    lstProfile[index].sort = lstProfile[lstProfile.Count - 1].sort + 1;
+
+                    break;
+                }
+                case MovementTarget.Position:
                     lstProfile[index].sort = pos * 10 + 1;
                     break;
             }
@@ -366,19 +354,19 @@ namespace clashN.Handler
 
         public static int AddProfileViaContent(ref Config config, ProfileItem profileItem, string content)
         {
-            if (Utils.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(content))
             {
                 return -1;
             }
 
             string newFileName = profileItem.address;
-            if (Utils.IsNullOrEmpty(newFileName))
+            if (string.IsNullOrEmpty(newFileName))
             {
                 var ext = ".yaml";
                 newFileName = string.Format("{0}{1}", Utils.GetGUID(), ext);
                 profileItem.address = newFileName;
             }
-            if (Utils.IsNullOrEmpty(profileItem.remarks))
+            if (string.IsNullOrEmpty(profileItem.remarks))
             {
                 profileItem.remarks = "clash_local_file";
             }
@@ -392,7 +380,7 @@ namespace clashN.Handler
                 return -1;
             }
 
-            if (Utils.IsNullOrEmpty(profileItem.remarks))
+            if (string.IsNullOrEmpty(profileItem.remarks))
             {
                 profileItem.remarks = string.Format("import custom@{0}", DateTime.Now.ToShortDateString());
             }
@@ -416,7 +404,7 @@ namespace clashN.Handler
             try
             {
                 File.Copy(fileName, Path.Combine(Utils.GetConfigPath(), newFileName));
-                if (!Utils.IsNullOrEmpty(profileItem.address))
+                if (!string.IsNullOrEmpty(profileItem.address))
                 {
                     File.Delete(Path.Combine(Utils.GetConfigPath(), profileItem.address));
                 }
@@ -427,7 +415,7 @@ namespace clashN.Handler
             }
 
             profileItem.address = newFileName;
-            if (Utils.IsNullOrEmpty(profileItem.remarks))
+            if (string.IsNullOrEmpty(profileItem.remarks))
             {
                 profileItem.remarks = string.Format("import custom@{0}", DateTime.Now.ToShortDateString());
             }
@@ -441,7 +429,7 @@ namespace clashN.Handler
 
         public static int EditProfile(ref Config config, ProfileItem profileItem)
         {
-            if (!Utils.IsNullOrEmpty(profileItem.indexId) && config.indexId == profileItem.indexId)
+            if (!string.IsNullOrEmpty(profileItem.indexId) && config.IndexId == profileItem.indexId)
             {
                 Global.reloadCore = true;
             }
@@ -449,7 +437,7 @@ namespace clashN.Handler
             AddProfileCommon(ref config, profileItem);
 
             //TODO auto update via url 
-            //if (!Utils.IsNullOrEmpty(profileItem.url))
+            //if (!string.IsNullOrEmpty(profileItem.url))
             //{
             //    var httpClient = new HttpClient();
             //    string result = httpClient.GetStringAsync(profileItem.url).Result;
@@ -502,20 +490,20 @@ namespace clashN.Handler
 
         public static int AddProfileCommon(ref Config config, ProfileItem profileItem)
         {
-            if (Utils.IsNullOrEmpty(profileItem.indexId))
+            if (string.IsNullOrEmpty(profileItem.indexId))
             {
                 profileItem.indexId = Utils.GetGUID(false);
             }
             if (profileItem.coreType is null)
             {
-                profileItem.coreType = ECoreType.clash_meta;
+                profileItem.coreType = CoreKind.ClashMeta;
             }
-            if (!config.profileItems.Exists(it => it.indexId == profileItem.indexId))
+            if (!config.ProfileItems.Exists(it => it.indexId == profileItem.indexId))
             {
-                var maxSort = config.profileItems.Any() ? config.profileItems.Max(t => t.sort) : 0;
+                var maxSort = config.ProfileItems.Any() ? config.ProfileItems.Max(t => t.sort) : 0;
                 profileItem.sort = maxSort++;
 
-                config.profileItems.Add(profileItem);
+                config.ProfileItems.Add(profileItem);
             }
 
             return 0;
@@ -525,16 +513,16 @@ namespace clashN.Handler
         {
             try
             {
-                if (File.Exists(Utils.GetConfigPath(config.profileItems[index].address)))
+                if (File.Exists(Utils.GetConfigPath(config.ProfileItems[index].address)))
                 {
-                    File.Delete(Utils.GetConfigPath(config.profileItems[index].address));
+                    File.Delete(Utils.GetConfigPath(config.ProfileItems[index].address));
                 }
             }
             catch (Exception ex)
             {
                 Utils.SaveLog("RemoveProfileItem", ex);
             }
-            config.profileItems.RemoveAt(index);
+            config.ProfileItems.RemoveAt(index);
 
             return 0;
         }
@@ -545,7 +533,7 @@ namespace clashN.Handler
             {
                 return string.Empty;
             }
-            if (Utils.IsNullOrEmpty(item.address))
+            if (string.IsNullOrEmpty(item.address))
             {
                 return string.Empty;
             }
@@ -556,19 +544,19 @@ namespace clashN.Handler
 
         public static int AddBatchProfiles(ref Config config, string clipboardData, string indexId, string groupId)
         {
-            if (Utils.IsNullOrEmpty(clipboardData))
+            if (string.IsNullOrEmpty(clipboardData))
             {
                 return -1;
             }
 
             //maybe url
-            if (Utils.IsNullOrEmpty(indexId) && (clipboardData.StartsWith(Global.httpsProtocol) || clipboardData.StartsWith(Global.httpProtocol)))
+            if (string.IsNullOrEmpty(indexId) && (clipboardData.StartsWith(Global.httpsProtocol) || clipboardData.StartsWith(Global.httpProtocol)))
             {
                 ProfileItem item = new ProfileItem()
                 {
                     groupId = groupId,
                     url = clipboardData,
-                    coreType = ECoreType.clash_meta,
+                    coreType = CoreKind.ClashMeta,
                     address = string.Empty,
                     enabled = true,
                     remarks = "clash_subscription"
@@ -578,19 +566,19 @@ namespace clashN.Handler
             }
 
             //maybe clashProtocol
-            if (Utils.IsNullOrEmpty(indexId) && (clipboardData.StartsWith(Global.clashProtocol)))
+            if (string.IsNullOrEmpty(indexId) && (clipboardData.StartsWith(Global.clashProtocol)))
             {
                 Uri url = new Uri(clipboardData);
                 if (url.Host == "install-config")
                 {
                     var query = HttpUtility.ParseQueryString(url.Query);
-                    if (!Utils.IsNullOrEmpty(query["url"] ?? ""))
+                    if (!string.IsNullOrEmpty(query["url"] ?? ""))
                     {
                         ProfileItem item = new ProfileItem()
                         {
                             groupId = groupId,
                             url = query["url"],
-                            coreType = ECoreType.clash_meta,
+                            coreType = CoreKind.ClashMeta,
                             address = string.Empty,
                             enabled = true,
                             remarks = "clash_subscription"
@@ -608,7 +596,7 @@ namespace clashN.Handler
                 {
                     groupId = groupId,
                     url = "",
-                    coreType = ECoreType.clash_meta,
+                    coreType = CoreKind.ClashMeta,
                     address = string.Empty,
                     enabled = false,
                     remarks = "clash_local_file"
@@ -622,10 +610,11 @@ namespace clashN.Handler
               && clipboardData.IndexOf("proxies") >= 0
               && clipboardData.IndexOf("rules") >= 0)
             { }
-            else { return -1; }
+            else
+            { return -1; }
 
             ProfileItem profileItem;
-            if (!Utils.IsNullOrEmpty(indexId))
+            if (!string.IsNullOrEmpty(indexId))
             {
                 profileItem = config.GetProfileItem(indexId);
             }
@@ -648,7 +637,7 @@ namespace clashN.Handler
 
         public static void ClearAllServerStatistics(ref Config config)
         {
-            foreach (var item in config.profileItems)
+            foreach (var item in config.ProfileItems)
             {
                 item.uploadRemote = 0;
                 item.downloadRemote = 0;

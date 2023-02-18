@@ -1,7 +1,7 @@
-using clashN.Base;
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Views;
+using ClashN.Base;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Views;
 using MaterialDesignColors;
 using MaterialDesignColors.ColorManipulation;
 using MaterialDesignThemes.Wpf;
@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using System.Windows.Interop;
 using Application = System.Windows.Application;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class MainWindowViewModel : ReactiveObject
     {
@@ -39,9 +39,9 @@ namespace clashN.ViewModels
         public PromotionView GetPromotionView { get; }
 
         [Reactive]
-        public string SpeedUpload { get; set; }
+        public string SpeedUpload { get; set; } = "0.00";
         [Reactive]
-        public string SpeedDownload { get; set; }
+        public string SpeedDownload { get; set; } = "0.00";
 
         #endregion
 
@@ -92,7 +92,7 @@ namespace clashN.ViewModels
 
         public MainWindowViewModel(ISnackbarMessageQueue snackbarMessageQueue)
         {
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
 
             Locator.CurrentMutable.RegisterLazySingleton(() => new NoticeHandler(snackbarMessageQueue), typeof(NoticeHandler));
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
@@ -112,7 +112,7 @@ namespace clashN.ViewModels
             GetPromotionView = new();
 
             RestoreUI();
-            if (_config.autoHideStartup)
+            if (_config.AutoHideStartup)
             {
                 Observable.Range(1, 1)
                  .Delay(TimeSpan.FromSeconds(1))
@@ -129,19 +129,19 @@ namespace clashN.ViewModels
             //System proxy
             SystemProxyClearCmd = ReactiveCommand.Create(() =>
             {
-                SetListenerType(ESysProxyType.ForcedClear);
+                SetListenerType(SysProxyType.ForcedClear);
             });//, this.WhenAnyValue(x => x.BlSystemProxyClear, y => !y));
             SystemProxySetCmd = ReactiveCommand.Create(() =>
             {
-                SetListenerType(ESysProxyType.ForcedChange);
+                SetListenerType(SysProxyType.ForcedChange);
             });//, this.WhenAnyValue(x => x.BlSystemProxySet, y => !y));
             SystemProxyNothingCmd = ReactiveCommand.Create(() =>
             {
-                SetListenerType(ESysProxyType.Unchanged);
+                SetListenerType(SysProxyType.Unchanged);
             });//, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
             SystemProxyPacCmd = ReactiveCommand.Create(() =>
             {
-                SetListenerType(ESysProxyType.Pac);
+                SetListenerType(SysProxyType.Pac);
             });//, this.WhenAnyValue(x => x.BlSystemProxyNothing, y => !y));
 
             //Rule mode
@@ -195,18 +195,17 @@ namespace clashN.ViewModels
         {
             Application.Current.Dispatcher.Invoke((Action)(() =>
             {
-                string clipboardData = Utils.GetClipboardData();
-                if (state != null)
+                string? clipboardData = Utils.GetClipboardData();
+                if (state != null && clipboardData != null)
                 {
-                    if (Utils.IsNullOrEmpty(clipboardData) || !clipboardData.StartsWith(Global.clashProtocol))
+                    if (string.IsNullOrEmpty(clipboardData) || !clipboardData.StartsWith(Global.clashProtocol))
                     {
                         return;
                     }
                 }
+
                 if (!blFirst)
-                {
                     ShowHideWindow(true);
-                }
 
                 Locator.Current.GetService<ProfilesViewModel>()?.AddProfilesViaClipboard(true);
             }));
@@ -229,7 +228,7 @@ namespace clashN.ViewModels
                 }
 
                 StorageUI();
-                ConfigHandler.SaveConfig(ref _config);
+                ConfigProc.SaveConfig(_config);
                 //statistics?.SaveToFile();
                 statistics?.Close();
             }
@@ -245,20 +244,20 @@ namespace clashN.ViewModels
         {
             switch (Utils.ToInt(e.Name))
             {
-                case (int)EGlobalHotkey.ShowForm:
+                case (int)GlobalHotkeyAction.ShowForm:
                     ShowHideWindow(null);
                     break;
-                case (int)EGlobalHotkey.SystemProxyClear:
-                    SetListenerType(ESysProxyType.ForcedClear);
+                case (int)GlobalHotkeyAction.SystemProxyClear:
+                    SetListenerType(SysProxyType.ForcedClear);
                     break;
-                case (int)EGlobalHotkey.SystemProxySet:
-                    SetListenerType(ESysProxyType.ForcedChange);
+                case (int)GlobalHotkeyAction.SystemProxySet:
+                    SetListenerType(SysProxyType.ForcedChange);
                     break;
-                case (int)EGlobalHotkey.SystemProxyUnchanged:
-                    SetListenerType(ESysProxyType.Unchanged);
+                case (int)GlobalHotkeyAction.SystemProxyUnchanged:
+                    SetListenerType(SysProxyType.Unchanged);
                     break;
-                case (int)EGlobalHotkey.SystemProxyPac:
-                    SetListenerType(ESysProxyType.Pac);
+                case (int)GlobalHotkeyAction.SystemProxyPac:
+                    SetListenerType(SysProxyType.Pac);
                     break;
             }
             e.Handled = true;
@@ -273,7 +272,7 @@ namespace clashN.ViewModels
 
             coreHandler = new CoreHandler(UpdateHandler);
 
-            if (_config.enableStatistics)
+            if (_config.EnableStatistics)
             {
                 statistics = new StatisticsHandler(_config, UpdateStatisticsHandler);
             }
@@ -346,10 +345,10 @@ namespace clashN.ViewModels
             });
 
             Global.reloadCore = false;
-            ConfigHandler.SaveConfig(ref _config, false);
+            ConfigProc.SaveConfig(_config, false);
             //statistics?.SaveToFile();
 
-            ChangePACButtonStatus(_config.sysProxyType);
+            ChangePACButtonStatus(_config.SysProxyType);
             SetRuleMode(_config.ruleMode);
 
             Locator.Current.GetService<ProxiesViewModel>()?.ProxiesReload();
@@ -359,10 +358,10 @@ namespace clashN.ViewModels
 
         public void CloseCore()
         {
-            ConfigHandler.SaveConfig(ref _config, false);
+            ConfigProc.SaveConfig(_config, false);
             //statistics?.SaveToFile();
 
-            ChangePACButtonStatus(ESysProxyType.ForcedClear);
+            ChangePACButtonStatus(SysProxyType.ForcedClear);
 
             coreHandler.CoreStop();
         }
@@ -370,30 +369,30 @@ namespace clashN.ViewModels
 
         #region System proxy and Rule mode
 
-        public void SetListenerType(ESysProxyType type)
+        public void SetListenerType(SysProxyType type)
         {
-            if (_config.sysProxyType == type)
+            if (_config.SysProxyType == type)
             {
                 return;
             }
-            _config.sysProxyType = type;
+            _config.SysProxyType = type;
             ChangePACButtonStatus(type);
 
             Locator.Current.GetService<ProxiesViewModel>()?.ReloadSystemProxySelected();
         }
 
-        private void ChangePACButtonStatus(ESysProxyType type)
+        private void ChangePACButtonStatus(SysProxyType type)
         {
             SysProxyHandle.UpdateSysProxy(_config, false);
 
-            BlSystemProxyClear = (type == ESysProxyType.ForcedClear);
-            BlSystemProxySet = (type == ESysProxyType.ForcedChange);
-            BlSystemProxyNothing = (type == ESysProxyType.Unchanged);
-            BlSystemProxyPac = (type == ESysProxyType.Pac);
+            BlSystemProxyClear = (type == SysProxyType.ForcedClear);
+            BlSystemProxySet = (type == SysProxyType.ForcedChange);
+            BlSystemProxyNothing = (type == SysProxyType.Unchanged);
+            BlSystemProxyPac = (type == SysProxyType.Pac);
 
             _noticeHandler?.SendMessage($"Change system proxy", true);
 
-            ConfigHandler.SaveConfig(ref _config, false);
+            ConfigProc.SaveConfig(_config, false);
 
             //mainMsgControl.DisplayToolStatus(config);
 
@@ -422,7 +421,7 @@ namespace clashN.ViewModels
 
             _noticeHandler?.SendMessage($"Set rule mode {_config.ruleMode.ToString()}->{mode.ToString()}", true);
             _config.ruleMode = mode;
-            ConfigHandler.SaveConfig(ref _config, false);
+            ConfigProc.SaveConfig(_config, false);
 
             if (mode != ERuleMode.Unchanged)
             {
@@ -459,11 +458,11 @@ namespace clashN.ViewModels
 
         private void RestoreUI()
         {
-            ModifyTheme(_config.uiItem.colorModeDark);
+            ModifyTheme(_config.UiItem.colorModeDark);
 
-            if (!_config.uiItem.colorPrimaryName.IsNullOrEmpty())
+            if (!_config.UiItem.colorPrimaryName.IsNullOrEmpty())
             {
-                var swatch = new SwatchesProvider().Swatches.FirstOrDefault(t => t.Name == _config.uiItem.colorPrimaryName);
+                var swatch = new SwatchesProvider().Swatches.FirstOrDefault(t => t.Name == _config.UiItem.colorPrimaryName);
                 if (swatch != null
                    && swatch.ExemplarHue != null
                    && swatch.ExemplarHue?.Color != null)
@@ -477,10 +476,10 @@ namespace clashN.ViewModels
             //    this.Location = config.uiItem.mainLocation;
             //}
 
-            if (_config.uiItem.mainWidth > 0 && _config.uiItem.mainHeight > 0)
+            if (_config.UiItem.mainWidth > 0 && _config.UiItem.mainHeight > 0)
             {
-                Application.Current.MainWindow.Width = _config.uiItem.mainWidth;
-                Application.Current.MainWindow.Height = _config.uiItem.mainHeight;
+                Application.Current.MainWindow.Width = _config.UiItem.mainWidth;
+                Application.Current.MainWindow.Height = _config.UiItem.mainHeight;
             }
 
             IntPtr hWnd = new WindowInteropHelper(Application.Current.MainWindow).EnsureHandle();
@@ -496,8 +495,8 @@ namespace clashN.ViewModels
         }
         private void StorageUI()
         {
-            _config.uiItem.mainWidth = Application.Current.MainWindow.Width;
-            _config.uiItem.mainHeight = Application.Current.MainWindow.Height;
+            _config.UiItem.mainWidth = Application.Current.MainWindow.Width;
+            _config.UiItem.mainHeight = Application.Current.MainWindow.Height;
         }
 
         public void ModifyTheme(bool isDarkTheme)

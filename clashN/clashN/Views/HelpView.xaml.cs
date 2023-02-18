@@ -1,9 +1,9 @@
-using clashN.ViewModels;
+using ClashN.ViewModels;
 using ReactiveUI;
 using System.Reactive.Disposables;
 
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for HelpView.xaml

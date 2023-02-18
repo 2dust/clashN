@@ -2,7 +2,7 @@
 using System.IO.Compression;
 using System.Text;
 
-namespace clashN.Tool
+namespace ClashN.Tool
 {
     public static class FileManager
     {
@@ -81,7 +81,7 @@ namespace clashN.Tool
                         }
                         try
                         {
-                            if (!Utils.IsNullOrEmpty(ignoredName) && entry.Name.Contains(ignoredName))
+                            if (!string.IsNullOrEmpty(ignoredName) && entry.Name.Contains(ignoredName))
                             {
                                 continue;
                             }

@@ -1,12 +1,12 @@
-﻿using clashN.Mode;
-using clashN.Properties;
-using clashN.Tool;
+﻿using ClashN.Mode;
+using ClashN.Properties;
+using ClashN.Tool;
 using PacLib;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace clashN.Handler
+namespace ClashN.Handler
 {
     public static class SysProxyHandle
     {
@@ -36,54 +36,54 @@ namespace clashN.Handler
 
         public static bool UpdateSysProxy(Config config, bool forceDisable)
         {
-            var type = config.sysProxyType;
+            var type = config.SysProxyType;
 
-            if (forceDisable && (type == ESysProxyType.ForcedChange || type == ESysProxyType.Pac))
+            if (forceDisable && (type == SysProxyType.ForcedChange || type == SysProxyType.Pac))
             {
-                type = ESysProxyType.ForcedClear;
+                type = SysProxyType.ForcedClear;
             }
 
             try
             {
-                int port = config.httpPort;
-                int socksPort = config.socksPort;
+                int port = config.HttpPort;
+                int socksPort = config.SocksPort;
                 if (port <= 0)
                 {
                     return false;
                 }
-                if (type == ESysProxyType.ForcedChange)
+                if (type == SysProxyType.ForcedChange)
                 {
-                    var strExceptions = $"{config.constItem.defIEProxyExceptions};{config.systemProxyExceptions}";
+                    var strExceptions = $"{config.ConstItem.defIEProxyExceptions};{config.SystemProxyExceptions}";
 
                     var strProxy = string.Empty;
-                    if (Utils.IsNullOrEmpty(config.systemProxyAdvancedProtocol))
+                    if (string.IsNullOrEmpty(config.SystemProxyAdvancedProtocol))
                     {
                         strProxy = $"{Global.Loopback}:{port}";
                     }
                     else
                     {
-                        strProxy = config.systemProxyAdvancedProtocol
+                        strProxy = config.SystemProxyAdvancedProtocol
                             .Replace("{ip}", Global.Loopback)
                             .Replace("{http_port}", port.ToString())
                             .Replace("{socks_port}", socksPort.ToString());
                     }
                     SetIEProxy(true, strProxy, strExceptions);
                 }
-                else if (type == ESysProxyType.ForcedClear)
+                else if (type == SysProxyType.ForcedClear)
                 {
                     ResetIEProxy();
                 }
-                else if (type == ESysProxyType.Unchanged)
+                else if (type == SysProxyType.Unchanged)
                 {
                 }
-                else if (type == ESysProxyType.Pac)
+                else if (type == SysProxyType.Pac)
                 {
                     PacHandler.Start(Utils.GetConfigPath(), port, config.PacPort);
                     var strProxy = $"{Global.httpProtocol}{Global.Loopback}:{config.PacPort}/pac?t={DateTime.Now.Ticks}";
                     SetIEProxy(false, strProxy, "");
                 }
 
-                if (type != ESysProxyType.Pac)
+                if (type != SysProxyType.Pac)
                 {
                     PacHandler.Stop();
                 }
@@ -196,9 +196,8 @@ namespace clashN.Handler
                     }
                     catch (System.ComponentModel.Win32Exception e)
                     {
-
                         // log the arguments
-                        throw new Exception(process.StartInfo.Arguments);
+                        throw new Exception(process.StartInfo.Arguments, e);
                     }
                     string stderr = error.ToString();
                     string stdout = output.ToString();

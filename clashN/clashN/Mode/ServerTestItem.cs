@@ -1,23 +1,11 @@
-﻿namespace clashN.Mode
+﻿namespace ClashN.Mode
 {
     [Serializable]
     class ServerTestItem
     {
-        public string indexId
-        {
-            get; set;
-        }
-        public string address
-        {
-            get; set;
-        }
-        public int port
-        {
-            get; set;
-        }
-        public bool allowTest
-        {
-            get; set;
-        }
+        public string IndexId { get; set; }
+        public string Address { get; set; }
+        public int Port { get; set; }
+        public bool AllowTest { get; set; }
     }
 }

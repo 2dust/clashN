@@ -1,9 +1,9 @@
-﻿namespace clashN.Mode
+﻿namespace ClashN.Mode
 {
     [Serializable]
     public class CoreInfo
     {
-        public ECoreType coreType { get; set; }
+        public CoreKind coreType { get; set; }
 
         public List<string> coreExes { get; set; }
 

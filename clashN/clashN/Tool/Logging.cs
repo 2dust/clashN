@@ -3,7 +3,7 @@ using NLog.Config;
 using NLog.Targets;
 using System.IO;
 
-namespace clashN.Tool
+namespace ClashN.Tool
 {
     public class Logging
     {

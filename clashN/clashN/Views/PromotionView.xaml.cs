@@ -1,7 +1,7 @@
 using ReactiveUI;
 using System.Windows;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for PromotionView.xaml

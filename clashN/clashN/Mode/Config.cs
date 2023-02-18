@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
 
-namespace clashN.Mode
+namespace ClashN.Mode
 {
     /// <summary>
     /// 本软件配置文件实体类
@@ -10,69 +9,57 @@ namespace clashN.Mode
     public class Config
     {
         #region property
-        public int mixedPort { get; set; }
+        public int MixedPort { get; set; } = 7888;
 
-        public int httpPort { get; set; }
+        public int HttpPort { get; set; } = 7890;
 
-        public int socksPort { get; set; }
+        public int SocksPort { get; set; } = 7891;
 
-        public int APIPort { get; set; }
+        public int ApiPort { get; set; } = 9090;
 
-        public string logLevel { get; set; }
+        public string LogLevel { get; set; }
 
-        public bool enableIpv6 { get; set; }
+        public bool EnableIpv6 { get; set; }
 
-        public string indexId { get; set; }
+        public string IndexId { get; set; }
 
-        public ESysProxyType sysProxyType { get; set; }
+        public SysProxyType SysProxyType { get; set; }
 
         public ERuleMode ruleMode { get; set; }
 
-        public bool allowLANConn { get; set; }
+        public bool AllowLANConn { get; set; }
 
-        public bool autoRun { get; set; }
+        public bool AutoRun { get; set; }
 
-        public bool enableStatistics { get; set; }
+        public bool EnableStatistics { get; set; }
 
-        public string systemProxyExceptions { get; set; }
-        public string systemProxyAdvancedProtocol { get; set; }
+        public string SystemProxyExceptions { get; set; }
+        public string SystemProxyAdvancedProtocol { get; set; }
 
-        public int autoUpdateSubInterval { get; set; } = 10;
-        public int autoDelayTestInterval { get; set; } = 10;
+        public int AutoUpdateSubInterval { get; set; } = 10;
+        public int AutoDelayTestInterval { get; set; } = 10;
 
-        public bool enableSecurityProtocolTls13 { get; set; }
+        public bool EnableSecurityProtocolTls13 { get; set; }
 
-        public bool enableMixinContent { get; set; }
+        public bool EnableMixinContent { get; set; }
 
         public int PacPort { get; set; }
 
-        public bool autoHideStartup { get; set; }
+        public bool AutoHideStartup { get; set; }
 
-        public bool enableTun { get; set; }
+        public bool EnableTun { get; set; }
 
         #endregion
 
         #region other entities
 
-        public List<ProfileItem> profileItems
-        {
-            get; set;
-        }
+        public List<ProfileItem> ProfileItems { get; } = new List<ProfileItem>();
 
-        public UIItem uiItem
-        {
-            get; set;
-        }
+        public UIItem? UiItem { get; set; }
 
-        public ConstItem constItem
-        {
-            get; set;
-        }
+        public ConstItem? ConstItem { get; set; }
 
-        public List<KeyEventItem> globalHotkeys
-        {
-            get; set;
-        }
+        public List<KeyShortcut> globalHotkeys { get; } = new List<KeyShortcut>();
 
         #endregion
 
@@ -80,25 +67,25 @@ namespace clashN.Mode
 
         public int FindIndexId(string id)
         {
-            if (Utils.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))
             {
                 return -1;
             }
-            return profileItems.FindIndex(it => it.indexId == id);
+            return ProfileItems.FindIndex(it => it.indexId == id);
         }
 
         public ProfileItem GetProfileItem(string id)
         {
-            if (Utils.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))
             {
                 return null;
             }
-            return profileItems.FirstOrDefault(it => it.indexId == id);
+            return ProfileItems.FirstOrDefault(it => it.indexId == id);
         }
 
         public bool IsActiveNode(ProfileItem item)
         {
-            if (!Utils.IsNullOrEmpty(item.indexId) && item.indexId == indexId)
+            if (!string.IsNullOrEmpty(item.indexId) && item.indexId == IndexId)
             {
                 return true;
             }
@@ -135,44 +122,20 @@ namespace clashN.Mode
 
         #endregion
 
-        public string indexId
-        {
-            get; set;
-        }
+        public string indexId { get; set; }
 
-        public int sort
-        {
-            get; set;
-        }
+        public int sort { get; set; }
 
-        public string address
-        {
-            get; set;
-        }
+        public string address { get; set; }
 
-        public string remarks
-        {
-            get; set;
-        }
+        public string remarks { get; set; }
 
-        public string testResult
-        {
-            get; set;
-        }
+        public string testResult { get; set; }
 
-        public string groupId
-        {
-            get; set;
-        } = string.Empty;
-        public ECoreType? coreType
-        {
-            get; set;
-        }
+        public string groupId { get; set; } = string.Empty;
+        public CoreKind? coreType { get; set; }
 
-        public string url
-        {
-            get; set;
-        }
+        public string url { get; set; }
 
         public bool enabled { get; set; } = true;
 
@@ -227,19 +190,5 @@ namespace clashN.Mode
         {
             get; set;
         }
-    }
-
-    [Serializable]
-    public class KeyEventItem
-    {
-        public EGlobalHotkey eGlobalHotkey { get; set; }
-
-        public bool Alt { get; set; }
-
-        public bool Control { get; set; }
-
-        public bool Shift { get; set; }
-
-        public Keys? KeyCode { get; set; }
     }
 }

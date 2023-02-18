@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace clashN
+namespace ClashN
 {
     class UI
     {

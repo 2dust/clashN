@@ -1,9 +1,9 @@
 ﻿<Application
-    x:Class="clashN.App"
+    x:Class="ClashN.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:conv="clr-namespace:clashN.Converters"
-    xmlns:local="clr-namespace:clashN"
+    xmlns:conv="clr-namespace:ClashN.Converters"
+    xmlns:local="clr-namespace:ClashN"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     ShutdownMode="OnExplicitShutdown"
     StartupUri="Views/MainWindow.xaml">
@@ -12,7 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme
                     BaseTheme="Dark"
-                    PrimaryColor="DeepPurple"
+                    PrimaryColor="Blue"
                     SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
@@ -65,8 +65,9 @@
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
-            <Style x:Key="lvItemSelected" TargetType="{x:Type ListViewItem}">
-                <Setter Property="Margin" Value="2" />
+            <Style x:Key="lvItemSelected"
+                   TargetType="{x:Type ListViewItem}">
+                <Setter Property="Margin" Value="5" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListViewItem">
@@ -75,7 +76,7 @@
                             </materialDesign:Card>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
-                                    <Setter TargetName="_Card" Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
+                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource PrimaryHueDarkBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -96,6 +97,7 @@
                 BasedOn="{StaticResource MaterialDesignRaisedButton}"
                 TargetType="{x:Type ButtonBase}">
                 <Setter Property="FontSize" Value="{DynamicResource StdFontSize3}" />
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
             </Style>
             <Style
                 x:Key="DefMenu"

@@ -1,12 +1,12 @@
-using clashN.Handler;
-using clashN.Mode;
-using clashN.Resx;
-using clashN.Tool;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.Resx;
+using ClashN.Tool;
 using ReactiveUI;
 using Splat;
 using System.Reactive;
 
-namespace clashN.ViewModels
+namespace ClashN.ViewModels
 {
     public class HelpViewModel : ReactiveObject
     {
@@ -19,7 +19,7 @@ namespace clashN.ViewModels
 
         public HelpViewModel()
         {
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
 
             CheckUpdateCmd = ReactiveCommand.Create(() =>
@@ -28,11 +28,11 @@ namespace clashN.ViewModels
             });
             CheckUpdateClashCoreCmd = ReactiveCommand.Create(() =>
             {
-                CheckUpdateCore(ECoreType.clash);
+                CheckUpdateCore(CoreKind.Clash);
             });
             CheckUpdateClashMetaCoreCmd = ReactiveCommand.Create(() =>
             {
-                CheckUpdateCore(ECoreType.clash_meta);
+                CheckUpdateCore(CoreKind.ClashMeta);
             });
         }
 
@@ -48,7 +48,7 @@ namespace clashN.ViewModels
             };
             (new UpdateHandle()).CheckUpdateGuiN(_config, _updateUI);
         }
-        private void CheckUpdateCore(ECoreType type)
+        private void CheckUpdateCore(CoreKind type)
         {
             void _updateUI(bool success, string msg)
             {

@@ -1,13 +1,13 @@
-using clashN.Handler;
-using clashN.Mode;
-using clashN.ViewModels;
+using ClashN.Handler;
+using ClashN.Mode;
+using ClashN.ViewModels;
 using ReactiveUI;
 using System.Globalization;
 using System.IO;
 using System.Reactive.Disposables;
 using System.Windows.Media;
 
-namespace clashN.Views
+namespace ClashN.Views
 {
     /// <summary>
     /// Interaction logic for SettingsView.xaml
@@ -19,7 +19,7 @@ namespace clashN.Views
         public SettingsView()
         {
             InitializeComponent();
-            _config = LazyConfig.Instance.GetConfig();
+            _config = LazyConfig.Instance.Config;
             ViewModel = new SettingsViewModel();
 
             Global.SubConvertUrls.ForEach(it =>
@@ -66,10 +66,10 @@ namespace clashN.Views
                             //    continue;
                             //}
                             var fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture)];
-                            if (Utils.IsNullOrEmpty(fontFamily))
+                            if (string.IsNullOrEmpty(fontFamily))
                             {
                                 fontFamily = glyph.Win32FamilyNames[new CultureInfo(culture2)];
-                                if (Utils.IsNullOrEmpty(fontFamily))
+                                if (string.IsNullOrEmpty(fontFamily))
                                 {
                                     continue;
                                 }
