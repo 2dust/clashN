@@ -59,7 +59,7 @@ namespace ClashN.ViewModels
 
             var canEditRemove = this.WhenAnyValue(
                x => x.SelectedSource,
-               selectedSource => selectedSource != null && !selectedSource.indexId.IsNullOrEmpty());
+               selectedSource => selectedSource != null && !string.IsNullOrEmpty(selectedSource.indexId));
 
             //Profile
             EditLocalFileCmd = ReactiveCommand.Create(() =>

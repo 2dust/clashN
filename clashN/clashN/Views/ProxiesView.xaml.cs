@@ -43,15 +43,29 @@ namespace ClashN.Views
 
         private void ProxiesView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (Keyboard.IsKeyDown(Key.F5))
+            switch (e.Key)
             {
-                ViewModel?.ProxiesReload();
+                case Key.F5:
+                    ViewModel?.ProxiesReload();
+                    break;
+                case Key.Enter:
+                    ViewModel?.SetActiveProxy();
+                    break;
             }
-            else if (Keyboard.IsKeyDown(Key.Enter))
+        }
+
+
+        private object? lastProxyItemKeyDownSender;
+        private int lastProxyItemKeyDownTimestamp;
+        private void ProxyItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (sender == lastProxyItemKeyDownSender && e.Timestamp - lastProxyItemKeyDownTimestamp < 500)
             {
                 ViewModel?.SetActiveProxy();
             }
 
+            lastProxyItemKeyDownSender = sender;
+            lastProxyItemKeyDownTimestamp = e.Timestamp;
         }
     }
 }

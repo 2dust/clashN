@@ -50,7 +50,7 @@ namespace ClashN.ViewModels
 
             var canEditRemove = this.WhenAnyValue(
              x => x.SelectedSource,
-             selectedSource => selectedSource != null && !selectedSource.id.IsNullOrEmpty());
+             selectedSource => selectedSource != null && !string.IsNullOrEmpty(selectedSource.id));
 
             this.WhenAnyValue(
               x => x.SortingSelected,
@@ -144,7 +144,7 @@ namespace ClashN.ViewModels
                 model.id = item.Id;
                 model.network = item.metadata.Network;
                 model.type = item.metadata.Type;
-                model.host = $"{(item.metadata.Host.IsNullOrEmpty() ? item.metadata.DestinationIP : item.metadata.Host)}:{item.metadata.DestinationPort}";
+                model.host = $"{(string.IsNullOrEmpty(item.metadata.Host) ? item.metadata.DestinationIP : item.metadata.Host)}:{item.metadata.DestinationPort}";
                 var sp = (dtNow - item.start);
                 model.time = sp.TotalSeconds < 0 ? 1 : sp.TotalSeconds;
                 model.upload = item.upload;

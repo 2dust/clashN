@@ -218,10 +218,10 @@ namespace ClashN.Handler
                     {
                         _updateFunc(false, $"{hashCode}{args.GetException().Message}");
                     };
-                    var result = await downloadHandle.DownloadStringAsync(url, blProxy, userAgent);
+                    var result = (await downloadHandle.DownloadStringAsync(url, blProxy, userAgent)) ?? throw new Exception();
                     if (blProxy && string.IsNullOrEmpty(result.Item1))
                     {
-                        result = await downloadHandle.DownloadStringAsync(url, false, userAgent);
+                        result = (await downloadHandle.DownloadStringAsync(url, false, userAgent)) ?? throw new Exception();
                     }
 
                     if (string.IsNullOrEmpty(result.Item1))

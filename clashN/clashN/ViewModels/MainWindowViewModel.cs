@@ -460,7 +460,7 @@ namespace ClashN.ViewModels
         {
             ModifyTheme(_config.UiItem.colorModeDark);
 
-            if (!_config.UiItem.colorPrimaryName.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(_config.UiItem.colorPrimaryName))
             {
                 var swatch = new SwatchesProvider().Swatches.FirstOrDefault(t => t.Name == _config.UiItem.colorPrimaryName);
                 if (swatch != null

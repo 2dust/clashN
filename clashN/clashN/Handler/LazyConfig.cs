@@ -15,7 +15,7 @@ namespace ClashN.Handler
         {
             get { return _instance.Value; }
         }
-        public void SetConfig(ref Config config)
+        public void SetConfig(Config config)
         {
             _config = config;
         }

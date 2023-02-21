@@ -1,5 +1,6 @@
 ﻿using ClashN.Mode;
 using ClashN.Tool;
+using System.Collections.Specialized;
 using System.IO;
 using System.Web;
 
@@ -93,9 +94,7 @@ namespace ClashN.Handler
                 config.ConstItem.defIEProxyExceptions = Global.IEProxyExceptions;
             }
 
-            if (config == null
-                || config.ProfileItems.Count <= 0
-                )
+            if (config.ProfileItems.Count <= 0)
             {
                 Global.reloadCore = false;
             }
@@ -114,7 +113,7 @@ namespace ClashN.Handler
                 }
             }
 
-            LazyConfig.Instance.SetConfig(ref config);
+            LazyConfig.Instance.SetConfig(config);
             return 0;
         }
         /// <summary>
@@ -262,7 +261,7 @@ namespace ClashN.Handler
             }
             return -1;
         }
-        public static ProfileItem GetDefaultProfile(ref Config config)
+        public static ProfileItem? GetDefaultProfile(ref Config config)
         {
             if (config.ProfileItems.Count <= 0)
             {
@@ -571,13 +570,15 @@ namespace ClashN.Handler
                 Uri url = new Uri(clipboardData);
                 if (url.Host == "install-config")
                 {
-                    var query = HttpUtility.ParseQueryString(url.Query);
+                    NameValueCollection query =
+                        HttpUtility.ParseQueryString(url.Query);
+
                     if (!string.IsNullOrEmpty(query["url"] ?? ""))
                     {
                         ProfileItem item = new ProfileItem()
                         {
                             groupId = groupId,
-                            url = query["url"],
+                            url = query["url"] ?? string.Empty,
                             coreType = CoreKind.ClashMeta,
                             address = string.Empty,
                             enabled = true,
@@ -613,15 +614,12 @@ namespace ClashN.Handler
             else
             { return -1; }
 
-            ProfileItem profileItem;
+            ProfileItem? profileItem = null;
             if (!string.IsNullOrEmpty(indexId))
-            {
                 profileItem = config.GetProfileItem(indexId);
-            }
-            else
-            {
+
+            if (profileItem == null)
                 profileItem = new ProfileItem();
-            }
             profileItem.groupId = groupId;
 
             if (AddProfileViaContent(ref config, profileItem, clipboardData) == 0)
