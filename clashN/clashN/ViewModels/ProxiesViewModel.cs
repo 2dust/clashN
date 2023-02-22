@@ -65,7 +65,7 @@ namespace ClashN.ViewModels
             //GetClashProxies(true);
             this.WhenAnyValue(
                x => x.SelectedGroup,
-               y => y != null && !y.name.IsNullOrEmpty())
+               y => y != null && !string.IsNullOrEmpty(y.name))
                    .Subscribe(c => RefreshProxyDetails(c));
 
             this.WhenAnyValue(
@@ -268,7 +268,7 @@ namespace ClashN.ViewModels
                     continue;
                 }
                 var item = _proxyGroups.Where(t => t.name == kv.Key).FirstOrDefault();
-                if (item != null && !item.name.IsNullOrEmpty())
+                if (item != null && !string.IsNullOrEmpty(item.name))
                 {
                     continue;
                 }
@@ -379,11 +379,11 @@ namespace ClashN.ViewModels
 
         public void SetActiveProxy()
         {
-            if (SelectedGroup == null || SelectedGroup.name.IsNullOrEmpty())
+            if (SelectedGroup == null || string.IsNullOrEmpty(SelectedGroup.name))
             {
                 return;
             }
-            if (SelectedDetail == null || SelectedDetail.name.IsNullOrEmpty())
+            if (SelectedDetail == null || string.IsNullOrEmpty(SelectedDetail.name))
             {
                 return;
             }

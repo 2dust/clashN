@@ -70,7 +70,7 @@ namespace ClashN.Handler
         /// DownloadString
         /// </summary> 
         /// <param name="url"></param>
-        public async Task<(string, HttpResponseHeaders)> DownloadStringAsync(string url, bool blProxy, string userAgent)
+        public async Task<(string, HttpResponseHeaders)?> DownloadStringAsync(string url, bool blProxy, string userAgent)
         {
             try
             {
@@ -108,10 +108,11 @@ namespace ClashN.Handler
                     Error?.Invoke(this, new ErrorEventArgs(ex.InnerException));
                 }
             }
-            return (null, null);
+
+            return null;
         }
 
-        public async Task<string> UrlRedirectAsync(string url, bool blProxy)
+        public async Task<string?> UrlRedirectAsync(string url, bool blProxy)
         {
             Utils.SetSecurityProtocol(LazyConfig.Instance.Config.EnableSecurityProtocolTls13);
             SocketsHttpHandler webRequestHandler = new SocketsHttpHandler
@@ -124,7 +125,7 @@ namespace ClashN.Handler
             HttpResponseMessage response = await client.GetAsync(url);
             if (response.StatusCode.ToString() == "Redirect")
             {
-                return response.Headers.Location.ToString();
+                return response.Headers.Location?.ToString();
             }
             else
             {

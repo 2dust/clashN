@@ -141,7 +141,7 @@ namespace ClashN.ViewModels
             //UI
             ColorModeDark = _config.UiItem.colorModeDark;
             _swatches.AddRange(new SwatchesProvider().Swatches);
-            if (!_config.UiItem.colorPrimaryName.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(_config.UiItem.colorPrimaryName))
             {
                 SelectedSwatch = _swatches.FirstOrDefault(t => t.Name == _config.UiItem.colorPrimaryName);
             }
@@ -163,11 +163,11 @@ namespace ClashN.ViewModels
 
             this.WhenAnyValue(
               x => x.SelectedSwatch,
-              y => y != null && !y.Name.IsNullOrEmpty())
+              y => y != null && !string.IsNullOrEmpty(y.Name))
                  .Subscribe(c =>
                  {
                      if (SelectedSwatch == null
-                     || SelectedSwatch.Name.IsNullOrEmpty()
+                     || string.IsNullOrEmpty(SelectedSwatch.Name)
                      || SelectedSwatch.ExemplarHue == null
                      || SelectedSwatch.ExemplarHue?.Color == null)
                      {
@@ -183,7 +183,7 @@ namespace ClashN.ViewModels
 
             this.WhenAnyValue(
              x => x.CurrentLanguage,
-             y => y != null && !y.IsNullOrEmpty())
+             y => y != null && !string.IsNullOrEmpty(y))
                 .Subscribe(c =>
                 {
                     if (!string.IsNullOrEmpty(CurrentLanguage))

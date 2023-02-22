@@ -163,7 +163,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Width="160" Padding="0">
+                        <Border Width="160" Padding="0" KeyDown="ProxyItem_KeyDown">
                             <DockPanel>
                                 <Border
                                     Width="5"

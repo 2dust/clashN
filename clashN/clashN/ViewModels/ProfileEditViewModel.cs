@@ -34,7 +34,7 @@ namespace ClashN.ViewModels
             _noticeHandler = Locator.Current.GetService<NoticeHandler>();
             _config = LazyConfig.Instance.Config;
 
-            if (profileItem.indexId.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(profileItem.indexId))
             {
                 SelectedSource = profileItem;
             }

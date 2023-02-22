@@ -74,12 +74,11 @@ namespace ClashN.Mode
             return ProfileItems.FindIndex(it => it.indexId == id);
         }
 
-        public ProfileItem GetProfileItem(string id)
+        public ProfileItem? GetProfileItem(string id)
         {
             if (string.IsNullOrEmpty(id))
-            {
                 return null;
-            }
+
             return ProfileItems.FirstOrDefault(it => it.indexId == id);
         }
 
@@ -160,7 +159,7 @@ namespace ClashN.Mode
 
         public bool colorModeDark { get; set; }
         public string? colorPrimaryName { get; set; }
-        public string currentFontFamily { get; set; }
+        public string currentFontFamily { get; set; } = string.Empty;
         public int currentFontSize { get; set; }
 
         public int proxiesSorting { get; set; }
@@ -174,21 +173,9 @@ namespace ClashN.Mode
     [Serializable]
     public class ConstItem
     {
-        public string subConvertUrl
-        {
-            get; set;
-        }
-        public string speedTestUrl
-        {
-            get; set;
-        }
-        public string speedPingTestUrl
-        {
-            get; set;
-        }
-        public string defIEProxyExceptions
-        {
-            get; set;
-        }
+        public string subConvertUrl { get; set; } = string.Empty;
+        public string speedTestUrl { get; set; } = string.Empty;
+        public string speedPingTestUrl { get; set; } = string.Empty;
+        public string defIEProxyExceptions { get; set; } = string.Empty;
     }
 }
