@@ -27,35 +27,60 @@
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
                 <Button x:Name="btnAddProfile" ToolTip="{x:Static resx:ResUI.menuAddProfile}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Plus" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="Plus" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuAddProfile}" />
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button x:Name="btnAddProfileViaClipboard" ToolTip="{x:Static resx:ResUI.menuAddProfileViaClipboard}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ContentPaste" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="ContentPaste" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbAddProfileViaClipboard}" />
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button x:Name="btnSubUpdateViaProxy" ToolTip="{x:Static resx:ResUI.menuSubUpdateViaProxy}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Update" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="Update" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSubUpdateViaProxy}" />
+                    </StackPanel>
+                </Button>
+                <Separator />
+                <Button x:Name="btnEditProfile" ToolTip="{x:Static resx:ResUI.menuEditProfile}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="Edit" />
+                        <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuEditProfile}" />
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button x:Name="btnSetDefaultProfile" ToolTip="{x:Static resx:ResUI.menuSetDefaultProfile}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Check" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="Check" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSetDefaultProfile}" />
                     </StackPanel>
                 </Button>
                 <Separator />
                 <Button x:Name="btnProfileQrcode" ToolTip="{x:Static resx:ResUI.menuProfileQrcode}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="QrcodePlus" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="QrcodePlus" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuProfileQrcode}" />
                     </StackPanel>
                 </Button>
@@ -107,7 +132,7 @@
                                 Background="{DynamicResource PrimaryHueLightBrush}"
                                 CornerRadius="4"
                                 DockPanel.Dock="Left"
-                                Visibility="{Binding Path=isActive, Converter={StaticResource BoolToVisConverter}}" />
+                                Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisConverter}}" />
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -160,7 +185,10 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ChartDonut" />
+                                    <materialDesign:PackIcon
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        Kind="ChartDonut" />
                                     <TextBlock
                                         Padding="4,0,4,0"
                                         Style="{StaticResource ListItemSubTitle}"

@@ -16,6 +16,7 @@ namespace ClashN.Views
             InitializeComponent();
             ViewModel = new ProxiesViewModel();
             Locator.CurrentMutable.RegisterLazySingleton(() => ViewModel, typeof(ProxiesViewModel));
+            lstProxyDetails.PreviewMouseDoubleClick += lstProxyDetails_PreviewMouseDoubleClick;
 
             this.WhenActivated(disposables =>
             {
@@ -54,18 +55,10 @@ namespace ClashN.Views
             }
         }
 
-
-        private object? lastProxyItemKeyDownSender;
-        private int lastProxyItemKeyDownTimestamp;
-        private void ProxyItem_KeyDown(object sender, KeyEventArgs e)
+        private void lstProxyDetails_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (sender == lastProxyItemKeyDownSender && e.Timestamp - lastProxyItemKeyDownTimestamp < 500)
-            {
-                ViewModel?.SetActiveProxy();
-            }
-
-            lastProxyItemKeyDownSender = sender;
-            lastProxyItemKeyDownTimestamp = e.Timestamp;
+            ViewModel?.SetActiveProxy();
         }
+
     }
 }

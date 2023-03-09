@@ -41,7 +41,7 @@ namespace ClashN.ViewModels
         public ReactiveCommand<Unit, Unit> EditMixinContentCmd { get; }
         #endregion
 
-        #region clashN
+        #region ClashN
 
         [Reactive]
         public bool AutoRun { get; set; }
@@ -109,7 +109,7 @@ namespace ClashN.ViewModels
                 EditMixinContent();
             }, this.IsValid());
 
-            //clashN       
+            //ClashN       
             AutoRun = _config.AutoRun;
             EnableStatistics = _config.EnableStatistics;
             EnableSecurityProtocolTls13 = _config.EnableSecurityProtocolTls13;
@@ -244,7 +244,7 @@ namespace ClashN.ViewModels
             _config.LogLevel = LogLevel;
             _config.EnableMixinContent = EnableMixinContent;
 
-            //clashN                   
+            //ClashN                   
             Utils.SetAutoRun(AutoRun);
             _config.AutoRun = AutoRun;
             _config.EnableStatistics = EnableStatistics;

@@ -50,7 +50,7 @@ namespace ClashN
             Global.processJob = new Job();
 
             Logging.Setup();
-            Utils.SaveLog($"clashN start up | {Utils.GetVersion()} | {Utils.GetExePath()}");
+            Utils.SaveLog($"ClashN start up | {Utils.GetVersion()} | {Utils.GetExePath()}");
             Logging.ClearLogs();
 
             Init();

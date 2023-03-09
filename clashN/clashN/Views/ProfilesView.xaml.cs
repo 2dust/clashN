@@ -58,6 +58,7 @@ namespace ClashN.Views
                 this.BindCommand(ViewModel, vm => vm.AddProfileCmd, v => v.btnAddProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.AddProfileViaClipboardCmd, v => v.btnAddProfileViaClipboard).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SubUpdateViaProxyCmd, v => v.btnSubUpdateViaProxy).DisposeWith(disposables);
+                this.BindCommand(ViewModel, vm => vm.EditProfileCmd, v => v.btnEditProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SetDefaultProfileCmd, v => v.btnSetDefaultProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ProfileQrcodeCmd, v => v.btnProfileQrcode).DisposeWith(disposables);
 
@@ -96,7 +97,7 @@ namespace ClashN.Views
 
         private void lstProfiles_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ViewModel?.EditProfile(false);
+            ViewModel?.SetDefaultProfile();
         }
 
         #region Drag and Drop

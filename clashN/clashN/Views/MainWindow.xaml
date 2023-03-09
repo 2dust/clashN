@@ -32,7 +32,7 @@
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
             <Grid Grid.Column="0">
-                <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}" Padding="10, 0">
+                <TabControl Padding="2,0" Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
                     <materialDesign:NavigationRailAssist.FloatingContent>
                         <StackPanel
                             Width="auto"
@@ -73,7 +73,7 @@
                             <Button
                                 x:Name="btnReload"
                                 Content="{materialDesign:PackIcon Kind=Reload}"
-                                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                 ToolTip="{x:Static resx:ResUI.TbReloadCore}" />
                         </StackPanel>
                     </materialDesign:NavigationRailAssist.FloatingContent>
@@ -208,7 +208,7 @@
 
                 <tb:TaskbarIcon
                     x:Name="tbNotify"
-                    IconSource="/clashN.ico"
+                    IconSource="/ClashN.ico"
                     NoLeftClickDelay="True">
                     <tb:TaskbarIcon.ContextMenu>
                         <ContextMenu Style="{StaticResource DefMenu}">

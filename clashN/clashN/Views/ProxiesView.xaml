@@ -30,7 +30,10 @@
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
                 <Button Width="1" Visibility="Hidden">
-                    <materialDesign:PackIcon Kind="ContentSave" />
+                    <materialDesign:PackIcon
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        Kind="ContentSave" />
                 </Button>
                 <TextBlock
                     VerticalAlignment="Center"
@@ -98,13 +101,13 @@
         <DockPanel>
             <ListView
                 x:Name="lstProxyGroups"
-                Margin="0, 0, 5, 0"
+                Margin="0,0,5,0"
                 BorderThickness="0"
                 DockPanel.Dock="Left"
-                Style="{StaticResource MaterialDesignListView}"
                 ItemContainerStyle="{StaticResource lvItemSelected}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Visible">
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                Style="{StaticResource MaterialDesignListView}">
                 <ListView.ContextMenu>
                     <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuProxiesReload" Header="{x:Static resx:ResUI.menuProxiesReload}" />
@@ -118,7 +121,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Width="160" Padding="0">
+                        <Border Width="200" Padding="0">
                             <DockPanel>
                                 <Grid Grid.Column="0" Margin="4">
                                     <Grid.RowDefinitions>
@@ -146,10 +149,10 @@
             <ListView
                 x:Name="lstProxyDetails"
                 BorderThickness="0"
-                Style="{StaticResource MaterialDesignListView}"
                 ItemContainerStyle="{StaticResource lvItemSelected}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                ScrollViewer.VerticalScrollBarVisibility="Visible">
+                ScrollViewer.VerticalScrollBarVisibility="Visible"
+                Style="{StaticResource MaterialDesignListView}">
                 <ListView.ContextMenu>
                     <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuProxiesDelaytestPart" Header="{x:Static resx:ResUI.menuProxiesDelaytestPart}" />
@@ -163,7 +166,7 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border Width="160" Padding="0" KeyDown="ProxyItem_KeyDown">
+                        <Border Width="200" Padding="0">
                             <DockPanel>
                                 <Border
                                     Width="5"

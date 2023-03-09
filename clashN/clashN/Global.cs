@@ -45,8 +45,8 @@
 
         public const string mixinConfigFileName = "Mixin.yaml";
 
-        public const string SampleMixin = "clashN.Sample.SampleMixin.yaml";
-        public const string SampleTun = "clashN.Sample.SampleTun.yaml";
+        public const string SampleMixin = "ClashN.Sample.SampleMixin.yaml";
+        public const string SampleTun = "ClashN.Sample.SampleTun.yaml";
 
         public const string InboundSocks = "socks";
         public const string InboundHttp = "http";
@@ -86,7 +86,7 @@
         /// <summary>
         /// Icon
         /// </summary>
-        public const string CustomIconName = "clashN.ico";
+        public const string CustomIconName = "ClashN.ico";
         public const int MinFontSize = 10;
 
 
@@ -101,7 +101,7 @@
                         ""
                     };
 
-        public static readonly List<string> coreTypes = new List<string> { "clash", "clash_premium", "clash_meta", };
+        public static readonly List<string> coreTypes = new List<string> { "Clash", "ClashPremium", "ClashMeta", };
 
         public static readonly List<string> allowSelectType = new List<string> { "selector", "urltest", "loadbalance", "fallback" };
 

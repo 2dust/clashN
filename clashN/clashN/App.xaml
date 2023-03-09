@@ -65,9 +65,8 @@
             <Style TargetType="{x:Type TextElement}">
                 <Setter Property="FontWeight" Value="Regular" />
             </Style>
-            <Style x:Key="lvItemSelected"
-                   TargetType="{x:Type ListViewItem}">
-                <Setter Property="Margin" Value="5" />
+            <Style x:Key="lvItemSelected" TargetType="{x:Type ListViewItem}">
+                <Setter Property="Margin" Value="2" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListViewItem">
@@ -76,7 +75,7 @@
                             </materialDesign:Card>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
-                                    <Setter TargetName="_Card" Property="Foreground" Value="{DynamicResource PrimaryHueDarkBrush}"/>
+                                    <Setter TargetName="_Card" Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -97,7 +96,7 @@
                 BasedOn="{StaticResource MaterialDesignRaisedButton}"
                 TargetType="{x:Type ButtonBase}">
                 <Setter Property="FontSize" Value="{DynamicResource StdFontSize3}" />
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}" />
             </Style>
             <Style
                 x:Key="DefMenu"

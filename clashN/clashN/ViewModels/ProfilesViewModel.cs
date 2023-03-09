@@ -9,6 +9,7 @@ using MaterialDesignThemes.Wpf;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
+using System;
 using System.IO;
 using System.Reactive;
 using System.Windows.Forms;
@@ -313,6 +314,10 @@ namespace ClashN.ViewModels
             {
                 return;
             }
+            if (SelectedSource?.indexId == _config.IndexId)
+            {
+                return;
+            }
             var item = _config.GetProfileItem(SelectedSource.indexId);
             if (item is null)
             {
@@ -375,7 +380,8 @@ namespace ClashN.ViewModels
             var img = QRCodeHelper.GetQRCode(item.url);
             var dialog = new ProfileQrcodeView()
             {
-                imgQrcode = { Source = img }
+                imgQrcode = { Source = img }    ,
+                txtContent = { Text = item.url },
             };
 
             await DialogHost.Show(dialog, "RootDialog");

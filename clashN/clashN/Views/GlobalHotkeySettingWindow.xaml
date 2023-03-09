@@ -10,7 +10,7 @@
     xmlns:reactiveui="http://reactiveui.net"
     xmlns:resx="clr-namespace:ClashN.Resx"
     xmlns:vms="clr-namespace:ClashN.ViewModels"
-    Title="clashN"
+    Title="ClashN"
     Width="600"
     Height="500"
     x:TypeArguments="vms:ProfileEditViewModel"

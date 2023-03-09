@@ -7,39 +7,39 @@
     <UseWPF>true</UseWPF>  
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>clashN.ico</ApplicationIcon>
+    <ApplicationIcon>ClashN.ico</ApplicationIcon>
 	<Copyright>Copyright © 2019-2023 (GPLv3)</Copyright>
 	<FileVersion>2.14</FileVersion>
   </PropertyGroup>
  
 
 	<ItemGroup>
-		<PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+		<PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />		 
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="NHotkey" Version="2.1.0" />
 		<PackageReference Include="NHotkey.Wpf" Version="2.1.0" />
 		<PackageReference Include="QRCoder.Xaml" Version="1.4.3" />
 		<PackageReference Include="TaskScheduler" Version="2.10.1" />
-		<PackageReference Include="YamlDotNet" Version="12.0.2" />
-		<PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.10" />
+		<PackageReference Include="YamlDotNet" Version="13.0.1" />
+		<PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.12" />
 		<PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
 		<PackageReference Include="ReactiveUI.Validation" Version="3.0.1" />
 		<PackageReference Include="ReactiveUI.WPF" Version="18.3.1" />
-		<PackageReference Include="Splat.NLog" Version="14.4.1" />
+		<PackageReference Include="Splat.NLog" Version="14.6.8" />
 		<PackageReference Include="System.Reactive" Version="5.0.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
-        <None Remove="clashN.ico" />  
+        <None Remove="ClashN.ico" />  
         <AdditionalFiles Include="app.manifest" />
-        <EmbeddedResource Include="clashN.ico">
+        <EmbeddedResource Include="ClashN.ico">
           <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         </EmbeddedResource>
         <EmbeddedResource Include="Sample\SampleMixin.yaml" />
         <EmbeddedResource Include="Sample\SampleTun.yaml" />
         <ProjectReference Include="..\..\..\v2rayN\v2rayN\PacLib\PacLib.csproj" />
-        <Resource Include="clashN.ico">
+        <Resource Include="ClashN.ico">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Resource> 
         <Compile Update="Resx\ResUI.Designer.cs">

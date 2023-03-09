@@ -5,8 +5,8 @@ namespace ClashN.Mode
     public class ProfileItemModel : ProfileItem
     {
         public bool IsActive { get; set; }
-        public bool HasUrl => string.IsNullOrEmpty(url);
-        public bool HasAddress => string.IsNullOrEmpty(address);
+        public bool HasUrl => !string.IsNullOrEmpty(url);
+        public bool HasAddress => !string.IsNullOrEmpty(address);
         public string StrUpdateTime
         {
             get

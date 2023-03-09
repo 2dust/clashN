@@ -29,7 +29,10 @@
         <ToolBarTray Margin="0,8,0,8" DockPanel.Dock="Top">
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
                 <Button Width="1" Visibility="Hidden">
-                    <materialDesign:PackIcon Kind="ContentSave" />
+                    <materialDesign:PackIcon
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        Kind="ContentSave" />
                 </Button>
                 <TextBlock
                     VerticalAlignment="Center"
@@ -50,7 +53,10 @@
                 <Separator />
                 <Button x:Name="btnConnectionCloseAll" ToolTip="{x:Static resx:ResUI.menuConnectionCloseAll}">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Close" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="Close" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.menuConnectionCloseAll}" />
                     </StackPanel>
                 </Button>

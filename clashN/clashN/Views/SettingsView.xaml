@@ -23,7 +23,10 @@
             <ToolBar ClipToBounds="True" Style="{StaticResource MaterialDesignToolBar}">
                 <Button x:Name="btnSave">
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="ContentSave" />
+                        <materialDesign:PackIcon
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Kind="ContentSave" />
                         <TextBlock Style="{StaticResource ToolbarItem}" Text="{x:Static resx:ResUI.TbSave}" />
                     </StackPanel>
                 </Button>

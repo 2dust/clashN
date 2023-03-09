@@ -85,7 +85,7 @@ namespace ClashN.Handler
             {
                 if (args.Success)
                 {
-                    _updateFunc(false, string.Format(ResUI.MsgParsingSuccessfully, "clashN"));
+                    _updateFunc(false, string.Format(ResUI.MsgParsingSuccessfully, "ClashN"));
 
                     url = args.Msg;
                     AskToDownload(downloadHandle, url, true);
@@ -96,7 +96,7 @@ namespace ClashN.Handler
                     _updateFunc(false, args.Msg);
                 }
             };
-            _updateFunc(false, string.Format(ResUI.MsgStartUpdating, "clashN"));
+            _updateFunc(false, string.Format(ResUI.MsgStartUpdating, "ClashN"));
             CheckUpdateAsync(CoreKind.ClashN);
         }
 
