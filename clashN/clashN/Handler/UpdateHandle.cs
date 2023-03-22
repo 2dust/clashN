@@ -173,14 +173,14 @@ namespace ClashN.Handler
             Task.Run(async () =>
             {
                 //Turn off system proxy
-                bool bSysProxyType = false;
-                if (!blProxy && config.SysProxyType == SysProxyType.ForcedChange)
-                {
-                    bSysProxyType = true;
-                    config.SysProxyType = SysProxyType.ForcedClear;
-                    SysProxyHandle.UpdateSysProxy(config, false);
-                    Thread.Sleep(3000);
-                }
+                //bool bSysProxyType = false;
+                //if (!blProxy && config.SysProxyType == SysProxyType.ForcedChange)
+                //{
+                //    bSysProxyType = true;
+                //    config.SysProxyType = SysProxyType.ForcedClear;
+                //    SysProxyHandle.UpdateSysProxy(config, false);
+                //    Thread.Sleep(3000);
+                //}
 
                 if (profileItems == null)
                 {
@@ -280,11 +280,11 @@ namespace ClashN.Handler
 
                 }
                 //restore system proxy
-                if (bSysProxyType)
-                {
-                    config.SysProxyType = SysProxyType.ForcedChange;
-                    SysProxyHandle.UpdateSysProxy(config, false);
-                }
+                //if (bSysProxyType)
+                //{
+                //    config.SysProxyType = SysProxyType.ForcedChange;
+                //    SysProxyHandle.UpdateSysProxy(config, false);
+                //}
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
             });
         }

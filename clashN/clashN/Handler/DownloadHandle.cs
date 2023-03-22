@@ -75,9 +75,11 @@ namespace ClashN.Handler
             try
             {
                 Utils.SetSecurityProtocol(LazyConfig.Instance.Config.EnableSecurityProtocolTls13);
+                var webProxy = GetWebProxy(blProxy);
                 var client = new HttpClient(new SocketsHttpHandler()
                 {
-                    Proxy = GetWebProxy(blProxy)
+                    Proxy = webProxy,
+                    UseProxy = webProxy != null
                 });
 
                 if (string.IsNullOrEmpty(userAgent))
