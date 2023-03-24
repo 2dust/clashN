@@ -178,13 +178,14 @@
                                     Visibility="{Binding Path=isActive, Converter={StaticResource BoolToVisConverter}}" />
                                 <Grid Margin="4">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="1*" />
                                     </Grid.RowDefinitions>
                                     <TextBlock
                                         Grid.Row="0"
                                         Style="{StaticResource ListItemSubTitle}"
-                                        Text="{Binding name}" />
+                                        Text="{Binding name}"
+                                        TextWrapping="WrapWithOverflow" />
                                     <DockPanel Grid.Row="1">
                                         <TextBlock
                                             DockPanel.Dock="Right"
