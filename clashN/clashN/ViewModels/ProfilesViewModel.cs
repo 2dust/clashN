@@ -327,7 +327,7 @@ namespace ClashN.ViewModels
 
             if (ConfigProc.SetDefaultProfile(ref _config, item) == 0)
             {
-                _noticeHandler?.Enqueue(ResUI.OperationSuccess);
+                _noticeHandler?.SendMessage(ResUI.OperationSuccess);
                 RefreshProfiles();
 
                 Locator.Current.GetService<MainWindowViewModel>()?.LoadCore();
