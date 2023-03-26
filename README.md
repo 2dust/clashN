@@ -2,9 +2,9 @@
 A clash client for Windows, supports [Clash core](https://github.com/Dreamacro/clash) and [Clash.Meta core](https://github.com/MetaCubeX/Clash.Meta)
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/2dust/clashn)](https://github.com/2dust/clashn/commits/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/2dust/clashn/badge)](https://www.codefactor.io/repository/github/2dust/clashn)
 [![GitHub Releases](https://img.shields.io/github/downloads/2dust/clashn/latest/total?logo=github)](https://github.com/2dust/clashn/releases)
-
-
+  
 ### How to use
 1. Download `clashN.zip` from [releases](https://github.com/2dust/clashN/releases)
 2. Unzip to any folder you want
