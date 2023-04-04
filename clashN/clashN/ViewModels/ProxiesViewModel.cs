@@ -235,6 +235,7 @@ namespace ClashN.ViewModels
 
         private void RefreshProxyGroups()
         {
+            var selectedName = SelectedGroup?.name;
             _proxyGroups.Clear();
 
             var proxyGroups = MainFormHandler.Instance.GetClashProxyGroups();
@@ -283,7 +284,14 @@ namespace ClashN.ViewModels
 
             if (_proxyGroups != null && _proxyGroups.Count > 0)
             {
-                SelectedGroup = _proxyGroups[0];
+                if (selectedName != null && _proxyGroups.Any(t => t.name == selectedName))
+                {
+                    SelectedGroup = _proxyGroups.FirstOrDefault(t => t.name == selectedName);
+                }
+                else
+                {
+                    SelectedGroup = _proxyGroups[0];
+                }
             }
             else
             {
