@@ -103,7 +103,7 @@ namespace ClashN.Handler
                 {
                     if (config.ruleMode != ERuleMode.Unchanged)
                     {
-                        fileContent["model"] = config.ruleMode.ToString().ToLower();
+                        fileContent["mode"] = config.ruleMode.ToString().ToLower();
                     }
                 }
 
