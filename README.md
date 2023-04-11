@@ -34,3 +34,19 @@ A clash client for Windows, supports [Clash core](https://github.com/Dreamacro/c
 ### Contribute
 
 To build this project, you should clone both [ClashN](https://github.com/2dust/clashN) and [v2rayN](https://github.com/2dust/v2rayN) to the same folder
+```
+Example folder
+├─ ClashN
+|  ├─ clashN
+|  |  ├─ clashN.sln
+|  |  └─ ...
+|  ├─ README.md
+|  └─ ...
+├─ v2rayN
+|  ├─ v2rayN
+|  |  ├─ v2rayN.sln
+|  |  └─ ...
+|  ├─ README.md
+|  └─ ...
+└─ ...
+```
