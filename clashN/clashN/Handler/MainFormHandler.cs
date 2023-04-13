@@ -205,11 +205,11 @@ namespace ClashN.Handler
         {
             for (var i = 0; i < 5; i++)
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/proxies";
+                var url = $"{GetApiUrl()}/proxies";
                 var result = await HttpClientHelper.GetInstance().TryGetAsync(url);
                 var clashProxies = Utils.FromJson<ClashProxies>(result);
 
-                var url2 = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/providers/proxies";
+                var url2 = $"{GetApiUrl()}/providers/proxies";
                 var result2 = await HttpClientHelper.GetInstance().TryGetAsync(url2);
                 var clashProviders = Utils.FromJson<ClashProviders>(result2);
 
@@ -261,7 +261,7 @@ namespace ClashN.Handler
                 {
                     return;
                 }
-                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/proxies";
+                var urlBase = $"{GetApiUrl()}/proxies";
                 urlBase += @"/{0}/delay?timeout=10000&url=" + LazyConfig.Instance.Config.ConstItem.speedPingTestUrl;
 
                 List<Task> tasks = new List<Task>();
@@ -320,7 +320,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/proxies/{name}";
+                var url = $"{GetApiUrl()}/proxies/";
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("name", nameNode);
                 await HttpClientHelper.GetInstance().PutAsync(url, headers);
@@ -341,7 +341,7 @@ namespace ClashN.Handler
                     return;
                 }
 
-                var urlBase = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/configs";
+                var urlBase = $"{GetApiUrl()}/configs";
 
                 await HttpClientHelper.GetInstance().PatchAsync(urlBase, headers);
             });
@@ -352,7 +352,7 @@ namespace ClashN.Handler
             ClashConnectionClose("");
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/configs?force=true";
+                var url = $"{GetApiUrl()}/configs?force=true";
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("path", filePath);
                 await HttpClientHelper.GetInstance().PutAsync(url, headers);
@@ -371,7 +371,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{config.ApiPort}/connections";
+                var url = $"{GetApiUrl()}/connections";
                 var result = await HttpClientHelper.GetInstance().TryGetAsync(url);
                 var clashConnections = Utils.FromJson<ClashConnections>(result);
 
@@ -387,13 +387,18 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}/connections/{id}";
+                var url = $"{GetApiUrl()}/connections/";
                 await HttpClientHelper.GetInstance().DeleteAsync(url);
             }
             catch (Exception ex)
             {
                 Utils.SaveLog(ex.Message, ex);
             }
+        }
+
+        private string GetApiUrl()
+        {
+            return $"{Global.httpProtocol}{Global.Loopback}:{LazyConfig.Instance.Config.ApiPort}";
         }
     }
 }

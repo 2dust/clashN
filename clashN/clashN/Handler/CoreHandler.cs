@@ -78,6 +78,7 @@ namespace ClashN.Handler
         private void CoreRestart(ProfileItem item)
         {
             CoreStop();
+            Thread.Sleep(1000);
             CoreStart(item);
         }
 
