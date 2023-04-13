@@ -2,7 +2,6 @@
 {
     public class ConnectionModel
     {
-
         public string id { get; set; }
         public string network { get; set; }
         public string type { get; set; }

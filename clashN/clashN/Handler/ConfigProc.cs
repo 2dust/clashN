@@ -9,7 +9,7 @@ namespace ClashN.Handler
     /// <summary>
     /// 本软件配置文件处理类
     /// </summary>
-    class ConfigProc
+    internal class ConfigProc
     {
         private static string configRes = Global.ConfigFileName;
         private static readonly object objLock = new object();
@@ -23,7 +23,7 @@ namespace ClashN.Handler
         /// <returns></returns>
         public static int LoadConfig(ref Config? config)
         {
-            //载入配置文件 
+            //载入配置文件
             string result = Utils.LoadResource(Utils.GetConfigPath(configRes));
             if (!string.IsNullOrEmpty(result))
             {
@@ -116,6 +116,7 @@ namespace ClashN.Handler
             LazyConfig.Instance.SetConfig(config);
             return 0;
         }
+
         /// <summary>
         /// 保参数
         /// </summary>
@@ -162,7 +163,7 @@ namespace ClashN.Handler
             }
         }
 
-        #endregion
+        #endregion ConfigHandler
 
         #region Profile
 
@@ -261,6 +262,7 @@ namespace ClashN.Handler
             }
             return -1;
         }
+
         public static ProfileItem? GetDefaultProfile(ref Config config)
         {
             if (config.ProfileItems.Count <= 0)
@@ -301,46 +303,46 @@ namespace ClashN.Handler
             switch (eMove)
             {
                 case MovementTarget.Top:
-                {
-                    if (index == 0)
                     {
-                        return 0;
-                    }
-                    lstProfile[index].sort = lstProfile[0].sort - 1;
+                        if (index == 0)
+                        {
+                            return 0;
+                        }
+                        lstProfile[index].sort = lstProfile[0].sort - 1;
 
-                    break;
-                }
+                        break;
+                    }
                 case MovementTarget.Up:
-                {
-                    if (index == 0)
                     {
-                        return 0;
-                    }
-                    lstProfile[index].sort = lstProfile[index - 1].sort - 1;
+                        if (index == 0)
+                        {
+                            return 0;
+                        }
+                        lstProfile[index].sort = lstProfile[index - 1].sort - 1;
 
-                    break;
-                }
+                        break;
+                    }
 
                 case MovementTarget.Down:
-                {
-                    if (index == count - 1)
                     {
-                        return 0;
-                    }
-                    lstProfile[index].sort = lstProfile[index + 1].sort + 1;
+                        if (index == count - 1)
+                        {
+                            return 0;
+                        }
+                        lstProfile[index].sort = lstProfile[index + 1].sort + 1;
 
-                    break;
-                }
+                        break;
+                    }
                 case MovementTarget.Bottom:
-                {
-                    if (index == count - 1)
                     {
-                        return 0;
-                    }
-                    lstProfile[index].sort = lstProfile[lstProfile.Count - 1].sort + 1;
+                        if (index == count - 1)
+                        {
+                            return 0;
+                        }
+                        lstProfile[index].sort = lstProfile[lstProfile.Count - 1].sort + 1;
 
-                    break;
-                }
+                        break;
+                    }
                 case MovementTarget.Position:
                     lstProfile[index].sort = pos * 10 + 1;
                     break;
@@ -435,7 +437,7 @@ namespace ClashN.Handler
 
             AddProfileCommon(ref config, profileItem);
 
-            //TODO auto update via url 
+            //TODO auto update via url
             //if (!string.IsNullOrEmpty(profileItem.url))
             //{
             //    var httpClient = new HttpClient();
@@ -464,6 +466,7 @@ namespace ClashN.Handler
                 case EProfileColName.updateTime:
                     propertyName = name.ToString();
                     break;
+
                 default:
                     return -1;
             }
@@ -625,7 +628,6 @@ namespace ClashN.Handler
             if (AddProfileViaContent(ref config, profileItem, clipboardData) == 0)
             {
                 return 0;
-
             }
             else
             {
@@ -643,7 +645,7 @@ namespace ClashN.Handler
 
             ToJsonFile(config);
         }
-        #endregion
 
+        #endregion Profile
     }
 }

@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -9,7 +8,6 @@ using MaterialDesignThemes.Wpf;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
-using System;
 using System.IO;
 using System.Reactive;
 using System.Windows.Forms;
@@ -44,7 +42,6 @@ namespace ClashN.ViewModels
         public ReactiveCommand<Unit, Unit> ClearStatisticCmd { get; }
         public ReactiveCommand<Unit, Unit> ProfileReloadCmd { get; }
         public ReactiveCommand<Unit, Unit> ProfileQrcodeCmd { get; }
-
 
         [Reactive]
         public ProfileItemModel SelectedSource { get; set; }
@@ -95,22 +92,18 @@ namespace ClashN.ViewModels
             SubUpdateCmd = ReactiveCommand.Create(() =>
             {
                 UpdateSubscriptionProcess(false, false);
-
             });
             SubUpdateSelectedCmd = ReactiveCommand.Create(() =>
             {
                 UpdateSubscriptionProcess(false, true);
-
             }, canEditRemove);
             SubUpdateViaProxyCmd = ReactiveCommand.Create(() =>
             {
                 UpdateSubscriptionProcess(true, false);
-
             });
             SubUpdateSelectedViaProxyCmd = ReactiveCommand.Create(() =>
             {
                 UpdateSubscriptionProcess(true, true);
-
             }, canEditRemove);
 
             //Profile other
@@ -217,6 +210,7 @@ namespace ClashN.ViewModels
                 }
             }
         }
+
         public void AddProfilesViaClipboard(bool bClear)
         {
             string? clipboardData = Utils.GetClipboardData();
@@ -295,6 +289,7 @@ namespace ClashN.ViewModels
 
             Locator.Current.GetService<MainWindowViewModel>()?.LoadCore();
         }
+
         private void CloneProfile()
         {
             var item = _config.GetProfileItem(SelectedSource.indexId);
@@ -308,6 +303,7 @@ namespace ClashN.ViewModels
                 RefreshProfiles();
             }
         }
+
         public void SetDefaultProfile()
         {
             if (string.IsNullOrEmpty(SelectedSource?.indexId))
@@ -351,7 +347,6 @@ namespace ClashN.ViewModels
                 _profileItems.Clear();
                 _profileItems.AddRange(lstModel);
             }));
-
         }
 
         public void MoveProfile(int startIndex, ProfileItemModel targetItem)
@@ -380,12 +375,11 @@ namespace ClashN.ViewModels
             var img = QRCodeHelper.GetQRCode(item.url);
             var dialog = new ProfileQrcodeView()
             {
-                imgQrcode = { Source = img }    ,
+                imgQrcode = { Source = img },
                 txtContent = { Text = item.url },
             };
 
             await DialogHost.Show(dialog, "RootDialog");
         }
-
     }
 }

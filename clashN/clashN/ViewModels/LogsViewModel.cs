@@ -7,10 +7,13 @@ namespace ClashN.ViewModels
     {
         [Reactive]
         public int SortingSelected { get; set; }
+
         [Reactive]
         public bool AutoRefresh { get; set; }
+
         [Reactive]
         public string MsgFilter { get; set; }
+
         [Reactive]
         public int LineCount { get; set; }
 

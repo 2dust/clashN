@@ -9,12 +9,12 @@ namespace ClashN.Handler
     /// <summary>
     /// core进程处理类
     /// </summary>
-    class CoreHandler
+    internal class CoreHandler
     {
         private static string coreConfigRes = Global.coreConfigFileName;
         private CoreInfo coreInfo;
         private Process _process;
-        Action<bool, string> _updateFunc;
+        private Action<bool, string> _updateFunc;
 
         public CoreHandler(Action<bool, string> update)
         {
@@ -47,7 +47,6 @@ namespace ClashN.Handler
                     return;
                 }
 
-
                 SetCore(config, item, out bool blChanged);
                 string fileName = Utils.GetConfigPath(coreConfigRes);
                 if (CoreConfigHandler.GenerateClientConfig(item, fileName, false, out string msg) != 0)
@@ -70,7 +69,6 @@ namespace ClashN.Handler
                 }
             }
         }
-
 
         /// <summary>
         /// Core重启
@@ -143,6 +141,7 @@ namespace ClashN.Handler
                 Utils.SaveLog(ex.Message, ex);
             }
         }
+
         /// <summary>
         /// Core停止
         /// </summary>

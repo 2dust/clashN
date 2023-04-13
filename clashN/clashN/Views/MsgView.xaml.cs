@@ -15,7 +15,7 @@ namespace ClashN.Views
             MessageBus.Current.Listen<string>("MsgView").Subscribe(x => DelegateAppendText(x));
         }
 
-        void DelegateAppendText(string msg)
+        private void DelegateAppendText(string msg)
         {
             Dispatcher.BeginInvoke(new Action<string>(AppendText), DispatcherPriority.Send, msg);
         }
@@ -54,6 +54,5 @@ namespace ClashN.Views
                 txtMsg.Clear();
             }));
         }
-
     }
 }

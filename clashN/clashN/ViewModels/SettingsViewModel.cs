@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -22,74 +21,99 @@ namespace ClashN.ViewModels
         private static Config _config;
 
         #region Core
+
         [Reactive]
         public int MixedPort { get; set; }
+
         [Reactive]
         public int SocksPort { get; set; }
+
         [Reactive]
         public int HttpPort { get; set; }
+
         [Reactive]
         public int APIPort { get; set; }
+
         [Reactive]
         public bool AllowLANConn { get; set; }
+
         [Reactive]
         public bool EnableIpv6 { get; set; }
+
         [Reactive]
         public string LogLevel { get; set; }
+
         [Reactive]
         public bool EnableMixinContent { get; set; }
+
         public ReactiveCommand<Unit, Unit> EditMixinContentCmd { get; }
-        #endregion
+
+        #endregion Core
 
         #region ClashN
 
         [Reactive]
         public bool AutoRun { get; set; }
+
         [Reactive]
         public bool EnableStatistics { get; set; }
+
         [Reactive]
         public bool EnableSecurityProtocolTls13 { get; set; }
+
         [Reactive]
         public int autoUpdateSubInterval { get; set; }
+
         [Reactive]
         public int autoDelayTestInterval { get; set; }
+
         [Reactive]
         public string SubConvertUrl { get; set; }
+
         [Reactive]
         public string currentFontFamily { get; set; }
+
         [Reactive]
         public bool AutoHideStartup { get; set; }
+
         public ReactiveCommand<Unit, Unit> SetLoopbackCmd { get; }
         public ReactiveCommand<Unit, Unit> SetGlobalHotkeyCmd { get; }
-        #endregion
 
-        #region  System proxy
+        #endregion ClashN
+
+        #region System proxy
+
         [Reactive]
         public string systemProxyExceptions { get; set; }
+
         [Reactive]
         public string systemProxyAdvancedProtocol { get; set; }
+
         [Reactive]
         public int PacPort { get; set; }
 
-
-        #endregion
+        #endregion System proxy
 
         #region UI
+
         private IObservableCollection<Swatch> _swatches = new ObservableCollectionExtended<Swatch>();
         public IObservableCollection<Swatch> Swatches => _swatches;
+
         [Reactive]
         public Swatch SelectedSwatch { get; set; }
 
         [Reactive]
         public bool ColorModeDark { get; set; }
+
         [Reactive]
         public string CurrentLanguage { get; set; }
+
         [Reactive]
         public int CurrentFontSize { get; set; }
-        #endregion
+
+        #endregion UI
 
         public ReactiveCommand<Unit, Unit> SaveCommand { get; }
-
 
         public SettingsViewModel()
         {
@@ -109,7 +133,7 @@ namespace ClashN.ViewModels
                 EditMixinContent();
             }, this.IsValid());
 
-            //ClashN       
+            //ClashN
             AutoRun = _config.AutoRun;
             EnableStatistics = _config.EnableStatistics;
             EnableSecurityProtocolTls13 = _config.EnableSecurityProtocolTls13;
@@ -229,10 +253,9 @@ namespace ClashN.ViewModels
             {
                 SaveConfig();
             }, this.IsValid());
-
         }
 
-        void SaveConfig()
+        private void SaveConfig()
         {
             //Core
             _config.MixedPort = MixedPort;
@@ -244,7 +267,7 @@ namespace ClashN.ViewModels
             _config.LogLevel = LogLevel;
             _config.EnableMixinContent = EnableMixinContent;
 
-            //ClashN                   
+            //ClashN
             Utils.SetAutoRun(AutoRun);
             _config.AutoRun = AutoRun;
             _config.EnableStatistics = EnableStatistics;
@@ -270,7 +293,6 @@ namespace ClashN.ViewModels
                 Locator.Current.GetService<NoticeHandler>()?.Enqueue(ResUI.OperationFailed);
             }
         }
-
 
         private void EditMixinContent()
         {

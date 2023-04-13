@@ -63,8 +63,6 @@
                     Width="100"
                     Margin="8"
                     Style="{StaticResource DefComboBox}" />
-
-
             </ToolBar>
         </ToolBarTray>
         <TextBlock
@@ -395,7 +393,6 @@
                             Margin="8"
                             Content="{x:Static resx:ResUI.TbGlobalHotkeySetting}"
                             Style="{StaticResource DefButton}" />
-
                     </Grid>
                 </ScrollViewer>
             </TabItem>
@@ -470,6 +467,5 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-
     </DockPanel>
 </reactiveui:ReactiveUserControl>

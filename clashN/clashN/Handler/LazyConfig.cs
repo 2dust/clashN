@@ -15,16 +15,19 @@ namespace ClashN.Handler
         {
             get { return _instance.Value; }
         }
+
         public void SetConfig(Config config)
         {
             _config = config;
         }
+
         public Config Config => _config;
 
         public void SetProxies(Dictionary<String, ProxiesItem> proxies)
         {
             _proxies = proxies;
         }
+
         public Dictionary<String, ProxiesItem> GetProxies()
         {
             return _proxies;
@@ -39,7 +42,6 @@ namespace ClashN.Handler
                 return (CoreKind)profileItem.coreType;
             }
             return CoreKind.Clash;
-
         }
 
         public CoreInfo GetCoreInfo(CoreKind coreType)
@@ -99,7 +101,6 @@ namespace ClashN.Handler
                 coreDownloadUrl64 = Global.clashCoreUrl + "/download/{0}/clash-windows-amd64-{0}.zip",
                 match = "Clash"
             });
-
         }
     }
 }

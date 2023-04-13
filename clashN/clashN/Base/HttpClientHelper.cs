@@ -71,7 +71,6 @@ namespace ClashN.Base
             return (await response.Content.ReadAsStringAsync(), response.Headers);
         }
 
-
         public async Task PutAsync(string url, Dictionary<string, string> headers)
         {
             var myContent = Utils.ToJson(headers);
@@ -91,6 +90,7 @@ namespace ClashN.Base
 
             await httpClient.PatchAsync(url, byteContent);
         }
+
         public async Task DeleteAsync(string url)
         {
             //var myContent = Utils.ToJson(headers);
@@ -156,7 +156,6 @@ namespace ClashN.Base
                     }
                 }
             } while (isMoreToRead);
-
 
             if (canReportProgress)
                 progress?.Report(101);

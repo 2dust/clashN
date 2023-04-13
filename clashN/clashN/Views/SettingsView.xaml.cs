@@ -114,13 +114,11 @@ namespace ClashN.Views
                 this.BindCommand(ViewModel, vm => vm.SetLoopbackCmd, v => v.btnSetLoopback).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SetGlobalHotkeyCmd, v => v.btnSetGlobalHotkey).DisposeWith(disposables);
 
-
                 this.Bind(ViewModel, vm => vm.systemProxyExceptions, v => v.txtsystemProxyExceptions.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.systemProxyAdvancedProtocol, v => v.cmbsystemProxyAdvancedProtocol.Text).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.PacPort, v => v.txtPacPort.Text).DisposeWith(disposables);
 
                 this.BindCommand(ViewModel, vm => vm.SaveCommand, v => v.btnSave).DisposeWith(disposables);
-
             });
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace ClashN
 {
-    class Global
+    internal class Global
     {
         #region 常量
 
@@ -15,6 +15,7 @@
         /// SpeedTestUrl
         /// </summary>
         public const string SpeedTestUrl = @"http://cachefly.cachefly.net/10mb.test";
+
         public const string SpeedPingTestUrl = @"https://www.google.com/generate_204";
 
         public static readonly List<string> SubConvertUrls = new List<string> {
@@ -23,10 +24,10 @@
                 @"http://127.0.0.1:25500/sub?target=clash&url={0}",
                 ""
             };
+
         public static readonly List<string> SubConvertConfig = new List<string> {
                 @"https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
             };
-
 
         /// <summary>
         /// PromotionUrl
@@ -56,6 +57,7 @@
         /// http
         /// </summary>
         public const string httpProtocol = "http://";
+
         /// <summary>
         /// https
         /// </summary>
@@ -87,12 +89,13 @@
         /// Icon
         /// </summary>
         public const string CustomIconName = "ClashN.ico";
-        public const int MinFontSize = 10;
 
+        public const int MinFontSize = 10;
 
         public const string StatisticLogOverall = "StatisticLogOverall.json";
 
         public const string IEProxyExceptions = "localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;192.168.*";
+
         public static readonly List<string> IEProxyProtocols = new List<string> {
                         "{ip}:{http_port}",
                         "socks={ip}:{socks_port}",
@@ -113,7 +116,7 @@
 
         public static readonly List<string> LogLevel = new List<string> { "debug", "info", "warning", "error", "silent" };
 
-        #endregion
+        #endregion 常量
 
         #region 全局变量
 
@@ -135,7 +138,6 @@
             get; set;
         }
 
-        #endregion
-
+        #endregion 全局变量
     }
 }

@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -31,6 +30,7 @@ namespace ClashN.ViewModels
 
         [Reactive]
         public ProxyModel SelectedGroup { get; set; }
+
         [Reactive]
         public ProxyModel SelectedDetail { get; set; }
 
@@ -41,15 +41,18 @@ namespace ClashN.ViewModels
 
         [Reactive]
         public int SystemProxySelected { get; set; }
+
         [Reactive]
         public int RuleModeSelected { get; set; }
+
         [Reactive]
         public int SortingSelected { get; set; }
+
         [Reactive]
         public bool AutoRefresh { get; set; }
+
         [Reactive]
         public bool EnableTun { get; set; }
-
 
         public ProxiesViewModel()
         {
@@ -117,7 +120,7 @@ namespace ClashN.ViewModels
             DelayTestTask();
         }
 
-        void DoSystemProxySelected(bool c)
+        private void DoSystemProxySelected(bool c)
         {
             if (!c)
             {
@@ -129,7 +132,8 @@ namespace ClashN.ViewModels
             }
             Locator.Current.GetService<MainWindowViewModel>()?.SetListenerType((SysProxyType)SystemProxySelected);
         }
-        void DoRulemodeSelected(bool c)
+
+        private void DoRulemodeSelected(bool c)
         {
             if (!c)
             {
@@ -142,7 +146,7 @@ namespace ClashN.ViewModels
             Locator.Current.GetService<MainWindowViewModel>()?.SetRuleModeCheck((ERuleMode)RuleModeSelected);
         }
 
-        void DoSortingSelected(bool c)
+        private void DoSortingSelected(bool c)
         {
             if (!c)
             {
@@ -156,7 +160,7 @@ namespace ClashN.ViewModels
             RefreshProxyDetails(c);
         }
 
-        void UpdateHandler(bool notify, string msg)
+        private void UpdateHandler(bool notify, string msg)
         {
             _noticeHandler?.SendMessage(msg, true);
         }
@@ -184,16 +188,18 @@ namespace ClashN.ViewModels
         {
             ProxiesDelayTest(true);
         }
+
         public void ReloadSystemProxySelected()
         {
             SystemProxySelected = (int)_config.SysProxyType;
         }
+
         public void ReloadRulemodeSelected()
         {
             RuleModeSelected = (int)_config.ruleMode;
         }
 
-        void DoEnableTun(bool c)
+        private void DoEnableTun(bool c)
         {
             if (_config.EnableTun != EnableTun)
             {
@@ -202,13 +208,13 @@ namespace ClashN.ViewModels
             }
         }
 
-        void TunModeSwitch()
+        private void TunModeSwitch()
         {
             Global.reloadCore = true;
             _ = Locator.Current.GetService<MainWindowViewModel>()?.LoadCore();
         }
 
-        #region  proxy function
+        #region proxy function
 
         private void GetClashProxies(bool refreshUI)
         {
@@ -281,7 +287,6 @@ namespace ClashN.ViewModels
                 });
             }
 
-
             if (_proxyGroups != null && _proxyGroups.Count > 0)
             {
                 if (selectedName != null && _proxyGroups.Any(t => t.name == selectedName))
@@ -298,6 +303,7 @@ namespace ClashN.ViewModels
                 SelectedGroup = new();
             }
         }
+
         private void RefreshProxyDetails(bool c)
         {
             _proxyDetails.Clear();
@@ -351,9 +357,11 @@ namespace ClashN.ViewModels
                 case 0:
                     lstDetails = lstDetails.OrderBy(t => t.delay).ToList();
                     break;
+
                 case 1:
                     lstDetails = lstDetails.OrderBy(t => t.name).ToList();
                     break;
+
                 default:
                     break;
             }
@@ -425,7 +433,7 @@ namespace ClashN.ViewModels
                 SelectedGroup = group2;
 
                 //var index = _proxyGroups.IndexOf(group);
-                //_proxyGroups.Remove(group);                 
+                //_proxyGroups.Remove(group);
                 //_proxyGroups.Insert(index, group);
             }
             _noticeHandler?.Enqueue(ResUI.OperationSuccess);
@@ -476,7 +484,8 @@ namespace ClashN.ViewModels
                 }));
             });
         }
-        #endregion
+
+        #endregion proxy function
 
         #region task
 
@@ -531,6 +540,6 @@ namespace ClashN.ViewModels
             //);
         }
 
-        #endregion
+        #endregion task
     }
 }

@@ -5,12 +5,12 @@ using System.Net.Sockets;
 
 namespace ClashN.Handler
 {
-    class SpeedtestHandler
+    internal class SpeedtestHandler
     {
         private Config _config;
         private CoreHandler _coreHandler;
         private List<ServerTestItem> _selecteds;
-        Action<string, string> _updateFunc;
+        private Action<string, string> _updateFunc;
 
         public SpeedtestHandler(ref Config config)
         {
@@ -50,7 +50,6 @@ namespace ClashN.Handler
             {
                 foreach (var it in _selecteds)
                 {
-
                     try
                     {
                         updateFun(it);
@@ -68,7 +67,6 @@ namespace ClashN.Handler
                 Utils.SaveLog(ex.Message, ex);
             }
         }
-
 
         private void RunPing()
         {
@@ -89,7 +87,6 @@ namespace ClashN.Handler
                 _updateFunc(it.IndexId, FormatOut(time, "ms"));
             });
         }
-
 
         public int RunAvailabilityCheck() // alias: isLive
         {
@@ -187,6 +184,7 @@ namespace ClashN.Handler
             }
             return msg;
         }
+
         private string FormatOut(object time, string unit)
         {
             if (time.ToString().Equals("-1"))

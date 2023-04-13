@@ -29,9 +29,8 @@ using ZXing.Windows.Compatibility;
 
 namespace ClashN
 {
-    static class Utils
+    internal static class Utils
     {
-
         #region 资源Json操作
 
         /// <summary>
@@ -58,7 +57,6 @@ namespace ClashN
             }
             return result;
         }
-
 
         /// <summary>
         /// 取得存储资源
@@ -171,7 +169,8 @@ namespace ClashN
                 return null;
             }
         }
-        #endregion
+
+        #endregion 资源Json操作
 
         #region 转换函数
 
@@ -203,6 +202,7 @@ namespace ClashN
                 return string.Empty;
             }
         }
+
         /// <summary>
         /// 逗号分隔的字符串,转List<string>
         /// </summary>
@@ -288,6 +288,7 @@ namespace ClashN
                 return 0;
             }
         }
+
         public static bool ToBool(object obj)
         {
             try
@@ -369,18 +370,17 @@ namespace ClashN
             return $"{string.Format("{0:f1}", result)} {unit}";
         }
 
-
-
         public static string UrlEncode(string url)
         {
             return Uri.EscapeDataString(url);
         }
+
         public static string UrlDecode(string url)
         {
             return HttpUtility.UrlDecode(url);
         }
-        #endregion
 
+        #endregion 转换函数
 
         #region 数据检查
 
@@ -424,7 +424,7 @@ namespace ClashN
         /// <summary>
         /// 验证IP地址是否合法
         /// </summary>
-        /// <param name="ip"></param>        
+        /// <param name="ip"></param>
         public static bool IsIP(string ip)
         {
             //如果为空
@@ -449,7 +449,6 @@ namespace ClashN
                 }
             }
 
-
             //模式字符串
             string pattern = @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$";
 
@@ -460,7 +459,7 @@ namespace ClashN
         /// <summary>
         /// 验证Domain地址是否合法
         /// </summary>
-        /// <param name="domain"></param>        
+        /// <param name="domain"></param>
         public static bool IsDomain(string domain)
         {
             //如果为空
@@ -483,7 +482,7 @@ namespace ClashN
         /// 验证输入字符串是否与模式字符串匹配，匹配返回true
         /// </summary>
         /// <param name="input">输入字符串</param>
-        /// <param name="pattern">模式字符串</param>        
+        /// <param name="pattern">模式字符串</param>
         public static bool IsMatch(string input, string pattern)
         {
             return Regex.IsMatch(input, pattern, RegexOptions.IgnoreCase);
@@ -498,8 +497,10 @@ namespace ClashN
                 {
                     case AddressFamily.InterNetwork:
                         return false;
+
                     case AddressFamily.InterNetworkV6:
                         return true;
+
                     default:
                         return false;
                 }
@@ -507,11 +508,12 @@ namespace ClashN
             return false;
         }
 
-        #endregion
+        #endregion 数据检查
 
         #region 开机自动启动
 
         private static string autoRunName = "clashNAutoRun";
+
         private static string autoRunRegPath
         {
             get
@@ -729,7 +731,7 @@ namespace ClashN
             }
         }
 
-        #endregion
+        #endregion 开机自动启动
 
         #region 测速
 
@@ -832,7 +834,8 @@ namespace ClashN
             }
             return inUse;
         }
-        #endregion
+
+        #endregion 测速
 
         #region 杂项
 
@@ -895,7 +898,6 @@ namespace ClashN
             string? strData = null;
             try
             {
-
                 IDataObject data = Clipboard.GetDataObject();
                 if (data.GetDataPresent(DataFormats.UnicodeText))
                 {
@@ -931,7 +933,6 @@ namespace ClashN
             {
                 if (IsNullOrEmpty(strData))
                 {
-
                     Clipboard.Clear();
                 }
                 else
@@ -1042,7 +1043,7 @@ namespace ClashN
             DwmSetWindowAttribute(hWnd, DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE, ref attribute, attributeSize);
         }
 
-        #endregion
+        #endregion 杂项
 
         #region TempPath
 
@@ -1085,6 +1086,7 @@ namespace ClashN
             }
             return Path.Combine(_tempPath, filename);
         }
+
         public static string GetConfigPath(string filename = "")
         {
             string _tempPath = Path.Combine(StartupPath(), "guiConfigs");
@@ -1119,6 +1121,7 @@ namespace ClashN
             }
             return Path.Combine(_tempPath, filename);
         }
+
         public static string GetFontsPath(string filename = "")
         {
             string _tempPath = Path.Combine(StartupPath(), "guiFonts");
@@ -1135,7 +1138,8 @@ namespace ClashN
                 return Path.Combine(_tempPath, filename);
             }
         }
-        #endregion
+
+        #endregion TempPath
 
         #region Log
 
@@ -1144,6 +1148,7 @@ namespace ClashN
             var logger = LogManager.GetLogger("Log1");
             logger.Info(strContent);
         }
+
         public static void SaveLog(string strTitle, Exception ex)
         {
             var logger = LogManager.GetLogger("Log2");
@@ -1155,8 +1160,7 @@ namespace ClashN
             }
         }
 
-        #endregion
-
+        #endregion Log
 
         #region scan screen
 
@@ -1213,7 +1217,7 @@ namespace ClashN
             return string.Empty;
         }
 
-        #endregion
+        #endregion scan screen
 
         #region YAML
 
@@ -1262,7 +1266,8 @@ namespace ClashN
             }
             return result;
         }
-        #endregion
+
+        #endregion YAML
 
         #region Interop
 
@@ -1276,7 +1281,7 @@ namespace ClashN
         [DllImport("dwmapi.dll")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, DWMWINDOWATTRIBUTE attribute, ref int attributeValue, uint attributeSize);
 
-        #endregion
+        #endregion Interop
 
         public static System.Windows.Forms.IWin32Window WpfWindow2WinFormWin32Window(this System.Windows.Window wpfWindow)
         {

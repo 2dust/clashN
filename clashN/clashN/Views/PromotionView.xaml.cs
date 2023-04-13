@@ -13,10 +13,8 @@ namespace ClashN.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-
             });
         }
-
 
         private void btnPromotion_Click(object sender, RoutedEventArgs e)
         {

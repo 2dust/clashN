@@ -7,7 +7,7 @@ namespace ClashN.Handler
     /// <summary>
     /// Core配置文件处理类
     /// </summary>
-    class CoreConfigHandler
+    internal class CoreConfigHandler
     {
         /// <summary>
         /// 生成配置文件
@@ -25,7 +25,6 @@ namespace ClashN.Handler
             }
 
             msg = ResUI.InitialConfiguration;
-
 
             try
             {
@@ -233,7 +232,6 @@ namespace ClashN.Handler
                 }
                 return;
             }
-
 
             if (blPrepend)
             {

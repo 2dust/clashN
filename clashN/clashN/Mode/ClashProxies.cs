@@ -14,6 +14,7 @@
             public string now { get; set; }
             public int delay { get; set; }
         }
+
         public class HistoryItem
         {
             public string time { get; set; }

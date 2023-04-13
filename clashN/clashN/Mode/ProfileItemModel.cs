@@ -1,12 +1,11 @@
-﻿using ClashN.Base;
-
-namespace ClashN.Mode
+﻿namespace ClashN.Mode
 {
     public class ProfileItemModel : ProfileItem
     {
         public bool IsActive { get; set; }
         public bool HasUrl => !string.IsNullOrEmpty(url);
         public bool HasAddress => !string.IsNullOrEmpty(address);
+
         public string StrUpdateTime
         {
             get
@@ -19,8 +18,10 @@ namespace ClashN.Mode
                 return dateTime.AddSeconds(updateTime).ToLocalTime().ToString("MM-dd HH:mm");
             }
         }
+
         public string TrafficUsed => Utils.HumanFy(uploadRemote + downloadRemote);
         public string TrafficTotal => totalRemote <= 0 ? "∞" : Utils.HumanFy(totalRemote);
+
         public string StrExpireTime
         {
             get

@@ -80,5 +80,4 @@
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Visible" />
     </DockPanel>
-
 </reactiveui:ReactiveUserControl>

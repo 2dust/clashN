@@ -6,7 +6,6 @@ namespace ClashN.ViewModels
     {
         public DashboardViewModel()
         {
-
         }
     }
 }

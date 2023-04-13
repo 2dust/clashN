@@ -202,8 +202,6 @@
                             </StackPanel>
                         </TabItem.Header>
                     </TabItem>
-
-
                 </TabControl>
 
                 <tb:TaskbarIcon
@@ -316,9 +314,7 @@
                     </tb:TaskbarIcon.ContextMenu>
                 </tb:TaskbarIcon>
                 <materialDesign:Snackbar x:Name="MainSnackbar" MessageQueue="{materialDesign:MessageQueue}" />
-
             </Grid>
         </Grid>
-
     </materialDesign:DialogHost>
 </reactiveui:ReactiveWindow>

@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using DynamicData;
@@ -21,8 +20,6 @@ namespace ClashN.ViewModels
             _config = LazyConfig.Instance.Config;
         }
 
-
-
         private NoticeHandler? _noticeHandler;
         private IObservableCollection<ConnectionModel> _connectionItems = new ObservableCollectionExtended<ConnectionModel>();
 
@@ -30,11 +27,13 @@ namespace ClashN.ViewModels
 
         [Reactive]
         public ConnectionModel SelectedSource { get; set; }
+
         public ReactiveCommand<Unit, Unit> ConnectionCloseCmd { get; }
         public ReactiveCommand<Unit, Unit> ConnectionCloseAllCmd { get; }
 
         [Reactive]
         public int SortingSelected { get; set; }
+
         [Reactive]
         public bool AutoRefresh { get; set; }
 
@@ -75,7 +74,7 @@ namespace ClashN.ViewModels
             Init();
         }
 
-        void DoSortingSelected(bool c)
+        private void DoSortingSelected(bool c)
         {
             if (!c)
             {
@@ -99,7 +98,6 @@ namespace ClashN.ViewModels
                         GetClashConnections();
                     }
                 });
-
 
             //Task.Run(() =>
             //{
@@ -164,18 +162,23 @@ namespace ClashN.ViewModels
                 case 0:
                     lstModel = lstModel.OrderBy(t => t.upload / t.time).ToList();
                     break;
+
                 case 1:
                     lstModel = lstModel.OrderBy(t => t.download / t.time).ToList();
                     break;
+
                 case 2:
                     lstModel = lstModel.OrderBy(t => t.upload).ToList();
                     break;
+
                 case 3:
                     lstModel = lstModel.OrderBy(t => t.download).ToList();
                     break;
+
                 case 4:
                     lstModel = lstModel.OrderBy(t => t.time).ToList();
                     break;
+
                 case 5:
                     lstModel = lstModel.OrderBy(t => t.host).ToList();
                     break;

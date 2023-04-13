@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -21,9 +20,9 @@ namespace ClashN.ViewModels
 
         [Reactive]
         public ProfileItem SelectedSource { get; set; }
+
         [Reactive]
         public string CoreType { get; set; }
-
 
         public ReactiveCommand<Unit, Unit> BrowseProfileCmd { get; }
         public ReactiveCommand<Unit, Unit> EditProfileCmd { get; }

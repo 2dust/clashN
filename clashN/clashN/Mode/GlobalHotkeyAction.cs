@@ -1,5 +1,4 @@
-﻿
-namespace ClashN.Mode
+﻿namespace ClashN.Mode
 {
     public enum GlobalHotkeyAction
     {

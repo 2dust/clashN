@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ClashN.Handler
 {
-    class UpdateHandle
+    internal class UpdateHandle
     {
-        Action<bool, string> _updateFunc;
+        private Action<bool, string> _updateFunc;
         private Config _config;
 
         public event EventHandler<ResultEventArgs> AbsoluteCompleted;
@@ -100,7 +100,6 @@ namespace ClashN.Handler
             CheckUpdateAsync(CoreKind.ClashN);
         }
 
-
         public void CheckUpdateCore(CoreKind type, Config config, Action<bool, string> update)
         {
             _config = config;
@@ -155,7 +154,6 @@ namespace ClashN.Handler
             _updateFunc(false, string.Format(ResUI.MsgStartUpdating, "Core"));
             CheckUpdateAsync(type);
         }
-
 
         public void UpdateSubscriptionProcess(Config config, bool blProxy, List<ProfileItem> profileItems, Action<bool, string> update)
         {
@@ -277,7 +275,6 @@ namespace ClashN.Handler
                         }
                     }
                     _updateFunc(false, $"-------------------------------------------------------");
-
                 }
                 //restore system proxy
                 //if (bSysProxyType)
@@ -288,6 +285,7 @@ namespace ClashN.Handler
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
             });
         }
+
         private ulong ParseRemoteInfo(Dictionary<string, string> dicInfo, string key)
         {
             return dicInfo.ContainsKey(key) ? Convert.ToUInt64(dicInfo?[key]) : 0;
@@ -420,6 +418,7 @@ namespace ClashN.Handler
                 return "";
             }
         }
+
         private void responseHandler(CoreKind type, string redirectUrl)
         {
             try
@@ -507,6 +506,7 @@ namespace ClashN.Handler
             var statistics = new SpeedtestHandler(ref _config);
             return statistics.RunAvailabilityCheck();
         }
-        #endregion
+
+        #endregion private
     }
 }

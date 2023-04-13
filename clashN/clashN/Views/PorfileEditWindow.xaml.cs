@@ -30,11 +30,9 @@ namespace ClashN.Views
                 this.Bind(ViewModel, vm => vm.SelectedSource.enabled, v => v.togEnabled.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SelectedSource.enableConvert, v => v.togEnableConvert.IsChecked).DisposeWith(disposables);
 
-
                 this.BindCommand(ViewModel, vm => vm.BrowseProfileCmd, v => v.btnBrowse).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.EditProfileCmd, v => v.btnEdit).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SaveProfileCmd, v => v.btnSave).DisposeWith(disposables);
-
             });
         }
 
@@ -52,5 +50,3 @@ namespace ClashN.Views
         }
     }
 }
-
-

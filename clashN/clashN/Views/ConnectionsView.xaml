@@ -118,9 +118,7 @@
                     Width="100"
                     Binding="{Binding elapsed}"
                     Header="{x:Static resx:ResUI.TbSortingTime}" />
-
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
-
 </reactiveui:ReactiveUserControl>

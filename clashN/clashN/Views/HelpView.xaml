@@ -171,6 +171,5 @@
                 </materialDesign:Card>
             </WrapPanel>
         </ScrollViewer>
-
     </DockPanel>
 </reactiveui:ReactiveUserControl>

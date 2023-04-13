@@ -2,16 +2,18 @@
 
 namespace ClashN
 {
-    class UI
+    internal class UI
     {
         public static void Show(string msg)
         {
             MessageBox.Show(msg, "ClashN", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         public static void ShowWarning(string msg)
         {
             MessageBox.Show(msg, "ClashN", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
         public static void ShowError(string msg)
         {
             MessageBox.Show(msg, "ClashN", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -38,8 +40,5 @@ namespace ClashN
         //        return Common.ResourceManager.GetString(key, cultureInfo);
         //    }
         //}
-
     }
-
-
 }

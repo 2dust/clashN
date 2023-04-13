@@ -15,8 +15,7 @@ namespace ClashN.Tool
             return OrderBy<T>(query, propertyName, true);
         }
 
-
-        static IOrderedQueryable<T> OrderBy<T>(IQueryable<T> query, string propertyName, bool isDesc)
+        private static IOrderedQueryable<T> OrderBy<T>(IQueryable<T> query, string propertyName, bool isDesc)
         {
             string methodname = (isDesc) ? "OrderByDescendingInternal" : "OrderByInternal";
 
@@ -38,7 +37,7 @@ namespace ClashN.Tool
             return query.OrderByDescending(GetLambda<T, TProp>(memberProperty));
         }
 
-        static Expression<Func<T, TProp>> GetLambda<T, TProp>(PropertyInfo memberProperty)
+        private static Expression<Func<T, TProp>> GetLambda<T, TProp>(PropertyInfo memberProperty)
         {
             if (memberProperty.PropertyType != typeof(TProp))
                 throw new Exception();

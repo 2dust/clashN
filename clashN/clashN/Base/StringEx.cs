@@ -2,7 +2,7 @@
 
 namespace ClashN.Base
 {
-    static class StringEx
+    internal static class StringEx
     {
         public static bool BeginWithAny(this string? s, IEnumerable<char> chars)
         {

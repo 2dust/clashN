@@ -16,22 +16,27 @@
         {
             get; set;
         }
+
         public ulong totalUp
         {
             get; set;
         }
+
         public ulong totalDown
         {
             get; set;
         }
+
         public ulong todayUp
         {
             get; set;
         }
+
         public ulong todayDown
         {
             get; set;
         }
+
         public long dateNow
         {
             get; set;
@@ -45,6 +50,7 @@
         {
             get; set;
         }
+
         public ulong down
         {
             get; set;

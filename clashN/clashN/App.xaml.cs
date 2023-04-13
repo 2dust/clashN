@@ -30,7 +30,6 @@ namespace ClashN
         {
             // Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
 
-
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
@@ -71,6 +70,7 @@ namespace ClashN
                 return;
             }
         }
+
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             Utils.SaveLog("App_DispatcherUnhandledException", e.Exception);

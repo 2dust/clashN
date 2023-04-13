@@ -10,7 +10,7 @@ namespace ClashN.Handler
 {
     public static class SysProxyHandle
     {
-        enum RET_ERRORS : int
+        private enum RET_ERRORS : int
         {
             RET_NO_ERROR = 0,
             INVALID_FORMAT = 1,
@@ -32,7 +32,6 @@ namespace ClashN.Handler
                 Utils.SaveLog(ex.Message, ex);
             }
         }
-
 
         public static bool UpdateSysProxy(Config config, bool forceDisable)
         {
@@ -219,7 +218,5 @@ namespace ClashN.Handler
                 }
             }
         }
-
-
     }
 }

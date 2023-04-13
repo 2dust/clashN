@@ -12,7 +12,6 @@ namespace ClashN.Views
     /// </summary>
     public partial class LogsView
     {
-
         public LogsView()
         {
             InitializeComponent();
@@ -28,8 +27,7 @@ namespace ClashN.Views
             });
         }
 
-
-        void DelegateAppendText(string msg)
+        private void DelegateAppendText(string msg)
         {
             Dispatcher.BeginInvoke(new Action<string>(AppendText), DispatcherPriority.Send, msg);
         }

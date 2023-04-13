@@ -168,7 +168,6 @@
                     FontSize="{DynamicResource StdFontSize2}"
                     Style="{StaticResource MaterialDesignOutlinedComboBox}" />
 
-
                 <TextBlock
                     Grid.Row="7"
                     Grid.Column="0"
@@ -196,7 +195,6 @@
                     Grid.Column="1"
                     Margin="4"
                     HorizontalAlignment="Left" />
-
             </Grid>
             <Grid
                 Grid.Row="1"
@@ -220,9 +218,6 @@
                     Content="{x:Static resx:ResUI.TbCancel}"
                     Style="{StaticResource DefButton}" />
             </Grid>
-
-
-
         </Grid>
     </ScrollViewer>
 </reactiveui:ReactiveWindow>

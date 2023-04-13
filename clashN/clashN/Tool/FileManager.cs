@@ -67,6 +67,7 @@ namespace ClashN.Tool
                 throw ex;
             }
         }
+
         public static bool ZipExtractToFile(string fileName, string toPath, string ignoredName)
         {
             try

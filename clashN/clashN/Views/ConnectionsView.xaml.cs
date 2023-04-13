@@ -20,7 +20,6 @@ namespace ClashN.Views
                 this.Bind(ViewModel, vm => vm.SelectedSource, v => v.lstConnections.SelectedItem).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.ConnectionItems.Count, v => v.chipCount.Content).DisposeWith(disposables);
 
-
                 this.BindCommand(ViewModel, vm => vm.ConnectionCloseCmd, v => v.menuConnectionClose).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ConnectionCloseAllCmd, v => v.menuConnectionCloseAll).DisposeWith(disposables);
 

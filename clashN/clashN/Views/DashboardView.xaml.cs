@@ -12,7 +12,6 @@ namespace ClashN.Views
             InitializeComponent();
             this.WhenActivated(disposables =>
             {
-
             });
         }
     }

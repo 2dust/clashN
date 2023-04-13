@@ -1,7 +1,7 @@
 ﻿namespace ClashN.Mode
 {
     [Serializable]
-    class ServerTestItem
+    internal class ServerTestItem
     {
         public string IndexId { get; set; }
         public string Address { get; set; }

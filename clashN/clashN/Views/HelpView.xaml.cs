@@ -2,7 +2,6 @@ using ClashN.ViewModels;
 using ReactiveUI;
 using System.Reactive.Disposables;
 
-
 namespace ClashN.Views
 {
     /// <summary>
@@ -17,11 +16,9 @@ namespace ClashN.Views
 
             this.WhenActivated(disposables =>
             {
-
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateCmd, v => v.btnCheckUpdateN).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateClashCoreCmd, v => v.btnCheckUpdateClashCore).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateClashMetaCoreCmd, v => v.btnCheckUpdateClashMetaCore).DisposeWith(disposables);
-
             });
         }
 

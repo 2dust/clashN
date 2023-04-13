@@ -15,10 +15,12 @@ namespace ClashN.Handler
     public sealed class MainFormHandler
     {
         private static readonly Lazy<MainFormHandler> instance = new Lazy<MainFormHandler>(() => new MainFormHandler());
+
         public static MainFormHandler Instance
         {
             get { return instance.Value; }
         }
+
         public Icon GetNotifyIcon(Config config)
         {
             try
@@ -35,10 +37,13 @@ namespace ClashN.Handler
                 {
                     case 0:
                         return Properties.Resources.NotifyIcon1;
+
                     case 1:
                         return Properties.Resources.NotifyIcon2;
+
                     case 2:
                         return Properties.Resources.NotifyIcon3;
+
                     case 3:
                         return Properties.Resources.NotifyIcon2;
                 }
@@ -294,7 +299,6 @@ namespace ClashN.Handler
                 Utils.RegWriteValue(Global.MyRegPathClasses, "", "URL:clash");
                 Utils.RegWriteValue(Global.MyRegPathClasses, "URL Protocol", "");
                 Utils.RegWriteValue($"{Global.MyRegPathClasses}\\shell\\open\\command", "", $"\"{Utils.GetExePath()}\" \"%1\"");
-
             });
         }
 
@@ -362,6 +366,7 @@ namespace ClashN.Handler
                 Utils.SaveLog(ex.Message, ex);
             }
         }
+
         public void GetClashConnections(Config config, Action<ClashConnections> update)
         {
             Task.Run(() => GetClashConnectionsAsync(config, update));

@@ -48,6 +48,7 @@ namespace ClashN.ViewModels
             };
             (new UpdateHandle()).CheckUpdateGuiN(_config, _updateUI);
         }
+
         private void CheckUpdateCore(CoreKind type)
         {
             void _updateUI(bool success, string msg)
@@ -76,7 +77,6 @@ namespace ClashN.ViewModels
                 }
             };
             (new UpdateHandle()).CheckUpdateCore(type, _config, _updateUI);
-
         }
     }
 }

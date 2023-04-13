@@ -200,8 +200,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </DockPanel>
     </DockPanel>
-
 </reactiveui:ReactiveUserControl>

@@ -1,4 +1,3 @@
-using ClashN.Base;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Views;
@@ -29,8 +28,10 @@ namespace ClashN.ViewModels
         private bool blFirst = true;
 
         #region Views
+
         //public DashboardView GetDashboardView { get; }
         public ProxiesView GetProxyView { get; }
+
         public ProfilesView GetProfilesView { get; }
         public LogsView GetLogsView { get; }
         public ConnectionsView GetConnectionsView { get; }
@@ -40,43 +41,57 @@ namespace ClashN.ViewModels
 
         [Reactive]
         public string SpeedUpload { get; set; } = "0.00";
+
         [Reactive]
         public string SpeedDownload { get; set; } = "0.00";
 
-        #endregion
+        #endregion Views
 
-        #region System Proxy 
+        #region System Proxy
+
         [Reactive]
         public bool BlSystemProxyClear { get; set; }
+
         [Reactive]
         public bool BlSystemProxySet { get; set; }
+
         [Reactive]
         public bool BlSystemProxyNothing { get; set; }
+
         [Reactive]
         public bool BlSystemProxyPac { get; set; }
+
         public ReactiveCommand<Unit, Unit> SystemProxyClearCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxySetCmd { get; }
         public ReactiveCommand<Unit, Unit> SystemProxyNothingCmd { get; }
 
         public ReactiveCommand<Unit, Unit> SystemProxyPacCmd { get; }
-        #endregion
+
+        #endregion System Proxy
 
         #region Rule mode
+
         [Reactive]
         public bool BlModeRule { get; set; }
+
         [Reactive]
         public bool BlModeGlobal { get; set; }
+
         [Reactive]
         public bool BlModeDirect { get; set; }
+
         [Reactive]
         public bool BlModeNothing { get; set; }
+
         public ReactiveCommand<Unit, Unit> ModeRuleCmd { get; }
         public ReactiveCommand<Unit, Unit> ModeGlobalCmd { get; }
         public ReactiveCommand<Unit, Unit> ModeDirectCmd { get; }
         public ReactiveCommand<Unit, Unit> ModeNothingCmd { get; }
-        #endregion
+
+        #endregion Rule mode
 
         #region Other
+
         public ReactiveCommand<Unit, Unit> AddProfileViaScanCmd { get; }
         public ReactiveCommand<Unit, Unit> SubUpdateCmd { get; }
         public ReactiveCommand<Unit, Unit> SubUpdateViaProxyCmd { get; }
@@ -84,9 +99,11 @@ namespace ClashN.ViewModels
 
         public ReactiveCommand<Unit, Unit> ReloadCmd { get; }
         public ReactiveCommand<Unit, Unit> NotifyLeftClickCmd { get; }
+
         [Reactive]
         public Icon NotifyIcon { get; set; }
-        #endregion
+
+        #endregion Other
 
         #region Init
 
@@ -191,6 +208,7 @@ namespace ClashN.ViewModels
 
             Global.ShowInTaskbar = true;//Application.Current.MainWindow.ShowInTaskbar;
         }
+
         private void OnProgramStarted(object state, bool timeout)
         {
             Application.Current.Dispatcher.Invoke((Action)(() =>
@@ -247,15 +265,19 @@ namespace ClashN.ViewModels
                 case (int)GlobalHotkeyAction.ShowForm:
                     ShowHideWindow(null);
                     break;
+
                 case (int)GlobalHotkeyAction.SystemProxyClear:
                     SetListenerType(SysProxyType.ForcedClear);
                     break;
+
                 case (int)GlobalHotkeyAction.SystemProxySet:
                     SetListenerType(SysProxyType.ForcedChange);
                     break;
+
                 case (int)GlobalHotkeyAction.SystemProxyUnchanged:
                     SetListenerType(SysProxyType.Unchanged);
                     break;
+
                 case (int)GlobalHotkeyAction.SystemProxyPac:
                     SetListenerType(SysProxyType.Pac);
                     break;
@@ -265,8 +287,6 @@ namespace ClashN.ViewModels
 
         private void Init()
         {
-
-
             MainFormHandler.Instance.BackupGuiNConfig(_config, true);
             MainFormHandler.Instance.InitRegister(_config);
 
@@ -283,7 +303,6 @@ namespace ClashN.ViewModels
             OnProgramStarted("shown", true);
 
             _ = LoadCore();
-
         }
 
         private void UpdateHandler(bool notify, string msg)
@@ -298,6 +317,7 @@ namespace ClashN.ViewModels
                 _noticeHandler?.SendMessage(msg);
             }
         }
+
         private async void UpdateTaskHandler(bool success, string msg)
         {
             _noticeHandler?.SendMessage(msg);
@@ -307,6 +327,7 @@ namespace ClashN.ViewModels
                 await LoadCore();
             }
         }
+
         private void UpdateStatisticsHandler(ulong up, ulong down)
         {
             try
@@ -327,7 +348,8 @@ namespace ClashN.ViewModels
                 Utils.SaveLog(ex.Message, ex);
             }
         }
-        #endregion
+
+        #endregion Init
 
         #region Core
 
@@ -365,7 +387,8 @@ namespace ClashN.ViewModels
 
             coreHandler.CoreStop();
         }
-        #endregion
+
+        #endregion Core
 
         #region System proxy and Rule mode
 
@@ -430,7 +453,8 @@ namespace ClashN.ViewModels
                 MainFormHandler.Instance.ClashConfigUpdate(headers);
             }
         }
-        #endregion
+
+        #endregion System proxy and Rule mode
 
         #region UI
 
@@ -493,6 +517,7 @@ namespace ClashN.ViewModels
                 Application.Current.MainWindow.Height = SystemInformation.WorkingArea.Height * 96 / g.DpiY;
             }
         }
+
         private void StorageUI()
         {
             _config.UiItem.mainWidth = Application.Current.MainWindow.Width;
@@ -508,6 +533,7 @@ namespace ClashN.ViewModels
 
             Utils.SetDarkBorder(Application.Current.MainWindow, isDarkTheme);
         }
+
         public void ChangePrimaryColor(System.Windows.Media.Color color)
         {
             //  var  Swatches = new SwatchesProvider().Swatches;
@@ -521,6 +547,6 @@ namespace ClashN.ViewModels
             _paletteHelper.SetTheme(theme);
         }
 
-        #endregion
+        #endregion UI
     }
 }

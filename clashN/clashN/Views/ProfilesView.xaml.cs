@@ -33,7 +33,6 @@ namespace ClashN.Views
 
                 this.Bind(ViewModel, vm => vm.SelectedSource, v => v.lstProfiles.SelectedItem).DisposeWith(disposables);
 
-
                 this.BindCommand(ViewModel, vm => vm.EditLocalFileCmd, v => v.menuEditLocalFile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.EditProfileCmd, v => v.menuEditProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.AddProfileCmd, v => v.menuAddProfile).DisposeWith(disposables);
@@ -61,7 +60,6 @@ namespace ClashN.Views
                 this.BindCommand(ViewModel, vm => vm.EditProfileCmd, v => v.btnEditProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.SetDefaultProfileCmd, v => v.btnSetDefaultProfile).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.ProfileQrcodeCmd, v => v.btnProfileQrcode).DisposeWith(disposables);
-
             });
         }
 
@@ -126,12 +124,12 @@ namespace ClashN.Views
             return null;
         }
 
-
         private void LstProfiles_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Get current mouse position
             startPoint = e.GetPosition(null);
         }
+
         private void LstProfiles_MouseMove(object sender, MouseEventArgs e)
         {
             // Get the current mouse position
@@ -182,7 +180,7 @@ namespace ClashN.Views
                 // Find the data behind the ListViewItem
                 ProfileItemModel item = (ProfileItemModel)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
                 if (item == null) return;
-                // Move item into observable collection 
+                // Move item into observable collection
                 // (this will be automatically reflected to lstView.ItemsSource)
                 e.Effects = DragDropEffects.Move;
 
@@ -192,7 +190,6 @@ namespace ClashN.Views
             }
         }
 
-        #endregion
-
+        #endregion Drag and Drop
     }
 }

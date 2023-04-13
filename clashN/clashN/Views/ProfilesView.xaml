@@ -174,7 +174,6 @@
                                         Style="{StaticResource ListItemCheckBox}" />
 
                                     <TextBlock Style="{StaticResource ListItemSubTitle}" Text="{Binding StrUpdateTime}" />
-
                                 </StackPanel>
 
                                 <Separator Grid.Row="3" Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -205,7 +204,6 @@
                                         Padding="4,0,4,0"
                                         Style="{StaticResource ListItemSubTitle}"
                                         Text="{Binding StrExpireTime}" />
-
                                 </StackPanel>
                             </Grid>
                         </DockPanel>
@@ -214,6 +212,4 @@
             </ListView.ItemTemplate>
         </ListView>
     </DockPanel>
-
-
 </reactiveui:ReactiveUserControl>

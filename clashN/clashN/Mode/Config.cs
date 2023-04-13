@@ -9,6 +9,7 @@ namespace ClashN.Mode
     public class Config
     {
         #region property
+
         public int MixedPort { get; set; } = 7888;
 
         public int HttpPort { get; set; } = 7890;
@@ -49,7 +50,7 @@ namespace ClashN.Mode
 
         public bool EnableTun { get; set; }
 
-        #endregion
+        #endregion property
 
         #region other entities
 
@@ -61,9 +62,9 @@ namespace ClashN.Mode
 
         public List<KeyShortcut> globalHotkeys { get; } = new List<KeyShortcut>();
 
-        #endregion
+        #endregion other entities
 
-        #region function         
+        #region function
 
         public int FindIndexId(string id)
         {
@@ -92,8 +93,7 @@ namespace ClashN.Mode
             return false;
         }
 
-        #endregion
-
+        #endregion function
     }
 
     [Serializable]
@@ -113,13 +113,14 @@ namespace ClashN.Mode
         }
 
         #region function
+
         public string GetSummary()
         {
             string summary = string.Format("{0}", remarks);
             return summary;
         }
 
-        #endregion
+        #endregion function
 
         public string indexId { get; set; }
 
@@ -167,7 +168,6 @@ namespace ClashN.Mode
 
         public int connectionsSorting { get; set; }
         public bool connectionsAutoRefresh { get; set; }
-
     }
 
     [Serializable]

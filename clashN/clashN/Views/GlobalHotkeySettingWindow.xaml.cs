@@ -14,7 +14,7 @@ namespace ClashN.Views
     public partial class GlobalHotkeySettingWindow
     {
         private static Config _config;
-        List<KeyShortcut> lstKey;
+        private List<KeyShortcut> lstKey;
 
         public GlobalHotkeySettingWindow()
         {
@@ -50,7 +50,6 @@ namespace ClashN.Views
 
             Utils.SetDarkBorder(this, _config.UiItem.colorModeDark);
         }
-
 
         private void TxtGlobalHotkey_KeyDown(object sender, KeyEventArgs e)
         {
@@ -145,6 +144,7 @@ namespace ClashN.Views
             }
             BindingData(-1);
         }
+
         private void SetText(string name, string txt)
         {
             foreach (UIElement element in gridText.Children)

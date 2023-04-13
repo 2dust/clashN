@@ -4,15 +4,17 @@ using System.Text;
 
 namespace ClashN.Handler
 {
-    class StatisticsHandler
+    internal class StatisticsHandler
     {
         private Config config_;
+
         //private ServerStatistics serverStatistics_;
         private bool exitFlag_;
-        private ClientWebSocket webSocket = null;
-        string url = string.Empty;
 
-        Action<ulong, ulong> updateFunc_;
+        private ClientWebSocket webSocket = null;
+        private string url = string.Empty;
+
+        private Action<ulong, ulong> updateFunc_;
 
         private bool Enable
         {
@@ -45,18 +47,15 @@ namespace ClashN.Handler
 
             try
             {
-
                 url = $"ws://{Global.Loopback}:{config_.ApiPort}/traffic";
 
                 if (webSocket == null)
                 {
                     webSocket = new ClientWebSocket();
                     await webSocket.ConnectAsync(new Uri(url), CancellationToken.None);
-
                 }
             }
             catch { }
-
         }
 
         public void Close()
@@ -244,6 +243,5 @@ namespace ClashN.Handler
                 //Utils.SaveLog(ex.Message, ex);
             }
         }
-
     }
 }

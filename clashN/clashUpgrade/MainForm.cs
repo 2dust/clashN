@@ -22,6 +22,7 @@ namespace clashUpgrade
                 fileName = HttpUtility.UrlDecode(fileName);
             }
         }
+
         private void showWarn(string message)
         {
             MessageBox.Show(message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -68,7 +69,6 @@ namespace clashUpgrade
                 string thisAppOldFile = Application.ExecutablePath + ".tmp";
                 File.Delete(thisAppOldFile);
                 string startKey = "clashN/";
-
 
                 using (ZipArchive archive = ZipFile.OpenRead(fileName))
                 {
@@ -135,6 +135,7 @@ namespace clashUpgrade
         {
             return Application.StartupPath;
         }
+
         public static string GetPath(string fileName)
         {
             string startupPath = StartupPath();

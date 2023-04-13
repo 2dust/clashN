@@ -38,8 +38,6 @@ namespace ClashN.Views
                 this.Bind(ViewModel, vm => vm.AutoRefresh, v => v.togAutoRefresh.IsChecked).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.EnableTun, v => v.togEnableTun.IsChecked).DisposeWith(disposables);
             });
-
-
         }
 
         private void ProxiesView_KeyDown(object sender, KeyEventArgs e)
@@ -49,6 +47,7 @@ namespace ClashN.Views
                 case Key.F5:
                     ViewModel?.ProxiesReload();
                     break;
+
                 case Key.Enter:
                     ViewModel?.SetActiveProxy();
                     break;
@@ -59,6 +58,5 @@ namespace ClashN.Views
         {
             ViewModel?.SetActiveProxy();
         }
-
     }
 }

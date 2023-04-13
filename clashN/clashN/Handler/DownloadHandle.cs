@@ -11,11 +11,11 @@ namespace ClashN.Handler
     /// <summary>
     ///Download
     /// </summary>
-    class DownloadHandle
+    internal class DownloadHandle
     {
         public event EventHandler<ResultEventArgs>? UpdateCompleted;
-        public event ErrorEventHandler? Error;
 
+        public event ErrorEventHandler? Error;
 
         public class ResultEventArgs : EventArgs
         {
@@ -68,7 +68,7 @@ namespace ClashN.Handler
 
         /// <summary>
         /// DownloadString
-        /// </summary> 
+        /// </summary>
         /// <param name="url"></param>
         public async Task<(string, HttpResponseHeaders)?> DownloadStringAsync(string url, bool blProxy, string userAgent)
         {
