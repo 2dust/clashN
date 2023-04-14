@@ -258,7 +258,7 @@ namespace ClashN
 
                 if (plainText.Length % 4 > 0)
                 {
-                    plainText = plainText.PadRight(plainText.Length + 4 - plainText.Length % 4, '=');
+                    plainText = plainText.PadRight(plainText.Length + 4 - (plainText.Length % 4), '=');
                 }
 
                 byte[] data = Convert.FromBase64String(plainText);
@@ -337,23 +337,22 @@ namespace ClashN
                     if (GBs > 0)
                     {
                         // multi GB
-                        /*ulong TBs = GBs / factor;
+                        ulong TBs = GBs / factor;
                         if (TBs > 0)
                         {
-                            // 你是魔鬼吗？ 用这么多流量
-                            result = TBs + GBs % factor / (factor + 0.0);
+                            result = TBs + (GBs % factor / (factor + 0.0));
                             unit = "TB";
                             return;
-                        }*/
-                        result = GBs + MBs % factor / (factor + 0.0);
+                        }
+                        result = GBs + (MBs % factor / (factor + 0.0));
                         unit = "GB";
                         return;
                     }
-                    result = MBs + KBs % factor / (factor + 0.0);
+                    result = MBs + (KBs % factor / (factor + 0.0));
                     unit = "MB";
                     return;
                 }
-                result = KBs + amount % factor / (factor + 0.0);
+                result = KBs + (amount % factor / (factor + 0.0));
                 unit = "KB";
                 return;
             }
@@ -1186,7 +1185,7 @@ namespace ClashN
                         {
                             int marginLeft = (int)((double)fullImage.Width * i / 2.5 / maxTry);
                             int marginTop = (int)((double)fullImage.Height * i / 2.5 / maxTry);
-                            Rectangle cropRect = new Rectangle(marginLeft, marginTop, fullImage.Width - marginLeft * 2, fullImage.Height - marginTop * 2);
+                            Rectangle cropRect = new Rectangle(marginLeft, marginTop, fullImage.Width - (marginLeft * 2), fullImage.Height - (marginTop * 2));
                             Bitmap target = new Bitmap(screen.Bounds.Width, screen.Bounds.Height);
 
                             double imageScale = (double)screen.Bounds.Width / (double)cropRect.Width;
