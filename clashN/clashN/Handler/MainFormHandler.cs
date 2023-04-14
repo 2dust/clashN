@@ -324,7 +324,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{GetApiUrl()}/proxies/";
+                var url = $"{GetApiUrl()}/proxies/{name}";
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("name", nameNode);
                 await HttpClientHelper.GetInstance().PutAsync(url, headers);
@@ -392,7 +392,7 @@ namespace ClashN.Handler
         {
             try
             {
-                var url = $"{GetApiUrl()}/connections/";
+                var url = $"{GetApiUrl()}/connections/{id}";
                 await HttpClientHelper.GetInstance().DeleteAsync(url);
             }
             catch (Exception ex)
