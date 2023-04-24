@@ -673,4 +673,13 @@
   <data name="TbSettingsFontSize" xml:space="preserve">
     <value>FontSize</value>
   </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>Terminal</value>
+  </data>  
+  <data name="copyCMDSetProxyCmd" xml:space="preserve">
+    <value>Copy Cmd Set Proxy Command</value>
+  </data>  
+  <data name="copyPSSetProxyCmd" xml:space="preserve">
+    <value>Copy Powershell Set Proxy Command</value>
+  </data>
 </root>

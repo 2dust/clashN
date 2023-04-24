@@ -676,4 +676,13 @@
   <data name="TbSettingsFontSize" xml:space="preserve">
     <value>字体大小</value>
   </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>终端</value>
+  </data>
+  <data name="copyCMDSetProxyCmd" xml:space="preserve">
+    <value>复制CMD代理设置命令</value>
+  </data>
+  <data name="copyPSSetProxyCmd" xml:space="preserve">
+    <value>复制Powershell代理设置命令</value>
+  </data>
 </root>

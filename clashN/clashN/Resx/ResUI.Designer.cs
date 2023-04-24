@@ -1725,5 +1725,38 @@ namespace ClashN.Resx {
                 return ResourceManager.GetString("TunModeCoreTip", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Terminal 的本地化字符串。
+        /// </summary>
+        public static string Terminal
+        {
+            get
+            {
+                return ResourceManager.GetString("Terminal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Copy Cmd Set Proxy Command 的本地化字符串。
+        /// </summary>
+        public static string copyCMDSetProxyCmd
+        {
+            get
+            {
+                return ResourceManager.GetString("copyCMDSetProxyCmd", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Copy Powershell Set Proxy Command 的本地化字符串。
+        /// </summary>
+        public static string copyPSSetProxyCmd
+        {
+            get
+            {
+                return ResourceManager.GetString("copyPSSetProxyCmd", resourceCulture);
+            }
+        }
     }
 }

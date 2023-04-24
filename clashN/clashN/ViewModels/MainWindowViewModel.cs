@@ -94,6 +94,8 @@ namespace ClashN.ViewModels
         public ReactiveCommand<Unit, Unit> AddProfileViaScanCmd { get; }
         public ReactiveCommand<Unit, Unit> SubUpdateCmd { get; }
         public ReactiveCommand<Unit, Unit> SubUpdateViaProxyCmd { get; }
+        public ReactiveCommand<Unit, Unit> CopyCMDSetProxyCmd { get; }
+        public ReactiveCommand<Unit, Unit> CopyPSSetProxyCmd { get; }
         public ReactiveCommand<Unit, Unit> ExitCmd { get; }
 
         public ReactiveCommand<Unit, Unit> ReloadCmd { get; }
@@ -189,6 +191,14 @@ namespace ClashN.ViewModels
             SubUpdateViaProxyCmd = ReactiveCommand.Create(() =>
             {
                 Locator.Current.GetService<ProfilesViewModel>()?.UpdateSubscriptionProcess(true, false);
+            });
+            CopyCMDSetProxyCmd = ReactiveCommand.Create(() =>
+            {
+                System.Windows.Clipboard.SetText($"set http_proxy=http://127.0.0.1:{_config.HttpPort} & set https_proxy=http://127.0.0.1:{_config.HttpPort}");
+            });
+            CopyPSSetProxyCmd = ReactiveCommand.Create(() =>
+            {
+                System.Windows.Clipboard.SetText($"$Env:http_proxy=\"http://127.0.0.1:{_config.HttpPort}\";$Env:https_proxy=\"http://127.0.0.1:{_config.HttpPort}\"");
             });
             //ExitCmd = ReactiveCommand.Create(() =>
             //{

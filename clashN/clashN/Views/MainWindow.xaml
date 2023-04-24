@@ -305,6 +305,10 @@
                             <MenuItem x:Name="menuAddProfileViaScan" Header="{x:Static resx:ResUI.menuAddProfileViaScan}" />
                             <MenuItem x:Name="menuSubUpdate" Header="{x:Static resx:ResUI.menuSubUpdate}" />
                             <MenuItem x:Name="menuSubUpdateViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
+                            <MenuItem Header="{x:Static resx:ResUI.Terminal}">
+                                <MenuItem x:Name="copyCMDSetProxyCmd" Header="{x:Static resx:ResUI.copyCMDSetProxyCmd}" />
+                                <MenuItem x:Name="copyPSSetProxyCmd" Header="{x:Static resx:ResUI.copyPSSetProxyCmd}" />
+                            </MenuItem>
                             <Separator />
                             <MenuItem
                                 x:Name="menuExit"
