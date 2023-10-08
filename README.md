@@ -19,7 +19,7 @@ A clash client for Windows, supports [Clash core](https://github.com/Dreamacro/c
 
 
 ### Requirements  
-- Microsoft [.NET 6.0 Desktop Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0/runtime) (or download this file directly: [windowsdesktop-runtime-6.0.15-win-x64.exe](https://download.visualstudio.microsoft.com/download/pr/513d13b7-b456-45af-828b-b7b7981ff462/edf44a743b78f8b54a2cec97ce888346/windowsdesktop-runtime-6.0.15-win-x64.exe
+- Microsoft [.NET 6.0 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime) (or download this file directly: [windowsdesktop-runtime-6.0.22-win-x64.exe](https://download.visualstudio.microsoft.com/download/pr/66a7c4c6-8401-4799-864f-9afddf5a7733/4052f458f0266e25ab1b9c7959ca245f/windowsdesktop-runtime-6.0.22-win-x64.exe
 ))
 - Clash core [https://github.com/Dreamacro/clash/releases](https://github.com/Dreamacro/clash/releases)
 - Clash.Meta core [https://github.com/MetaCubeX/Clash.Meta/releases](https://github.com/MetaCubeX/Clash.Meta/releases)
