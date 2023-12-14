@@ -599,6 +599,27 @@ namespace ClashN
             }
             return Path.Combine(startupPath, fileName);
         }
+        
+        /// <summary>
+        /// 获取启动了应用程序的数据文件的路径
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDataPath(string fileName)
+        {
+            string _tempPath = Path.Combine(StartupPath(), "data");
+            if (!Directory.Exists(_tempPath))
+            {
+                Directory.CreateDirectory(_tempPath);
+            }
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return _tempPath;
+            }
+            else
+            {
+                return Path.Combine(_tempPath, fileName);
+            }
+        }
 
         /// <summary>
         /// 获取启动了应用程序的可执行文件的路径及文件名

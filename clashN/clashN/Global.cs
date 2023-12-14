@@ -9,6 +9,7 @@
         public const string NUrl = @"https://github.com/2dust/clashN/releases";
         public const string clashCoreUrl = "https://github.com/Dreamacro/clash/releases";
         public const string clashMetaCoreUrl = "https://github.com/MetaCubeX/Clash.Meta/releases";
+        public const string mihomoCoreUrl = "https://github.com/MetaCubeX/mihomo/releases";
         public const string geoUrl = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/{0}.dat";
 
         /// <summary>

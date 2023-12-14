@@ -15,7 +15,8 @@ namespace ClashN.ViewModels
 
         public ReactiveCommand<Unit, Unit> CheckUpdateCmd { get; }
         public ReactiveCommand<Unit, Unit> CheckUpdateClashCoreCmd { get; }
-        public ReactiveCommand<Unit, Unit> CheckUpdateClashMetaCoreCmd { get; }
+        public ReactiveCommand<Unit, Unit> CheckUpdateMihomoCoreCmd { get; }
+        public ReactiveCommand<Unit, Unit> CheckUpdateGeoDataCmd { get; }
 
         public HelpViewModel()
         {
@@ -30,10 +31,29 @@ namespace ClashN.ViewModels
             {
                 CheckUpdateCore(CoreKind.Clash);
             });
-            CheckUpdateClashMetaCoreCmd = ReactiveCommand.Create(() =>
+            CheckUpdateMihomoCoreCmd = ReactiveCommand.Create(() =>
             {
-                CheckUpdateCore(CoreKind.ClashMeta);
+                CheckUpdateCore(CoreKind.Mihomo);
             });
+            CheckUpdateGeoDataCmd = ReactiveCommand.Create(() =>
+            {
+                CheckUpdateGeoData();
+            });
+        }
+        
+        private void CheckUpdateGeoData()
+        {
+            void _updateUI(bool success, string msg)
+            {
+                _noticeHandler?.SendMessage(msg);
+                if (success)
+                {
+                    Locator.Current.GetService<MainWindowViewModel>()?.MyAppExit(false);
+                }
+            };
+            UpdateHandle update = new UpdateHandle();
+            update.UpdateGeoFile(GeoKind.GEO_IP, _config, _updateUI);
+            update.UpdateGeoFile(GeoKind.GEO_SITE, _config, _updateUI);
         }
 
         private void CheckUpdateN()

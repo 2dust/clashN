@@ -18,7 +18,8 @@ namespace ClashN.Views
             {
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateCmd, v => v.btnCheckUpdateN).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateClashCoreCmd, v => v.btnCheckUpdateClashCore).DisposeWith(disposables);
-                this.BindCommand(ViewModel, vm => vm.CheckUpdateClashMetaCoreCmd, v => v.btnCheckUpdateClashMetaCore).DisposeWith(disposables);
+                this.BindCommand(ViewModel, vm => vm.CheckUpdateMihomoCoreCmd, v => v.btnCheckUpdateMihomoCore).DisposeWith(disposables);
+                this.BindCommand(ViewModel, vm => vm.CheckUpdateGeoDataCmd, v => v.btnCheckUpdateGeo).DisposeWith(disposables);
             });
         }
 

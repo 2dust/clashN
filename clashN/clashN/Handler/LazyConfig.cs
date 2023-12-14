@@ -92,6 +92,18 @@ namespace ClashN.Handler
 
             coreInfos.Add(new CoreInfo
             {
+                coreType = CoreKind.Mihomo,
+                coreExes = new List<string> { $"mihomo-windows-amd64{(Avx2.X64.IsSupported ? "" : "-compatible")}", "mihomo-windows-amd64-compatible", "mihomo-windows-amd64", "mihomo-windows-386", "mihomo", "clash" },
+                arguments = "-f config.yaml",
+                coreUrl = Global.mihomoCoreUrl,
+                coreLatestUrl = Global.mihomoCoreUrl + "/latest",
+                coreDownloadUrl32 = Global.mihomoCoreUrl + "/download/{0}/mihomo-windows-386-{0}.zip",
+                coreDownloadUrl64 = Global.mihomoCoreUrl + "/download/{0}/mihomo-windows-amd64" + (Avx2.X64.IsSupported ? "" : "-compatible") + "-{0}.zip",
+                match = "Mihomo"
+            });
+
+            coreInfos.Add(new CoreInfo
+            {
                 coreType = CoreKind.ClashPremium,
                 coreExes = new List<string> { "clash-windows-amd64-v3", "clash-windows-amd64", "clash-windows-386", "clash" },
                 arguments = "-f config.yaml",
