@@ -310,10 +310,10 @@ namespace ClashN.Handler
 
                         try
                         {
-                            string fileName = Utils.GetPath(Utils.GetDownloadFileName(url));
+                            string fileName = Utils.GetTempPath(Utils.GetDownloadFileName(url));
                             if (File.Exists(fileName))
                             {
-                                string targetPath = Utils.GetPath($"{geoName}.dat");
+                                string targetPath = Utils.GetDataPath($"{geoName}.dat");
                                 if (File.Exists(targetPath))
                                 {
                                     File.Delete(targetPath);
@@ -443,6 +443,19 @@ namespace ClashN.Handler
                     }
                 }
                 else if (type == CoreKind.ClashMeta)
+                {
+                    curVersion = getCoreVersion(type);
+                    message = string.Format(ResUI.IsLatestCore, curVersion);
+                    if (Environment.Is64BitProcess)
+                    {
+                        url = string.Format(coreInfo.coreDownloadUrl64, version);
+                    }
+                    else
+                    {
+                        url = string.Format(coreInfo.coreDownloadUrl32, version);
+                    }
+                }
+                else if (type == CoreKind.Mihomo)
                 {
                     curVersion = getCoreVersion(type);
                     message = string.Format(ResUI.IsLatestCore, curVersion);
