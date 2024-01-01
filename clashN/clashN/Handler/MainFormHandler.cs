@@ -302,12 +302,12 @@ namespace ClashN.Handler
             });
         }
 
-        public List<ProxiesItem> GetClashProxyGroups()
+        public List<ProxiesItem>? GetClashProxyGroups()
         {
             try
             {
                 var fileContent = LazyConfig.Instance.ProfileContent;
-                if (!fileContent.ContainsKey("proxy-groups"))
+                if (fileContent is null || fileContent?.ContainsKey("proxy-groups") == false)
                 {
                     return null;
                 }

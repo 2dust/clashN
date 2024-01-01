@@ -106,8 +106,9 @@ namespace ClashN.Handler
                             if (!string.IsNullOrEmpty(result))
                             {
                                 var serverStatItem = config_.GetProfileItem(config_.IndexId);
+                                
                                 ParseOutput(result, out ulong up, out ulong down);
-                                if (up + down > 0)
+                                if (serverStatItem != null && (up + down) > 0) 
                                 {
                                     serverStatItem.uploadRemote += up;
                                     serverStatItem.downloadRemote += down;

@@ -498,7 +498,7 @@ namespace ClashN.Handler
             }
             if (profileItem.coreType is null)
             {
-                profileItem.coreType = CoreKind.ClashMeta;
+                profileItem.coreType = CoreKind.Mihomo;
             }
             if (!config.ProfileItems.Exists(it => it.indexId == profileItem.indexId))
             {
@@ -558,7 +558,7 @@ namespace ClashN.Handler
                 {
                     groupId = groupId,
                     url = clipboardData,
-                    coreType = CoreKind.ClashMeta,
+                    coreType = CoreKind.Mihomo,
                     address = string.Empty,
                     enabled = true,
                     remarks = "clash_subscription"
@@ -582,7 +582,7 @@ namespace ClashN.Handler
                         {
                             groupId = groupId,
                             url = query["url"] ?? string.Empty,
-                            coreType = CoreKind.ClashMeta,
+                            coreType = CoreKind.Mihomo,
                             address = string.Empty,
                             enabled = true,
                             remarks = "clash_subscription"
@@ -600,7 +600,7 @@ namespace ClashN.Handler
                 {
                     groupId = groupId,
                     url = "",
-                    coreType = CoreKind.ClashMeta,
+                    coreType = CoreKind.Mihomo,
                     address = string.Empty,
                     enabled = false,
                     remarks = "clash_local_file"

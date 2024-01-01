@@ -162,7 +162,7 @@ namespace ClashN.ViewModels
             {
                 item = new()
                 {
-                    coreType = CoreKind.ClashMeta
+                    coreType = CoreKind.Mihomo
                 };
             }
             else

@@ -86,16 +86,19 @@ namespace ClashN
         /// <typeparam name="T"></typeparam>
         /// <param name="strJson"></param>
         /// <returns></returns>
-        public static T FromJson<T>(string strJson)
+        public static T? FromJson<T>(string? strJson)
         {
             try
             {
-                T obj = JsonConvert.DeserializeObject<T>(strJson);
-                return obj;
+                if (string.IsNullOrEmpty(strJson))
+                {
+                    return default;
+                }
+                return JsonConvert.DeserializeObject<T>(strJson);
             }
             catch
             {
-                return JsonConvert.DeserializeObject<T>("");
+                return default;
             }
         }
 
@@ -104,14 +107,25 @@ namespace ClashN
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string ToJson(Object obj)
+        public static string ToJson(object? obj, bool indented = true)
         {
             string result = string.Empty;
             try
             {
-                result = JsonConvert.SerializeObject(obj,
+                if (obj == null)
+                {
+                    return result;
+                }
+                if (indented)
+                {
+                    result = JsonConvert.SerializeObject(obj,
                                            Formatting.Indented,
                                            new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                }
+                else
+                {
+                    result = JsonConvert.SerializeObject(obj, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+                }
             }
             catch (Exception ex)
             {
@@ -895,18 +909,7 @@ namespace ClashN
         /// <returns></returns>
         public static T DeepCopy<T>(T obj)
         {
-            object retval;
-            using (MemoryStream ms = new MemoryStream())
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                //序列化成流
-                bf.Serialize(ms, obj);
-                ms.Seek(0, SeekOrigin.Begin);
-                //反序列化成对象
-                retval = bf.Deserialize(ms);
-                ms.Close();
-            }
-            return (T)retval;
+            return FromJson<T>(ToJson(obj, false))!;             
         }
 
         /// <summary>

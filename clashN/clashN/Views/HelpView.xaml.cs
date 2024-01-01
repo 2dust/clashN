@@ -17,9 +17,9 @@ namespace ClashN.Views
             this.WhenActivated(disposables =>
             {
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateCmd, v => v.btnCheckUpdateN).DisposeWith(disposables);
-                this.BindCommand(ViewModel, vm => vm.CheckUpdateClashCoreCmd, v => v.btnCheckUpdateClashCore).DisposeWith(disposables);
+                //this.BindCommand(ViewModel, vm => vm.CheckUpdateClashCoreCmd, v => v.btnCheckUpdateClashCore).DisposeWith(disposables);
                 this.BindCommand(ViewModel, vm => vm.CheckUpdateMihomoCoreCmd, v => v.btnCheckUpdateMihomoCore).DisposeWith(disposables);
-                this.BindCommand(ViewModel, vm => vm.CheckUpdateGeoDataCmd, v => v.btnCheckUpdateGeo).DisposeWith(disposables);
+                //this.BindCommand(ViewModel, vm => vm.CheckUpdateGeoDataCmd, v => v.btnCheckUpdateGeo).DisposeWith(disposables);
             });
         }
 

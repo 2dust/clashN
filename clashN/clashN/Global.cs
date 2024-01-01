@@ -105,7 +105,7 @@
                         ""
                     };
 
-        public static readonly List<string> coreTypes = new List<string> { "Clash", "ClashPremium", "ClashMeta", };
+        public static readonly List<string> coreTypes = new List<string> { "Clash", "ClashPremium", "ClashMeta", "Mihomo" };
 
         public static readonly List<string> allowSelectType = new List<string> { "selector", "urltest", "loadbalance", "fallback" };
 
