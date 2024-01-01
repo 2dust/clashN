@@ -2,32 +2,32 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>  
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>ClashN.ico</ApplicationIcon>
-	<Copyright>Copyright © 2019-2023 (GPLv3)</Copyright>
+	<Copyright>Copyright © 2019-2024 (GPLv3)</Copyright>
 	<FileVersion>2.17</FileVersion>
   </PropertyGroup>
  
 
 	<ItemGroup>
-		<PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
+		<PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
 		<PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />		 
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="NHotkey" Version="2.1.0" />
-		<PackageReference Include="NHotkey.Wpf" Version="2.1.0" />
+		<PackageReference Include="NHotkey" Version="2.1.1" />
+		<PackageReference Include="NHotkey.Wpf" Version="2.1.1" />
 		<PackageReference Include="QRCoder.Xaml" Version="1.4.3" />
 		<PackageReference Include="TaskScheduler" Version="2.10.1" />
-		<PackageReference Include="YamlDotNet" Version="13.0.2" />
+		<PackageReference Include="YamlDotNet" Version="13.7.1" />
 		<PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" Version="0.16.12" />
-		<PackageReference Include="ReactiveUI.Fody" Version="18.3.1" />
-		<PackageReference Include="ReactiveUI.Validation" Version="3.0.1" />
-		<PackageReference Include="ReactiveUI.WPF" Version="18.3.1" />
-		<PackageReference Include="Splat.NLog" Version="14.6.8" />
-		<PackageReference Include="System.Reactive" Version="5.0.0" />
+		<PackageReference Include="ReactiveUI.Fody" Version="19.5.31" />
+		<PackageReference Include="ReactiveUI.Validation" Version="3.1.7" />
+		<PackageReference Include="ReactiveUI.WPF" Version="19.5.31" />
+		<PackageReference Include="Splat.NLog" Version="14.8.12" />
+		<PackageReference Include="System.Reactive" Version="6.0.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
