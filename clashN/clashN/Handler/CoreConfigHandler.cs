@@ -1,6 +1,6 @@
-﻿using ClashN.Mode;
+﻿using System.IO;
+using ClashN.Mode;
 using ClashN.Resx;
-using System.IO;
 
 namespace ClashN.Handler
 {

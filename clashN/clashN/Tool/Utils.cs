@@ -1,11 +1,4 @@
-﻿using ClashN.Base;
-using ClashN.Mode;
-using Microsoft.Win32;
-using Microsoft.Win32.TaskScheduler;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using NLog;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -14,12 +7,18 @@ using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Windows.Forms;
+using ClashN.Base;
+using ClashN.Mode;
+using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NLog;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using ZXing;
@@ -613,7 +612,7 @@ namespace ClashN
             }
             return Path.Combine(startupPath, fileName);
         }
-        
+
         /// <summary>
         /// 获取启动了应用程序的数据文件的路径
         /// </summary>
@@ -909,7 +908,7 @@ namespace ClashN
         /// <returns></returns>
         public static T DeepCopy<T>(T obj)
         {
-            return FromJson<T>(ToJson(obj, false))!;             
+            return FromJson<T>(ToJson(obj, false))!;
         }
 
         /// <summary>

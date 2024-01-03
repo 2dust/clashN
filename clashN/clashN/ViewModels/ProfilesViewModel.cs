@@ -1,3 +1,6 @@
+using System.IO;
+using System.Reactive;
+using System.Windows.Forms;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -8,9 +11,6 @@ using MaterialDesignThemes.Wpf;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
-using System.IO;
-using System.Reactive;
-using System.Windows.Forms;
 using Application = System.Windows.Application;
 
 namespace ClashN.ViewModels

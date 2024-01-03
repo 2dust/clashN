@@ -1,10 +1,10 @@
+using System.Reactive;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
 using ClashN.Tool;
 using ReactiveUI;
 using Splat;
-using System.Reactive;
 
 namespace ClashN.ViewModels
 {
@@ -40,7 +40,7 @@ namespace ClashN.ViewModels
             //    CheckUpdateGeoData();
             //});
         }
-        
+
         //private void CheckUpdateGeoData()
         //{
         //    void _updateUI(bool success, string msg)

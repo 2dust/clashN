@@ -1,7 +1,7 @@
-﻿using ClashN.Mode;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
+using ClashN.Mode;
 
 namespace ClashN.Handler
 {

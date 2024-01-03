@@ -1,6 +1,6 @@
-﻿using QRCoder;
+﻿using System.Windows.Media;
+using QRCoder;
 using QRCoder.Xaml;
-using System.Windows.Media;
 
 namespace ClashN.Handler
 {

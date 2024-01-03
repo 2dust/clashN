@@ -1,3 +1,9 @@
+using System.Drawing;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Interop;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Views;
@@ -8,12 +14,6 @@ using NHotkey;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
-using System.Drawing;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Interop;
 using Application = System.Windows.Application;
 
 namespace ClashN.ViewModels

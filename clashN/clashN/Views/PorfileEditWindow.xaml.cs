@@ -1,8 +1,8 @@
-﻿using ClashN.Mode;
+﻿using System.Reactive.Disposables;
+using System.Windows.Input;
+using ClashN.Mode;
 using ClashN.ViewModels;
 using ReactiveUI;
-using System.Reactive.Disposables;
-using System.Windows.Input;
 
 namespace ClashN.Views
 {

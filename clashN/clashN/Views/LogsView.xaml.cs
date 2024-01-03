@@ -1,9 +1,9 @@
-using ClashN.ViewModels;
-using ReactiveUI;
 using System.Reactive.Disposables;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Threading;
+using ClashN.ViewModels;
+using ReactiveUI;
 
 namespace ClashN.Views
 {

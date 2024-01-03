@@ -1,10 +1,10 @@
+using System.ComponentModel;
+using System.Reactive.Disposables;
+using System.Windows;
 using ClashN.Resx;
 using ClashN.ViewModels;
 using ReactiveUI;
 using Splat;
-using System.ComponentModel;
-using System.Reactive.Disposables;
-using System.Windows;
 
 namespace ClashN.Views
 {

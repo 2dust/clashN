@@ -1,6 +1,6 @@
-using ReactiveUI;
 using System.Reactive.Linq;
 using System.Windows.Threading;
+using ReactiveUI;
 
 namespace ClashN.Views
 {

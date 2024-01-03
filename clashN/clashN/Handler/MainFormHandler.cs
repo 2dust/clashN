@@ -1,13 +1,13 @@
-﻿using ClashN.Base;
+﻿using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Windows.Input;
+using ClashN.Base;
 using ClashN.Mode;
 using ClashN.Resx;
 using NHotkey;
 using NHotkey.Wpf;
 using Splat;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using System.Windows.Input;
 using static ClashN.Mode.ClashProxies;
 
 namespace ClashN.Handler

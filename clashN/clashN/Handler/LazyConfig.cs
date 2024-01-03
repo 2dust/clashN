@@ -1,5 +1,5 @@
-﻿using ClashN.Mode;
-using System.Runtime.Intrinsics.X86;
+﻿using System.Runtime.Intrinsics.X86;
+using ClashN.Mode;
 using static ClashN.Mode.ClashProxies;
 
 namespace ClashN.Handler

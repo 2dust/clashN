@@ -1,3 +1,6 @@
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Windows;
 using ClashN.Handler;
 using ClashN.Mode;
 using DynamicData;
@@ -5,9 +8,6 @@ using DynamicData.Binding;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
-using System.Reactive;
-using System.Reactive.Linq;
-using System.Windows;
 
 namespace ClashN.ViewModels
 {

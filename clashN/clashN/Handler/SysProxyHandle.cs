@@ -1,10 +1,10 @@
-﻿using ClashN.Mode;
+﻿using System.Diagnostics;
+using System.IO;
+using System.Text;
+using ClashN.Mode;
 using ClashN.Properties;
 using ClashN.Tool;
 using PacLib;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
 
 namespace ClashN.Handler
 {

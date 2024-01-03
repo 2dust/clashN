@@ -1,3 +1,6 @@
+using System.IO;
+using System.Reactive;
+using System.Windows;
 using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Resx;
@@ -10,9 +13,6 @@ using ReactiveUI.Fody.Helpers;
 using ReactiveUI.Validation.Extensions;
 using ReactiveUI.Validation.Helpers;
 using Splat;
-using System.IO;
-using System.Reactive;
-using System.Windows;
 
 namespace ClashN.ViewModels
 {

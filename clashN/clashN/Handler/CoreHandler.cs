@@ -1,8 +1,8 @@
-﻿using ClashN.Mode;
-using ClashN.Resx;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Text;
+using ClashN.Mode;
+using ClashN.Resx;
 
 namespace ClashN.Handler
 {

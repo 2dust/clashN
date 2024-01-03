@@ -1,8 +1,8 @@
-﻿using ClashN.Handler;
+﻿using System.Windows;
+using System.Windows.Threading;
+using ClashN.Handler;
 using ClashN.Mode;
 using ClashN.Tool;
-using System.Windows;
-using System.Windows.Threading;
 
 namespace ClashN
 {

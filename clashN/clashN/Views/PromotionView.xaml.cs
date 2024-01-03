@@ -1,5 +1,5 @@
-using ReactiveUI;
 using System.Windows;
+using ReactiveUI;
 
 namespace ClashN.Views
 {

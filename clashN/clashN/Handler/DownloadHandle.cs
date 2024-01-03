@@ -1,10 +1,10 @@
-﻿using ClashN.Base;
-using ClashN.Resx;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
+using ClashN.Base;
+using ClashN.Resx;
 
 namespace ClashN.Handler
 {
