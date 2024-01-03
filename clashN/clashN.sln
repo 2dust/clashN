@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClashN", "clashN\ClashN.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClashUpgrade", "clashUpgrade\ClashUpgrade.csproj", "{59E0AF2B-9915-47F2-9F5F-9008F47DAE5F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacLib", "..\..\v2rayN\v2rayN\PacLib\PacLib.csproj", "{E27F1C24-9A0A-47D5-8723-B17D00F264FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacLib", "..\..\Frok-V2rayN\v2rayN\PacLib\PacLib.csproj", "{E27F1C24-9A0A-47D5-8723-B17D00F264FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
