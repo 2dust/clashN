@@ -478,12 +478,6 @@
   <data name="TbProfiles" xml:space="preserve">
     <value>配置文件</value>
   </data>
-  <data name="TbPromotion" xml:space="preserve">
-    <value>官方推广</value>
-  </data>
-  <data name="TbPromotionInformation" xml:space="preserve">
-    <value>单击下面的按钮以支持开发人员。</value>
-  </data>
   <data name="TbProxies" xml:space="preserve">
     <value>当前代理</value>
   </data>

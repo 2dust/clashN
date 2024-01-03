@@ -32,7 +32,6 @@ namespace ClashN.Views
 
                 this.OneWayBind(ViewModel, vm => vm.GetSettingsView, v => v.settingsTabItem.Content).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.GetHelpView, v => v.helpTabItem.Content).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.GetPromotionView, v => v.promotionTabItem.Content).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.SpeedUpload, v => v.txtSpeedUpload.Text).DisposeWith(disposables);
                 this.OneWayBind(ViewModel, vm => vm.SpeedDownload, v => v.txtSpeedDownload.Text).DisposeWith(disposables);
 

@@ -37,7 +37,6 @@ namespace ClashN.ViewModels
         public ConnectionsView GetConnectionsView { get; }
         public SettingsView GetSettingsView { get; }
         public HelpView GetHelpView { get; }
-        public PromotionView GetPromotionView { get; }
 
         [Reactive]
         public string SpeedUpload { get; set; } = "0.00";
@@ -126,7 +125,6 @@ namespace ClashN.ViewModels
             GetConnectionsView = new();
             GetSettingsView = new();
             GetHelpView = new();
-            GetPromotionView = new();
 
             RestoreUI();
             if (_config.AutoHideStartup)

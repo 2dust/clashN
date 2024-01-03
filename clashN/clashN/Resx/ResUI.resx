@@ -478,12 +478,6 @@
   <data name="TbProfiles" xml:space="preserve">
     <value>Profiles</value>
   </data>
-  <data name="TbPromotion" xml:space="preserve">
-    <value>Promotion</value>
-  </data>
-  <data name="TbPromotionInformation" xml:space="preserve">
-    <value>Click the button below to support the developer.</value>
-  </data>
   <data name="TbProxies" xml:space="preserve">
     <value>Proxies</value>
   </data>

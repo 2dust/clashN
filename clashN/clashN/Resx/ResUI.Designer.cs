@@ -1187,24 +1187,6 @@ namespace ClashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 Promotion 的本地化字符串。
-        /// </summary>
-        public static string TbPromotion {
-            get {
-                return ResourceManager.GetString("TbPromotion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Click the button below to support the developer. 的本地化字符串。
-        /// </summary>
-        public static string TbPromotionInformation {
-            get {
-                return ResourceManager.GetString("TbPromotionInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 Proxies 的本地化字符串。
         /// </summary>
         public static string TbProxies {
