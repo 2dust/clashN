@@ -96,7 +96,6 @@
                     </DockPanel>
                 </materialDesign:Card>
 
-
                 <materialDesign:Card
                     Width="300"
                     Margin="8"
