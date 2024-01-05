@@ -1124,7 +1124,7 @@ namespace ClashN.Resx {
         }
         
         /// <summary>
-        ///   查找类似 ClashN Project 的本地化字符串。
+        ///   查找类似 Frok ClashN Project 的本地化字符串。
         /// </summary>
         public static string TbHelpProject {
             get {

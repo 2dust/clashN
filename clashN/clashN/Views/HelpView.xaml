@@ -26,37 +26,30 @@
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                Grid.Row="0"
-                                Margin="16,16,16,4"
-                                Style="{StaticResource TabItemTitle}"
-                                Text="{x:Static resx:ResUI.TbHelpProject}" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="16,16,16,4"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource TabItemTitle}"
+                            Text="{x:Static resx:ResUI.TbHelpProject}" />
 
-                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
 
-                            <DockPanel Grid.Row="2" HorizontalAlignment="Right">
-                                <TextBlock
-                                    Grid.Row="0"
-                                    Margin="8"
-                                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                    Text="" />
-                                <Button
-                                    x:Name="btnAbout"
-                                    Width="100"
-                                    Click="btnAbout_Click"
-                                    Content="{x:Static resx:ResUI.TbHelpProjectGo}"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource DefButton}" />
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
+                        <DockPanel Grid.Row="2">
+                            <Button
+                                x:Name="btnAbout"
+                                Width="100"
+                                Click="btnAbout_Click"
+                                Content="{x:Static resx:ResUI.TbHelpProjectGo}"
+                                Style="{StaticResource DefButton}" />
+                        </DockPanel>
+                    </Grid>
                 </materialDesign:Card>
 
                 <materialDesign:Card
@@ -64,36 +57,29 @@
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                Grid.Row="0"
-                                Margin="16,16,16,4"
-                                Style="{StaticResource TabItemTitle}"
-                                Text="Update ClashN" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="16,16,16,4"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource TabItemTitle}"
+                            Text="Update Frok ClashN" />
 
-                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
 
-                            <DockPanel Grid.Row="2" HorizontalAlignment="Right">
-                                <TextBlock
-                                    Grid.Row="0"
-                                    Margin="8"
-                                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                    Text="" />
-                                <Button
-                                    x:Name="btnCheckUpdateN"
-                                    Width="100"
-                                    Content="{x:Static resx:ResUI.TbHelpCheck}"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource DefButton}" />
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
+                        <DockPanel Grid.Row="2">
+                            <Button
+                                x:Name="btnCheckUpdateN"
+                                Width="100"
+                                Content="{x:Static resx:ResUI.TbHelpCheck}"
+                                Style="{StaticResource DefButton}" />
+                        </DockPanel>
+                    </Grid>
                 </materialDesign:Card>
 
                 <materialDesign:Card
@@ -101,36 +87,29 @@
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">
-                    <DockPanel>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <TextBlock
-                                Grid.Row="0"
-                                Margin="16,16,16,4"
-                                Style="{StaticResource TabItemTitle}"
-                                Text="Update Mihomo Core" />
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="16,16,16,4"
+                            HorizontalAlignment="Center"
+                            Style="{StaticResource TabItemTitle}"
+                            Text="Update Mihomo Core" />
 
-                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignLightSeparator}" />
 
-                            <DockPanel Grid.Row="2" HorizontalAlignment="Right">
-                                <TextBlock
-                                    Grid.Row="0"
-                                    Margin="8"
-                                    Style="{StaticResource MaterialDesignCaptionTextBlock}"
-                                    Text="" />
-                                <Button
-                                    x:Name="btnCheckUpdateMihomoCore"
-                                    Width="100"
-                                    Content="{x:Static resx:ResUI.TbHelpCheck}"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource DefButton}" />
-                            </DockPanel>
-                        </Grid>
-                    </DockPanel>
+                        <DockPanel Grid.Row="2">
+                            <Button
+                                x:Name="btnCheckUpdateMihomoCore"
+                                Width="100"
+                                Content="{x:Static resx:ResUI.TbHelpCheck}"
+                                Style="{StaticResource DefButton}" />
+                        </DockPanel>
+                    </Grid>
                 </materialDesign:Card>
             </WrapPanel>
         </ScrollViewer>
