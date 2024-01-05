@@ -22,7 +22,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <WrapPanel>
                 <materialDesign:Card
-                    Width="300"
+                    Width="240"
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">
@@ -60,7 +60,7 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card
-                    Width="300"
+                    Width="240"
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">
@@ -97,7 +97,7 @@
                 </materialDesign:Card>
 
                 <materialDesign:Card
-                    Width="300"
+                    Width="240"
                     Margin="8"
                     Padding="16"
                     materialDesign:UniformCornerRadius="8">

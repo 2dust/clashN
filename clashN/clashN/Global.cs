@@ -4,9 +4,9 @@
     {
         #region 常量
 
-        public const string AboutUrl = @"https://github.com/2dust/clashN";
+        public const string AboutUrl = @"https://github.com/SpaceTimee/Frok-ClashN";
         public const string UpdateUrl = AboutUrl + @"/releases";
-        public const string NUrl = @"https://github.com/2dust/clashN/releases";
+        public const string NUrl = @"https://github.com/SpaceTimee/Frok-ClashN/releases";
         public const string clashCoreUrl = "https://github.com/Dreamacro/clash/releases";
         public const string clashMetaCoreUrl = "https://github.com/MetaCubeX/Clash.Meta/releases";
         public const string mihomoCoreUrl = "https://github.com/MetaCubeX/mihomo/releases";

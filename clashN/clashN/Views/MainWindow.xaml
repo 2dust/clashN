@@ -31,8 +31,8 @@
         <Grid>
             <TabControl Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
                 <materialDesign:NavigationRailAssist.FloatingContent>
-                    <StackPanel Width="80" Margin="0,10">
-                        <Grid Margin="2,0,0,10">
+                    <StackPanel Width="80" Margin="0,8">
+                        <Grid Margin="2,0,0,8">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -49,7 +49,7 @@
                                     x:Name="txtSpeedUpload"
                                     Grid.Row="0"
                                     Grid.Column="1"
-                                    Margin="5,0,0,0"
+                                    Margin="4,0,0,0"
                                     Padding="0"
                                     Style="{StaticResource ToolbarItem}" />
                             <materialDesign:PackIcon
@@ -60,7 +60,7 @@
                                     x:Name="txtSpeedDownload"
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Margin="5,0,0,0"
+                                    Margin="4,0,0,0"
                                     Padding="0"
                                     Style="{StaticResource ToolbarItem}" />
                         </Grid>
@@ -75,8 +75,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="ArrowDecisionOutline" />
                             <TextBlock
@@ -90,8 +90,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="Server" />
                             <TextBlock
@@ -105,8 +105,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="MessageTextOutline" />
                             <TextBlock
@@ -120,8 +120,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="LanConnect" />
                             <TextBlock
@@ -135,8 +135,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="SettingsOutline" />
                             <TextBlock
@@ -150,8 +150,8 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="25"
-                                    Height="25"
+                                    Width="24"
+                                    Height="24"
                                     HorizontalAlignment="Center"
                                     Kind="HelpCircleOutline" />
                             <TextBlock
