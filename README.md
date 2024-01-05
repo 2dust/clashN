@@ -21,13 +21,13 @@ A clash client for Windows, supports [Mihomo core](https://github.com/MetaCubeX/
 To build this project, you should clone both [Frok-ClashN](https://github.com/SpaceTimee/Frok-ClashN) and [Frok-V2rayN](https://github.com/SpaceTimee/Frok-V2rayN) to the same folder
 ```
 Example folder
-├─ ClashN
+├─ Frok-ClashN
 |  ├─ clashN
 |  |  ├─ clashN.sln
 |  |  └─ ...
 |  ├─ README.md
 |  └─ ...
-├─ v2rayN
+├─ Frok-V2rayN
 |  ├─ v2rayN
 |  |  ├─ v2rayN.sln
 |  |  └─ ...
