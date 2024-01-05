@@ -28,80 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            ExitBtn = new System.Windows.Forms.Button();
+            UpgradeBtn = new System.Windows.Forms.Button();
+            CnTip = new System.Windows.Forms.Label();
+            EnTip = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
-            // btnClose
+            // ExitBtn
             // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(367, 118);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(184, 89);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.Text = "&Exit(退出)";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            ExitBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            ExitBtn.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            ExitBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            ExitBtn.Location = new System.Drawing.Point(393, 112);
+            ExitBtn.Name = "ExitBtn";
+            ExitBtn.Size = new System.Drawing.Size(365, 100);
+            ExitBtn.TabIndex = 1;
+            ExitBtn.Text = "Exit (退出)";
+            ExitBtn.UseVisualStyleBackColor = true;
+            ExitBtn.Click += ExitBtn_Click;
             // 
-            // btnOK
+            // UpgradeBtn
             // 
-            this.btnOK.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnOK.Location = new System.Drawing.Point(81, 118);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(184, 89);
-            this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "&Upgrade(升级)";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            UpgradeBtn.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            UpgradeBtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            UpgradeBtn.Location = new System.Drawing.Point(16, 112);
+            UpgradeBtn.Name = "UpgradeBtn";
+            UpgradeBtn.Size = new System.Drawing.Size(365, 100);
+            UpgradeBtn.TabIndex = 0;
+            UpgradeBtn.Text = "Upgrade (升级)";
+            UpgradeBtn.UseVisualStyleBackColor = true;
+            UpgradeBtn.Click += UpgradeBtn_Click;
             // 
-            // label1
+            // CnTip
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(79, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 15);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "升级成功后将自动重启clashN";
+            CnTip.AutoSize = true;
+            CnTip.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            CnTip.Location = new System.Drawing.Point(16, 60);
+            CnTip.Name = "CnTip";
+            CnTip.Size = new System.Drawing.Size(528, 39);
+            CnTip.TabIndex = 8;
+            CnTip.Text = "Frok ClashN 会在成功升级后自动重启";
             // 
-            // label2
+            // EnTip
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(79, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(471, 15);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "clashN will restart automatically after successful upgrade";
+            EnTip.AutoSize = true;
+            EnTip.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 134);
+            EnTip.Location = new System.Drawing.Point(16, 9);
+            EnTip.Name = "EnTip";
+            EnTip.Size = new System.Drawing.Size(753, 39);
+            EnTip.TabIndex = 9;
+            EnTip.Text = "Frok ClashN will automatically restart after upgrade";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 284);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnOK);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "clashUpgrade";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(14F, 31F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(774, 229);
+            Controls.Add(EnTip);
+            Controls.Add(CnTip);
+            Controls.Add(ExitBtn);
+            Controls.Add(UpgradeBtn);
+            MaximizeBox = false;
+            Name = "MainForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Frok ClashN Upgrade";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button UpgradeBtn;
+        private System.Windows.Forms.Label CnTip;
+        private System.Windows.Forms.Label EnTip;
     }
 }
 
