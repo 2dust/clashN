@@ -96,7 +96,6 @@
                     </DockPanel>
                 </materialDesign:Card>
 
-
                 <materialDesign:Card
                     Width="300"
                     Margin="8"
@@ -133,8 +132,6 @@
                         </Grid>
                     </DockPanel>
                 </materialDesign:Card>
-
-
             </WrapPanel>
         </ScrollViewer>
     </DockPanel>

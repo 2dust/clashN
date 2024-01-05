@@ -14,8 +14,10 @@ namespace ClashN.ViewModels
         private NoticeHandler? _noticeHandler;
 
         public ReactiveCommand<Unit, Unit> CheckUpdateCmd { get; }
+
         //public ReactiveCommand<Unit, Unit> CheckUpdateClashCoreCmd { get; }
         public ReactiveCommand<Unit, Unit> CheckUpdateMihomoCoreCmd { get; }
+
         //public ReactiveCommand<Unit, Unit> CheckUpdateGeoDataCmd { get; }
 
         public HelpViewModel()
@@ -40,7 +42,7 @@ namespace ClashN.ViewModels
             //    CheckUpdateGeoData();
             //});
         }
-        
+
         //private void CheckUpdateGeoData()
         //{
         //    void _updateUI(bool success, string msg)
