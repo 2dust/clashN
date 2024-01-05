@@ -19,10 +19,10 @@ namespace ClashN
             ProgramStarted = new EventWaitHandle(false, EventResetMode.AutoReset, "ProgramStartedEvent", out bool bCreatedNew);
             if (!bCreatedNew)
             {
-                ProgramStarted.Set();
-                App.Current.Shutdown();
+                MessageBox.Show($"Frok ClashN is already running{Environment.NewLine}Frok ClashN 已在运行中", "Frok ClashN", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                ProgramStarted.Close();
                 Environment.Exit(-1);
-                return;
             }
         }
 
