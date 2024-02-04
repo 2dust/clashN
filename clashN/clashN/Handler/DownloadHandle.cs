@@ -125,7 +125,7 @@ namespace ClashN.Handler
             HttpClient client = new HttpClient(webRequestHandler);
 
             HttpResponseMessage response = await client.GetAsync(url);
-            if (response.StatusCode.ToString() == "Redirect")
+            if (response.StatusCode == HttpStatusCode.Found || response.StatusCode == HttpStatusCode.Redirect)
             {
                 return response.Headers.Location?.ToString();
             }
