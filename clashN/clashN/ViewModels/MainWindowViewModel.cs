@@ -8,6 +8,7 @@ using NHotkey;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -253,8 +254,8 @@ namespace ClashN.ViewModels
             catch { }
             finally
             {
-                Application.Current.Shutdown();
                 Environment.Exit(0);
+                Process.GetCurrentProcess().Kill();
             }
         }
 
