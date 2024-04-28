@@ -496,7 +496,7 @@ namespace ClashN.ViewModels
             Observable.Interval(TimeSpan.FromSeconds(60))
               .Subscribe(x =>
               {
-                  if (!AutoRefresh || !Global.ShowInTaskbar)
+                  if (!(AutoRefresh && Global.ShowInTaskbar))
                   {
                       return;
                   }

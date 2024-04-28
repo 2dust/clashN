@@ -93,10 +93,11 @@ namespace ClashN.ViewModels
             Observable.Interval(TimeSpan.FromSeconds(AutoRefreshInterval))
                 .Subscribe(x =>
                 {
-                    if (AutoRefresh && Global.ShowInTaskbar)
+                    if (!(AutoRefresh && Global.ShowInTaskbar))
                     {
-                        GetClashConnections();
+                        return;
                     }
+                    GetClashConnections();
                 });
 
             //Task.Run(() =>
