@@ -170,16 +170,6 @@ namespace ClashN.Handler
 
             Task.Run(async () =>
             {
-                //Turn off system proxy
-                //bool bSysProxyType = false;
-                //if (!blProxy && config.SysProxyType == SysProxyType.ForcedChange)
-                //{
-                //    bSysProxyType = true;
-                //    config.SysProxyType = SysProxyType.ForcedClear;
-                //    SysProxyHandle.UpdateSysProxy(config, false);
-                //    Thread.Sleep(3000);
-                //}
-
                 if (profileItems == null)
                 {
                     profileItems = config.ProfileItems;
@@ -216,25 +206,27 @@ namespace ClashN.Handler
                     {
                         _updateFunc(false, $"{hashCode}{args.GetException().Message}");
                     };
-                    var result = (await downloadHandle.DownloadStringAsync(url, blProxy, userAgent)) ?? throw new Exception();
-                    if (blProxy && string.IsNullOrEmpty(result.Item1))
+                    var result = (await downloadHandle.DownloadStringAsync(url, blProxy, userAgent));
+                    if (blProxy && string.IsNullOrEmpty(result?.Item1))
                     {
-                        result = (await downloadHandle.DownloadStringAsync(url, false, userAgent)) ?? throw new Exception();
+                        result = (await downloadHandle.DownloadStringAsync(url, false, userAgent));
                     }
+                    var resultContent = result?.Item1;
+                    var resultHeader = result?.Item2;
 
-                    if (string.IsNullOrEmpty(result.Item1))
+                    if (string.IsNullOrEmpty(resultContent))
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgSubscriptionDecodingFailed}");
                     }
                     else
                     {
                         _updateFunc(false, $"{hashCode}{ResUI.MsgGetSubscriptionSuccessfully}");
-                        if (result.Item1.Length < 99)
+                        if (resultContent.Length < 99)
                         {
                             _updateFunc(false, $"{hashCode}{result}");
                         }
 
-                        int ret = ConfigProc.AddBatchProfiles(ref config, result.Item1, indexId, groupId);
+                        int ret = ConfigProc.AddBatchProfiles(ref config, resultContent, indexId, groupId);
                         if (ret == 0)
                         {
                             item.updateTime = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds();
@@ -242,9 +234,9 @@ namespace ClashN.Handler
                             //get remote info
                             try
                             {
-                                if (result.Item2 != null && result.Item2 is HttpResponseHeaders)
+                                if (resultHeader != null && resultHeader is HttpResponseHeaders)
                                 {
-                                    var userinfo = ((HttpResponseHeaders)result.Item2)
+                                    var userinfo = ((HttpResponseHeaders)resultHeader)
                                     .Where(t => t.Key.ToLower() == "subscription-userinfo")
                                     .Select(t => t.Value)
                                     .FirstOrDefault()?
@@ -276,12 +268,6 @@ namespace ClashN.Handler
                     }
                     _updateFunc(false, $"-------------------------------------------------------");
                 }
-                //restore system proxy
-                //if (bSysProxyType)
-                //{
-                //    config.SysProxyType = SysProxyType.ForcedChange;
-                //    SysProxyHandle.UpdateSysProxy(config, false);
-                //}
                 _updateFunc(true, $"{ResUI.MsgUpdateSubscriptionEnd}");
             });
         }
