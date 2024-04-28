@@ -122,7 +122,7 @@ namespace ClashN.ViewModels
                     return;
                 }
 
-                Application.Current.Dispatcher.Invoke((Action)(() =>
+                Application.Current?.Dispatcher.Invoke((Action)(() =>
                 {
                     RefreshConnections(it?.Connections!);
                 }));

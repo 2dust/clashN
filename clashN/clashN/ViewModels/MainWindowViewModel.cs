@@ -136,7 +136,7 @@ namespace ClashN.ViewModels
                  .Delay(TimeSpan.FromSeconds(1))
                  .Subscribe(x =>
                  {
-                     Application.Current.Dispatcher.Invoke((Action)(() =>
+                     Application.Current?.Dispatcher.Invoke((Action)(() =>
                      {
                          ShowHideWindow(false);
                          blFirst = false;
@@ -212,7 +212,7 @@ namespace ClashN.ViewModels
 
         private void OnProgramStarted(object state, bool timeout)
         {
-            Application.Current.Dispatcher.Invoke((Action)(() =>
+            Application.Current?.Dispatcher.Invoke((Action)(() =>
             {
                 string? clipboardData = Utils.GetClipboardData();
                 if (state != null && clipboardData != null)
@@ -254,8 +254,7 @@ namespace ClashN.ViewModels
             catch { }
             finally
             {
-                Environment.Exit(0);
-                Process.GetCurrentProcess().Kill();
+                Application.Current.Shutdown();
             }
         }
 
@@ -333,7 +332,7 @@ namespace ClashN.ViewModels
         {
             try
             {
-                Application.Current.Dispatcher.Invoke((Action)(() =>
+                Application.Current?.Dispatcher.Invoke((Action)(() =>
                 {
                     if (!Global.ShowInTaskbar)
                     {

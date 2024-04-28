@@ -177,7 +177,7 @@ namespace ClashN.ViewModels
 
             LazyConfig.Instance.SetProxies(proxies);
 
-            Application.Current.Dispatcher.Invoke((Action)(() =>
+            Application.Current?.Dispatcher.Invoke((Action)(() =>
             {
                 _proxyGroups.Clear();
                 _proxyDetails.Clear();
@@ -231,7 +231,7 @@ namespace ClashN.ViewModels
                 }
                 if (refreshUI)
                 {
-                    Application.Current.Dispatcher.Invoke((Action)(() =>
+                    Application.Current?.Dispatcher.Invoke((Action)(() =>
                     {
                         RefreshProxyGroups();
                     }));
@@ -457,7 +457,7 @@ namespace ClashN.ViewModels
                 {
                     return;
                 }
-                Application.Current.Dispatcher.Invoke((Action)(() =>
+                Application.Current?.Dispatcher.Invoke((Action)(() =>
                 {
                     //UpdateHandler(false, $"{item.name}={result}");
                     var detail = _proxyDetails.Where(it => it.name == item.name).FirstOrDefault();

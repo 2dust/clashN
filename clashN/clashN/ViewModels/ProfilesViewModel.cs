@@ -342,7 +342,7 @@ namespace ClashN.ViewModels
                 lstModel.Add(model);
             }
 
-            Application.Current.Dispatcher.Invoke((Action)(() =>
+            Application.Current?.Dispatcher.Invoke((Action)(() =>
             {
                 _profileItems.Clear();
                 _profileItems.AddRange(lstModel);
