@@ -129,7 +129,7 @@
                                 Width="5"
                                 Height="auto"
                                 Margin="0,1"
-                                Background="{DynamicResource PrimaryHueLightBrush}"
+                                Background="{DynamicResource MaterialDesign.Brush.Primary.Light}"
                                 CornerRadius="4"
                                 DockPanel.Dock="Left"
                                 Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisConverter}}" />

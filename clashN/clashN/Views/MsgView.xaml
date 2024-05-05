@@ -15,7 +15,7 @@
     <DockPanel Margin="2">
         <TextBlock
             DockPanel.Dock="Top"
-            Foreground="{DynamicResource PrimaryHueLightBrush}"
+            Foreground="{DynamicResource MaterialDesign.Brush.Primary.Light}"
             Style="{StaticResource ListItemTitle}"
             Text="{x:Static resx:ResUI.TbMsgTitle}" />
         <TextBox

@@ -30,12 +30,12 @@
         SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}"
         Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid>
-            <TabControl Padding="2,0" Style="{StaticResource MaterialDesignNavigatilRailTabControl}">
+            <TabControl Padding="2,0" Style="{StaticResource MaterialDesignNavigationRailTabControl}">
                 <materialDesign:NavigationRailAssist.FloatingContent>
                     <StackPanel
-                            Width="auto"
-                            Height="auto"
-                            Margin="4">
+                        Width="auto"
+                        Height="auto"
+                        Margin="4">
                         <Grid Width="80" Margin="0,8,0,8">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -46,33 +46,33 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <materialDesign:PackIcon
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Kind="ArrowUpThin" />
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Kind="ArrowUpThin" />
                             <TextBlock
-                                    x:Name="txtSpeedUpload"
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="8,0,0,0"
-                                    Padding="0,0,4,0"
-                                    Style="{StaticResource ToolbarItem}" />
+                                x:Name="txtSpeedUpload"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                Padding="0,0,4,0"
+                                Style="{StaticResource ToolbarItem}" />
                             <materialDesign:PackIcon
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Kind="ArrowDownThin" />
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Kind="ArrowDownThin" />
                             <TextBlock
-                                    x:Name="txtSpeedDownload"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Margin="8,0,0,0"
-                                    Padding="0,0,4,0"
-                                    Style="{StaticResource ToolbarItem}" />
+                                x:Name="txtSpeedDownload"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                Padding="0,0,4,0"
+                                Style="{StaticResource ToolbarItem}" />
                         </Grid>
                         <Button
-                                x:Name="btnReload"
-                                Content="{materialDesign:PackIcon Kind=Reload}"
-                                Style="{StaticResource MaterialDesignFlatLightBgButton}"
-                                ToolTip="{x:Static resx:ResUI.TbReloadCore}" />
+                            x:Name="btnReload"
+                            Content="{materialDesign:PackIcon Kind=Reload}"
+                            Style="{StaticResource MaterialDesignFlatLightBgButton}"
+                            ToolTip="{x:Static resx:ResUI.TbReloadCore}" />
                     </StackPanel>
                 </materialDesign:NavigationRailAssist.FloatingContent>
                 <!--<TabItem
@@ -99,14 +99,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="ArrowDecisionOutline" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="ArrowDecisionOutline" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbProxies}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbProxies}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -114,14 +114,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="Server" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="Server" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbProfiles}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbProfiles}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -129,14 +129,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="MessageTextOutline" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="MessageTextOutline" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbLogs}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbLogs}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -144,14 +144,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="LanConnect" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="LanConnect" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbConnections}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbConnections}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -159,14 +159,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="SettingsOutline" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="SettingsOutline" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbSettings}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbSettings}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -174,14 +174,14 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="HelpCircleOutline" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="HelpCircleOutline" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbHelp}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbHelp}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
@@ -189,32 +189,32 @@
                     <TabItem.Header>
                         <StackPanel Width="auto" Height="auto">
                             <materialDesign:PackIcon
-                                    Width="24"
-                                    Height="24"
-                                    HorizontalAlignment="Center"
-                                    Kind="VolumeHigh" />
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Center"
+                                Kind="VolumeHigh" />
                             <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Style="{StaticResource TabItemTitle}"
-                                    Text="{x:Static resx:ResUI.TbPromotion}" />
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource TabItemTitle}"
+                                Text="{x:Static resx:ResUI.TbPromotion}" />
                         </StackPanel>
                     </TabItem.Header>
                 </TabItem>
             </TabControl>
 
             <tb:TaskbarIcon
-                    x:Name="tbNotify"
-                    IconSource="/ClashN.ico"
-                    NoLeftClickDelay="True">
+                x:Name="tbNotify"
+                IconSource="/ClashN.ico"
+                NoLeftClickDelay="True">
                 <tb:TaskbarIcon.ContextMenu>
                     <ContextMenu Style="{StaticResource DefMenu}">
                         <MenuItem x:Name="menuSystemProxyClear">
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuSystemProxyClear2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuSystemProxyClear2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyClear}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -223,9 +223,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuSystemProxySet2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuSystemProxySet2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuSystemProxySet}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -234,9 +234,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuSystemProxyNothing2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuSystemProxyNothing2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyNothing}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -245,9 +245,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuSystemProxyPac2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuSystemProxyPac2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuSystemProxyPac}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -258,9 +258,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuModeRule2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuModeRule2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuModeRule}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -269,9 +269,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuModeGlobal2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuModeGlobal2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuModeGlobal}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -280,9 +280,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuModeDirect2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuModeDirect2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuModeDirect}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -291,9 +291,9 @@
                             <MenuItem.Header>
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon
-                                            x:Name="menuModeNothing2"
-                                            Margin="0,0,8,0"
-                                            Kind="Check" />
+                                        x:Name="menuModeNothing2"
+                                        Margin="0,0,8,0"
+                                        Kind="Check" />
                                     <TextBlock Text="{x:Static resx:ResUI.menuModeNothing}" />
                                 </StackPanel>
                             </MenuItem.Header>
@@ -305,9 +305,9 @@
                         <MenuItem x:Name="menuSubUpdateViaProxy" Header="{x:Static resx:ResUI.menuSubUpdateViaProxy}" />
                         <Separator />
                         <MenuItem
-                                x:Name="menuExit"
-                                Click="menuExit_Click"
-                                Header="{x:Static resx:ResUI.menuExit}" />
+                            x:Name="menuExit"
+                            Click="menuExit_Click"
+                            Header="{x:Static resx:ResUI.menuExit}" />
                     </ContextMenu>
                 </tb:TaskbarIcon.ContextMenu>
             </tb:TaskbarIcon>
