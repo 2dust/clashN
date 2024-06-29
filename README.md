@@ -1,3 +1,6 @@
+## [本项目功能将合并到v2rayN项目](https://github.com/2dust/clashN/issues/358)
+
+
 # ClashN
 A clash client for Windows, supports [Mihomo core](https://github.com/MetaCubeX/Mihomo)
 
